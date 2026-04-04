@@ -1,0 +1,12 @@
+# Calc Labz — robots.txt
+# Google requires access to CSS & JS to properly render and index pages.
+# Do NOT disallow assets; blocking them hurts Core Web Vitals scoring.
+
+User-agent: *
+Allow: /
+
+# Block only private/tooling paths (none currently exist in this SPA)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://calclabz.com/sitemap.xml
