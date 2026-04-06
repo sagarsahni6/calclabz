@@ -1,4 +1,4 @@
-﻿/* Calc Labz Calculator Database */
+/* Calc Labz Calculator Database */
 'use strict';
 var BLOG_POSTS = [
     {id:'emi-guide',slug:'emi-calculator-guide-india-2026',cat:'Finance',title:'How to Calculate EMI in India 2026',desc:'Complete guide to home loan, car loan and personal loan EMI calculation with examples.',calc:'emi',date:'Jan 2026',readTime:'5 min'},
@@ -489,15 +489,21 @@ const DB = {
             {id:"rate",label:"Rate",default:7.1,suffix:"%"}
         ],
         calc(v){
-            const P=v.contribution,r=v.rate/100/12,n=v.years*12;
-            const total=P*((Math.pow(1+r,n)-1)/r);
-            const invested=P*n, interest=total-invested;
+            // PPF: annual contributions, annual compounding (EEE category)
+            const annualContrib = v.contribution * 12;
+            const r = v.rate / 100;
+            const n = v.years;
+            // Future value of annuity-due (PPF is beginning-of-year: invest on 1st April)
+            const total = annualContrib * ((Math.pow(1+r, n) - 1) / r) * (1+r);
+            const invested = annualContrib * n;
+            const interest = total - invested;
             return {
                 main:{label:"Maturity Amount",value:"₹"+Math.round(total).toLocaleString()},
                 secondary:[
-                    {label:"Total Invested",value:"₹"+invested.toLocaleString()},
+                    {label:"Total Invested",value:"₹"+Math.round(invested).toLocaleString()},
                     {label:"Interest Earned",value:"₹"+Math.round(interest).toLocaleString(),pos:true},
-                    {label:"Effective Yield",value:(interest/invested*100).toFixed(2)+"%"}
+                    {label:"Effective Yield",value:(interest/invested*100).toFixed(2)+"%"},
+                    {label:"Annual Contribution",value:"₹"+annualContrib.toLocaleString()}
                 ]
             };
         }
@@ -598,14 +604,18 @@ const DB = {
             {id:"years",label:"Years",default:10}
         ],
         calc(v){
-            const future=v.amount*Math.pow(1+v.rate/100,v.years);
-            const pv=v.amount/Math.pow(1+v.rate/100,v.years);
+            // Future cost: how much ₹X costs in 'years' years due to inflation
+            const future = v.amount * Math.pow(1 + v.rate/100, v.years);
+            // Real value lost: what ₹X today is worth in today's money after inflation erodes it
+            const realValue = v.amount / Math.pow(1 + v.rate/100, v.years);
+            const eroded = v.amount - realValue;
             return {
-                main:{label:"Future Cost (same value)",value:"₹"+Math.round(future).toLocaleString()},
+                main:{label:"Future Cost (same goods)",value:"₹"+Math.round(future).toLocaleString()},
                 secondary:[
-                    {label:"Purchasing Power Today",value:"₹"+Math.round(pv).toLocaleString()},
-                    {label:"Value Eroded",value:"₹"+Math.round(future-v.amount).toLocaleString()},
-                    {label:"Erosion %",value:((1-1/Math.pow(1+v.rate/100,v.years))*100).toFixed(1)+"%"}
+                    {label:"Real Purchasing Power (in today's ₹)",value:"₹"+Math.round(realValue).toLocaleString()},
+                    {label:"Amount Required Extra",value:"₹"+Math.round(future - v.amount).toLocaleString()},
+                    {label:"Purchasing Power Erosion",value:((1 - realValue/v.amount)*100).toFixed(1)+"%"},
+                    {label:"Effective Annual Erosion",value:v.rate+"% p.a."}
                 ]
             };
         }
@@ -1941,17 +1951,20 @@ const DB = {
             const tMap={"Half Brick (115mm)":0.115,"One Brick (230mm)":0.230,"1.5 Brick (345mm)":0.345};
             const t=tMap[v.thickness];
             const wallVol=v.length*v.height*t;
+            // Brick volume: L × H × W (thickness of wall = brick width)
             const brickVol=(v.brickL/1000)*(v.brickH/1000)*t;
-            const bricks=Math.ceil(wallVol/brickVol*1.05);
-            const mortarVol=(wallVol-bricks*brickVol).toFixed(4);
+            const netBricks=Math.ceil(wallVol/brickVol); // bricks without wastage
+            const bricks=Math.ceil(netBricks*1.05); // with 5% wastage
+            // Mortar = wall volume minus net brick volume (using net count, not wastage-inflated count)
+            const mortarVol=Math.max(0, wallVol - netBricks*brickVol);
             const area=v.length*v.height;
             return {
-                main:{label:"Bricks Required",value:bricks.toLocaleString()},
+                main:{label:"Bricks Required (incl. 5% extra)",value:bricks.toLocaleString()},
                 secondary:[
                     {label:"Wall Area",value:area.toFixed(2)+" m²"},
                     {label:"Wall Volume",value:wallVol.toFixed(3)+" m³"},
-                    {label:"Mortar (est)",value:Math.max(0,mortarVol)+" m³"},
-                    {label:"Includes 5% wastage",value:"✓"}
+                    {label:"Mortar Volume (est.)",value:mortarVol.toFixed(4)+" m³"},
+                    {label:"Net Bricks (without wastage)",value:netBricks.toLocaleString()}
                 ]
             };
         }
@@ -2251,9 +2264,14 @@ const DB = {
         calc(v){
             const empContrib=v.basic*0.12, empRContrib=v.basic*0.0367;
             const monthlyTotal=empContrib+empRContrib;
-            const r=v.rate/100/12, n=v.years*12;
-            const corpus=monthlyTotal*((Math.pow(1+r,n)-1)/r)*(1+r);
-            const invested=monthlyTotal*n;
+            // EPF credits interest annually; use annual compounding for monthly contributions
+            // Annual contribution = monthlyTotal × 12
+            const annualContrib = monthlyTotal * 12;
+            const r = v.rate / 100;      // annual rate
+            const n = v.years;
+            // Annuity-due (contributions at start of year)
+            const corpus = annualContrib * ((Math.pow(1+r, n) - 1) / r) * (1+r);
+            const invested = monthlyTotal * n * 12;
             return {
                 main:{label:"EPF Corpus",value:"₹"+Math.round(corpus).toLocaleString()},
                 secondary:[
@@ -3146,7 +3164,7 @@ const DB = {
             const r = v.ret/12/100, n = v.years*12;
             const futureCurrentSavings = v.current * Math.pow(1+r, n);
             const remaining = Math.max(0, v.goal - futureCurrentSavings);
-            const monthly = remaining > 0 ? remaining*r/(Math.pow(1+r,n)-1) : 0;
+            const monthly = remaining > 0 ? remaining*r/((Math.pow(1+r,n)-1)*(1+r)) : 0;
             return {
                 main:{label:"Monthly Savings Needed",value:"₹"+Math.round(monthly).toLocaleString()},
                 secondary:[
@@ -4198,9 +4216,13 @@ const DB = {
             {id:"tenure_rd",label:"Tenure",default:24,suffix:"months"}
         ],
         calc(v){
-            const r=v.rate_rd/4/100, n=v.tenure_rd/3;
-            const M = v.monthly_rd*((Math.pow(1+r,n)-1)/r)*(1+r);
-            const invested = v.monthly_rd*v.tenure_rd;
+            // Indian RD: monthly deposits, quarterly compounding
+            // Standard RD formula: M = P × [(1+i)^n - 1] / (1 - (1+i)^(-1/3))
+            // where i = quarterly rate, n = total quarters
+            const i = v.rate_rd / 4 / 100;
+            const n = v.tenure_rd / 3;
+            const M = v.monthly_rd * (Math.pow(1+i, n) - 1) / (1 - Math.pow(1+i, -1/3));
+            const invested = v.monthly_rd * v.tenure_rd;
             const interest = M - invested;
             return {
                 main:{label:"Maturity Amount",value:"₹"+Math.round(M).toLocaleString('en-IN')},
@@ -4430,9 +4452,19 @@ const DB = {
             const vr = v.vsupply - v.vled;
             const r = vr / (v.iled/1000);
             const power = vr * (v.iled/1000);
+            // Find nearest E12 resistor value (decade-scaled)
             const e12 = [10,12,15,18,22,27,33,39,47,56,68,82];
-            let e12r = e12[0];
-            for(const val of e12) { if(val*10 >= r || val*100 >= r) { e12r = val*(r>82?100:10); break; } }
+            let e12r = e12[0]; // default
+            // Determine the decade multiplier
+            const decade = Math.pow(10, Math.floor(Math.log10(r)));
+            const normalised = r / decade;
+            // Find closest E12 value in this decade
+            let bestDiff = Infinity;
+            for(const val of e12){
+                const candidate = val * decade / 10;
+                const diff = Math.abs(candidate - r);
+                if(diff < bestDiff){ bestDiff = diff; e12r = candidate; }
+            }
             return {
                 main:{label:"Required Resistor",value:r.toFixed(1)+" Ω"},
                 secondary:[
@@ -4792,8 +4824,10 @@ const DB = {
                 for(const [lim,rate] of slabs){ if(rem<=0)break; const ch=Math.min(rem,lim); tax+=ch*rate; rem-=ch; }
                 if(taxable<=1200000) tax=0;
             } else {
-                taxable = Math.max(0, v.income - 50000 - 250000 - Math.min(v.sec80c,150000));
-                const slabs=[[250000,0.05],[500000,0.20],[Infinity,0.30]];
+                // Old regime: basic exemption ₹2.5L is built into slabs (first slab = 0%)
+                // Do NOT subtract ₹2.5L again; the slabs below cover ₹0-2.5L@0%, ₹2.5L-5L@5%, etc.
+                taxable = Math.max(0, v.income - 50000 - Math.min(v.sec80c,150000));
+                const slabs=[[250000,0],[250000,0.05],[500000,0.20],[Infinity,0.30]];
                 let rem=taxable;
                 for(const [lim,rate] of slabs){ if(rem<=0)break; const ch=Math.min(rem,lim); tax+=ch*rate; rem-=ch; }
             }
@@ -4835,11 +4869,12 @@ const DB = {
         calc(v){
             const basic = v.ctc * v.basic_pct / 100;
             const hra = basic * v.hra_pct / 100;
-            const pf_emp = basic * v.pf_pct / 100;
-            const pf_er = basic * Math.min(v.pf_pct, 12) / 100;
-            const special = v.ctc - basic - hra - pf_er;
-            const totalDed = pf_emp + v.ptax + v.other_ded;
-            const inhand = v.ctc - totalDed - pf_er;
+            const pf_emp = basic * v.pf_pct / 100;           // employee PF deduction from salary
+            const pf_er = basic * Math.min(v.pf_pct, 12) / 100; // employer PF (additional cost, not deducted from gross)
+            // Special allowance = CTC - basic - HRA - employer PF - other common components
+            const special = Math.max(0, v.ctc - basic - hra - pf_er);
+            // In-hand = gross (CTC) minus employee-side deductions only
+            const inhand = v.ctc - pf_emp - v.ptax - v.other_ded;
             return {
                 main:{label:"Monthly In-Hand Salary",value:"₹"+Math.round(inhand).toLocaleString()},
                 secondary:[

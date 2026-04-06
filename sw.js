@@ -1,5 +1,5 @@
-﻿/* Calc Labz Service Worker — Cache-First + Network Fallback */
-const CACHE = 'calclabz-v6';
+/* Calc Labz Service Worker — Cache-First + Network Fallback */
+const CACHE = 'calclabz-v8';
 const ASSETS = [
     './',
     'index.html',
