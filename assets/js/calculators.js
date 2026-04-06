@@ -5503,6 +5503,42 @@ const DB = {
             };
         },
         tips:["Get 3 contractor quotes minimum","Keep 15-20% buffer for unexpected costs","Plumbing and electrical should be done before tiling"]
+    },
+
+    // ── SALARY HIKE CALCULATOR ───────────────────────────────────────────────
+    salaryhike: {
+        name:"Salary Hike Calculator", desc:"New salary after hike — monthly increase, annual gain & real value",
+        icon:"fa-arrow-trend-up", cat:"finance", badge:"Popular",
+        inputs:[
+            {id:"currentSalary",label:"Current Monthly Salary",default:50000,prefix:"₹"},
+            {id:"hikePercent",label:"Hike Percentage",default:15,suffix:"%"},
+            {id:"currentCTC",label:"Current Annual CTC",default:600000,prefix:"₹"},
+            {id:"inflation",label:"Inflation Rate",default:6,suffix:"%"}
+        ],
+        calc(v){
+            const newMonthly = Math.round(v.currentSalary * (1 + v.hikePercent/100));
+            const monthlyIncrease = newMonthly - v.currentSalary;
+            const newAnnualCTC = Math.round(v.currentCTC * (1 + v.hikePercent/100));
+            const annualIncrease = newAnnualCTC - v.currentCTC;
+            const realHike = v.hikePercent - v.inflation;
+            const purchasingPowerGain = realHike > 0
+                ? "+" + realHike.toFixed(1) + "% real gain (beats inflation ✅)"
+                : realHike.toFixed(1) + "% real loss (below inflation ⚠️)";
+            const yearsToDouble = (72 / v.hikePercent).toFixed(1);
+            return {
+                main:{label:"New Monthly Salary",value:"₹"+newMonthly.toLocaleString('en-IN')},
+                secondary:[
+                    {label:"Monthly Increase",value:"₹"+monthlyIncrease.toLocaleString('en-IN'),pos:true},
+                    {label:"New Annual CTC",value:"₹"+newAnnualCTC.toLocaleString('en-IN')},
+                    {label:"Annual Increment",value:"₹"+annualIncrease.toLocaleString('en-IN'),pos:true},
+                    {label:"Hike %",value:v.hikePercent.toFixed(1)+"%"},
+                    {label:"Real Purchasing Power",value:purchasingPowerGain},
+                    {label:"Salary Doubles in",value:yearsToDouble+" years (at "+v.hikePercent+"% annually)"}
+                ],
+                chart:{a:v.currentCTC,b:annualIncrease,lA:"Old CTC",lB:"Increment"}
+            };
+        },
+        tips:["A hike below inflation (6–7%) means your real salary declined","Negotiate on CTC, not just percentage — base matters","Even ₹5,000/month extra, if invested in SIP, grows to ₹50L in 20 years"]
     }
 };
 
