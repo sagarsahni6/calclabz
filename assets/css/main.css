@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    Calc Labz — Mobile-First Premium CSS
    Design: Glassmorphic, smooth transitions, indigo primary
    Breakpoints: 768px (tablet), 1024px (desktop)
@@ -897,3 +897,41 @@ select{-webkit-appearance:none;appearance:none;padding-right:30px;
 
 .legal-back{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;
   padding-top:20px;border-top:1px solid var(--brd)}
+
+/* ═══════════════════════════════════════════════════
+   P4 — CHART SKELETON / SHIMMER PLACEHOLDER
+   Shows while Chart.js loads from CDN (typically 100-400ms)
+   Eliminates blank chart area flash
+   ═══════════════════════════════════════════════════ */
+.chart-skeleton{
+  background:var(--bg2);border-radius:var(--rmd);
+  height:220px;margin-top:14px;position:relative;overflow:hidden;
+  border:1px solid var(--brd)}
+.chart-skeleton::after{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:140px;height:140px;border-radius:50%;
+  border:2px dashed var(--bg4);opacity:.5}
+.shimmer{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(99,102,241,.07) 40%,
+    rgba(99,102,241,.14) 50%,
+    rgba(99,102,241,.07) 60%,
+    transparent 100%);
+  background-size:200% 100%;
+  animation:shimmer-sweep 1.6s infinite linear}
+@keyframes shimmer-sweep{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}}
+/* Light theme shimmer */
+[data-theme="light"] .shimmer,body.light .shimmer{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(99,102,241,.06) 40%,
+    rgba(99,102,241,.11) 50%,
+    rgba(99,102,241,.06) 60%,
+    transparent 100%);
+  background-size:200% 100%;
+  animation:shimmer-sweep 1.6s infinite linear}
+

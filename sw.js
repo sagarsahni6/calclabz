@@ -1,14 +1,27 @@
-/* Calc Labz Service Worker — Cache-First + Network Fallback */
-const CACHE = 'calclabz-v10';
+/* Calc Labz Service Worker — Stale-While-Revalidate (P6) */
+const CACHE = 'calclabz-v11';
 const ASSETS = [
     './',
     'index.html',
     'manifest.json',
     'assets/css/main.css',
-    'assets/js/calculators.js',
+    // P1: Core stubs (100 KB — replaces monolithic 333 KB calculators.js)
+    'assets/js/calculators-core.js',
     'assets/js/formulas.js',
-    'assets/js/app.js'
+    'assets/js/app.js',
+    // P1: Lazy-loaded category files (pre-cached for offline-first)
+    'assets/js/calculators-finance.js',
+    'assets/js/calculators-health.js',
+    'assets/js/calculators-math.js',
+    'assets/js/calculators-unit.js',
+    'assets/js/calculators-everyday.js',
+    'assets/js/calculators-datetime.js',
+    'assets/js/calculators-engineering.js',
+    'assets/js/calculators-science.js',
+    'assets/js/calculators-construction.js',
+    'assets/js/calculators-education.js'
 ];
+
 
 self.addEventListener('install', e => {
     e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
