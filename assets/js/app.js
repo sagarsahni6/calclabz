@@ -92,6 +92,16 @@ function ensureCalcLoaded(calcId, callback) {
     document.head.appendChild(script);
 }
 
+// ── CALC SLUG MAP (SEO: clean URL routing) ──────────
+// Maps 'emi-calculator' → 'emi', 'bmi-calculator' → 'bmi', etc.
+var _calcSlugMap = {};
+(function() {
+    Object.keys(DB).forEach(function(id) {
+        _calcSlugMap[id.toLowerCase().replace(/_/g, '-') + '-calculator'] = id;
+    });
+}());
+function findCalcBySlug(slug) { return _calcSlugMap[slug] || null; }
+
 // ── THEME ──────────────────────────────────────────
 function applyTheme() {
     var pref = localStorage.getItem('cp_theme');
@@ -360,6 +370,7 @@ function resetMeta() {
     removeSchema('jsonld-breadcrumb');
     removeSchema('jsonld-calc');
     removeSchema('jsonld-faq');
+    removeSchema('jsonld-howto');
     try { window.history.replaceState(null, '', '/'); } catch(e) {}
 }
 
@@ -428,6 +439,7 @@ function openCalc(catKey, calcId) {
         var cat = CATS[catKey] || {};
         setQBtn(''); closeSidebar(); addToRecent(catKey, calcId); updateSidebarActive('');
         updateMeta(calc.name, calc.desc, catKey, calcId);
+        try { window.history.pushState({type:'calc',id:calcId}, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g,'-') + '-calculator'); } catch(e) {}
         document.getElementById('mainContent').innerHTML =
             '<div class="card" style="text-align:center;padding:48px 24px">'
             + '<div style="width:48px;height:48px;border:3px solid var(--bg4);border-top-color:var(--p);'
@@ -553,7 +565,7 @@ function _openCalcRender(catKey, calcId) {
     // Auto-restore input memory and calculate
     if(loadInputMemory(calcId)) { setTimeout(function(){ calculate(calcId); }, 50); }
     // URL routing
-    try { window.history.pushState({type:'calc',id:calcId}, calc.name + ' | Calc Labz', '?calc='+calcId); } catch(e){}
+    try { window.history.pushState({type:'calc',id:calcId}, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g,'-') + '-calculator'); } catch(e){}
     // Focus management: move focus to calculator heading for accessibility
     setTimeout(function() {
         var h1 = document.querySelector('#mainContent h1');
@@ -1300,10 +1312,90 @@ document.addEventListener('keydown', function (e) {
 });
 
 // ── META / SEO ─────────────────────────────────────
+// Curated HowTo steps for high-traffic calculators.
+// Richer steps improve Google rich snippet eligibility.
+var HOWTO_STEPS = {
+    emi: { name: 'How to Calculate Loan EMI', steps: [
+        'Enter the loan principal amount (e.g. ₹50,00,000 for a home loan)',
+        'Enter the annual interest rate offered by your bank (e.g. 8.5%)',
+        'Enter the loan tenure in months (e.g. 240 for a 20-year home loan)',
+        'Click Calculate to see your monthly EMI, total interest paid, and full amortization schedule'
+    ]},
+    sip: { name: 'How to Calculate SIP Returns', steps: [
+        'Enter your monthly SIP investment amount (e.g. ₹5,000)',
+        'Enter the expected annual return rate (e.g. 12% for equity mutual funds)',
+        'Enter the investment duration in years (e.g. 10 or 20 years)',
+        'Click Calculate to see total corpus, wealth gained, and a year-wise growth chart'
+    ]},
+    gst: { name: 'How to Calculate GST', steps: [
+        'Enter the net price — the amount before adding GST',
+        'Select the applicable GST rate (5%, 12%, 18%, or 28%)',
+        'Click Calculate to see GST amount, CGST, SGST, IGST breakdown, and total price'
+    ]},
+    bmi: { name: 'How to Calculate BMI', steps: [
+        'Enter your weight in kilograms (e.g. 70 kg)',
+        'Enter your height in centimetres (e.g. 170 cm)',
+        'Click Calculate to see your BMI value, health category, and personalised interpretation'
+    ]},
+    incometax: { name: 'How to Calculate Income Tax', steps: [
+        'Enter your annual gross income from salary or business',
+        'Select your age group (below 60, senior citizen, or super senior citizen)',
+        'Enter deductions under 80C, 80D, HRA, NPS and standard deduction',
+        'Click Calculate to see taxable income, slab-wise tax breakdown, and total tax including cess'
+    ]},
+    compoundinterest: { name: 'How to Calculate Compound Interest', steps: [
+        'Enter the principal amount you are investing or borrowing',
+        'Enter the annual interest rate',
+        'Select the compounding frequency (daily, monthly, quarterly, or annually)',
+        'Enter the time period in years',
+        'Click Calculate to see the final amount, interest earned, and a year-wise growth chart'
+    ]},
+    ppf: { name: 'How to Calculate PPF Maturity Amount', steps: [
+        'Enter your annual PPF contribution (maximum ₹1,50,000 per year)',
+        'The current PPF interest rate (7.1%) is pre-filled — update if changed by the government',
+        'Enter the number of years (minimum 15, extendable in 5-year blocks)',
+        'Click Calculate to see total maturity amount, interest earned, and year-wise balance'
+    ]},
+    taxregime: { name: 'How to Compare Old vs New Tax Regime', steps: [
+        'Enter your annual gross income',
+        'Enter your total deductions under the old regime (80C, HRA, NPS, home loan interest, etc.)',
+        'Click Calculate to instantly see tax payable under both regimes and which saves you more money'
+    ]}
+};
+
+function injectHowToSchema(calcId, calc) {
+    removeSchema('jsonld-howto');
+    if (!calc || !calc.inputs || !calc.inputs.length) return;
+    var howtoData = HOWTO_STEPS[calcId];
+    var schemaName, steps;
+    if (howtoData) {
+        schemaName = howtoData.name;
+        steps = howtoData.steps.map(function(text) {
+            return { '@type': 'HowToStep', 'text': text };
+        });
+    } else {
+        schemaName = 'How to Use ' + calc.name;
+        steps = calc.inputs.map(function(inp) {
+            return { '@type': 'HowToStep', 'text': 'Enter your ' + inp.label };
+        });
+        steps.push({ '@type': 'HowToStep', 'text': 'Click the Calculate button to get instant results' });
+    }
+    var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        'name': schemaName,
+        'description': calc.desc,
+        'step': steps
+    };
+    var el = document.createElement('script');
+    el.type = 'application/ld+json'; el.id = 'jsonld-howto';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+}
 function updateMeta(name, desc, catKey, calcId) {
     var pageTitle = name + ' — Free Online Calculator | Calc Labz';
     var pageDesc = name + ': ' + desc + '. Free, instant, no signup required.';
-    var pageUrl = window.location.origin + '/?calc=' + calcId;
+    var pageUrl = window.location.origin + '/' + calcId.toLowerCase().replace(/_/g, '-') + '-calculator';
 
     // Title + meta description
     document.title = pageTitle;
@@ -1322,15 +1414,15 @@ function updateMeta(name, desc, catKey, calcId) {
     // Canonical
     setCanon(pageUrl);
 
-    // BreadcrumbList JSON-LD
+    // BreadcrumbList JSON-LD — use clean category URLs, not query params
     var cat = CATS[catKey] || {};
     injectBreadcrumbSchema([
         { name: 'Home', url: window.location.origin + '/' },
-        { name: (cat.name || catKey) + ' Calculators', url: window.location.origin + '/?cat=' + catKey },
+        { name: (cat.name || catKey) + ' Calculators', url: window.location.origin + '/' + catKey + '-calculators' },
         { name: name, url: pageUrl }
     ]);
 
-    // SoftwareApplication JSON-LD (replaces old generic WebApplication)
+    // SoftwareApplication JSON-LD
     removeSchema('jsonld-calc');
     var schema = {
         '@context': 'https://schema.org',
@@ -1346,6 +1438,9 @@ function updateMeta(name, desc, catKey, calcId) {
     scriptEl.type = 'application/ld+json'; scriptEl.id = 'jsonld-calc';
     scriptEl.textContent = JSON.stringify(schema);
     document.head.appendChild(scriptEl);
+
+    // HowTo JSON-LD (enables rich snippets in Google Search)
+    injectHowToSchema(calcId, DB[calcId]);
 }
 
 // ── PWA ────────────────────────────────────────────
@@ -1398,11 +1493,22 @@ function handleRoute() {
         showBlogPost(blogId);
         return;
     }
-    // Static pages: ?page=about|privacy|terms
+    // Static pages — clean URL paths (primary) + legacy ?page= (fallback)
+    if (path === '/about')   { showAboutPage();   return; }
+    if (path === '/privacy') { showPrivacyPage(); return; }
+    if (path === '/terms')   { showTermsPage();   return; }
     var pageId = params.get('page');
-    if (pageId === 'about') { showAboutPage(); return; }
+    if (pageId === 'about')   { showAboutPage();   return; }
     if (pageId === 'privacy') { showPrivacyPage(); return; }
-    if (pageId === 'terms') { showTermsPage(); return; }
+    if (pageId === 'terms')   { showTermsPage();   return; }
+    // Clean URL routing: /emi-calculator, /bmi-calculator, etc.
+    var cleanSlug = path.replace(/^\//, '');
+    if (cleanSlug && _calcSlugMap[cleanSlug]) {
+        var cleanId = _calcSlugMap[cleanSlug];
+        openCalc(DB[cleanId].cat, cleanId);
+        return;
+    }
+    // Legacy query-param routing: ?calc=emi (kept for backwards-compat)
     if (calcId && isSafeCalcId(calcId)) {
         openCalc(DB[calcId].cat, calcId);
     } else {
@@ -1428,7 +1534,8 @@ function showAboutPage() {
     setQBtn(''); closeSidebar();
     document.title = 'About Calc Labz — Free Online Calculator Suite';
     setMeta('description', 'Learn about Calc Labz — 300+ free online calculators for finance, health, math and more. Built in India, works offline, zero signup required.');
-    try { window.history.pushState({type:'static',id:'about'}, 'About | Calc Labz', '?page=about'); } catch(e) {}
+    setCanon(window.location.origin + '/about');
+    try { window.history.pushState({type:'static',id:'about'}, 'About | Calc Labz', '/about'); } catch(e) {}
     document.getElementById('mainContent').innerHTML =
         '<div class="card about-page">'
         + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"><i class="fas fa-calculator"></i></div>'
@@ -1479,7 +1586,8 @@ function showPrivacyPage() {
     setQBtn(''); closeSidebar();
     document.title = 'Privacy Policy | Calc Labz';
     setMeta('description', 'Calc Labz Privacy Policy — we do not collect personal data. We use Google Analytics for anonymous usage insights and Google AdSense for ads. Your calculations stay on your device.');
-    try { window.history.pushState({type:'static',id:'privacy'}, 'Privacy Policy | Calc Labz', '?page=privacy'); } catch(e) {}
+    setCanon(window.location.origin + '/privacy');
+    try { window.history.pushState({type:'static',id:'privacy'}, 'Privacy Policy | Calc Labz', '/privacy'); } catch(e) {}
     document.getElementById('mainContent').innerHTML =
         '<div class="card legal-page">'
         + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#10b981,#34d399)"><i class="fas fa-user-shield"></i></div>'
@@ -1536,7 +1644,8 @@ function showTermsPage() {
     setQBtn(''); closeSidebar();
     document.title = 'Terms of Use | Calc Labz';
     setMeta('description', 'Calc Labz Terms of Use — free to use for personal and commercial purposes. Calculator results are for informational purposes only.');
-    try { window.history.pushState({type:'static',id:'terms'}, 'Terms of Use | Calc Labz', '?page=terms'); } catch(e) {}
+    setCanon(window.location.origin + '/terms');
+    try { window.history.pushState({type:'static',id:'terms'}, 'Terms of Use | Calc Labz', '/terms'); } catch(e) {}
     document.getElementById('mainContent').innerHTML =
         '<div class="card legal-page">'
         + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#6366f1,#a78bfa)"><i class="fas fa-file-contract"></i></div>'

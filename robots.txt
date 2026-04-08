@@ -4,9 +4,12 @@
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Block only private/tooling paths (none currently exist in this SPA)
-# Disallow: /admin/
+# Googlebot — full access to all assets for rendering
+User-agent: Googlebot
+Allow: /assets/
+Allow: /
 
 # Sitemap location
 Sitemap: https://calclabz.com/sitemap.xml

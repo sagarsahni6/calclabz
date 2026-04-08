@@ -1,8 +1,31 @@
 {
   "cleanUrls": false,
   "rewrites": [
-    { "source": "/blog/**", "destination": "/index.html" },
-    { "source": "/**",     "destination": "/index.html" }
+    { "source": "/blog/**",                          "destination": "/index.html" },
+    { "source": "/about",                            "destination": "/index.html" },
+    { "source": "/privacy",                          "destination": "/index.html" },
+    { "source": "/terms",                            "destination": "/index.html" },
+    { "source": "/emi-calculator",                   "destination": "/emi-calculator.html" },
+    { "source": "/sip-calculator",                   "destination": "/sip-calculator.html" },
+    { "source": "/gst-calculator",                   "destination": "/gst-calculator.html" },
+    { "source": "/bmi-calculator",                   "destination": "/bmi-calculator.html" },
+    { "source": "/taxregime-calculator",             "destination": "/taxregime-calculator.html" },
+    { "source": "/incometax-calculator",             "destination": "/incometax-calculator.html" },
+    { "source": "/ppf-calculator",                   "destination": "/ppf-calculator.html" },
+    { "source": "/fd-calculator",                    "destination": "/fd-calculator.html" },
+    { "source": "/rd-calculator",                    "destination": "/rd-calculator.html" },
+    { "source": "/compoundinterest-calculator",      "destination": "/compoundinterest-calculator.html" },
+    { "source": "/simpleinterest-calculator",        "destination": "/simpleinterest-calculator.html" },
+    { "source": "/percentage-calculator",            "destination": "/percentage-calculator.html" },
+    { "source": "/cagr-calculator",                  "destination": "/cagr-calculator.html" },
+    { "source": "/inflation-calculator",             "destination": "/inflation-calculator.html" },
+    { "source": "/mortgage-calculator",              "destination": "/mortgage-calculator.html" },
+    { "source": "/bmr-calculator",                   "destination": "/bmr-calculator.html" },
+    { "source": "/tdee-calculator",                  "destination": "/tdee-calculator.html" },
+    { "source": "/age-calculator",                   "destination": "/age-calculator.html" },
+    { "source": "/cgpa-calculator",                  "destination": "/cgpa-calculator.html" },
+    { "source": "/inhandsalary-calculator",          "destination": "/inhandsalary-calculator.html" },
+    { "source": "/**",                               "destination": "/index.html" }
   ],
   "headers": [
     {
