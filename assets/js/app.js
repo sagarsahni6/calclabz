@@ -1698,9 +1698,120 @@ function showTermsPage() {
 }
 
 // ── INIT ───────────────────────────────────────────
+// ── DOM EVENT WIRING (replaces all inline handlers) ──
+// Called once after DOMContentLoaded. Binds all static-shell interactions
+// via addEventListener — no onclick/oninput/onkeydown attributes in HTML.
+function initDOMHandlers() {
+    // ── HEADER ──────────────────────────────────────
+    var hamburger = document.getElementById('hamburger-btn');
+    if (hamburger) hamburger.addEventListener('click', toggleSidebar);
+
+    var srInput = document.getElementById('srInput');
+    if (srInput) srInput.addEventListener('input', function() { handleSearch(this.value); });
+
+    var srClear = document.getElementById('srClear');
+    if (srClear) srClear.addEventListener('click', clearSearch);
+
+    var themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+    var cmdBtn = document.getElementById('cmd-palette-btn');
+    if (cmdBtn) cmdBtn.addEventListener('click', openCmdPalette);
+
+    // ── SIDEBAR OVERLAY ──────────────────────────────
+    var sOverlay = document.getElementById('sOverlay');
+    if (sOverlay) sOverlay.addEventListener('click', closeSidebar);
+
+    // ── SIDEBAR QUICK BUTTONS ────────────────────────
+    var qHome = document.getElementById('qHome');
+    if (qHome) qHome.addEventListener('click', showHome);
+
+    var qFav = document.getElementById('qFav');
+    if (qFav) qFav.addEventListener('click', showFavorites);
+
+    var qDash = document.getElementById('qDash');
+    if (qDash) qDash.addEventListener('click', showDashboard);
+
+    var qBlog = document.getElementById('qBlog');
+    if (qBlog) qBlog.addEventListener('click', showBlogSection);
+
+    // ── MOBILE BOTTOM NAV ────────────────────────────
+    var mnavHome = document.getElementById('mnavHome');
+    if (mnavHome) mnavHome.addEventListener('click', showHome);
+
+    var mnavFav = document.getElementById('mnavFav');
+    if (mnavFav) mnavFav.addEventListener('click', showFavorites);
+
+    var mnavSearch = document.getElementById('mnav-search-btn');
+    if (mnavSearch) mnavSearch.addEventListener('click', openCmdPalette);
+
+    var mnavDash = document.getElementById('mnavDash');
+    if (mnavDash) mnavDash.addEventListener('click', showDashboard);
+
+    var mnavTheme = document.getElementById('mnav-theme-btn');
+    if (mnavTheme) mnavTheme.addEventListener('click', toggleTheme);
+
+    // ── PWA INSTALL BAR ──────────────────────────────
+    var pwaInstall = document.getElementById('pwa-install-btn');
+    if (pwaInstall) pwaInstall.addEventListener('click', installPWA);
+
+    var pwaDismiss = document.getElementById('pwa-dismiss-btn');
+    if (pwaDismiss) pwaDismiss.addEventListener('click', function() {
+        var bar = document.getElementById('pwaInstallBar');
+        if (bar) bar.classList.remove('show');
+    });
+
+    // ── COMMAND PALETTE ──────────────────────────────
+    var cmdOverlay = document.getElementById('cmdOverlay');
+    if (cmdOverlay) cmdOverlay.addEventListener('click', function(e) {
+        if (e.target === this) closeCmdPalette();
+    });
+
+    var cmdInput = document.getElementById('cmdInput');
+    if (cmdInput) cmdInput.addEventListener('input', function() { filterCmd(this.value); });
+
+    // ── SHORTCUT MODAL ───────────────────────────────
+    var shortcutModal = document.getElementById('shortcutModal');
+    if (shortcutModal) shortcutModal.addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+    });
+
+    var shortcutClose = document.getElementById('shortcut-close-btn');
+    if (shortcutClose) shortcutClose.addEventListener('click', function() {
+        document.getElementById('shortcutModal').classList.remove('open');
+    });
+
+    // ── FOOTER — event delegation ────────────────────
+    // All footer <button class="footer-link" data-action="..."> elements handled here.
+    // Uses data-action, data-cat, data-id for openCalc calls.
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.footer-link[data-action]');
+        if (!btn) return;
+        var action = btn.getAttribute('data-action');
+        switch (action) {
+            case 'showHome':            showHome();            break;
+            case 'showDashboard':       showDashboard();       break;
+            case 'showFavorites':       showFavorites();       break;
+            case 'showBlogSection':     showBlogSection();     break;
+            case 'toggleShortcutModal': toggleShortcutModal(); break;
+            case 'showAboutPage':       showAboutPage();       break;
+            case 'showPrivacyPage':     showPrivacyPage();     break;
+            case 'showTermsPage':       showTermsPage();       break;
+            case 'installPWA':          installPWA();          break;
+            case 'openCalc': {
+                var cat = btn.getAttribute('data-cat');
+                var id  = btn.getAttribute('data-id');
+                if (cat && id) openCalc(cat, id);
+                break;
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     applyTheme();
     buildSidebar();
+    initDOMHandlers();
     handleRoute();
     // Register service worker + P6: detect updates
     if ('serviceWorker' in navigator) {
@@ -1729,3 +1840,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 window.addEventListener('popstate', handleRoute);
+
