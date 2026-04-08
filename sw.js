@@ -1,8 +1,9 @@
 /* Calc Labz Service Worker — Stale-While-Revalidate (P6) */
-const CACHE = 'calclabz-v12';
+const CACHE = 'calclabz-v13';
 const ASSETS = [
     './',
     'index.html',
+    'calclabz-logo.png',
     'manifest.json',
     'assets/css/main.css',
     // P1: Core stubs (100 KB — replaces monolithic 333 KB calculators.js)

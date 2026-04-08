@@ -107,8 +107,9 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 /* Header */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;gap:12px;padding:0 16px;background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(49,46,129,.35));backdrop-filter:blur(20px) saturate(200%);-webkit-backdrop-filter:blur(20px) saturate(200%);border-bottom:1px solid rgba(99,102,241,.18);box-shadow:0 1px 20px rgba(99,102,241,.1),inset 0 -1px 0 rgba(129,140,248,.12);transition:var(--transition)}
 [data-theme="light"] .hdr,body.light .hdr{background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(129,140,248,.1));border-bottom:1px solid rgba(99,102,241,.12)}
-.hdr-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.1rem;letter-spacing:-.03em;white-space:nowrap}
-.hdr-logo i{font-size:1.3rem;color:var(--p)}
+.hdr-logo{display:flex;align-items:center;white-space:nowrap}
+.hdr-logo a{display:flex;align-items:center;text-decoration:none}
+.hdr-logo img{height:32px;width:auto;display:block}
 .hdr-search{flex:1;position:relative;max-width:400px}
 .hdr-search input{background:var(--bg2);border:1px solid var(--brd);border-radius:24px;padding:8px 36px;font:inherit;color:var(--txt);height:38px;width:100%}
 .hdr-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
@@ -266,7 +267,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- ═══ HEADER ═══ -->
     <header class="hdr">
         <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu"><i class="fas fa-bars" aria-hidden="true"></i></button>
-        <div class="hdr-logo"><i class="fas fa-calculator" aria-hidden="true"></i><span>Calc Labz</span></div>
+        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32"></a></div>
         <div class="hdr-search" role="search" aria-label="Search calculators">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input type="text" id="srInput" placeholder="Search calculators… (Ctrl+K)" aria-label="Search calculators" aria-autocomplete="list" aria-controls="srDrop" aria-expanded="false" role="combobox" autocomplete="off">
@@ -349,7 +350,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="footer-brand"><i class="fas fa-calculator" aria-hidden="true"></i>Calc Labz</div>
+                <div class="footer-brand"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="140" height="30"></a></div>
                 <div class="footer-tagline">300+ free online calculators for finance, health, math, engineering &amp; more. Instant results, zero signup.</div>
                 <div class="footer-trust">
                     <span><i class="fas fa-check-circle" aria-hidden="true"></i>Free Forever</span>
