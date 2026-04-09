@@ -1453,6 +1453,11 @@ function handleRoute() {
     var params = new URLSearchParams(window.location.search);
     var calcId = params.get('calc');
 
+    // Blog index: /blog
+    if (path === '/blog' || path === '/blog/') {
+        showBlogSection();
+        return;
+    }
     // SEO-friendly blog URL: /blog/slug-name
     if (path.indexOf('/blog/') === 0) {
         var slug = path.replace('/blog/', '').replace(/\/$/, '');
@@ -1470,6 +1475,15 @@ function handleRoute() {
     if (blogId && isSafeBlogId(blogId)) {
         showBlogPost(blogId);
         return;
+    }
+    // Category pages: /finance-calculators, /health-calculators, etc.
+    var catMatch = path.match(/^\/([a-z]+)-calculators$/);
+    if (catMatch) {
+        var catKey = catMatch[1];
+        if (CATS[catKey]) {
+            showCategory(catKey);
+            return;
+        }
     }
     // Static pages — clean URL paths (primary) + legacy ?page= (fallback)
     if (path === '/about')   { showAboutPage();   return; }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,11 +53,8 @@
     <meta name="application-name" content="Calc Labz">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- ═══ CANONICAL & MANIFEST ═══ -->
-    <!-- TODO: Replace with your actual domain -->
+    <!-- ═══ CANONICAL & HREFLANG ═══ -->
     <link rel="canonical" href="https://calclabz.com/taxregime-calculator">
-    <link rel="alternate" hreflang="en-IN" href="https://calclabz.com/">
-    <link rel="alternate" hreflang="en" href="https://calclabz.com/">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
@@ -163,6 +160,51 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .stats-row{grid-template-columns:repeat(4,1fr)}
   #mainContent{padding:20px 24px}
 }
+/* Sidebar category links for crawlers */
+.seo-cat-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px}
+.seo-cat-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--rsm);color:var(--txt1);font-size:.85rem;text-decoration:none;transition:var(--transition)}
+.seo-cat-nav a:hover{background:var(--bg2);color:var(--p)}
+.seo-cat-nav a i{width:18px;text-align:center;font-size:.85rem;color:var(--txt2)}
+
+/* SEO Pre-rendered Content */
+.seo-breadcrumb{padding:8px 0;font-size:.82rem;color:var(--txt2)}
+.seo-breadcrumb a{color:var(--p);text-decoration:none}
+.seo-breadcrumb a:hover{text-decoration:underline}
+#seo-content h1{font-size:1.8rem;font-weight:800;margin:16px 0 8px;color:var(--txt)}
+#seo-content h2{font-size:1.2rem;font-weight:700;margin:24px 0 8px;color:var(--txt)}
+#seo-content h3{font-size:1rem;font-weight:600;margin:16px 0 6px;color:var(--txt)}
+.seo-intro{font-size:.95rem;color:var(--txt1);line-height:1.7;margin-bottom:20px}
+.seo-section{margin-bottom:24px;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd)}
+.seo-section p,.seo-section li{font-size:.9rem;color:var(--txt1);line-height:1.7}
+.seo-section ol,.seo-section ul{padding-left:20px;margin:8px 0}
+.seo-section li{margin:4px 0}
+.seo-faq{margin-bottom:24px}
+.seo-faq details{background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rsm);margin:8px 0;overflow:hidden}
+.seo-faq summary{padding:12px 16px;font-weight:600;cursor:pointer;font-size:.9rem;color:var(--txt)}
+.seo-faq details[open] summary{border-bottom:1px solid var(--brd)}
+.seo-faq details p{padding:8px 16px 12px;font-size:.88rem;color:var(--txt1);line-height:1.7}
+.seo-related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.seo-related-grid a{display:block;padding:10px 14px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rsm);font-size:.85rem;color:var(--p);text-decoration:none;transition:var(--transition)}
+.seo-related-grid a:hover{background:var(--bg2);border-color:var(--p)}
+.seo-trust{margin:24px 0;padding:16px;background:var(--bg2);border-radius:var(--rsm);border-left:3px solid var(--p)}
+.seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
+.seo-trust strong{color:var(--txt1)}
+.seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
+.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
+.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+@media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
+.seo-article{margin-bottom:24px}
+.seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
+.seo-article h2{font-size:1.15rem;font-weight:700;margin:24px 0 8px;color:var(--txt)}
+.seo-article p{font-size:.92rem;color:var(--txt1);line-height:1.75;margin:8px 0}
+.seo-article ul,.seo-article ol{padding-left:20px;margin:8px 0}
+.seo-article li{font-size:.9rem;color:var(--txt1);line-height:1.7;margin:4px 0}
+.seo-article strong{color:var(--txt)}
+.seo-article-cta{margin:24px 0;padding:16px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:var(--rmd);text-align:center}
+.seo-article-cta a{display:inline-block;padding:10px 24px;background:var(--p);color:#fff;border-radius:var(--rsm);font-size:.9rem;font-weight:600;text-decoration:none;transition:var(--transition)}
+.seo-article-cta a:hover{background:var(--p2)}
     </style>
 
         <script type="application/ld+json" id="jsonld-howto">
@@ -276,22 +318,103 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="s-overlay" id="sOverlay"></div>
     <aside class="sidebar" id="sidebar" aria-label="Calculator categories navigation">
         <div class="qbtns">
-            <button class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
+            <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
+            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
         </div>
-        <div id="catList"></div>
+        <div id="catList">
+            <!-- Static category links for crawlers — JS replaces this at runtime -->
+            <nav class="seo-cat-nav" aria-label="Calculator categories">
+                <a href="/finance-calculators"><i class="fas fa-coins" aria-hidden="true"></i> Finance</a>
+                <a href="/health-calculators"><i class="fas fa-heartbeat" aria-hidden="true"></i> Health &amp; Fitness</a>
+                <a href="/math-calculators"><i class="fas fa-calculator" aria-hidden="true"></i> Math</a>
+                <a href="/everyday-calculators"><i class="fas fa-home" aria-hidden="true"></i> Everyday</a>
+                <a href="/education-calculators"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Education</a>
+                <a href="/engineering-calculators"><i class="fas fa-cog" aria-hidden="true"></i> Engineering</a>
+                <a href="/construction-calculators"><i class="fas fa-hard-hat" aria-hidden="true"></i> Construction</a>
+                <a href="/unit-calculators"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Unit Conversion</a>
+                <a href="/datetime-calculators"><i class="fas fa-clock" aria-hidden="true"></i> Date &amp; Time</a>
+                <a href="/science-calculators"><i class="fas fa-flask" aria-hidden="true"></i> Science</a>
+            </nav>
+        </div>
     </aside>
 
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="app-body">
         <main id="mainContent" role="main" aria-live="polite" aria-atomic="false" aria-label="Main content">
-            <!-- Content injected by JS -->
-            <div style="text-align:center;padding:60px 20px;color:var(--txt2)">
-                <i class="fas fa-calculator" style="font-size:2rem;margin-bottom:12px;color:var(--p)" aria-hidden="true"></i>
-                <p>Loading Calc Labz...</p>
-            </div>
+            
+    <!-- SEO Pre-rendered Content — visible to crawlers; JS app hydrates over this -->
+    <div id="seo-content">
+      <nav class="seo-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &rsaquo; <a href="/finance-calculators">Finance Calculators</a> &rsaquo; <span>Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz</span>
+      </nav>
+
+      <h1>Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz</h1>
+      <p class="seo-intro">Compare Old vs New income tax regime for FY 2025-26. Find out which regime saves you more tax with deductions like 80C, HRA, NPS. Free, instant calculator.</p>
+
+      <section class="seo-section">
+        <h2>What is Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz?</h2>
+        <p>The Old vs New Tax Regime Calculator compares your tax liability under both Indian income tax regimes side by side, helping you choose the one that saves you more tax based on your actual deductions.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>How to Compare Old vs New Tax Regime</h2>
+        <ol>
+          <li>Enter your annual gross income</li>
+          <li>Enter your total deductions under old regime (80C, HRA, NPS, home loan, etc.)</li>
+          <li>Click Calculate to instantly see tax payable under both regimes and the recommended choice</li>
+        </ol>
+      </section>
+
+      <section class="seo-section">
+        <h2>How Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz is Calculated</h2>
+        <p>The calculator applies old regime tax slabs (with all eligible deductions like 80C, HRA, 80D, NPS) and new regime slabs (with limited deductions but lower rates), then shows tax payable under each and recommends the better option.</p>
+        <h3>Worked Example</h3>
+        <p>Income &#8377;15,00,000 with &#8377;3,50,000 in deductions (80C + HRA + NPS): Old regime tax &asymp; &#8377;1,87,200. New regime tax &asymp; &#8377;1,56,000. New regime saves &#8377;31,200 in this case.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>Common Use Cases</h2>
+        <ul>
+          <li>Annual tax regime selection</li>
+          <li>Evaluating deduction benefits</li>
+          <li>Salary restructuring decisions</li>
+          <li>Financial planning for FY 2025-26</li>
+        </ul>
+      </section>
+
+      <section class="seo-faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>Which tax regime is better for me?</summary>
+          <p>New regime is better if your total deductions are below &#8377;2.5&ndash;3 lakh. Old regime is better with deductions above &#8377;3.75 lakh (for 30% tax bracket). Our calculator shows exact breakeven.</p>
+        </details>
+        <details>
+          <summary>Can I switch between old and new regime every year?</summary>
+          <p>Salaried employees can switch every year. Business owners can switch only once from old to new regime and cannot revert.</p>
+        </details>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Calculators</h2>
+        <div class="seo-related-grid">
+          <a href="/emi-calculator">EMI Calculator</a>
+          <a href="/sip-calculator">SIP Calculator</a>
+          <a href="/gst-calculator">GST Calculator</a>
+          <a href="/incometax-calculator">Income Tax Calculator FY 2025-26</a>
+          <a href="/ppf-calculator">PPF Calculator</a>
+          <a href="/fd-calculator">FD Calculator</a>
+        </div>
+      </section>
+
+      <div class="seo-trust">
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions.</p>
+        <p><strong>Methodology:</strong> Formula based on standard financial calculation methods widely used in the banking industry.</p>
+        <p><strong>Last updated:</strong> April 2026</p>
+      </div>
+    </div>
+
         </main>
     </div>
 
@@ -353,29 +476,29 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <div class="footer-col">
                 <h4><i class="fas fa-compass" aria-hidden="true"></i>Quick Links</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="showHome"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
-                    <button class="footer-link" data-action="showDashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-                    <button class="footer-link" data-action="showFavorites"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
-                    <button class="footer-link" data-action="showBlogSection"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides &amp; Blog</button>
-                    <button class="footer-link" data-action="toggleShortcutModal"><i class="fas fa-keyboard" aria-hidden="true"></i>Keyboard Shortcuts</button>
+                    <a href="/" class="footer-link"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
+                    <a href="/finance-calculators" class="footer-link"><i class="fas fa-coins" aria-hidden="true"></i>Finance Calculators</a>
+                    <a href="/health-calculators" class="footer-link"><i class="fas fa-heartbeat" aria-hidden="true"></i>Health Calculators</a>
+                    <a href="/math-calculators" class="footer-link"><i class="fas fa-calculator" aria-hidden="true"></i>Math Calculators</a>
+                    <a href="/education-calculators" class="footer-link"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education Calculators</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-fire" aria-hidden="true"></i>Popular Calculators</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="emi"><i class="fas fa-university" aria-hidden="true"></i>Loan EMI Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="sip"><i class="fas fa-seedling" aria-hidden="true"></i>SIP Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="gst"><i class="fas fa-receipt" aria-hidden="true"></i>GST Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="health" data-id="bmi"><i class="fas fa-heartbeat" aria-hidden="true"></i>BMI Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="everyday" data-id="tip"><i class="fas fa-coins" aria-hidden="true"></i>Tip Calculator</button>
+                    <a href="/emi-calculator" class="footer-link"><i class="fas fa-university" aria-hidden="true"></i>Loan EMI Calculator</a>
+                    <a href="/sip-calculator" class="footer-link"><i class="fas fa-seedling" aria-hidden="true"></i>SIP Calculator</a>
+                    <a href="/gst-calculator" class="footer-link"><i class="fas fa-receipt" aria-hidden="true"></i>GST Calculator</a>
+                    <a href="/bmi-calculator" class="footer-link"><i class="fas fa-heartbeat" aria-hidden="true"></i>BMI Calculator</a>
+                    <a href="/incometax-calculator" class="footer-link"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>Income Tax Calculator</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="showAboutPage"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</button>
-                    <button class="footer-link" data-action="showPrivacyPage"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</button>
-                    <button class="footer-link" data-action="showTermsPage"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</button>
+                    <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
+                    <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
                     <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 /* Calc Labz Service Worker — Stale-While-Revalidate (P6) */
-const CACHE = 'calclabz-v15';
+const CACHE = 'calclabz-v16';
 const ASSETS = [
     './',
     'index.html',

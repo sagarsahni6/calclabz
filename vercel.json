@@ -1,249 +1,3385 @@
 {
   "cleanUrls": false,
   "redirects": [
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"emi"}], "destination": "/emi-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"sip"}], "destination": "/sip-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"gst"}], "destination": "/gst-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bmi"}], "destination": "/bmi-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"taxregime"}], "destination": "/taxregime-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"incomeTax"}], "destination": "/incometax-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"percentage"}], "destination": "/percentage-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ppf"}], "destination": "/ppf-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"fd"}], "destination": "/fd-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"rd"}], "destination": "/rd-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"mortgage"}], "destination": "/mortgage-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"compoundinterest"}], "destination": "/compoundinterest-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"simpleinterest"}], "destination": "/simpleinterest-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"pregst"}], "destination": "/pregst-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"roi"}], "destination": "/roi-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"cagr"}], "destination": "/cagr-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"swp"}], "destination": "/swp-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"lumpsum"}], "destination": "/lumpsum-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"nps"}], "destination": "/nps-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"gratuity"}], "destination": "/gratuity-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"hra"}], "destination": "/hra-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"creditcard"}], "destination": "/creditcard-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"networth"}], "destination": "/networth-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"tds"}], "destination": "/tds-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"epf"}], "destination": "/epf-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"prepayment"}], "destination": "/prepayment-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"stepupsip"}], "destination": "/stepupsip-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"savingsgoal"}], "destination": "/savingsgoal-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"capitalgains"}], "destination": "/capitalgains-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"profitloss"}], "destination": "/profitloss-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"stockreturn"}], "destination": "/stockreturn-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"mutualfundreturns"}], "destination": "/mutualfundreturns-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"xirr"}], "destination": "/xirr-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"loaneligibility"}], "destination": "/loaneligibility-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"balancetransfer"}], "destination": "/balancetransfer-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ssy"}], "destination": "/ssy-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"scss"}], "destination": "/scss-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"advancetax"}], "destination": "/advancetax-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"inhandsalary"}], "destination": "/inhandsalary-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ctcbreakup"}], "destination": "/ctcbreakup-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"salarycomparison"}], "destination": "/salarycomparison-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"carloan"}], "destination": "/carloan-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"breakeven"}], "destination": "/breakeven-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"inflation"}], "destination": "/inflation-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"dividendyield"}], "destination": "/dividendyield-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"goldinvestment"}], "destination": "/goldinvestment-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"salary"}], "destination": "/salary-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"freelancerate"}], "destination": "/freelancerate-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"workingdays"}], "destination": "/workingdays-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bmr"}], "destination": "/bmr-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"tdee"}], "destination": "/tdee-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"water"}], "destination": "/water-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"heartrate"}], "destination": "/heartrate-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"age"}], "destination": "/age-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"calories"}], "destination": "/calories-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"sleep"}], "destination": "/sleep-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"macros"}], "destination": "/macros-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"pregnancy"}], "destination": "/pregnancy-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bodyfat"}], "destination": "/bodyfat-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"idealweight"}], "destination": "/idealweight-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ibw"}], "destination": "/ibw-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bsa"}], "destination": "/bsa-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ovulation"}], "destination": "/ovulation-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bloodpressure"}], "destination": "/bloodpressure-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"alcohol"}], "destination": "/alcohol-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"waistHip"}], "destination": "/waisthip-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"calories_food"}], "destination": "/calories-food-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"vitamins"}], "destination": "/vitamins-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"lungCapacity"}], "destination": "/lungcapacity-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"proteinintake"}], "destination": "/proteinintake-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"smokingcost"}], "destination": "/smokingcost-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"childheight"}], "destination": "/childheight-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"diabetesrisk"}], "destination": "/diabetesrisk-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"sleepdebt"}], "destination": "/sleepdebt-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"anemia"}], "destination": "/anemia-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"cholesterolratio"}], "destination": "/cholesterolratio-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"caloriedeficit"}], "destination": "/caloriedeficit-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"tip"}], "destination": "/tip-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"discount"}], "destination": "/discount-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"fuel"}], "destination": "/fuel-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"mileage"}], "destination": "/mileage-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"electricbill"}], "destination": "/electricbill-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"tipsplit"}], "destination": "/tipsplit-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"unitPrice"}], "destination": "/unitprice-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"petrolParity"}], "destination": "/petrolparity-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"evpetrolsavings"}], "destination": "/evpetrolsavings-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"laundry"}], "destination": "/laundry-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"cooking"}], "destination": "/cooking-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"shoesize"}], "destination": "/shoesize-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"petage"}], "destination": "/petage-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"weddingbudget"}], "destination": "/weddingbudget-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"rentafford"}], "destination": "/rentafford-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"travelbudget"}], "destination": "/travelbudget-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"carbonfootprint"}], "destination": "/carbonfootprint-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"stopwatch"}], "destination": "/stopwatch-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"randomnum"}], "destination": "/randomnum-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"homerenovation"}], "destination": "/homerenovation-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"length"}], "destination": "/length-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"weight"}], "destination": "/weight-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"temperature"}], "destination": "/temperature-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"area"}], "destination": "/area-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"speed"}], "destination": "/speed-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"currency"}], "destination": "/currency-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"volume"}], "destination": "/volume-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"data"}], "destination": "/data-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"pressure"}], "destination": "/pressure-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"energy"}], "destination": "/energy-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"angle"}], "destination": "/angle-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"dateiff"}], "destination": "/dateiff-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"timeconv"}], "destination": "/timeconv-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"countdown"}], "destination": "/countdown-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"timezone"}], "destination": "/timezone-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ageNextBday"}], "destination": "/agenextbday-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"typing_speed"}], "destination": "/typing-speed-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ohmslaw"}], "destination": "/ohmslaw-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"resistor"}], "destination": "/resistor-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"power"}], "destination": "/power-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"speed_dist"}], "destination": "/speed-dist-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"newtons"}], "destination": "/newtons-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ohm_advanced"}], "destination": "/ohm-advanced-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"density"}], "destination": "/density-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"chemMolar"}], "destination": "/chemmolar-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"wavelength"}], "destination": "/wavelength-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"gravitational"}], "destination": "/gravitational-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"halflife"}], "destination": "/halflife-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ph"}], "destination": "/ph-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"kinematicCalc"}], "destination": "/kinematiccalc-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"thermodynamics"}], "destination": "/thermodynamics-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"acceleration"}], "destination": "/acceleration-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"torque"}], "destination": "/torque-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"decibel"}], "destination": "/decibel-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"antennalen"}], "destination": "/antennalen-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ledresistor"}], "destination": "/ledresistor-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"voltdivider"}], "destination": "/voltdivider-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"batterylife"}], "destination": "/batterylife-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"pcbtrace"}], "destination": "/pcbtrace-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"wiresize"}], "destination": "/wiresize-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"pixelresolution"}], "destination": "/pixelresolution-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"concrete"}], "destination": "/concrete-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"bricks"}], "destination": "/bricks-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"paint"}], "destination": "/paint-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"flooring"}], "destination": "/flooring-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"steel"}], "destination": "/steel-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"roofing"}], "destination": "/roofing-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"earthwork"}], "destination": "/earthwork-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"plasterwork"}], "destination": "/plasterwork-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"waterTank"}], "destination": "/watertank-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"landarea"}], "destination": "/landarea-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"stampdutycalc"}], "destination": "/stampdutycalc-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"constructioncost"}], "destination": "/constructioncost-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"construction"}], "destination": "/construction-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"solarpanel"}], "destination": "/solarpanel-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"cgpa"}], "destination": "/cgpa-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"grade"}], "destination": "/grade-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"eduloan"}], "destination": "/eduloan-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"examneeded"}], "destination": "/examneeded-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"studyhours"}], "destination": "/studyhours-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"scholarship"}], "destination": "/scholarship-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"ratio"}], "destination": "/ratio-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"squareroot"}], "destination": "/squareroot-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"logarithm"}], "destination": "/logarithm-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"factorial"}], "destination": "/factorial-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"quadratic"}], "destination": "/quadratic-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"prime"}], "destination": "/prime-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"numbersystem"}], "destination": "/numbersystem-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"average"}], "destination": "/average-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"statistics"}], "destination": "/statistics-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"matrix2x2"}], "destination": "/matrix2x2-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"combinations"}], "destination": "/combinations-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"lcmgcd"}], "destination": "/lcmgcd-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"romanNumeral"}], "destination": "/romannumeral-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"fraction"}], "destination": "/fraction-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"stddev"}], "destination": "/stddev-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"lineareq"}], "destination": "/lineareq-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"circleCalc"}], "destination": "/circlecalc-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"determinant"}], "destination": "/determinant-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"triangleArea"}], "destination": "/trianglearea-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"complexnum"}], "destination": "/complexnum-calculator", "permanent": true },
-    { "source": "/", "has": [{"type":"query","key":"calc","value":"scientific"}], "destination": "/scientific-calculator", "permanent": true }
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "emi"
+        }
+      ],
+      "destination": "/emi-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "sip"
+        }
+      ],
+      "destination": "/sip-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "gst"
+        }
+      ],
+      "destination": "/gst-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bmi"
+        }
+      ],
+      "destination": "/bmi-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "taxregime"
+        }
+      ],
+      "destination": "/taxregime-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "incomeTax"
+        }
+      ],
+      "destination": "/incometax-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "percentage"
+        }
+      ],
+      "destination": "/percentage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ppf"
+        }
+      ],
+      "destination": "/ppf-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "fd"
+        }
+      ],
+      "destination": "/fd-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "rd"
+        }
+      ],
+      "destination": "/rd-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "mortgage"
+        }
+      ],
+      "destination": "/mortgage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "compoundinterest"
+        }
+      ],
+      "destination": "/compoundinterest-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "simpleinterest"
+        }
+      ],
+      "destination": "/simpleinterest-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "pregst"
+        }
+      ],
+      "destination": "/pregst-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "roi"
+        }
+      ],
+      "destination": "/roi-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "cagr"
+        }
+      ],
+      "destination": "/cagr-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "swp"
+        }
+      ],
+      "destination": "/swp-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "lumpsum"
+        }
+      ],
+      "destination": "/lumpsum-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "nps"
+        }
+      ],
+      "destination": "/nps-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "gratuity"
+        }
+      ],
+      "destination": "/gratuity-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "hra"
+        }
+      ],
+      "destination": "/hra-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "creditcard"
+        }
+      ],
+      "destination": "/creditcard-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "networth"
+        }
+      ],
+      "destination": "/networth-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "tds"
+        }
+      ],
+      "destination": "/tds-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "epf"
+        }
+      ],
+      "destination": "/epf-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "prepayment"
+        }
+      ],
+      "destination": "/prepayment-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "stepupsip"
+        }
+      ],
+      "destination": "/stepupsip-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "savingsgoal"
+        }
+      ],
+      "destination": "/savingsgoal-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "capitalgains"
+        }
+      ],
+      "destination": "/capitalgains-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "profitloss"
+        }
+      ],
+      "destination": "/profitloss-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "stockreturn"
+        }
+      ],
+      "destination": "/stockreturn-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "mutualfundreturns"
+        }
+      ],
+      "destination": "/mutualfundreturns-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "xirr"
+        }
+      ],
+      "destination": "/xirr-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "loaneligibility"
+        }
+      ],
+      "destination": "/loaneligibility-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "balancetransfer"
+        }
+      ],
+      "destination": "/balancetransfer-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ssy"
+        }
+      ],
+      "destination": "/ssy-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "scss"
+        }
+      ],
+      "destination": "/scss-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "advancetax"
+        }
+      ],
+      "destination": "/advancetax-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "inhandsalary"
+        }
+      ],
+      "destination": "/inhandsalary-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ctcbreakup"
+        }
+      ],
+      "destination": "/ctcbreakup-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "salarycomparison"
+        }
+      ],
+      "destination": "/salarycomparison-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "carloan"
+        }
+      ],
+      "destination": "/carloan-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "breakeven"
+        }
+      ],
+      "destination": "/breakeven-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "inflation"
+        }
+      ],
+      "destination": "/inflation-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "dividendyield"
+        }
+      ],
+      "destination": "/dividendyield-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "goldinvestment"
+        }
+      ],
+      "destination": "/goldinvestment-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "salary"
+        }
+      ],
+      "destination": "/salary-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "freelancerate"
+        }
+      ],
+      "destination": "/freelancerate-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "workingdays"
+        }
+      ],
+      "destination": "/workingdays-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bmr"
+        }
+      ],
+      "destination": "/bmr-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "tdee"
+        }
+      ],
+      "destination": "/tdee-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "water"
+        }
+      ],
+      "destination": "/water-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "heartrate"
+        }
+      ],
+      "destination": "/heartrate-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "age"
+        }
+      ],
+      "destination": "/age-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "calories"
+        }
+      ],
+      "destination": "/calories-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "sleep"
+        }
+      ],
+      "destination": "/sleep-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "macros"
+        }
+      ],
+      "destination": "/macros-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "pregnancy"
+        }
+      ],
+      "destination": "/pregnancy-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bodyfat"
+        }
+      ],
+      "destination": "/bodyfat-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "idealweight"
+        }
+      ],
+      "destination": "/idealweight-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ibw"
+        }
+      ],
+      "destination": "/ibw-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bsa"
+        }
+      ],
+      "destination": "/bsa-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ovulation"
+        }
+      ],
+      "destination": "/ovulation-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bloodpressure"
+        }
+      ],
+      "destination": "/bloodpressure-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "alcohol"
+        }
+      ],
+      "destination": "/alcohol-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "waistHip"
+        }
+      ],
+      "destination": "/waisthip-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "calories_food"
+        }
+      ],
+      "destination": "/calories-food-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "vitamins"
+        }
+      ],
+      "destination": "/vitamins-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "lungCapacity"
+        }
+      ],
+      "destination": "/lungcapacity-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "proteinintake"
+        }
+      ],
+      "destination": "/proteinintake-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "smokingcost"
+        }
+      ],
+      "destination": "/smokingcost-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "childheight"
+        }
+      ],
+      "destination": "/childheight-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "diabetesrisk"
+        }
+      ],
+      "destination": "/diabetesrisk-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "sleepdebt"
+        }
+      ],
+      "destination": "/sleepdebt-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "anemia"
+        }
+      ],
+      "destination": "/anemia-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "cholesterolratio"
+        }
+      ],
+      "destination": "/cholesterolratio-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "caloriedeficit"
+        }
+      ],
+      "destination": "/caloriedeficit-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "tip"
+        }
+      ],
+      "destination": "/tip-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "discount"
+        }
+      ],
+      "destination": "/discount-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "fuel"
+        }
+      ],
+      "destination": "/fuel-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "mileage"
+        }
+      ],
+      "destination": "/mileage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "electricbill"
+        }
+      ],
+      "destination": "/electricbill-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "tipsplit"
+        }
+      ],
+      "destination": "/tipsplit-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "unitPrice"
+        }
+      ],
+      "destination": "/unitprice-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "petrolParity"
+        }
+      ],
+      "destination": "/petrolparity-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "evpetrolsavings"
+        }
+      ],
+      "destination": "/evpetrolsavings-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "laundry"
+        }
+      ],
+      "destination": "/laundry-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "cooking"
+        }
+      ],
+      "destination": "/cooking-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "shoesize"
+        }
+      ],
+      "destination": "/shoesize-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "petage"
+        }
+      ],
+      "destination": "/petage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "weddingbudget"
+        }
+      ],
+      "destination": "/weddingbudget-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "rentafford"
+        }
+      ],
+      "destination": "/rentafford-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "travelbudget"
+        }
+      ],
+      "destination": "/travelbudget-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "carbonfootprint"
+        }
+      ],
+      "destination": "/carbonfootprint-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "stopwatch"
+        }
+      ],
+      "destination": "/stopwatch-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "randomnum"
+        }
+      ],
+      "destination": "/randomnum-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "homerenovation"
+        }
+      ],
+      "destination": "/homerenovation-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "length"
+        }
+      ],
+      "destination": "/length-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "weight"
+        }
+      ],
+      "destination": "/weight-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "temperature"
+        }
+      ],
+      "destination": "/temperature-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "area"
+        }
+      ],
+      "destination": "/area-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "speed"
+        }
+      ],
+      "destination": "/speed-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "currency"
+        }
+      ],
+      "destination": "/currency-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "volume"
+        }
+      ],
+      "destination": "/volume-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "data"
+        }
+      ],
+      "destination": "/data-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "pressure"
+        }
+      ],
+      "destination": "/pressure-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "energy"
+        }
+      ],
+      "destination": "/energy-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "angle"
+        }
+      ],
+      "destination": "/angle-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "dateiff"
+        }
+      ],
+      "destination": "/dateiff-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "timeconv"
+        }
+      ],
+      "destination": "/timeconv-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "countdown"
+        }
+      ],
+      "destination": "/countdown-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "timezone"
+        }
+      ],
+      "destination": "/timezone-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ageNextBday"
+        }
+      ],
+      "destination": "/agenextbday-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "typing_speed"
+        }
+      ],
+      "destination": "/typing-speed-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ohmslaw"
+        }
+      ],
+      "destination": "/ohmslaw-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "resistor"
+        }
+      ],
+      "destination": "/resistor-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "power"
+        }
+      ],
+      "destination": "/power-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "speed_dist"
+        }
+      ],
+      "destination": "/speed-dist-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "newtons"
+        }
+      ],
+      "destination": "/newtons-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ohm_advanced"
+        }
+      ],
+      "destination": "/ohm-advanced-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "density"
+        }
+      ],
+      "destination": "/density-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "chemMolar"
+        }
+      ],
+      "destination": "/chemmolar-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "wavelength"
+        }
+      ],
+      "destination": "/wavelength-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "gravitational"
+        }
+      ],
+      "destination": "/gravitational-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "halflife"
+        }
+      ],
+      "destination": "/halflife-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ph"
+        }
+      ],
+      "destination": "/ph-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "kinematicCalc"
+        }
+      ],
+      "destination": "/kinematiccalc-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "thermodynamics"
+        }
+      ],
+      "destination": "/thermodynamics-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "acceleration"
+        }
+      ],
+      "destination": "/acceleration-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "torque"
+        }
+      ],
+      "destination": "/torque-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "decibel"
+        }
+      ],
+      "destination": "/decibel-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "antennalen"
+        }
+      ],
+      "destination": "/antennalen-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ledresistor"
+        }
+      ],
+      "destination": "/ledresistor-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "voltdivider"
+        }
+      ],
+      "destination": "/voltdivider-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "batterylife"
+        }
+      ],
+      "destination": "/batterylife-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "pcbtrace"
+        }
+      ],
+      "destination": "/pcbtrace-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "wiresize"
+        }
+      ],
+      "destination": "/wiresize-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "pixelresolution"
+        }
+      ],
+      "destination": "/pixelresolution-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "concrete"
+        }
+      ],
+      "destination": "/concrete-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "bricks"
+        }
+      ],
+      "destination": "/bricks-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "paint"
+        }
+      ],
+      "destination": "/paint-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "flooring"
+        }
+      ],
+      "destination": "/flooring-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "steel"
+        }
+      ],
+      "destination": "/steel-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "roofing"
+        }
+      ],
+      "destination": "/roofing-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "earthwork"
+        }
+      ],
+      "destination": "/earthwork-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "plasterwork"
+        }
+      ],
+      "destination": "/plasterwork-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "waterTank"
+        }
+      ],
+      "destination": "/watertank-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "landarea"
+        }
+      ],
+      "destination": "/landarea-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "stampdutycalc"
+        }
+      ],
+      "destination": "/stampdutycalc-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "constructioncost"
+        }
+      ],
+      "destination": "/constructioncost-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "construction"
+        }
+      ],
+      "destination": "/construction-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "solarpanel"
+        }
+      ],
+      "destination": "/solarpanel-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "cgpa"
+        }
+      ],
+      "destination": "/cgpa-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "grade"
+        }
+      ],
+      "destination": "/grade-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "eduloan"
+        }
+      ],
+      "destination": "/eduloan-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "examneeded"
+        }
+      ],
+      "destination": "/examneeded-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "studyhours"
+        }
+      ],
+      "destination": "/studyhours-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "scholarship"
+        }
+      ],
+      "destination": "/scholarship-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "ratio"
+        }
+      ],
+      "destination": "/ratio-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "squareroot"
+        }
+      ],
+      "destination": "/squareroot-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "logarithm"
+        }
+      ],
+      "destination": "/logarithm-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "factorial"
+        }
+      ],
+      "destination": "/factorial-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "quadratic"
+        }
+      ],
+      "destination": "/quadratic-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "prime"
+        }
+      ],
+      "destination": "/prime-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "numbersystem"
+        }
+      ],
+      "destination": "/numbersystem-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "average"
+        }
+      ],
+      "destination": "/average-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "statistics"
+        }
+      ],
+      "destination": "/statistics-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "matrix2x2"
+        }
+      ],
+      "destination": "/matrix2x2-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "combinations"
+        }
+      ],
+      "destination": "/combinations-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "lcmgcd"
+        }
+      ],
+      "destination": "/lcmgcd-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "romanNumeral"
+        }
+      ],
+      "destination": "/romannumeral-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "fraction"
+        }
+      ],
+      "destination": "/fraction-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "stddev"
+        }
+      ],
+      "destination": "/stddev-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "lineareq"
+        }
+      ],
+      "destination": "/lineareq-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "circleCalc"
+        }
+      ],
+      "destination": "/circlecalc-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "determinant"
+        }
+      ],
+      "destination": "/determinant-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "triangleArea"
+        }
+      ],
+      "destination": "/trianglearea-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "complexnum"
+        }
+      ],
+      "destination": "/complexnum-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "scientific"
+        }
+      ],
+      "destination": "/scientific-calculator",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/blog/:path*", "destination": "/index.html" },
-    { "source": "/about",                         "destination": "/index.html" },
-    { "source": "/privacy",                       "destination": "/index.html" },
-    { "source": "/terms",                         "destination": "/index.html" },
-    { "source": "/emi-calculator",                "destination": "/emi-calculator.html" },
-    { "source": "/sip-calculator",                "destination": "/sip-calculator.html" },
-    { "source": "/gst-calculator",                "destination": "/gst-calculator.html" },
-    { "source": "/bmi-calculator",                "destination": "/bmi-calculator.html" },
-    { "source": "/taxregime-calculator",          "destination": "/taxregime-calculator.html" },
-    { "source": "/incometax-calculator",          "destination": "/incometax-calculator.html" },
-    { "source": "/ppf-calculator",                "destination": "/ppf-calculator.html" },
-    { "source": "/fd-calculator",                 "destination": "/fd-calculator.html" },
-    { "source": "/rd-calculator",                 "destination": "/rd-calculator.html" },
-    { "source": "/compoundinterest-calculator",   "destination": "/compoundinterest-calculator.html" },
-    { "source": "/simpleinterest-calculator",     "destination": "/simpleinterest-calculator.html" },
-    { "source": "/percentage-calculator",         "destination": "/percentage-calculator.html" },
-    { "source": "/cagr-calculator",               "destination": "/cagr-calculator.html" },
-    { "source": "/inflation-calculator",          "destination": "/inflation-calculator.html" },
-    { "source": "/mortgage-calculator",           "destination": "/mortgage-calculator.html" },
-    { "source": "/bmr-calculator",                "destination": "/bmr-calculator.html" },
-    { "source": "/tdee-calculator",               "destination": "/tdee-calculator.html" },
-    { "source": "/age-calculator",                "destination": "/age-calculator.html" },
-    { "source": "/cgpa-calculator",               "destination": "/cgpa-calculator.html" },
-    { "source": "/inhandsalary-calculator",       "destination": "/inhandsalary-calculator.html" },
-    { "source": "/((?!assets|manifest\\.json|robots\\.txt|sitemap\\.xml|sw\\.js|og-image\\.png|icon-192\\.png|icon-512\\.png).*)", "destination": "/index.html" }
+    {
+      "source": "/about",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/stampdutycalc-calculator",
+      "destination": "/stampdutycalc-calculator.html"
+    },
+    {
+      "source": "/constructioncost-calculator",
+      "destination": "/constructioncost-calculator.html"
+    },
+    {
+      "source": "/homerenovation-calculator",
+      "destination": "/homerenovation-calculator.html"
+    },
+    {
+      "source": "/concrete-calculator",
+      "destination": "/concrete-calculator.html"
+    },
+    {
+      "source": "/bricks-calculator",
+      "destination": "/bricks-calculator.html"
+    },
+    {
+      "source": "/paint-calculator",
+      "destination": "/paint-calculator.html"
+    },
+    {
+      "source": "/flooring-calculator",
+      "destination": "/flooring-calculator.html"
+    },
+    {
+      "source": "/steel-calculator",
+      "destination": "/steel-calculator.html"
+    },
+    {
+      "source": "/roofing-calculator",
+      "destination": "/roofing-calculator.html"
+    },
+    {
+      "source": "/landarea-calculator",
+      "destination": "/landarea-calculator.html"
+    },
+    {
+      "source": "/solarpanel-calculator",
+      "destination": "/solarpanel-calculator.html"
+    },
+    {
+      "source": "/concretemix-calculator",
+      "destination": "/concretemix-calculator.html"
+    },
+    {
+      "source": "/materialwaste-calculator",
+      "destination": "/materialwaste-calculator.html"
+    },
+    {
+      "source": "/rainwater-calculator",
+      "destination": "/rainwater-calculator.html"
+    },
+    {
+      "source": "/earthwork-calculator",
+      "destination": "/earthwork-calculator.html"
+    },
+    {
+      "source": "/plasterwork-calculator",
+      "destination": "/plasterwork-calculator.html"
+    },
+    {
+      "source": "/dateiff-calculator",
+      "destination": "/dateiff-calculator.html"
+    },
+    {
+      "source": "/workingdays-calculator",
+      "destination": "/workingdays-calculator.html"
+    },
+    {
+      "source": "/timeconv-calculator",
+      "destination": "/timeconv-calculator.html"
+    },
+    {
+      "source": "/countdown-calculator",
+      "destination": "/countdown-calculator.html"
+    },
+    {
+      "source": "/timezone-calculator",
+      "destination": "/timezone-calculator.html"
+    },
+    {
+      "source": "/cgpa-calculator",
+      "destination": "/cgpa-calculator.html"
+    },
+    {
+      "source": "/eduloan-calculator",
+      "destination": "/eduloan-calculator.html"
+    },
+    {
+      "source": "/examneeded-calculator",
+      "destination": "/examneeded-calculator.html"
+    },
+    {
+      "source": "/studyhours-calculator",
+      "destination": "/studyhours-calculator.html"
+    },
+    {
+      "source": "/scholarship-calculator",
+      "destination": "/scholarship-calculator.html"
+    },
+    {
+      "source": "/pomodoro-calculator",
+      "destination": "/pomodoro-calculator.html"
+    },
+    {
+      "source": "/gpaconverter-calculator",
+      "destination": "/gpaconverter-calculator.html"
+    },
+    {
+      "source": "/readingtime-calculator",
+      "destination": "/readingtime-calculator.html"
+    },
+    {
+      "source": "/typingtest-calculator",
+      "destination": "/typingtest-calculator.html"
+    },
+    {
+      "source": "/spellingbee-calculator",
+      "destination": "/spellingbee-calculator.html"
+    },
+    {
+      "source": "/attendance-calculator",
+      "destination": "/attendance-calculator.html"
+    },
+    {
+      "source": "/gpaplanner-calculator",
+      "destination": "/gpaplanner-calculator.html"
+    },
+    {
+      "source": "/percentile-calculator",
+      "destination": "/percentile-calculator.html"
+    },
+    {
+      "source": "/cutoffpredictor-calculator",
+      "destination": "/cutoffpredictor-calculator.html"
+    },
+    {
+      "source": "/revisionplanner-calculator",
+      "destination": "/revisionplanner-calculator.html"
+    },
+    {
+      "source": "/pythagorean-calculator",
+      "destination": "/pythagorean-calculator.html"
+    },
+    {
+      "source": "/ohmslaw-calculator",
+      "destination": "/ohmslaw-calculator.html"
+    },
+    {
+      "source": "/resistor-calculator",
+      "destination": "/resistor-calculator.html"
+    },
+    {
+      "source": "/power-calculator",
+      "destination": "/power-calculator.html"
+    },
+    {
+      "source": "/inverterbattery-calculator",
+      "destination": "/inverterbattery-calculator.html"
+    },
+    {
+      "source": "/acbtu-calculator",
+      "destination": "/acbtu-calculator.html"
+    },
+    {
+      "source": "/beamload-calculator",
+      "destination": "/beamload-calculator.html"
+    },
+    {
+      "source": "/pipeflow-calculator",
+      "destination": "/pipeflow-calculator.html"
+    },
+    {
+      "source": "/threephase-calculator",
+      "destination": "/threephase-calculator.html"
+    },
+    {
+      "source": "/transformercalc-calculator",
+      "destination": "/transformercalc-calculator.html"
+    },
+    {
+      "source": "/heatexchanger-calculator",
+      "destination": "/heatexchanger-calculator.html"
+    },
+    {
+      "source": "/fluidflow-calculator",
+      "destination": "/fluidflow-calculator.html"
+    },
+    {
+      "source": "/springforce-calculator",
+      "destination": "/springforce-calculator.html"
+    },
+    {
+      "source": "/gearratio-calculator",
+      "destination": "/gearratio-calculator.html"
+    },
+    {
+      "source": "/torque-calculator",
+      "destination": "/torque-calculator.html"
+    },
+    {
+      "source": "/decibel-calculator",
+      "destination": "/decibel-calculator.html"
+    },
+    {
+      "source": "/antennalen-calculator",
+      "destination": "/antennalen-calculator.html"
+    },
+    {
+      "source": "/ledresistor-calculator",
+      "destination": "/ledresistor-calculator.html"
+    },
+    {
+      "source": "/voltdivider-calculator",
+      "destination": "/voltdivider-calculator.html"
+    },
+    {
+      "source": "/batterylife-calculator",
+      "destination": "/batterylife-calculator.html"
+    },
+    {
+      "source": "/pcbtrace-calculator",
+      "destination": "/pcbtrace-calculator.html"
+    },
+    {
+      "source": "/loanaffordability-calculator",
+      "destination": "/loanaffordability-calculator.html"
+    },
+    {
+      "source": "/salary-calculator",
+      "destination": "/salary-calculator.html"
+    },
+    {
+      "source": "/tip-calculator",
+      "destination": "/tip-calculator.html"
+    },
+    {
+      "source": "/discount-calculator",
+      "destination": "/discount-calculator.html"
+    },
+    {
+      "source": "/fuel-calculator",
+      "destination": "/fuel-calculator.html"
+    },
+    {
+      "source": "/mileage-calculator",
+      "destination": "/mileage-calculator.html"
+    },
+    {
+      "source": "/electricbill-calculator",
+      "destination": "/electricbill-calculator.html"
+    },
+    {
+      "source": "/grade-calculator",
+      "destination": "/grade-calculator.html"
+    },
+    {
+      "source": "/freelancerate-calculator",
+      "destination": "/freelancerate-calculator.html"
+    },
+    {
+      "source": "/tipsplit-calculator",
+      "destination": "/tipsplit-calculator.html"
+    },
+    {
+      "source": "/evpetrolsavings-calculator",
+      "destination": "/evpetrolsavings-calculator.html"
+    },
+    {
+      "source": "/weddingbudget-calculator",
+      "destination": "/weddingbudget-calculator.html"
+    },
+    {
+      "source": "/rentafford-calculator",
+      "destination": "/rentafford-calculator.html"
+    },
+    {
+      "source": "/travelbudget-calculator",
+      "destination": "/travelbudget-calculator.html"
+    },
+    {
+      "source": "/carbonfootprint-calculator",
+      "destination": "/carbonfootprint-calculator.html"
+    },
+    {
+      "source": "/ecomprofit-calculator",
+      "destination": "/ecomprofit-calculator.html"
+    },
+    {
+      "source": "/restaurantcost-calculator",
+      "destination": "/restaurantcost-calculator.html"
+    },
+    {
+      "source": "/subscriptionpricing-calculator",
+      "destination": "/subscriptionpricing-calculator.html"
+    },
+    {
+      "source": "/uniteconomics-calculator",
+      "destination": "/uniteconomics-calculator.html"
+    },
+    {
+      "source": "/eventbudget-calculator",
+      "destination": "/eventbudget-calculator.html"
+    },
+    {
+      "source": "/householdbudget-calculator",
+      "destination": "/householdbudget-calculator.html"
+    },
+    {
+      "source": "/laundry-calculator",
+      "destination": "/laundry-calculator.html"
+    },
+    {
+      "source": "/cooking-calculator",
+      "destination": "/cooking-calculator.html"
+    },
+    {
+      "source": "/shoesize-calculator",
+      "destination": "/shoesize-calculator.html"
+    },
+    {
+      "source": "/petage-calculator",
+      "destination": "/petage-calculator.html"
+    },
+    {
+      "source": "/stopwatch-calculator",
+      "destination": "/stopwatch-calculator.html"
+    },
+    {
+      "source": "/randomnum-calculator",
+      "destination": "/randomnum-calculator.html"
+    },
+    {
+      "source": "/cartco-calculator",
+      "destination": "/cartco-calculator.html"
+    },
+    {
+      "source": "/wiresize-calculator",
+      "destination": "/wiresize-calculator.html"
+    },
+    {
+      "source": "/pixelresolution-calculator",
+      "destination": "/pixelresolution-calculator.html"
+    },
+    {
+      "source": "/emi-calculator",
+      "destination": "/emi-calculator.html"
+    },
+    {
+      "source": "/sip-calculator",
+      "destination": "/sip-calculator.html"
+    },
+    {
+      "source": "/gst-calculator",
+      "destination": "/gst-calculator.html"
+    },
+    {
+      "source": "/taxregime-calculator",
+      "destination": "/taxregime-calculator.html"
+    },
+    {
+      "source": "/compoundinterest-calculator",
+      "destination": "/compoundinterest-calculator.html"
+    },
+    {
+      "source": "/incometax-calculator",
+      "destination": "/incometax-calculator.html"
+    },
+    {
+      "source": "/ppf-calculator",
+      "destination": "/ppf-calculator.html"
+    },
+    {
+      "source": "/fd-calculator",
+      "destination": "/fd-calculator.html"
+    },
+    {
+      "source": "/mortgage-calculator",
+      "destination": "/mortgage-calculator.html"
+    },
+    {
+      "source": "/salaryhike-calculator",
+      "destination": "/salaryhike-calculator.html"
+    },
+    {
+      "source": "/inhandsalary-calculator",
+      "destination": "/inhandsalary-calculator.html"
+    },
+    {
+      "source": "/pregst-calculator",
+      "destination": "/pregst-calculator.html"
+    },
+    {
+      "source": "/simpleinterest-calculator",
+      "destination": "/simpleinterest-calculator.html"
+    },
+    {
+      "source": "/roi-calculator",
+      "destination": "/roi-calculator.html"
+    },
+    {
+      "source": "/rd-calculator",
+      "destination": "/rd-calculator.html"
+    },
+    {
+      "source": "/carloan-calculator",
+      "destination": "/carloan-calculator.html"
+    },
+    {
+      "source": "/inflation-calculator",
+      "destination": "/inflation-calculator.html"
+    },
+    {
+      "source": "/cagr-calculator",
+      "destination": "/cagr-calculator.html"
+    },
+    {
+      "source": "/swp-calculator",
+      "destination": "/swp-calculator.html"
+    },
+    {
+      "source": "/lumpsum-calculator",
+      "destination": "/lumpsum-calculator.html"
+    },
+    {
+      "source": "/nps-calculator",
+      "destination": "/nps-calculator.html"
+    },
+    {
+      "source": "/gratuity-calculator",
+      "destination": "/gratuity-calculator.html"
+    },
+    {
+      "source": "/hra-calculator",
+      "destination": "/hra-calculator.html"
+    },
+    {
+      "source": "/creditcard-calculator",
+      "destination": "/creditcard-calculator.html"
+    },
+    {
+      "source": "/prepayment-calculator",
+      "destination": "/prepayment-calculator.html"
+    },
+    {
+      "source": "/stepupsip-calculator",
+      "destination": "/stepupsip-calculator.html"
+    },
+    {
+      "source": "/savingsgoal-calculator",
+      "destination": "/savingsgoal-calculator.html"
+    },
+    {
+      "source": "/capitalgains-calculator",
+      "destination": "/capitalgains-calculator.html"
+    },
+    {
+      "source": "/tds-calculator",
+      "destination": "/tds-calculator.html"
+    },
+    {
+      "source": "/epf-calculator",
+      "destination": "/epf-calculator.html"
+    },
+    {
+      "source": "/loaneligibility-calculator",
+      "destination": "/loaneligibility-calculator.html"
+    },
+    {
+      "source": "/ssy-calculator",
+      "destination": "/ssy-calculator.html"
+    },
+    {
+      "source": "/retirementcorpus-calculator",
+      "destination": "/retirementcorpus-calculator.html"
+    },
+    {
+      "source": "/goalsip-calculator",
+      "destination": "/goalsip-calculator.html"
+    },
+    {
+      "source": "/taxsaving-calculator",
+      "destination": "/taxsaving-calculator.html"
+    },
+    {
+      "source": "/advancetax-calculator",
+      "destination": "/advancetax-calculator.html"
+    },
+    {
+      "source": "/ctcbreakup-calculator",
+      "destination": "/ctcbreakup-calculator.html"
+    },
+    {
+      "source": "/fire-calculator",
+      "destination": "/fire-calculator.html"
+    },
+    {
+      "source": "/debtavalanche-calculator",
+      "destination": "/debtavalanche-calculator.html"
+    },
+    {
+      "source": "/emergencyfund-calculator",
+      "destination": "/emergencyfund-calculator.html"
+    },
+    {
+      "source": "/rentvsbuy-calculator",
+      "destination": "/rentvsbuy-calculator.html"
+    },
+    {
+      "source": "/carleasevsbuy-calculator",
+      "destination": "/carleasevsbuy-calculator.html"
+    },
+    {
+      "source": "/homedownpayment-calculator",
+      "destination": "/homedownpayment-calculator.html"
+    },
+    {
+      "source": "/loancompare-calculator",
+      "destination": "/loancompare-calculator.html"
+    },
+    {
+      "source": "/refinance-calculator",
+      "destination": "/refinance-calculator.html"
+    },
+    {
+      "source": "/creditutil-calculator",
+      "destination": "/creditutil-calculator.html"
+    },
+    {
+      "source": "/insuranceneed-calculator",
+      "destination": "/insuranceneed-calculator.html"
+    },
+    {
+      "source": "/npvirr-calculator",
+      "destination": "/npvirr-calculator.html"
+    },
+    {
+      "source": "/bondyield-calculator",
+      "destination": "/bondyield-calculator.html"
+    },
+    {
+      "source": "/optionprofit-calculator",
+      "destination": "/optionprofit-calculator.html"
+    },
+    {
+      "source": "/forexpip-calculator",
+      "destination": "/forexpip-calculator.html"
+    },
+    {
+      "source": "/portfoliorebalance-calculator",
+      "destination": "/portfoliorebalance-calculator.html"
+    },
+    {
+      "source": "/assetallocation-calculator",
+      "destination": "/assetallocation-calculator.html"
+    },
+    {
+      "source": "/montecarlo-calculator",
+      "destination": "/montecarlo-calculator.html"
+    },
+    {
+      "source": "/inflationgoal-calculator",
+      "destination": "/inflationgoal-calculator.html"
+    },
+    {
+      "source": "/businessloan-calculator",
+      "destination": "/businessloan-calculator.html"
+    },
+    {
+      "source": "/gstinvoice-calculator",
+      "destination": "/gstinvoice-calculator.html"
+    },
+    {
+      "source": "/esoptax-calculator",
+      "destination": "/esoptax-calculator.html"
+    },
+    {
+      "source": "/freelancetax-calculator",
+      "destination": "/freelancetax-calculator.html"
+    },
+    {
+      "source": "/tcsremittance-calculator",
+      "destination": "/tcsremittance-calculator.html"
+    },
+    {
+      "source": "/sec80c-calculator",
+      "destination": "/sec80c-calculator.html"
+    },
+    {
+      "source": "/hravshomeloan-calculator",
+      "destination": "/hravshomeloan-calculator.html"
+    },
+    {
+      "source": "/leaveencash-calculator",
+      "destination": "/leaveencash-calculator.html"
+    },
+    {
+      "source": "/breakeven-calculator",
+      "destination": "/breakeven-calculator.html"
+    },
+    {
+      "source": "/networth-calculator",
+      "destination": "/networth-calculator.html"
+    },
+    {
+      "source": "/dividendyield-calculator",
+      "destination": "/dividendyield-calculator.html"
+    },
+    {
+      "source": "/goldinvestment-calculator",
+      "destination": "/goldinvestment-calculator.html"
+    },
+    {
+      "source": "/profitloss-calculator",
+      "destination": "/profitloss-calculator.html"
+    },
+    {
+      "source": "/stockreturn-calculator",
+      "destination": "/stockreturn-calculator.html"
+    },
+    {
+      "source": "/mutualfundreturns-calculator",
+      "destination": "/mutualfundreturns-calculator.html"
+    },
+    {
+      "source": "/xirr-calculator",
+      "destination": "/xirr-calculator.html"
+    },
+    {
+      "source": "/balancetransfer-calculator",
+      "destination": "/balancetransfer-calculator.html"
+    },
+    {
+      "source": "/scss-calculator",
+      "destination": "/scss-calculator.html"
+    },
+    {
+      "source": "/elssreturns-calculator",
+      "destination": "/elssreturns-calculator.html"
+    },
+    {
+      "source": "/nsccalculator-calculator",
+      "destination": "/nsccalculator-calculator.html"
+    },
+    {
+      "source": "/apycalculator-calculator",
+      "destination": "/apycalculator-calculator.html"
+    },
+    {
+      "source": "/brokerage-calculator",
+      "destination": "/brokerage-calculator.html"
+    },
+    {
+      "source": "/salarycomparison-calculator",
+      "destination": "/salarycomparison-calculator.html"
+    },
+    {
+      "source": "/bmi-calculator",
+      "destination": "/bmi-calculator.html"
+    },
+    {
+      "source": "/bmr-calculator",
+      "destination": "/bmr-calculator.html"
+    },
+    {
+      "source": "/tdee-calculator",
+      "destination": "/tdee-calculator.html"
+    },
+    {
+      "source": "/water-calculator",
+      "destination": "/water-calculator.html"
+    },
+    {
+      "source": "/heartrate-calculator",
+      "destination": "/heartrate-calculator.html"
+    },
+    {
+      "source": "/age-calculator",
+      "destination": "/age-calculator.html"
+    },
+    {
+      "source": "/calories-calculator",
+      "destination": "/calories-calculator.html"
+    },
+    {
+      "source": "/sleep-calculator",
+      "destination": "/sleep-calculator.html"
+    },
+    {
+      "source": "/macros-calculator",
+      "destination": "/macros-calculator.html"
+    },
+    {
+      "source": "/pregnancy-calculator",
+      "destination": "/pregnancy-calculator.html"
+    },
+    {
+      "source": "/bodyfat-calculator",
+      "destination": "/bodyfat-calculator.html"
+    },
+    {
+      "source": "/idealweight-calculator",
+      "destination": "/idealweight-calculator.html"
+    },
+    {
+      "source": "/ovulation-calculator",
+      "destination": "/ovulation-calculator.html"
+    },
+    {
+      "source": "/bloodpressure-calculator",
+      "destination": "/bloodpressure-calculator.html"
+    },
+    {
+      "source": "/proteinintake-calculator",
+      "destination": "/proteinintake-calculator.html"
+    },
+    {
+      "source": "/ibw-calculator",
+      "destination": "/ibw-calculator.html"
+    },
+    {
+      "source": "/bsa-calculator",
+      "destination": "/bsa-calculator.html"
+    },
+    {
+      "source": "/alcohol-calculator",
+      "destination": "/alcohol-calculator.html"
+    },
+    {
+      "source": "/vitamins-calculator",
+      "destination": "/vitamins-calculator.html"
+    },
+    {
+      "source": "/smokingcost-calculator",
+      "destination": "/smokingcost-calculator.html"
+    },
+    {
+      "source": "/childheight-calculator",
+      "destination": "/childheight-calculator.html"
+    },
+    {
+      "source": "/diabetesrisk-calculator",
+      "destination": "/diabetesrisk-calculator.html"
+    },
+    {
+      "source": "/sleepdebt-calculator",
+      "destination": "/sleepdebt-calculator.html"
+    },
+    {
+      "source": "/anemia-calculator",
+      "destination": "/anemia-calculator.html"
+    },
+    {
+      "source": "/cholesterolratio-calculator",
+      "destination": "/cholesterolratio-calculator.html"
+    },
+    {
+      "source": "/caloriedeficit-calculator",
+      "destination": "/caloriedeficit-calculator.html"
+    },
+    {
+      "source": "/onerepmax-calculator",
+      "destination": "/onerepmax-calculator.html"
+    },
+    {
+      "source": "/runningpace-calculator",
+      "destination": "/runningpace-calculator.html"
+    },
+    {
+      "source": "/bodyrecomp-calculator",
+      "destination": "/bodyrecomp-calculator.html"
+    },
+    {
+      "source": "/vo2max-calculator",
+      "destination": "/vo2max-calculator.html"
+    },
+    {
+      "source": "/leanbodymass-calculator",
+      "destination": "/leanbodymass-calculator.html"
+    },
+    {
+      "source": "/caloriegoal-calculator",
+      "destination": "/caloriegoal-calculator.html"
+    },
+    {
+      "source": "/electrolyte-calculator",
+      "destination": "/electrolyte-calculator.html"
+    },
+    {
+      "source": "/percentage-calculator",
+      "destination": "/percentage-calculator.html"
+    },
+    {
+      "source": "/average-calculator",
+      "destination": "/average-calculator.html"
+    },
+    {
+      "source": "/ratio-calculator",
+      "destination": "/ratio-calculator.html"
+    },
+    {
+      "source": "/squareroot-calculator",
+      "destination": "/squareroot-calculator.html"
+    },
+    {
+      "source": "/logarithm-calculator",
+      "destination": "/logarithm-calculator.html"
+    },
+    {
+      "source": "/factorial-calculator",
+      "destination": "/factorial-calculator.html"
+    },
+    {
+      "source": "/quadratic-calculator",
+      "destination": "/quadratic-calculator.html"
+    },
+    {
+      "source": "/prime-calculator",
+      "destination": "/prime-calculator.html"
+    },
+    {
+      "source": "/numbersystem-calculator",
+      "destination": "/numbersystem-calculator.html"
+    },
+    {
+      "source": "/statistics-calculator",
+      "destination": "/statistics-calculator.html"
+    },
+    {
+      "source": "/lcmgcd-calculator",
+      "destination": "/lcmgcd-calculator.html"
+    },
+    {
+      "source": "/fraction-calculator",
+      "destination": "/fraction-calculator.html"
+    },
+    {
+      "source": "/scientific-calculator",
+      "destination": "/scientific-calculator.html"
+    },
+    {
+      "source": "/matrix2x2-calculator",
+      "destination": "/matrix2x2-calculator.html"
+    },
+    {
+      "source": "/combinations-calculator",
+      "destination": "/combinations-calculator.html"
+    },
+    {
+      "source": "/stddev-calculator",
+      "destination": "/stddev-calculator.html"
+    },
+    {
+      "source": "/lineareq-calculator",
+      "destination": "/lineareq-calculator.html"
+    },
+    {
+      "source": "/determinant-calculator",
+      "destination": "/determinant-calculator.html"
+    },
+    {
+      "source": "/complexnum-calculator",
+      "destination": "/complexnum-calculator.html"
+    },
+    {
+      "source": "/newtons-calculator",
+      "destination": "/newtons-calculator.html"
+    },
+    {
+      "source": "/density-calculator",
+      "destination": "/density-calculator.html"
+    },
+    {
+      "source": "/wavelength-calculator",
+      "destination": "/wavelength-calculator.html"
+    },
+    {
+      "source": "/gravitational-calculator",
+      "destination": "/gravitational-calculator.html"
+    },
+    {
+      "source": "/halflife-calculator",
+      "destination": "/halflife-calculator.html"
+    },
+    {
+      "source": "/ph-calculator",
+      "destination": "/ph-calculator.html"
+    },
+    {
+      "source": "/thermodynamics-calculator",
+      "destination": "/thermodynamics-calculator.html"
+    },
+    {
+      "source": "/acceleration-calculator",
+      "destination": "/acceleration-calculator.html"
+    },
+    {
+      "source": "/length-calculator",
+      "destination": "/length-calculator.html"
+    },
+    {
+      "source": "/weight-calculator",
+      "destination": "/weight-calculator.html"
+    },
+    {
+      "source": "/temperature-calculator",
+      "destination": "/temperature-calculator.html"
+    },
+    {
+      "source": "/currency-calculator",
+      "destination": "/currency-calculator.html"
+    },
+    {
+      "source": "/area-calculator",
+      "destination": "/area-calculator.html"
+    },
+    {
+      "source": "/speed-calculator",
+      "destination": "/speed-calculator.html"
+    },
+    {
+      "source": "/volume-calculator",
+      "destination": "/volume-calculator.html"
+    },
+    {
+      "source": "/data-calculator",
+      "destination": "/data-calculator.html"
+    },
+    {
+      "source": "/pressure-calculator",
+      "destination": "/pressure-calculator.html"
+    },
+    {
+      "source": "/energy-calculator",
+      "destination": "/energy-calculator.html"
+    },
+    {
+      "source": "/angle-calculator",
+      "destination": "/angle-calculator.html"
+    },
+    {
+      "source": "/investvsrent-calculator",
+      "destination": "/investvsrent-calculator.html"
+    },
+    {
+      "source": "/professionaltax-calculator",
+      "destination": "/professionaltax-calculator.html"
+    },
+    {
+      "source": "/trianglearea-calculator",
+      "destination": "/trianglearea-calculator.html"
+    },
+    {
+      "source": "/waisthip-calculator",
+      "destination": "/waisthip-calculator.html"
+    },
+    {
+      "source": "/calories-food-calculator",
+      "destination": "/calories-food-calculator.html"
+    },
+    {
+      "source": "/lungcapacity-calculator",
+      "destination": "/lungcapacity-calculator.html"
+    },
+    {
+      "source": "/unitprice-calculator",
+      "destination": "/unitprice-calculator.html"
+    },
+    {
+      "source": "/petrolparity-calculator",
+      "destination": "/petrolparity-calculator.html"
+    },
+    {
+      "source": "/agenextbday-calculator",
+      "destination": "/agenextbday-calculator.html"
+    },
+    {
+      "source": "/speed-dist-calculator",
+      "destination": "/speed-dist-calculator.html"
+    },
+    {
+      "source": "/construction-calculator",
+      "destination": "/construction-calculator.html"
+    },
+    {
+      "source": "/romannumeral-calculator",
+      "destination": "/romannumeral-calculator.html"
+    },
+    {
+      "source": "/circlecalc-calculator",
+      "destination": "/circlecalc-calculator.html"
+    },
+    {
+      "source": "/typing-speed-calculator",
+      "destination": "/typing-speed-calculator.html"
+    },
+    {
+      "source": "/ohm-advanced-calculator",
+      "destination": "/ohm-advanced-calculator.html"
+    },
+    {
+      "source": "/chemmolar-calculator",
+      "destination": "/chemmolar-calculator.html"
+    },
+    {
+      "source": "/kinematiccalc-calculator",
+      "destination": "/kinematiccalc-calculator.html"
+    },
+    {
+      "source": "/watertank-calculator",
+      "destination": "/watertank-calculator.html"
+    },
+    {
+      "source": "/finance-calculators",
+      "destination": "/finance-calculators.html"
+    },
+    {
+      "source": "/health-calculators",
+      "destination": "/health-calculators.html"
+    },
+    {
+      "source": "/math-calculators",
+      "destination": "/math-calculators.html"
+    },
+    {
+      "source": "/everyday-calculators",
+      "destination": "/everyday-calculators.html"
+    },
+    {
+      "source": "/education-calculators",
+      "destination": "/education-calculators.html"
+    },
+    {
+      "source": "/engineering-calculators",
+      "destination": "/engineering-calculators.html"
+    },
+    {
+      "source": "/construction-calculators",
+      "destination": "/construction-calculators.html"
+    },
+    {
+      "source": "/unit-calculators",
+      "destination": "/unit-calculators.html"
+    },
+    {
+      "source": "/datetime-calculators",
+      "destination": "/datetime-calculators.html"
+    },
+    {
+      "source": "/science-calculators",
+      "destination": "/science-calculators.html"
+    },
+    {
+      "source": "/blog/emi-calculator-guide-india-2026",
+      "destination": "/blog/emi-calculator-guide-india-2026.html"
+    },
+    {
+      "source": "/blog/sip-calculator-mutual-fund-investment-2026",
+      "destination": "/blog/sip-calculator-mutual-fund-investment-2026.html"
+    },
+    {
+      "source": "/blog/gst-calculator-cgst-sgst-igst-guide-2026",
+      "destination": "/blog/gst-calculator-cgst-sgst-igst-guide-2026.html"
+    },
+    {
+      "source": "/blog/bmi-calculator-chart-india-2026",
+      "destination": "/blog/bmi-calculator-chart-india-2026.html"
+    },
+    {
+      "source": "/blog/old-vs-new-tax-regime-comparison-fy-2025-26",
+      "destination": "/blog/old-vs-new-tax-regime-comparison-fy-2025-26.html"
+    },
+    {
+      "source": "/blog/cgpa-to-percentage-converter-formula-2026",
+      "destination": "/blog/cgpa-to-percentage-converter-formula-2026.html"
+    },
+    {
+      "source": "/blog/fixed-deposit-calculator-best-fd-rates-2026",
+      "destination": "/blog/fixed-deposit-calculator-best-fd-rates-2026.html"
+    },
+    {
+      "source": "/blog/ppf-calculator-tax-free-returns-maturity-2026",
+      "destination": "/blog/ppf-calculator-tax-free-returns-maturity-2026.html"
+    },
+    {
+      "source": "/blog/compound-interest-calculator-rule-of-72",
+      "destination": "/blog/compound-interest-calculator-rule-of-72.html"
+    },
+    {
+      "source": "/blog/home-loan-emi-calculator-eligibility-tax-benefits-2026",
+      "destination": "/blog/home-loan-emi-calculator-eligibility-tax-benefits-2026.html"
+    },
+    {
+      "source": "/blog/inflation-calculator-india-purchasing-power-2026",
+      "destination": "/blog/inflation-calculator-india-purchasing-power-2026.html"
+    },
+    {
+      "source": "/blog/roi-cagr-calculator-investment-returns-2026",
+      "destination": "/blog/roi-cagr-calculator-investment-returns-2026.html"
+    },
+    {
+      "source": "/blog/tdee-calculator-daily-calorie-needs-2026",
+      "destination": "/blog/tdee-calculator-daily-calorie-needs-2026.html"
+    },
+    {
+      "source": "/blog/bmr-calculator-basal-metabolic-rate-2026",
+      "destination": "/blog/bmr-calculator-basal-metabolic-rate-2026.html"
+    },
+    {
+      "source": "/blog/sleep-calculator-optimal-bedtime-cycles-2026",
+      "destination": "/blog/sleep-calculator-optimal-bedtime-cycles-2026.html"
+    },
+    {
+      "source": "/blog/water-intake-calculator-daily-hydration-guide-2026",
+      "destination": "/blog/water-intake-calculator-daily-hydration-guide-2026.html"
+    },
+    {
+      "source": "/blog/calories-burned-calculator-exercise-fat-loss-2026",
+      "destination": "/blog/calories-burned-calculator-exercise-fat-loss-2026.html"
+    },
+    {
+      "source": "/blog/macro-calculator-protein-carbs-fat-2026",
+      "destination": "/blog/macro-calculator-protein-carbs-fat-2026.html"
+    },
+    {
+      "source": "/blog/percentage-calculator-tricks-formulas-examples",
+      "destination": "/blog/percentage-calculator-tricks-formulas-examples.html"
+    },
+    {
+      "source": "/blog/age-calculator-exact-years-months-days-2026",
+      "destination": "/blog/age-calculator-exact-years-months-days-2026.html"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!assets|manifest\\.json|robots\\.txt|sitemap\\.xml|sw\\.js|og-image\\.png|icon-192\\.png|icon-512\\.png|calclabz-logo\\.png).*)",
+      "destination": "/404.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/js/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/assets/css/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/og-image.png",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/sw.js",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options",  "value": "nosniff" },
-        { "key": "X-Frame-Options",          "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection",         "value": "1; mode=block" },
-        { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "Permissions-Policy",        "value": "camera=(), microphone=(), geolocation=(), usb=(), payment=(), interest-cohort=()" },
-        { "key": "Content-Security-Policy",   "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self';" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), usb=(), payment=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self';"
+        }
       ]
     }
   ]

@@ -53,11 +53,11 @@
     <meta name="application-name" content="Calc Labz">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- ═══ CANONICAL & MANIFEST ═══ -->
-    <!-- TODO: Replace with your actual domain -->
+    <!-- ═══ CANONICAL & HREFLANG ═══ -->
     <link rel="canonical" href="https://calclabz.com/">
     <link rel="alternate" hreflang="en-IN" href="https://calclabz.com/">
     <link rel="alternate" hreflang="en" href="https://calclabz.com/">
+    <link rel="alternate" hreflang="x-default" href="https://calclabz.com/">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
@@ -163,6 +163,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   .stats-row{grid-template-columns:repeat(4,1fr)}
   #mainContent{padding:20px 24px}
 }
+/* Sidebar category links for crawlers */
+.seo-cat-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px}
+.seo-cat-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--rsm);color:var(--txt1);font-size:.85rem;text-decoration:none;transition:var(--transition)}
+.seo-cat-nav a:hover{background:var(--bg2);color:var(--p)}
+.seo-cat-nav a i{width:18px;text-align:center;font-size:.85rem;color:var(--txt2)}
     </style>
 
     <!-- ═══ JSON-LD: SoftwareApplication ═══ -->
@@ -243,12 +248,26 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="s-overlay" id="sOverlay"></div>
     <aside class="sidebar" id="sidebar" aria-label="Calculator categories navigation">
         <div class="qbtns">
-            <button class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
+            <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
+            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
         </div>
-        <div id="catList"></div>
+        <div id="catList">
+            <!-- Static category links for crawlers — JS replaces this at runtime -->
+            <nav class="seo-cat-nav" aria-label="Calculator categories">
+                <a href="/finance-calculators"><i class="fas fa-coins" aria-hidden="true"></i> Finance</a>
+                <a href="/health-calculators"><i class="fas fa-heartbeat" aria-hidden="true"></i> Health &amp; Fitness</a>
+                <a href="/math-calculators"><i class="fas fa-calculator" aria-hidden="true"></i> Math</a>
+                <a href="/everyday-calculators"><i class="fas fa-home" aria-hidden="true"></i> Everyday</a>
+                <a href="/education-calculators"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Education</a>
+                <a href="/engineering-calculators"><i class="fas fa-cog" aria-hidden="true"></i> Engineering</a>
+                <a href="/construction-calculators"><i class="fas fa-hard-hat" aria-hidden="true"></i> Construction</a>
+                <a href="/unit-calculators"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Unit Conversion</a>
+                <a href="/datetime-calculators"><i class="fas fa-clock" aria-hidden="true"></i> Date &amp; Time</a>
+                <a href="/science-calculators"><i class="fas fa-flask" aria-hidden="true"></i> Science</a>
+            </nav>
+        </div>
     </aside>
 
     <!-- ═══ MAIN CONTENT ═══ -->
@@ -320,29 +339,29 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <div class="footer-col">
                 <h4><i class="fas fa-compass" aria-hidden="true"></i>Quick Links</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="showHome"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
-                    <button class="footer-link" data-action="showDashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-                    <button class="footer-link" data-action="showFavorites"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
-                    <button class="footer-link" data-action="showBlogSection"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides &amp; Blog</button>
-                    <button class="footer-link" data-action="toggleShortcutModal"><i class="fas fa-keyboard" aria-hidden="true"></i>Keyboard Shortcuts</button>
+                    <a href="/" class="footer-link"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
+                    <a href="/finance-calculators" class="footer-link"><i class="fas fa-coins" aria-hidden="true"></i>Finance Calculators</a>
+                    <a href="/health-calculators" class="footer-link"><i class="fas fa-heartbeat" aria-hidden="true"></i>Health Calculators</a>
+                    <a href="/math-calculators" class="footer-link"><i class="fas fa-calculator" aria-hidden="true"></i>Math Calculators</a>
+                    <a href="/education-calculators" class="footer-link"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education Calculators</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-fire" aria-hidden="true"></i>Popular Calculators</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="emi"><i class="fas fa-university" aria-hidden="true"></i>Loan EMI Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="sip"><i class="fas fa-seedling" aria-hidden="true"></i>SIP Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="finance" data-id="gst"><i class="fas fa-receipt" aria-hidden="true"></i>GST Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="health" data-id="bmi"><i class="fas fa-heartbeat" aria-hidden="true"></i>BMI Calculator</button>
-                    <button class="footer-link" data-action="openCalc" data-cat="everyday" data-id="tip"><i class="fas fa-coins" aria-hidden="true"></i>Tip Calculator</button>
+                    <a href="/emi-calculator" class="footer-link"><i class="fas fa-university" aria-hidden="true"></i>Loan EMI Calculator</a>
+                    <a href="/sip-calculator" class="footer-link"><i class="fas fa-seedling" aria-hidden="true"></i>SIP Calculator</a>
+                    <a href="/gst-calculator" class="footer-link"><i class="fas fa-receipt" aria-hidden="true"></i>GST Calculator</a>
+                    <a href="/bmi-calculator" class="footer-link"><i class="fas fa-heartbeat" aria-hidden="true"></i>BMI Calculator</a>
+                    <a href="/incometax-calculator" class="footer-link"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>Income Tax Calculator</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
-                    <button class="footer-link" data-action="showAboutPage"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</button>
-                    <button class="footer-link" data-action="showPrivacyPage"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</button>
-                    <button class="footer-link" data-action="showTermsPage"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</button>
+                    <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
+                    <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
                     <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
                 </div>
             </div>
