@@ -1,5 +1,5 @@
 /* Calc Labz Service Worker — Stale-While-Revalidate (P6) */
-const CACHE = 'calclabz-v13';
+const CACHE = 'calclabz-v14';
 const ASSETS = [
     './',
     'index.html',
@@ -8,6 +8,8 @@ const ASSETS = [
     'assets/css/main.css',
     // P1: Core stubs (100 KB — replaces monolithic 333 KB calculators.js)
     'assets/js/calculators-core.js',
+    'assets/js/blog-posts.js',
+    'assets/js/faq-data.js',
     'assets/js/formulas.js',
     'assets/js/app.js',
     // P1: Lazy-loaded category files (pre-cached for offline-first)
