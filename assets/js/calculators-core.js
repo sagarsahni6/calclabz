@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    Calc Labz — calculators-core.js
    CORE FILE: Calculator stubs (metadata only, no calc logic)
    Size: ~40 KB (was 333 KB monolithic)
@@ -432,11 +432,12 @@ nps: {
     },
 
 gratuity: {
-        name:"Gratuity Calculator", desc:"Employee gratuity as per Indian law",
+        name:"Gratuity Calculator", desc:"Employee gratuity & leave encashment as per Indian law",
         icon:"fa-handshake", cat:"finance",
         inputs:[
             {id:"salary",label:"Last Drawn Basic Salary",default:50000,prefix:"₹"},
-            {id:"years",label:"Years of Service",default:10}
+            {id:"years",label:"Years of Service",default:10},
+            {id:"leaveBalance",label:"Leave Balance (for encashment)",default:30,suffix:"days"}
         ],
         calc: null  // lazy-loaded
     },
@@ -2226,6 +2227,939 @@ scholarship: {
         ],
         calc: null  // lazy-loaded
     },
+
+pomodoro: {
+    name:"Pomodoro Study Planner", desc:"Plan focused study sessions with work/break intervals",
+    icon:"fa-stopwatch", cat:"education", badge:"New",
+    inputs:[
+        {id:"studyHours",label:"Total Study Time Available",default:4,suffix:"hours"},
+        {id:"focusLen",label:"Focus Block Length",default:25,suffix:"min"},
+        {id:"shortBreak",label:"Short Break",default:5,suffix:"min"},
+        {id:"longBreak",label:"Long Break (after 4 blocks)",default:15,suffix:"min"}
+    ],
+    calc: null,
+    tips:["Classic pomodoro: 25min focus + 5min break","After 4 pomodoros, take a 15-30 min break","Remove ALL distractions during focus blocks"]
+},
+
+gpaconverter: {
+    name:"GPA / CGPA Converter", desc:"Convert GPA between US, Indian, UK and German scales",
+    icon:"fa-right-left", cat:"education", badge:"New",
+    inputs:[
+        {id:"gpaValue",label:"Your GPA / CGPA",default:8.5},
+        {id:"fromScale_gpa",label:"Source Scale",type:"select",options:["US 4.0","India 10.0","UK %","Germany 1-5","Percentage"]}
+    ],
+    calc: null,
+    tips:["India 10.0 CGPA × 9.5 ≈ Percentage","US 4.0 GPA: 3.7+ is excellent","Conversions are approximate — universities may use their own formulas"]
+},
+
+readingtime: {
+    name:"Reading Time Calculator", desc:"Estimate time to finish a book based on your reading speed",
+    icon:"fa-book-open-reader", cat:"education",
+    inputs:[
+        {id:"totalPages",label:"Total Pages",default:350},
+        {id:"pagesRead",label:"Pages Already Read",default:50},
+        {id:"wordsPerPage",label:"Words per Page (avg)",default:250},
+        {id:"readingSpeed",label:"Reading Speed",type:"select",options:["Slow Reader (150 wpm)","Average (200 wpm)","Fast Reader (300 wpm)","Speed Reader (450 wpm)"]},
+        {id:"pagesPerDay",label:"Pages You Read per Day",default:30}
+    ],
+    calc: null,
+    tips:["Average reading speed is 200-250 WPM","Fiction typically has ~250 words/page","Textbooks: expect 150-200 words/page with slower reading"]
+},
+
+typingtest: {
+    name:"Typing Speed Analyzer", desc:"Calculate net WPM, accuracy and skill level from test results",
+    icon:"fa-keyboard", cat:"education",
+    inputs:[
+        {id:"grossWPM",label:"Gross Words per Minute",default:55},
+        {id:"errors",label:"Total Errors",default:3},
+        {id:"testDuration",label:"Test Duration",default:1,suffix:"min"}
+    ],
+    calc: null,
+    tips:["40 WPM is minimum for office jobs","60+ WPM is considered proficient","Focus on accuracy first — speed follows"]
+},
+
+spellingbee: {
+    name:"Spelling Bee Score Tracker", desc:"Track spelling accuracy, speed and skill level",
+    icon:"fa-spell-check", cat:"education",
+    inputs:[
+        {id:"correct_sb",label:"Words Spelled Correctly",default:18},
+        {id:"totalWords_sb",label:"Total Words Attempted",default:20},
+        {id:"totalTime_sb",label:"Total Time Taken",default:60,suffix:"seconds"}
+    ],
+    calc: null,
+    tips:["Practice with commonly misspelled words","Break words into syllables for better accuracy","Speed comes with practice — focus on accuracy first"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Finance
+// ══════════════════════════════════════════════════════
+
+fire: {
+    name:"FIRE Calculator", desc:"Financial Independence, Retire Early — years to freedom",
+    icon:"fa-fire", cat:"finance", badge:"New",
+    inputs:[
+        {id:"annualExpense",label:"Annual Living Expenses",default:600000,prefix:"₹"},
+        {id:"currentSavings",label:"Current Portfolio Value",default:500000,prefix:"₹"},
+        {id:"annualSaving",label:"Annual Savings",default:400000,prefix:"₹"},
+        {id:"returnRate",label:"Expected Return",default:8,suffix:"% p.a."},
+        {id:"withdrawalRate",label:"Safe Withdrawal Rate",default:4,suffix:"%"}
+    ],
+    calc: null,
+    tips:["FIRE Number = Annual Expenses ÷ Withdrawal Rate","The 4% rule is based on the Trinity Study","Coast FIRE = stop saving once portfolio compounds to your target"]
+},
+
+debtavalanche: {
+    name:"Debt Snowball vs Avalanche", desc:"Compare payoff strategies — save interest or win quick",
+    icon:"fa-money-bill-wave", cat:"finance", badge:"New",
+    inputs:[
+        {id:"debt1bal",label:"Debt 1 Balance",default:50000,prefix:"₹"},
+        {id:"debt1rate",label:"Debt 1 Rate",default:18,suffix:"%"},
+        {id:"debt1min",label:"Debt 1 Min Payment",default:2000,prefix:"₹"},
+        {id:"debt2bal",label:"Debt 2 Balance",default:200000,prefix:"₹"},
+        {id:"debt2rate",label:"Debt 2 Rate",default:12,suffix:"%"},
+        {id:"debt2min",label:"Debt 2 Min Payment",default:5000,prefix:"₹"},
+        {id:"debt3bal",label:"Debt 3 Balance (0=skip)",default:0,prefix:"₹"},
+        {id:"debt3rate",label:"Debt 3 Rate",default:9,suffix:"%"},
+        {id:"debt3min",label:"Debt 3 Min Payment",default:0,prefix:"₹"},
+        {id:"extraPay",label:"Extra Monthly Payment",default:3000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Avalanche = pay highest-rate first (saves most interest)","Snowball = pay smallest-balance first (quick wins for motivation)"]
+},
+
+emergencyfund: {
+    name:"Emergency Fund Calculator", desc:"How much you need in your rainy-day fund",
+    icon:"fa-shield-halved", cat:"finance", badge:"New",
+    inputs:[
+        {id:"monthlyExpense",label:"Monthly Living Expenses",default:40000,prefix:"₹"},
+        {id:"monthsCover",label:"Months of Cover",default:6,suffix:"months"},
+        {id:"currentFund",label:"Current Emergency Fund",default:50000,prefix:"₹"},
+        {id:"monthlySave",label:"Monthly Saving Toward Fund",default:10000,prefix:"₹"},
+        {id:"dependents",label:"Number of Dependents",default:2}
+    ],
+    calc: null,
+    tips:["Single earner families need 6-9 months cover","Keep emergency fund in liquid/savings — not equity","Adjust upward for freelancers and contract workers"]
+},
+
+rentvsbuy: {
+    name:"Rent vs Buy Home Calculator", desc:"Should you rent or buy? Total cost comparison over time",
+    icon:"fa-house-chimney", cat:"finance", badge:"New",
+    inputs:[
+        {id:"homePrice",label:"Home Purchase Price",default:5000000,prefix:"₹"},
+        {id:"downPayment",label:"Down Payment",default:1000000,prefix:"₹"},
+        {id:"loanRate",label:"Home Loan Rate",default:8.5,suffix:"%"},
+        {id:"loanTenure",label:"Loan Tenure",default:20,suffix:"years"},
+        {id:"monthlyRent",label:"Current Monthly Rent",default:15000,prefix:"₹"},
+        {id:"rentIncrease",label:"Annual Rent Increase",default:5,suffix:"%"},
+        {id:"propertyAppreciation",label:"Property Appreciation",default:5,suffix:"% p.a."},
+        {id:"maintenance",label:"Annual Maintenance",default:12000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Consider stamp duty and registration (5-8% of price)","Rent-to-EMI ratio below 0.5 favors renting","Factor in opportunity cost of the down payment"]
+},
+
+carleasevsbuy: {
+    name:"Car Lease vs Buy Calculator", desc:"Total cost of leasing vs buying a vehicle",
+    icon:"fa-car-side", cat:"finance",
+    inputs:[
+        {id:"carPrice",label:"Car On-Road Price",default:1000000,prefix:"₹"},
+        {id:"downPay",label:"Down Payment (if buying)",default:200000,prefix:"₹"},
+        {id:"loanRateCar",label:"Car Loan Rate",default:9,suffix:"%"},
+        {id:"loanYears",label:"Loan Tenure",default:5,suffix:"years"},
+        {id:"monthlyLease",label:"Monthly Lease Payment",default:18000,prefix:"₹"},
+        {id:"leaseYears",label:"Lease Period",default:3,suffix:"years"},
+        {id:"resalePercent",label:"Resale Value After Loan Period",default:40,suffix:"%"},
+        {id:"annualInsurance",label:"Annual Insurance (if buying)",default:15000,prefix:"₹"}
+    ],
+    calc: null
+},
+
+homedownpayment: {
+    name:"Home Down Payment Planner", desc:"Monthly savings needed to reach your down payment goal",
+    icon:"fa-piggy-bank", cat:"finance",
+    inputs:[
+        {id:"targetHome",label:"Target Home Price",default:5000000,prefix:"₹"},
+        {id:"downPct",label:"Down Payment %",default:20,suffix:"%"},
+        {id:"currentSaved",label:"Currently Saved",default:100000,prefix:"₹"},
+        {id:"timelineYears",label:"Target Timeline",default:3,suffix:"years"},
+        {id:"savingsReturn",label:"Savings Return Rate",default:6,suffix:"% p.a."}
+    ],
+    calc: null
+},
+
+loancompare: {
+    name:"Loan Comparison Calculator", desc:"Compare up to 3 loan offers side-by-side",
+    icon:"fa-code-compare", cat:"finance",
+    inputs:[
+        {id:"amount_lc",label:"Loan Amount",default:2000000,prefix:"₹"},
+        {id:"rate1",label:"Bank 1 Rate",default:8.5,suffix:"%"},
+        {id:"tenure1",label:"Bank 1 Tenure",default:240,suffix:"months"},
+        {id:"fee1",label:"Bank 1 Processing Fee",default:10000,prefix:"₹"},
+        {id:"rate2",label:"Bank 2 Rate",default:9.0,suffix:"%"},
+        {id:"tenure2",label:"Bank 2 Tenure",default:240,suffix:"months"},
+        {id:"fee2",label:"Bank 2 Processing Fee",default:5000,prefix:"₹"},
+        {id:"rate3",label:"Bank 3 Rate",default:8.75,suffix:"%"},
+        {id:"tenure3",label:"Bank 3 Tenure",default:180,suffix:"months"},
+        {id:"fee3",label:"Bank 3 Processing Fee",default:15000,prefix:"₹"}
+    ],
+    calc: null
+},
+
+refinance: {
+    name:"Refinance Savings Calculator", desc:"Should you refinance? Compare old vs new loan terms",
+    icon:"fa-rotate", cat:"finance",
+    inputs:[
+        {id:"outstandingBal",label:"Outstanding Balance",default:2500000,prefix:"₹"},
+        {id:"currentRate_r",label:"Current Interest Rate",default:10,suffix:"%"},
+        {id:"remainingMonths",label:"Remaining Months",default:180,suffix:"months"},
+        {id:"newRate_r",label:"New Offered Rate",default:8.5,suffix:"%"},
+        {id:"newTenure_r",label:"New Tenure",default:180,suffix:"months"},
+        {id:"closingCost",label:"Refinance Costs (fees + charges)",default:25000,prefix:"₹"}
+    ],
+    calc: null
+},
+
+creditutil: {
+    name:"Credit Utilization Calculator", desc:"Credit score impact of your card usage",
+    icon:"fa-gauge-high", cat:"finance",
+    inputs:[
+        {id:"card1Limit",label:"Card 1 Credit Limit",default:200000,prefix:"₹"},
+        {id:"card1Used",label:"Card 1 Current Balance",default:40000,prefix:"₹"},
+        {id:"card2Limit",label:"Card 2 Limit (0=skip)",default:100000,prefix:"₹"},
+        {id:"card2Used",label:"Card 2 Current Balance",default:10000,prefix:"₹"},
+        {id:"card3Limit",label:"Card 3 Limit (0=skip)",default:0,prefix:"₹"},
+        {id:"card3Used",label:"Card 3 Current Balance",default:0,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Keep utilization below 30% for good credit score","Below 10% is considered excellent","High utilization even if paid on time hurts your score"]
+},
+
+insuranceneed: {
+    name:"Insurance Need Calculator", desc:"How much life insurance cover do you actually need?",
+    icon:"fa-umbrella", cat:"finance", badge:"New",
+    inputs:[
+        {id:"annualIncome_i",label:"Annual Income",default:1000000,prefix:"₹"},
+        {id:"yearsToReplace",label:"Income Years to Replace",default:15,suffix:"years"},
+        {id:"outstandingLoans",label:"Outstanding Loans",default:2000000,prefix:"₹"},
+        {id:"childrenExpense",label:"Children Education Fund",default:1000000,prefix:"₹"},
+        {id:"existingCover",label:"Existing Life Cover",default:500000,prefix:"₹"},
+        {id:"existingSavings_i",label:"Existing Savings & Investments",default:300000,prefix:"₹"},
+        {id:"inflationAdj",label:"Inflation",default:6,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Thumb rule: 10-15× your annual income","Term insurance is cheapest for pure life cover","Review coverage every 3-5 years"]
+},
+
+npvirr: {
+    name:"NPV / IRR Calculator", desc:"Net Present Value and Internal Rate of Return for projects",
+    icon:"fa-chart-gantt", cat:"finance",
+    inputs:[
+        {id:"initialInvest",label:"Initial Investment",default:500000,prefix:"₹"},
+        {id:"cf1",label:"Year 1 Cash Flow",default:100000,prefix:"₹"},
+        {id:"cf2",label:"Year 2 Cash Flow",default:150000,prefix:"₹"},
+        {id:"cf3",label:"Year 3 Cash Flow",default:200000,prefix:"₹"},
+        {id:"cf4",label:"Year 4 Cash Flow",default:200000,prefix:"₹"},
+        {id:"cf5",label:"Year 5 Cash Flow",default:250000,prefix:"₹"},
+        {id:"discountRate",label:"Discount Rate / WACC",default:10,suffix:"%"}
+    ],
+    calc: null,
+    tips:["NPV > 0 means the project creates value","IRR > discount rate means the project is worthwhile","Use WACC as the discount rate for business decisions"]
+},
+
+bondyield: {
+    name:"Bond Yield / YTM Calculator", desc:"Yield to maturity, current yield, and holding return",
+    icon:"fa-file-invoice-dollar", cat:"finance",
+    inputs:[
+        {id:"faceValue",label:"Face Value (Par)",default:1000,prefix:"₹"},
+        {id:"couponRate",label:"Coupon Rate",default:7.5,suffix:"%"},
+        {id:"marketPrice",label:"Market Price",default:950,prefix:"₹"},
+        {id:"yearsToMaturity",label:"Years to Maturity",default:10,suffix:"years"},
+        {id:"frequency",label:"Coupon Frequency",type:"select",options:["Annual","Semi-Annual","Quarterly"]}
+    ],
+    calc: null,
+    tips:["YTM > coupon rate when bond trades at discount","Current yield = annual coupon ÷ market price","Sovereign bonds (G-Secs) are considered risk-free in India"]
+},
+
+optionprofit: {
+    name:"Option Profit Calculator", desc:"Call & put option P&L with break-even and max loss",
+    icon:"fa-arrow-up-right-dots", cat:"finance",
+    inputs:[
+        {id:"optType",label:"Option Type",type:"select",options:["Buy Call","Buy Put","Sell Call","Sell Put"]},
+        {id:"spotPrice",label:"Current Spot Price",default:20000,prefix:"₹"},
+        {id:"strikePrice",label:"Strike Price",default:20500,prefix:"₹"},
+        {id:"premium",label:"Premium Paid/Received",default:200,prefix:"₹"},
+        {id:"lotSize",label:"Lot Size",default:50,suffix:"shares"},
+        {id:"exitPrice",label:"Exit Spot Price",default:21000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Max loss for option buyer = premium paid","Option sellers have unlimited risk potential","Break-even = Strike ± Premium (call +, put -)"]
+},
+
+forexpip: {
+    name:"Forex Pip / Lot Size Calculator", desc:"Calculate pip value and position size for forex trading",
+    icon:"fa-money-bill-trend-up", cat:"finance",
+    inputs:[
+        {id:"pair",label:"Currency Pair",type:"select",options:["USD/INR","EUR/USD","GBP/USD","USD/JPY","EUR/INR"]},
+        {id:"accountBal",label:"Account Balance",default:100000,prefix:"₹"},
+        {id:"riskPct",label:"Risk per Trade",default:2,suffix:"%"},
+        {id:"stopLossPips",label:"Stop Loss Distance",default:50,suffix:"pips"},
+        {id:"pipValue_override",label:"Pip Value Override (0=auto)",default:0,prefix:"₹"}
+    ],
+    calc: null
+},
+
+portfoliorebalance: {
+    name:"Portfolio Rebalancing Calculator", desc:"How much to buy/sell to match your target allocation",
+    icon:"fa-scale-balanced", cat:"finance",
+    inputs:[
+        {id:"totalPortfolio",label:"Total Portfolio Value",default:1000000,prefix:"₹"},
+        {id:"equityCurrent",label:"Current Equity %",default:70,suffix:"%"},
+        {id:"debtCurrent",label:"Current Debt %",default:20,suffix:"%"},
+        {id:"goldCurrent",label:"Current Gold %",default:10,suffix:"%"},
+        {id:"equityTarget",label:"Target Equity %",default:60,suffix:"%"},
+        {id:"debtTarget",label:"Target Debt %",default:30,suffix:"%"},
+        {id:"goldTarget",label:"Target Gold %",default:10,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Rebalance annually or when asset drifts >5% from target","Rebalancing enforces 'buy low, sell high'","Tax implications: rebalancing may trigger capital gains"]
+},
+
+assetallocation: {
+    name:"Asset Allocation Calculator", desc:"Suggested allocation based on age, risk profile and goals",
+    icon:"fa-chart-pie", cat:"finance",
+    inputs:[
+        {id:"ageAlloc",label:"Your Age",default:30,suffix:"years"},
+        {id:"riskProfile",label:"Risk Profile",type:"select",options:["Conservative","Moderate","Aggressive","Very Aggressive"]},
+        {id:"targetCorpus",label:"Target Corpus",default:10000000,prefix:"₹"},
+        {id:"horizon",label:"Investment Horizon",default:20,suffix:"years"},
+        {id:"monthlyInvest_aa",label:"Monthly Investment",default:20000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Classic rule: Equity % = 100 – Age","Aggressive investors can go 80%+ equity for long horizons","Always diversify across asset classes and geographies"]
+},
+
+montecarlo: {
+    name:"Monte Carlo Retirement Simulator", desc:"Probability of your retirement plan succeeding",
+    icon:"fa-dice-d20", cat:"finance", badge:"New",
+    inputs:[
+        {id:"corpus_mc",label:"Retirement Corpus",default:10000000,prefix:"₹"},
+        {id:"annualWithdrawal_mc",label:"Annual Withdrawal",default:500000,prefix:"₹"},
+        {id:"yearsRetirement",label:"Years in Retirement",default:30,suffix:"years"},
+        {id:"avgReturn_mc",label:"Expected Avg Return",default:8,suffix:"%"},
+        {id:"stdDev_mc",label:"Return Std Deviation",default:15,suffix:"%"},
+        {id:"simulations",label:"Simulations",type:"select",options:["1000","5000","10000"]}
+    ],
+    calc: null,
+    tips:["90%+ success rate is generally considered safe","Sequence-of-returns risk matters most in early retirement","Consider reducing withdrawals in down markets"]
+},
+
+inflationgoal: {
+    name:"Inflation-Adjusted Goal Planner", desc:"Future cost of your goal adjusted for inflation + SIP needed",
+    icon:"fa-bullseye", cat:"finance",
+    inputs:[
+        {id:"goalAmount_ig",label:"Goal Amount (today's value)",default:2000000,prefix:"₹"},
+        {id:"yearsToGoal",label:"Years to Goal",default:10,suffix:"years"},
+        {id:"inflationRate_ig",label:"Expected Inflation",default:6,suffix:"%"},
+        {id:"returnRate_ig",label:"Investment Return",default:12,suffix:"% p.a."},
+        {id:"currentSavings_ig",label:"Already Saved",default:100000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Education inflation in India is 10-12% p.a.","Medical inflation is 8-10% p.a.","Always plan goals in inflation-adjusted terms"]
+},
+
+businessloan: {
+    name:"Business Loan EMI + DSCR", desc:"Business loan EMI and Debt Service Coverage Ratio",
+    icon:"fa-briefcase", cat:"finance",
+    inputs:[
+        {id:"loanAmt_bl",label:"Loan Amount",default:2000000,prefix:"₹"},
+        {id:"rate_bl",label:"Interest Rate",default:12,suffix:"% p.a."},
+        {id:"tenure_bl",label:"Tenure",default:60,suffix:"months"},
+        {id:"annualRevenue",label:"Annual Business Revenue",default:5000000,prefix:"₹"},
+        {id:"operatingExpenses",label:"Annual Operating Expenses",default:3500000,prefix:"₹"},
+        {id:"otherDebt",label:"Other Annual Debt Payments",default:0,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["DSCR > 1.25 is generally required by lenders","DSCR = Net Operating Income / Total Debt Service","Include all existing EMIs in total debt service"]
+},
+
+gstinvoice: {
+    name:"GST Invoice + Profit Margin", desc:"Generate invoice breakdown with profit margin analysis",
+    icon:"fa-file-invoice", cat:"finance",
+    inputs:[
+        {id:"costPrice_gi",label:"Cost / Purchase Price",default:500,prefix:"₹"},
+        {id:"sellingPrice_gi",label:"Selling Price (excl. GST)",default:800,prefix:"₹"},
+        {id:"gstRate_gi",label:"GST Rate",type:"select",options:["0%","3%","5%","12%","18%","28%"]},
+        {id:"quantity_gi",label:"Quantity",default:10},
+        {id:"discount_gi",label:"Discount",default:0,suffix:"%"},
+        {id:"supplyType",label:"Supply Type",type:"select",options:["Intra-State (CGST+SGST)","Inter-State (IGST)"]}
+    ],
+    calc: null,
+    tips:["GST is applicable on selling price after discount","For intra-state: GST split equally into CGST + SGST","Invoice must show HSN/SAC code for GST compliance"]
+},
+
+esoptax: {
+    name:"ESOP Tax Calculator", desc:"Tax on ESOP exercise and sale — perquisite vs capital gains",
+    icon:"fa-chart-line", cat:"finance", badge:"New",
+    inputs:[
+        {id:"grantPrice",label:"Grant / Exercise Price",default:100,prefix:"₹"},
+        {id:"fmvOnExercise",label:"FMV on Exercise Date",default:500,prefix:"₹"},
+        {id:"salePrice_esop",label:"Sale Price",default:800,prefix:"₹"},
+        {id:"sharesQty",label:"Number of Shares",default:1000},
+        {id:"holdingMonths",label:"Holding Period After Exercise",default:18,suffix:"months"},
+        {id:"taxSlab",label:"Income Tax Slab",type:"select",options:["30% (>15L)","20% (10-15L)","10% (5-10L)","5% (2.5-5L)"]}
+    ],
+    calc: null,
+    tips:["Perquisite tax is on (FMV - Exercise Price) at your slab rate","Capital gains tax is on (Sale Price - FMV) at LTCG/STCG rates","Listed equity LTCG >₹1.25L taxed at 12.5%"]
+},
+
+freelancetax: {
+    name:"Freelance Tax + GST Calculator", desc:"Estimated income tax and GST for freelancers / consultants",
+    icon:"fa-laptop-code", cat:"finance",
+    inputs:[
+        {id:"annualRevenue_ft",label:"Annual Gross Revenue",default:1500000,prefix:"₹"},
+        {id:"expenses_ft",label:"Business Expenses",default:300000,prefix:"₹"},
+        {id:"sec80c_ft",label:"80C Investments",default:150000,prefix:"₹"},
+        {id:"healthInsurance_ft",label:"Health Insurance (80D)",default:25000,prefix:"₹"},
+        {id:"regime_ft",label:"Tax Regime",type:"select",options:["New Regime","Old Regime (44ADA presumptive)"]},
+        {id:"gstRegistered",label:"GST Registered?",type:"select",options:["Yes (charge 18% GST)","No (below ₹20L threshold)"]}
+    ],
+    calc: null,
+    tips:["44ADA: 50% of gross receipts deemed profit (for professionals)","GST registration mandatory above ₹20L turnover","Keep receipts for all business expenses"]
+},
+
+tcsremittance: {
+    name:"TCS on Foreign Remittance", desc:"Tax Collected at Source on LRS payments abroad",
+    icon:"fa-plane-departure", cat:"finance",
+    inputs:[
+        {id:"remittanceAmt",label:"Remittance Amount",default:1000000,prefix:"₹"},
+        {id:"purpose",label:"Purpose",type:"select",options:["Foreign Education (loan)","Foreign Education (self)","Medical Treatment","Tour Package","Other (general LRS)"]},
+        {id:"totalLRS",label:"Total LRS Used This FY",default:0,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["TCS on LRS above ₹7L: 20% (general), 5% (education/medical)","Education funded by loan: 0.5% TCS above ₹7L","TCS is adjustable against your income tax liability"]
+},
+
+sec80c: {
+    name:"Section 80C Optimizer", desc:"Maximize your ₹1.5L tax deduction across 80C instruments",
+    icon:"fa-shield-halved", cat:"finance",
+    inputs:[
+        {id:"epf80c",label:"EPF (Employee PF)",default:21600,prefix:"₹"},
+        {id:"ppf80c",label:"PPF",default:50000,prefix:"₹"},
+        {id:"elss80c",label:"ELSS Mutual Funds",default:0,prefix:"₹"},
+        {id:"lifeInsurance80c",label:"Life Insurance Premium",default:20000,prefix:"₹"},
+        {id:"nsc80c",label:"NSC",default:0,prefix:"₹"},
+        {id:"tuitionFees80c",label:"Children Tuition Fees",default:0,prefix:"₹"},
+        {id:"homeLoanPrincipal80c",label:"Home Loan Principal",default:0,prefix:"₹"},
+        {id:"taxSlab80c",label:"Tax Slab",type:"select",options:["30%","25%","20%","15%","10%","5%"]}
+    ],
+    calc: null,
+    tips:["Max 80C deduction is ₹1,50,000","EPF contribution is automatically eligible under 80C","ELSS has shortest lock-in (3 years) among all 80C options"]
+},
+
+hravshomeloan: {
+    name:"HRA vs Home Loan Benefit", desc:"Compare tax benefits of HRA exemption vs home loan deductions",
+    icon:"fa-house-lock", cat:"finance",
+    inputs:[
+        {id:"basic_hvh",label:"Monthly Basic Salary",default:60000,prefix:"₹"},
+        {id:"hra_hvh",label:"Monthly HRA Received",default:24000,prefix:"₹"},
+        {id:"rent_hvh",label:"Monthly Rent Paid",default:20000,prefix:"₹"},
+        {id:"metro_hvh",label:"Metro City?",type:"select",options:["Yes","No"]},
+        {id:"homeLoanInt",label:"Annual Home Loan Interest",default:300000,prefix:"₹"},
+        {id:"homeLoanPrin",label:"Annual Home Loan Principal",default:100000,prefix:"₹"},
+        {id:"slab_hvh",label:"Tax Slab",type:"select",options:["30%","20%","10%","5%"]}
+    ],
+    calc: null,
+    tips:["Home loan interest: up to ₹2L deduction under Sec 24(b)","Home loan principal: up to ₹1.5L under Sec 80C","Both HRA and home loan benefits can be claimed simultaneously under certain conditions"]
+},
+
+proftax: {
+    name:"Professional Tax by State", desc:"Monthly professional tax deduction based on your state",
+    icon:"fa-map-location-dot", cat:"finance",
+    inputs:[
+        {id:"grossSalary_pt",label:"Monthly Gross Salary",default:50000,prefix:"₹"},
+        {id:"state_pt",label:"State",type:"select",options:["Maharashtra","Karnataka","West Bengal","Andhra Pradesh","Telangana","Tamil Nadu","Gujarat","Madhya Pradesh","Kerala","Bihar","Odisha","Assam","Jharkhand","Meghalaya","Tripura","Other (no PT)"]}
+    ],
+    calc: null,
+    tips:["Max professional tax is ₹2,500 per year (capped by Constitution)","PT is deductible from taxable income under Income Tax Act","Some states have slab-based PT, others charge flat rate"]
+},
+
+leaveencash: {
+    name:"Leave Encashment Calculator", desc:"Tax-exempt leave encashment on retirement or resignation",
+    icon:"fa-calendar-check", cat:"finance",
+    inputs:[
+        {id:"basicSalary_le",label:"Last Drawn Basic Salary",default:50000,prefix:"₹",suffix:"/mo"},
+        {id:"leaveBalance",label:"Leave Balance",default:180,suffix:"days"},
+        {id:"yearsOfService_le",label:"Years of Service",default:15},
+        {id:"govtEmployee",label:"Government Employee?",type:"select",options:["No (Private Sector)","Yes (Government)"]}
+    ],
+    calc: null,
+    tips:["Govt employees: entire leave encashment is tax-free","Private: exempt up to ₹25 lakh (from FY 2023-24)","Tax-free amount = minimum of 4 calculated limits"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Health / Fitness
+// ══════════════════════════════════════════════════════
+
+onerepmax: {
+    name:"One Rep Max (1RM) Calculator", desc:"Estimate your max lift from sub-maximal reps",
+    icon:"fa-dumbbell", cat:"health", badge:"New",
+    inputs:[
+        {id:"weightLifted",label:"Weight Lifted",default:80,suffix:"kg"},
+        {id:"repsPerformed",label:"Reps Performed",default:5},
+        {id:"exercise",label:"Exercise Type",type:"select",options:["Squat","Bench Press","Deadlift","Overhead Press","Barbell Row"]}
+    ],
+    calc: null,
+    tips:["Epley formula: 1RM = Weight × (1 + Reps/30)","Most accurate for 1-10 reps","Never test true 1RM without a spotter"]
+},
+
+runningpace: {
+    name:"Running Pace / Race Predictor", desc:"Pace calculator and race time predictions (5K to Marathon)",
+    icon:"fa-person-running", cat:"health", badge:"New",
+    inputs:[
+        {id:"distanceKm",label:"Distance Run",default:5,suffix:"km"},
+        {id:"timeMin",label:"Time Taken",default:25,suffix:"minutes"},
+        {id:"targetDist",label:"Predict Race Time For",type:"select",options:["5K","10K","Half Marathon (21.1K)","Marathon (42.2K)","Custom"]},
+        {id:"customDistKm",label:"Custom Distance (km)",default:15,suffix:"km"}
+    ],
+    calc: null,
+    tips:["Riegel formula: T₂ = T₁ × (D₂/D₁)^1.06","Negative splits (faster second half) = ideal race strategy","Marathon pace is typically 10-15% slower than half marathon pace"]
+},
+
+bodyrecomp: {
+    name:"Body Recomposition Planner", desc:"Simultaneous fat loss and muscle gain — calories + macros",
+    icon:"fa-person-arrow-up-from-line", cat:"health",
+    inputs:[
+        {id:"weight_br",label:"Current Weight",default:80,suffix:"kg"},
+        {id:"bodyfat_br",label:"Current Body Fat",default:22,suffix:"%"},
+        {id:"targetBf",label:"Target Body Fat",default:15,suffix:"%"},
+        {id:"activity_br",label:"Activity Level",type:"select",options:["Sedentary","Light Exercise (1-3 days)","Moderate (3-5 days)","Heavy (6-7 days)","Athlete (2× daily)"]},
+        {id:"timeframe_br",label:"Timeline",default:16,suffix:"weeks"}
+    ],
+    calc: null,
+    tips:["Eat at slight deficit (10-15% below TDEE)","Protein: 2-2.5g per kg body weight","Train with progressive overload for muscle stimulus"]
+},
+
+vo2max: {
+    name:"VO2 Max Estimator", desc:"Estimate cardiovascular fitness from run/walk data",
+    icon:"fa-lungs", cat:"health",
+    inputs:[
+        {id:"method_vo2",label:"Test Method",type:"select",options:["Cooper 12-min Run","1.5 Mile Run","Resting HR Method"]},
+        {id:"distanceCovered",label:"Distance Covered (Cooper/1.5mi)",default:2400,suffix:"meters"},
+        {id:"runTime15",label:"1.5 Mile Time (minutes, if using)",default:12,suffix:"min"},
+        {id:"restingHR",label:"Resting Heart Rate",default:65,suffix:"bpm"},
+        {id:"age_vo2",label:"Age",default:30,suffix:"years"}
+    ],
+    calc: null,
+    tips:["VO2max 40-50: Good fitness, 50-60: Excellent","Elite marathoners have VO2max of 70-85 ml/kg/min","Improve VO2max with interval training (HIIT)"]
+},
+
+leanbodymass: {
+    name:"Lean Body Mass Calculator", desc:"Calculate fat-free mass using multiple formulas",
+    icon:"fa-weight-scale", cat:"health",
+    inputs:[
+        {id:"weight_lbm",label:"Body Weight",default:75,suffix:"kg"},
+        {id:"height_lbm",label:"Height",default:175,suffix:"cm"},
+        {id:"gender_lbm",label:"Gender",type:"select",options:["Male","Female"]},
+        {id:"bodyfat_lbm",label:"Body Fat % (if known, 0=estimate)",default:0,suffix:"%"}
+    ],
+    calc: null,
+    tips:["LBM includes muscle, bone, organs, water — everything except fat","Boer formula is most accurate for general population","FFMI > 25 is near the natural limit for men"]
+},
+
+caloriegoal: {
+    name:"Calorie Intake by Goal Timeline", desc:"Daily calories needed to hit your target weight by a date",
+    icon:"fa-utensils", cat:"health",
+    inputs:[
+        {id:"currentWeight_cg",label:"Current Weight",default:85,suffix:"kg"},
+        {id:"targetWeight_cg",label:"Target Weight",default:75,suffix:"kg"},
+        {id:"weeks_cg",label:"Timeline",default:16,suffix:"weeks"},
+        {id:"height_cg",label:"Height",default:175,suffix:"cm"},
+        {id:"age_cg",label:"Age",default:30,suffix:"years"},
+        {id:"gender_cg",label:"Gender",type:"select",options:["Male","Female"]},
+        {id:"activity_cg",label:"Activity Level",type:"select",options:["Sedentary (desk job)","Light (1-3×/week)","Moderate (3-5×/week)","Active (6-7×/week)","Very Active (2×/day)"]}
+    ],
+    calc: null,
+    tips:["Safe weight loss: 0.5-1 kg per week","Never go below 1200 cal (women) or 1500 cal (men)","1 kg fat ≈ 7700 calories deficit needed"]
+},
+
+electrolyte: {
+    name:"Water + Electrolyte Calculator", desc:"Daily water and electrolyte needs based on activity and climate",
+    icon:"fa-glass-water-droplet", cat:"health",
+    inputs:[
+        {id:"weight_el",label:"Body Weight",default:70,suffix:"kg"},
+        {id:"exerciseMin",label:"Daily Exercise Duration",default:60,suffix:"minutes"},
+        {id:"climate",label:"Climate",type:"select",options:["Temperate (20-25°C)","Hot & Humid (30°C+)","Cold (below 15°C)","High Altitude"]},
+        {id:"caffeine",label:"Daily Caffeine Intake",type:"select",options:["None","1-2 cups","3-4 cups","5+ cups"]},
+        {id:"sweatRate",label:"Sweat Rate",type:"select",options:["Low (light sweater)","Moderate","Heavy"]}
+    ],
+    calc: null,
+    tips:["Baseline: ~35 ml per kg body weight","Add 500-1000 ml per hour of exercise","Electrolytes (sodium, potassium, magnesium) matter as much as volume"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Education
+// ══════════════════════════════════════════════════════
+
+attendance: {
+    name:"Attendance Percentage Calculator", desc:"Track attendance and calculate classes needed for 75%",
+    icon:"fa-clipboard-check", cat:"education", badge:"New",
+    inputs:[
+        {id:"totalClasses",label:"Total Classes Held",default:120},
+        {id:"attended",label:"Classes Attended",default:90},
+        {id:"targetPct_att",label:"Target Attendance %",default:75,suffix:"%"},
+        {id:"remainingClasses",label:"Remaining Classes This Semester",default:30}
+    ],
+    calc: null,
+    tips:["Most colleges require ≥75% attendance","Medical certificates can add compensatory attendance","Track weekly to avoid last-minute panic"]
+},
+
+gpaplanner: {
+    name:"Semester GPA Planner", desc:"Plan your target grades to achieve desired CGPA",
+    icon:"fa-chart-simple", cat:"education",
+    inputs:[
+        {id:"currentCGPA",label:"Current CGPA",default:7.5,suffix:"/10"},
+        {id:"completedCredits",label:"Credits Completed",default:80},
+        {id:"semCredits",label:"This Semester Credits",default:24},
+        {id:"targetCGPA",label:"Target CGPA",default:8.0,suffix:"/10"},
+        {id:"scale_gpa",label:"GPA Scale",type:"select",options:["10-point (Indian)","4-point (US)"]}
+    ],
+    calc: null,
+    tips:["SGPA needed = (Target×Total - Current×Completed) ÷ Semester Credits","Focus on high-credit courses for maximum impact","Lab courses often have easier grading"]
+},
+
+percentile: {
+    name:"Percentile Calculator", desc:"Find percentile rank from score and total candidates",
+    icon:"fa-ranking-star", cat:"education",
+    inputs:[
+        {id:"yourScore",label:"Your Score / Marks",default:180},
+        {id:"totalCandidates",label:"Total Candidates",default:100000},
+        {id:"yourRank",label:"Your Rank (if known, 0=auto)",default:5000},
+        {id:"maxScore_pctl",label:"Maximum Score",default:300}
+    ],
+    calc: null,
+    tips:["Percentile = (Candidates Below You / Total) × 100","JEE: 99 percentile = top 1%","Percentile ≠ Percentage — they measure different things"]
+},
+
+cutoffpredictor: {
+    name:"Cutoff Predictor", desc:"Predict exam cutoff based on difficulty and past trends",
+    icon:"fa-crystal-ball", cat:"education",
+    inputs:[
+        {id:"yourScore_cp",label:"Your Expected Score",default:150},
+        {id:"maxScore_cp",label:"Maximum Score",default:300},
+        {id:"lastYearCutoff",label:"Last Year Cutoff",default:140},
+        {id:"difficulty",label:"Paper Difficulty vs Last Year",type:"select",options:["Easier","Same Level","Harder","Much Harder"]},
+        {id:"totalSeats",label:"Total Seats Available",default:5000},
+        {id:"totalApplicants",label:"Total Applicants",default:200000}
+    ],
+    calc: null,
+    tips:["Harder paper = lower cutoff typically","Category-wise cutoffs vary significantly","Check official answer keys before predicting"]
+},
+
+revisionplanner: {
+    name:"Revision Planner", desc:"Create a timetable dividing subjects across available days",
+    icon:"fa-calendar-days", cat:"education",
+    inputs:[
+        {id:"subjects_rp",label:"Number of Subjects",default:6},
+        {id:"daysAvailable",label:"Days Until Exam",default:21,suffix:"days"},
+        {id:"hoursPerDay_rp",label:"Study Hours per Day",default:8,suffix:"hrs"},
+        {id:"revisionRounds",label:"Revision Rounds Needed",default:2},
+        {id:"difficultyMix",label:"Subject Difficulty Mix",type:"select",options:["All Equal","2 Hard + Rest Normal","3 Hard + Rest Easy","Mixed Difficulty"]}
+    ],
+    calc: null,
+    tips:["Spaced repetition beats cramming","Give 2× time to difficult subjects","Schedule breaks: 50 min study, 10 min break"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Engineering
+// ══════════════════════════════════════════════════════
+
+inverterbattery: {
+    name:"Inverter / Battery Backup Calculator", desc:"Inverter VA rating and battery capacity for your load",
+    icon:"fa-car-battery", cat:"engineering", badge:"New",
+    inputs:[
+        {id:"loadWatts",label:"Total Load (appliances)",default:500,suffix:"Watts"},
+        {id:"backupHours",label:"Backup Hours Needed",default:4,suffix:"hours"},
+        {id:"batteryVoltage",label:"Battery Voltage",type:"select",options:["12V (single battery)","24V (2 batteries)","48V (4 batteries)"]},
+        {id:"batteryAh",label:"Battery Capacity",default:150,suffix:"Ah"},
+        {id:"dod",label:"Depth of Discharge",default:50,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Inverter VA = Load Watts ÷ 0.8 (power factor)","Never discharge lead-acid below 50%","Lithium batteries can go to 80-90% DOD"]
+},
+
+acbtu: {
+    name:"AC Load / BTU Calculator", desc:"Air conditioner tonnage needed for your room size",
+    icon:"fa-snowflake", cat:"engineering",
+    inputs:[
+        {id:"roomLength",label:"Room Length",default:15,suffix:"feet"},
+        {id:"roomWidth",label:"Room Width",default:12,suffix:"feet"},
+        {id:"ceilingHeight",label:"Ceiling Height",default:10,suffix:"feet"},
+        {id:"floorLevel",label:"Floor / Exposure",type:"select",options:["Ground Floor","Middle Floor","Top Floor (direct sun)"]},
+        {id:"occupants",label:"Number of Occupants",default:2},
+        {id:"windowArea",label:"Window Facing",type:"select",options:["North (least sun)","East/West","South (most sun)","Multiple large windows"]}
+    ],
+    calc: null,
+    tips:["1 ton = 12,000 BTU/hr","Thumb rule: ~600 sq ft per ton for well-insulated rooms","Top-floor rooms need 10-15% more capacity"]
+},
+
+beamload: {
+    name:"Beam Load / Deflection Calculator", desc:"Simply supported beam — max bending moment and deflection",
+    icon:"fa-ruler-combined", cat:"engineering",
+    inputs:[
+        {id:"span",label:"Beam Span (Length)",default:5,suffix:"meters"},
+        {id:"loadType_beam",label:"Load Type",type:"select",options:["Uniform Distributed Load (UDL)","Point Load at Center","Point Load at Custom Position"]},
+        {id:"totalLoad",label:"Total Load",default:10000,suffix:"N (or N/m for UDL)"},
+        {id:"loadPosition",label:"Load Position (for point load)",default:2.5,suffix:"m from left"},
+        {id:"eModulus",label:"Modulus of Elasticity (E)",default:200,suffix:"GPa"},
+        {id:"momentOfInertia",label:"Moment of Inertia (I)",default:1000,suffix:"cm⁴"}
+    ],
+    calc: null,
+    tips:["UDL: Max BM = wL²/8 at center","Point load: Max BM = PL/4 at center","Max deflection = 5wL⁴/384EI (UDL)"]
+},
+
+pipeflow: {
+    name:"Pipe Flow / Pressure Drop", desc:"Flow rate, velocity and friction loss in pipes",
+    icon:"fa-faucet-drip", cat:"engineering",
+    inputs:[
+        {id:"pipeD",label:"Pipe Inner Diameter",default:50,suffix:"mm"},
+        {id:"pipeLength",label:"Pipe Length",default:100,suffix:"meters"},
+        {id:"flowRate_pf",label:"Flow Rate",default:5,suffix:"liters/min"},
+        {id:"fluid",label:"Fluid Type",type:"select",options:["Water (20°C)","Water (60°C)","Oil (light)","Air"]},
+        {id:"pipeMaterial",label:"Pipe Material",type:"select",options:["PVC (smooth)","Copper","Steel (new)","GI Pipe (old)","HDPE"]}
+    ],
+    calc: null,
+    tips:["Velocity > 2.5 m/s can cause noise in residential pipes","Darcy-Weisbach: ΔP = f × (L/D) × (ρv²/2)","Add 20-30% for fittings and bends"]
+},
+
+threephase: {
+    name:"3-Phase Electrical Calculator", desc:"Power, current and voltage for 3-phase electrical systems",
+    icon:"fa-bolt", cat:"engineering",
+    inputs:[
+        {id:"voltage3p",label:"Line Voltage",default:415,suffix:"V"},
+        {id:"current3p",label:"Line Current",default:20,suffix:"A"},
+        {id:"powerFactor3p",label:"Power Factor",default:0.85},
+        {id:"calcMode_3p",label:"Calculate",type:"select",options:["Power from V & I","Current from V & Power","Voltage from I & Power"]},
+        {id:"powerKw_3p",label:"Power (if calculating V or I)",default:10,suffix:"kW"}
+    ],
+    calc: null,
+    tips:["P = √3 × V × I × cos(φ) for 3-phase","Line Voltage = √3 × Phase Voltage","Star connection: V_line = √3 × V_phase"]
+},
+
+transformercalc: {
+    name:"Transformer Calculator", desc:"Turns ratio, voltage and current for transformer design",
+    icon:"fa-right-left", cat:"engineering",
+    inputs:[
+        {id:"primaryV",label:"Primary Voltage",default:230,suffix:"V"},
+        {id:"secondaryV",label:"Secondary Voltage",default:12,suffix:"V"},
+        {id:"powerRating_t",label:"Power Rating",default:100,suffix:"VA"},
+        {id:"frequency_t",label:"Frequency",type:"select",options:["50 Hz (India/UK)","60 Hz (US)"]},
+        {id:"efficiency_t",label:"Efficiency",default:95,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Turns ratio = V_primary / V_secondary","I = Power / Voltage","Core size increases with power rating"]
+},
+
+heatexchanger: {
+    name:"Heat Exchanger Calculator", desc:"LMTD, heat transfer rate and required area",
+    icon:"fa-temperature-half", cat:"engineering",
+    inputs:[
+        {id:"massFlow",label:"Mass Flow Rate",default:2,suffix:"kg/s"},
+        {id:"cpFluid",label:"Specific Heat (Cp)",default:4.18,suffix:"kJ/kg·°C"},
+        {id:"hotInlet",label:"Hot Inlet Temp",default:90,suffix:"°C"},
+        {id:"hotOutlet",label:"Hot Outlet Temp",default:50,suffix:"°C"},
+        {id:"coldInlet",label:"Cold Inlet Temp",default:20,suffix:"°C"},
+        {id:"coldOutlet",label:"Cold Outlet Temp",default:60,suffix:"°C"},
+        {id:"overallU",label:"Overall Heat Transfer Coeff (U)",default:500,suffix:"W/m²·K"},
+        {id:"effectiveness",label:"Effectiveness",default:80,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Counter-flow has higher LMTD than parallel flow","LMTD = (ΔT1 − ΔT2) / ln(ΔT1/ΔT2)","Higher U value = more compact heat exchanger"]
+},
+
+fluidflow: {
+    name:"Fluid Flow Calculator", desc:"Reynolds number, velocity and pressure drop in pipes",
+    icon:"fa-water", cat:"engineering",
+    inputs:[
+        {id:"pipeDia",label:"Pipe Inner Diameter",default:50,suffix:"mm"},
+        {id:"pipeLength",label:"Pipe Length",default:100,suffix:"m"},
+        {id:"flowRate",label:"Flow Rate",default:5,suffix:"L/min"},
+        {id:"density",label:"Fluid Density",default:998,suffix:"kg/m³"},
+        {id:"viscosity",label:"Dynamic Viscosity",default:0.001,suffix:"Pa·s"}
+    ],
+    calc: null,
+    tips:["Re < 2300 = Laminar, Re > 4000 = Turbulent","Turbulent flow has higher pressure drop","Use Moody chart for accurate friction factor"]
+},
+
+springforce: {
+    name:"Spring Force Calculator", desc:"Hooke's law — force, energy and frequency of springs",
+    icon:"fa-compress", cat:"engineering",
+    inputs:[
+        {id:"springConstant",label:"Spring Constant (k)",default:500,suffix:"N/m"},
+        {id:"displacement",label:"Displacement (x)",default:20,suffix:"mm"},
+        {id:"mass_spring",label:"Attached Mass",default:1,suffix:"kg"}
+    ],
+    calc: null,
+    tips:["F = kx (Hooke's Law)","PE = ½kx² (elastic potential energy)","Natural freq = (1/2π)√(k/m)"]
+},
+
+gearratio: {
+    name:"Gear Ratio Calculator", desc:"Speed, torque and power through gear trains",
+    icon:"fa-gears", cat:"engineering",
+    inputs:[
+        {id:"drivingTeeth",label:"Driving Gear Teeth",default:20},
+        {id:"drivenTeeth",label:"Driven Gear Teeth",default:60},
+        {id:"inputRPM",label:"Input RPM",default:1500,suffix:"RPM"},
+        {id:"inputTorque",label:"Input Torque",default:10,suffix:"N·m"},
+        {id:"gearEfficiency",label:"Gear Efficiency",default:95,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Gear ratio = Driven teeth / Driving teeth","Torque increases as speed decreases","Each gear stage typically loses 2-5% efficiency"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Construction
+// ══════════════════════════════════════════════════════
+
+concretemix: {
+    name:"Concrete Mix Design Calculator", desc:"Cement, sand, aggregate and water quantities per mix ratio",
+    icon:"fa-cubes-stacked", cat:"construction",
+    inputs:[
+        {id:"volume_cm",label:"Concrete Volume Needed",default:1,suffix:"m³"},
+        {id:"mixRatio",label:"Mix Ratio / Grade",type:"select",options:["M10 (1:3:6)","M15 (1:2:4)","M20 (1:1.5:3)","M25 (1:1:2)","M30 (Design Mix)","Custom"]},
+        {id:"customCement",label:"Custom Cement Part",default:1},
+        {id:"customSand",label:"Custom Sand Part",default:1.5},
+        {id:"customAggregate",label:"Custom Aggregate Part",default:3},
+        {id:"wastage_cm",label:"Wastage %",default:5,suffix:"%"}
+    ],
+    calc: null,
+    tips:["M20 is most common for residential construction","Water-cement ratio: 0.45-0.55 for structural work","1 bag cement (50kg) = 0.035 m³"]
+},
+
+materialwaste: {
+    name:"Material Wastage Calculator", desc:"Tile, paint, flooring material with wastage factor",
+    icon:"fa-recycle", cat:"construction",
+    inputs:[
+        {id:"material_mw",label:"Material Type",type:"select",options:["Tiles (floor/wall)","Paint (interior)","Paint (exterior)","Laminate Flooring","Wallpaper","Carpet"]},
+        {id:"area_mw",label:"Surface Area",default:100,suffix:"sq ft"},
+        {id:"materialSize",label:"Tile Size (for tiles only)",type:"select",options:["2×2 ft","1×2 ft","1×1 ft","Custom"]},
+        {id:"coats",label:"Number of Coats (for paint)",default:2},
+        {id:"wastage_mw",label:"Wastage %",default:10,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Tiles: 5-10% wastage for straight lay, 15% for diagonal","Paint: 1 litre covers ~100 sq ft per coat","Order 10% extra to ensure color consistency"]
+},
+
+rainwater: {
+    name:"Rainwater Harvesting Calculator", desc:"Potential rainwater collection and tank size for your roof",
+    icon:"fa-cloud-rain", cat:"construction",
+    inputs:[
+        {id:"roofArea_rw",label:"Catchment / Roof Area",default:1000,suffix:"sq ft"},
+        {id:"annualRainfall",label:"Annual Rainfall",default:800,suffix:"mm"},
+        {id:"runoffCoeff",label:"Runoff Coefficient",type:"select",options:["0.9 (concrete/metal roof)","0.8 (tiled roof)","0.6 (ground/gravel)","Custom"]},
+        {id:"customCoeff",label:"Custom Coefficient (if selected)",default:0.85},
+        {id:"dailyDemand_rw",label:"Daily Water Demand",default:500,suffix:"liters"}
+    ],
+    calc: null,
+    tips:["1mm rainfall on 1 sq.m = 1 litre collected","Rooftop harvesting can meet 30-50% of household needs","First-flush diverter improves water quality"]
+},
+
+// ══════════════════════════════════════════════════════
+// NEW CALCULATORS — Everyday / Business
+// ══════════════════════════════════════════════════════
+
+ecomprofit: {
+    name:"E-commerce Profit Calculator", desc:"True profit per order with all hidden costs included",
+    icon:"fa-cart-shopping", cat:"everyday", badge:"New",
+    inputs:[
+        {id:"sellingPrice_ec",label:"Selling Price",default:999,prefix:"₹"},
+        {id:"productCost_ec",label:"Product / Manufacturing Cost",default:350,prefix:"₹"},
+        {id:"shippingCost",label:"Shipping Cost",default:60,prefix:"₹"},
+        {id:"platformFee",label:"Platform Fee",default:15,suffix:"%"},
+        {id:"gstRate_ec",label:"GST Rate",type:"select",options:["5%","12%","18%","28%"]},
+        {id:"returnRate_ec",label:"Return/RTO Rate",default:10,suffix:"%"},
+        {id:"adSpend",label:"Ad Spend per Order",default:50,prefix:"₹"},
+        {id:"packagingCost",label:"Packaging Cost",default:15,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Include return/RTO costs — they eat 10-30% of margins","Platform fees vary: Amazon 15-30%, Flipkart 10-25%","True margin after all costs is often 10-20%"]
+},
+
+restaurantcost: {
+    name:"Restaurant Food Cost Calculator", desc:"Menu pricing based on food cost percentage target",
+    icon:"fa-utensils", cat:"everyday",
+    inputs:[
+        {id:"ingredientCost",label:"Ingredient / Raw Cost",default:120,prefix:"₹"},
+        {id:"targetFoodCost",label:"Target Food Cost %",default:30,suffix:"%"},
+        {id:"portionSize",label:"Portion Size",default:1,suffix:"servings"},
+        {id:"wastageFood",label:"Prep Wastage %",default:10,suffix:"%"},
+        {id:"gstFood",label:"GST on Food",type:"select",options:["5% (non-AC restaurant)","18% (AC / fine dining)","0% (cloud kitchen < ₹7.5L)"]}
+    ],
+    calc: null,
+    tips:["Food cost should be 28-32% of selling price","Beverage margins are highest (70-80%)","Menu engineering: price high-margin items prominently"]
+},
+
+subscriptionpricing: {
+    name:"Subscription Pricing Calculator", desc:"MRR, ARR, churn impact and LTV calculations",
+    icon:"fa-repeat", cat:"everyday",
+    inputs:[
+        {id:"monthlyPrice",label:"Monthly Subscription Price",default:499,prefix:"₹"},
+        {id:"subscribers",label:"Current Subscribers",default:500},
+        {id:"monthlyChurn",label:"Monthly Churn Rate",default:5,suffix:"%"},
+        {id:"monthlyNewSub",label:"New Subscribers per Month",default:50},
+        {id:"acquisitionCost",label:"Customer Acquisition Cost",default:200,prefix:"₹"},
+        {id:"annualDiscountPct",label:"Annual Plan Discount",default:20,suffix:"%"}
+    ],
+    calc: null,
+    tips:["LTV should be >3× CAC for viable business","Annual plans reduce churn significantly","Net revenue retention >100% = growth without new customers"]
+},
+
+uniteconomics: {
+    name:"Unit Economics Calculator", desc:"LTV, CAC, payback period and contribution margin per unit",
+    icon:"fa-chart-bar", cat:"everyday",
+    inputs:[
+        {id:"revenuePerUnit",label:"Revenue per Unit / Order",default:500,prefix:"₹"},
+        {id:"cogsPerUnit",label:"COGS per Unit",default:200,prefix:"₹"},
+        {id:"opexPerUnit",label:"Operating Cost per Unit",default:100,prefix:"₹"},
+        {id:"cac_ue",label:"Customer Acquisition Cost",default:300,prefix:"₹"},
+        {id:"avgOrders",label:"Avg Orders per Customer Lifetime",default:8},
+        {id:"avgLifetimeMonths",label:"Avg Customer Lifetime",default:12,suffix:"months"}
+    ],
+    calc: null,
+    tips:["Contribution margin = Revenue - COGS - Variable costs","Payback period = CAC / monthly contribution","Aim for LTV:CAC ratio of 3:1 or higher"]
+},
+
+eventbudget: {
+    name:"Event Budget Calculator", desc:"Complete event cost breakdown by category",
+    icon:"fa-calendar-day", cat:"everyday",
+    inputs:[
+        {id:"guests",label:"Number of Guests",default:100},
+        {id:"venueCost",label:"Venue Cost",default:50000,prefix:"₹"},
+        {id:"cateringPerHead",label:"Catering per Head",default:800,prefix:"₹"},
+        {id:"decorCost",label:"Decoration Cost",default:25000,prefix:"₹"},
+        {id:"entertainment",label:"Entertainment / DJ",default:15000,prefix:"₹"},
+        {id:"photography_ev",label:"Photography / Video",default:20000,prefix:"₹"},
+        {id:"miscPct_ev",label:"Miscellaneous Buffer",default:15,suffix:"%"}
+    ],
+    calc: null,
+    tips:["Catering is typically 40-50% of total event cost","Book venue and caterer first — they fill up earliest","15-20% buffer for unexpected costs"]
+},
+
+householdbudget: {
+    name:"Household Budget Planner", desc:"50/30/20 rule and category-wise monthly budget breakdown",
+    icon:"fa-house-user", cat:"everyday",
+    inputs:[
+        {id:"monthlyIncome_hb",label:"Monthly Take-Home Income",default:60000,prefix:"₹"},
+        {id:"rentEmi",label:"Rent / EMI",default:15000,prefix:"₹"},
+        {id:"groceries",label:"Groceries & Household",default:8000,prefix:"₹"},
+        {id:"utilities_hb",label:"Utilities (electric, water, wifi)",default:3000,prefix:"₹"},
+        {id:"transport_hb",label:"Transport / Fuel",default:3000,prefix:"₹"},
+        {id:"insurance_hb",label:"Insurance Premiums",default:2000,prefix:"₹"},
+        {id:"lifestyle_hb",label:"Lifestyle / Dining / Entertainment",default:5000,prefix:"₹"},
+        {id:"savingsTarget_hb",label:"Savings Target",default:20,suffix:"%"}
+    ],
+    calc: null,
+    tips:["50/30/20 rule: 50% needs, 30% wants, 20% savings","Automate savings on salary day","Track spending weekly to catch overruns early"]
+},
 
 };
 

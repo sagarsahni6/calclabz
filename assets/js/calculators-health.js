@@ -527,6 +527,172 @@
             };
         };
 
+  // ══════════════════════════════════════════════════════
+  // NEW HEALTH / FITNESS CALCULATORS
+  // ══════════════════════════════════════════════════════
+
+  if(DB['onerepmax'] && DB['onerepmax'].calc===null) DB['onerepmax'].calc=function(v){
+    var w=v.weightLifted,r=v.repsPerformed;
+    var epley=w*(1+r/30);
+    var brzycki=w*(36/(37-r));
+    var lombardi=w*Math.pow(r,0.1);
+    var oconner=w*(1+r*0.025);
+    var avg=Math.round((epley+brzycki+lombardi+oconner)/4);
+    return {
+      main:{label:"Estimated 1RM",value:avg+" kg"},
+      secondary:[
+        {label:"Epley Formula",value:Math.round(epley)+" kg"},
+        {label:"Brzycki Formula",value:Math.round(brzycki)+" kg"},
+        {label:"Lombardi Formula",value:Math.round(lombardi)+" kg"},
+        {label:"O'Conner Formula",value:Math.round(oconner)+" kg"},
+        {label:"90% 1RM (3 reps)",value:Math.round(avg*0.9)+" kg"},
+        {label:"80% 1RM (8 reps)",value:Math.round(avg*0.8)+" kg"},
+        {label:"70% 1RM (12 reps)",value:Math.round(avg*0.7)+" kg"},
+        {label:"Exercise",value:v.exercise}
+      ]
+    };
+  };
+
+  if(DB['runningpace'] && DB['runningpace'].calc===null) DB['runningpace'].calc=function(v){
+    var pace=v.timeMin/v.distanceKm;
+    var speedKmh=v.distanceKm/(v.timeMin/60);
+    var targetDistMap={"5K":5,"10K":10,"Half Marathon (21.1K)":21.1,"Marathon (42.2K)":42.195,"Custom":v.customDistKm};
+    var td=targetDistMap[v.targetDist]||v.customDistKm;
+    var predictedTime=v.timeMin*Math.pow(td/v.distanceKm,1.06);
+    var predH=Math.floor(predictedTime/60);
+    var predM=Math.floor(predictedTime%60);
+    var predS=Math.round((predictedTime%1)*60);
+    var paceM=Math.floor(pace);
+    var paceS=Math.round((pace-paceM)*60);
+    return {
+      main:{label:"Pace",value:paceM+":"+String(paceS).padStart(2,'0')+" min/km"},
+      secondary:[
+        {label:"Speed",value:speedKmh.toFixed(1)+" km/h"},
+        {label:"Predicted "+v.targetDist+" Time",value:(predH>0?predH+"h ":"")+predM+"m "+predS+"s"},
+        {label:"Predicted 5K",value:Math.round(v.timeMin*Math.pow(5/v.distanceKm,1.06))+" min"},
+        {label:"Predicted 10K",value:Math.round(v.timeMin*Math.pow(10/v.distanceKm,1.06))+" min"},
+        {label:"Predicted Half Marathon",value:Math.round(v.timeMin*Math.pow(21.1/v.distanceKm,1.06))+" min"},
+        {label:"Predicted Marathon",value:Math.round(v.timeMin*Math.pow(42.195/v.distanceKm,1.06))+" min"}
+      ]
+    };
+  };
+
+  if(DB['bodyrecomp'] && DB['bodyrecomp'].calc===null) DB['bodyrecomp'].calc=function(v){
+    var lbm=v.weight_br*(1-v.bodyfat_br/100);
+    var fatMass=v.weight_br*v.bodyfat_br/100;
+    var targetFatMass=lbm*v.targetBf/(100-v.targetBf);
+    var fatToLose=Math.max(0,fatMass-targetFatMass);
+    var actMult={"Sedentary":1.2,"Light Exercise (1-3 days)":1.375,"Moderate (3-5 days)":1.55,"Heavy (6-7 days)":1.725,"Athlete (2× daily)":1.9};
+    var bmr=10*v.weight_br+6.25*175-5*30+5;
+    var tdee=Math.round(bmr*(actMult[v.activity_br]||1.55));
+    var deficit=Math.round(tdee*0.15);
+    var targetCals=tdee-deficit;
+    var protein=Math.round(v.weight_br*2.2);
+    return {
+      main:{label:"Daily Calories for Recomp",value:targetCals+" kcal"},
+      secondary:[
+        {label:"Fat to Lose",value:fatToLose.toFixed(1)+" kg"},
+        {label:"Current Lean Mass",value:lbm.toFixed(1)+" kg"},
+        {label:"TDEE",value:tdee+" kcal"},
+        {label:"Deficit (15%)",value:deficit+" kcal"},
+        {label:"Daily Protein Target",value:protein+"g ("+Math.round(protein*4)+" kcal)"},
+        {label:"Timeline (est.)",value:Math.ceil(fatToLose/0.35)+" weeks at 0.35 kg/week"},
+        {label:"Target Weight",value:(lbm+targetFatMass).toFixed(1)+" kg"}
+      ]
+    };
+  };
+
+  if(DB['vo2max'] && DB['vo2max'].calc===null) DB['vo2max'].calc=function(v){
+    var vo2=0,method=v.method_vo2;
+    if(method==="Cooper 12-min Run") vo2=(v.distanceCovered-504.9)/44.73;
+    else if(method==="1.5 Mile Run") vo2=483/v.runTime15+3.5;
+    else vo2=15.3*(220-v.age_vo2)/v.restingHR;
+    var rating=vo2<30?"Poor":vo2<40?"Below Average":vo2<50?"Good":vo2<60?"Excellent":"Elite";
+    var category=vo2<35?"Low Fitness":vo2<45?"Moderate Fitness":vo2<55?"Good Fitness":"High Fitness";
+    return {
+      main:{label:"Estimated VO2 Max",value:vo2.toFixed(1)+" ml/kg/min"},
+      secondary:[
+        {label:"Fitness Level",value:rating},
+        {label:"Category",value:category},
+        {label:"Method Used",value:method},
+        {label:"Age",value:v.age_vo2+" years"},
+        {label:"Marathon Prediction (est.)",value:vo2>30?Math.round(42.195/(vo2*0.07))+" min":"Build base fitness first"}
+      ]
+    };
+  };
+
+  if(DB['leanbodymass'] && DB['leanbodymass'].calc===null) DB['leanbodymass'].calc=function(v){
+    var w=v.weight_lbm,h=v.height_lbm;
+    var lbm;
+    if(v.bodyfat_lbm>0){
+      lbm=w*(1-v.bodyfat_lbm/100);
+    } else {
+      if(v.gender_lbm==="Male") lbm=0.407*w+0.267*h-19.2;
+      else lbm=0.252*w+0.473*h-48.3;
+    }
+    var fatMass=w-lbm;
+    var bfPct=(fatMass/w)*100;
+    var ffmi=lbm/Math.pow(h/100,2);
+    return {
+      main:{label:"Lean Body Mass",value:lbm.toFixed(1)+" kg"},
+      secondary:[
+        {label:"Fat Mass",value:fatMass.toFixed(1)+" kg"},
+        {label:"Body Fat %",value:bfPct.toFixed(1)+"%"},
+        {label:"FFMI",value:ffmi.toFixed(1)},
+        {label:"FFMI Rating",value:ffmi<18?"Below Average":ffmi<20?"Average":ffmi<22?"Above Average":ffmi<25?"Excellent":"Near Natural Limit"},
+        {label:"Method",value:v.bodyfat_lbm>0?"Direct (from body fat %)":"Boer Formula (estimated)"}
+      ]
+    };
+  };
+
+  if(DB['caloriegoal'] && DB['caloriegoal'].calc===null) DB['caloriegoal'].calc=function(v){
+    var bmr=v.gender_cg==="Male"?10*v.currentWeight_cg+6.25*v.height_cg-5*v.age_cg+5:10*v.currentWeight_cg+6.25*v.height_cg-5*v.age_cg-161;
+    var actMult={"Sedentary (desk job)":1.2,"Light (1-3×/week)":1.375,"Moderate (3-5×/week)":1.55,"Active (6-7×/week)":1.725,"Very Active (2×/day)":1.9};
+    var tdee=Math.round(bmr*(actMult[v.activity_cg]||1.2));
+    var weightDiff=v.currentWeight_cg-v.targetWeight_cg;
+    var totalDeficit=weightDiff*7700;
+    var dailyDeficit=Math.round(totalDeficit/(v.weeks_cg*7));
+    var targetCals=Math.max(v.gender_cg==="Male"?1500:1200,tdee-dailyDeficit);
+    var actualDeficit=tdee-targetCals;
+    var weeklyLoss=(actualDeficit*7/7700);
+    var safeFlag=weeklyLoss>1?"⚠ Aggressive":"✅ Safe";
+    return {
+      main:{label:"Daily Calorie Target",value:targetCals+" kcal"},
+      secondary:[
+        {label:"Your TDEE",value:tdee+" kcal"},
+        {label:"Required Daily Deficit",value:dailyDeficit+" kcal"},
+        {label:"Actual Deficit (adjusted)",value:actualDeficit+" kcal"},
+        {label:"Weekly Weight Change",value:weeklyLoss.toFixed(2)+" kg/week"},
+        {label:"Safety",value:safeFlag},
+        {label:"Weight Change",value:weightDiff>0?weightDiff.toFixed(1)+" kg to lose":Math.abs(weightDiff).toFixed(1)+" kg to gain"},
+        {label:"Est. Completion",value:v.weeks_cg+" weeks"}
+      ]
+    };
+  };
+
+  if(DB['electrolyte'] && DB['electrolyte'].calc===null) DB['electrolyte'].calc=function(v){
+    var baseWater=v.weight_el*35;
+    var exerciseWater=v.exerciseMin*12;
+    var climateMult={"Temperate (20-25°C)":1.0,"Hot & Humid (30°C+)":1.3,"Cold (below 15°C)":0.9,"High Altitude":1.2};
+    var caffeineMult={"None":1.0,"1-2 cups":1.05,"3-4 cups":1.10,"5+ cups":1.15};
+    var totalWater=Math.round((baseWater+exerciseWater)*(climateMult[v.climate]||1)*(caffeineMult[v.caffeine]||1));
+    var sweatMult={"Low (light sweater)":1.0,"Moderate":1.3,"Heavy":1.6};
+    var sodium=Math.round(2300*(sweatMult[v.sweatRate]||1));
+    var potassium=Math.round(3500*(sweatMult[v.sweatRate]||1)*0.8);
+    var magnesium=Math.round(400*(sweatMult[v.sweatRate]||1)*0.9);
+    return {
+      main:{label:"Daily Water Intake",value:(totalWater/1000).toFixed(1)+" liters ("+totalWater+" ml)"},
+      secondary:[
+        {label:"Glasses (250ml)",value:Math.ceil(totalWater/250)+" glasses"},
+        {label:"Sodium",value:sodium+" mg"},
+        {label:"Potassium",value:potassium+" mg"},
+        {label:"Magnesium",value:magnesium+" mg"},
+        {label:"Exercise Hydration",value:exerciseWater+" ml extra"},
+        {label:"Climate Factor",value:v.climate}
+      ]
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('health');
 })();

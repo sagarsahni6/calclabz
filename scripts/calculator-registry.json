@@ -66,6 +66,24 @@
     "priority": "0.6"
   },
   {
+    "id": "concretemix",
+    "slug": "concretemix-calculator",
+    "cat": "construction",
+    "priority": "0.6"
+  },
+  {
+    "id": "materialwaste",
+    "slug": "materialwaste-calculator",
+    "cat": "construction",
+    "priority": "0.6"
+  },
+  {
+    "id": "rainwater",
+    "slug": "rainwater-calculator",
+    "cat": "construction",
+    "priority": "0.6"
+  },
+  {
     "id": "earthwork",
     "slug": "earthwork-calculator",
     "cat": "construction",
@@ -142,6 +160,66 @@
     "priority": "0.6"
   },
   {
+    "id": "pomodoro",
+    "slug": "pomodoro-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "gpaconverter",
+    "slug": "gpaconverter-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "readingtime",
+    "slug": "readingtime-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "typingtest",
+    "slug": "typingtest-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "spellingbee",
+    "slug": "spellingbee-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "attendance",
+    "slug": "attendance-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "gpaplanner",
+    "slug": "gpaplanner-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "percentile",
+    "slug": "percentile-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "cutoffpredictor",
+    "slug": "cutoffpredictor-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
+    "id": "revisionplanner",
+    "slug": "revisionplanner-calculator",
+    "cat": "education",
+    "priority": "0.6"
+  },
+  {
     "id": "pythagorean",
     "slug": "pythagorean-calculator",
     "cat": "engineering",
@@ -162,6 +240,66 @@
   {
     "id": "power",
     "slug": "power-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "inverterbattery",
+    "slug": "inverterbattery-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "acbtu",
+    "slug": "acbtu-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "beamload",
+    "slug": "beamload-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "pipeflow",
+    "slug": "pipeflow-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "threephase",
+    "slug": "threephase-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "transformercalc",
+    "slug": "transformercalc-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "heatexchanger",
+    "slug": "heatexchanger-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "fluidflow",
+    "slug": "fluidflow-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "springforce",
+    "slug": "springforce-calculator",
+    "cat": "engineering",
+    "priority": "0.6"
+  },
+  {
+    "id": "gearratio",
+    "slug": "gearratio-calculator",
     "cat": "engineering",
     "priority": "0.6"
   },
@@ -294,6 +432,42 @@
   {
     "id": "carbonfootprint",
     "slug": "carbonfootprint-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "ecomprofit",
+    "slug": "ecomprofit-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "restaurantcost",
+    "slug": "restaurantcost-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "subscriptionpricing",
+    "slug": "subscriptionpricing-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "uniteconomics",
+    "slug": "uniteconomics-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "eventbudget",
+    "slug": "eventbudget-calculator",
+    "cat": "everyday",
+    "priority": "0.6"
+  },
+  {
+    "id": "householdbudget",
+    "slug": "householdbudget-calculator",
     "cat": "everyday",
     "priority": "0.6"
   },
@@ -626,6 +800,162 @@
     "priority": "0.7"
   },
   {
+    "id": "fire",
+    "slug": "fire-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "debtavalanche",
+    "slug": "debtavalanche-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "emergencyfund",
+    "slug": "emergencyfund-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "rentvsbuy",
+    "slug": "rentvsbuy-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "carleasevsbuy",
+    "slug": "carleasevsbuy-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "homedownpayment",
+    "slug": "homedownpayment-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "loancompare",
+    "slug": "loancompare-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "refinance",
+    "slug": "refinance-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "creditutil",
+    "slug": "creditutil-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "insuranceneed",
+    "slug": "insuranceneed-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "npvirr",
+    "slug": "npvirr-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "bondyield",
+    "slug": "bondyield-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "optionprofit",
+    "slug": "optionprofit-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "forexpip",
+    "slug": "forexpip-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "portfoliorebalance",
+    "slug": "portfoliorebalance-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "assetallocation",
+    "slug": "assetallocation-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "montecarlo",
+    "slug": "montecarlo-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "inflationgoal",
+    "slug": "inflationgoal-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "businessloan",
+    "slug": "businessloan-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "gstinvoice",
+    "slug": "gstinvoice-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "esoptax",
+    "slug": "esoptax-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "freelancetax",
+    "slug": "freelancetax-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "tcsremittance",
+    "slug": "tcsremittance-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "sec80c",
+    "slug": "sec80c-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "hravshomeloan",
+    "slug": "hravshomeloan-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
+    "id": "leaveencash",
+    "slug": "leaveencash-calculator",
+    "cat": "finance",
+    "priority": "0.7"
+  },
+  {
     "id": "breakeven",
     "slug": "breakeven-calculator",
     "cat": "finance",
@@ -892,6 +1222,48 @@
     "priority": "0.6"
   },
   {
+    "id": "onerepmax",
+    "slug": "onerepmax-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "runningpace",
+    "slug": "runningpace-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "bodyrecomp",
+    "slug": "bodyrecomp-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "vo2max",
+    "slug": "vo2max-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "leanbodymass",
+    "slug": "leanbodymass-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "caloriegoal",
+    "slug": "caloriegoal-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
+    "id": "electrolyte",
+    "slug": "electrolyte-calculator",
+    "cat": "health",
+    "priority": "0.6"
+  },
+  {
     "id": "percentage",
     "slug": "percentage-calculator",
     "cat": "math",
@@ -1126,103 +1498,109 @@
   {
     "id": "investvsrent",
     "slug": "investvsrent-calculator",
-    "cat": "finance",
+    "cat": "unknown",
+    "priority": "0.7"
+  },
+  {
+    "id": "professionaltax",
+    "slug": "professionaltax-calculator",
+    "cat": "unknown",
     "priority": "0.7"
   },
   {
     "id": "trianglearea",
     "slug": "trianglearea-calculator",
-    "cat": "math",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "waisthip",
     "slug": "waisthip-calculator",
-    "cat": "health",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "calories-food",
     "slug": "calories-food-calculator",
-    "cat": "health",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "lungcapacity",
     "slug": "lungcapacity-calculator",
-    "cat": "health",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "unitprice",
     "slug": "unitprice-calculator",
-    "cat": "everyday",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "petrolparity",
     "slug": "petrolparity-calculator",
-    "cat": "everyday",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "agenextbday",
     "slug": "agenextbday-calculator",
-    "cat": "datetime",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "speed-dist",
     "slug": "speed-dist-calculator",
-    "cat": "engineering",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "construction",
     "slug": "construction-calculator",
-    "cat": "construction",
+    "cat": "unknown",
     "priority": "0.6"
   },
   {
     "id": "romannumeral",
     "slug": "romannumeral-calculator",
-    "cat": "math",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "circlecalc",
     "slug": "circlecalc-calculator",
-    "cat": "math",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "typing-speed",
     "slug": "typing-speed-calculator",
-    "cat": "datetime",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "ohm-advanced",
     "slug": "ohm-advanced-calculator",
-    "cat": "engineering",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "chemmolar",
     "slug": "chemmolar-calculator",
-    "cat": "engineering",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "kinematiccalc",
     "slug": "kinematiccalc-calculator",
-    "cat": "engineering",
+    "cat": "unknown",
     "priority": "0.5"
   },
   {
     "id": "watertank",
     "slug": "watertank-calculator",
-    "cat": "construction",
+    "cat": "unknown",
     "priority": "0.5"
   }
 ]

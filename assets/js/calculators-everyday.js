@@ -581,6 +581,161 @@
             };
         };
 
+  // ══════════════════════════════════════════════════════
+  // NEW EVERYDAY / BUSINESS CALCULATORS
+  // ══════════════════════════════════════════════════════
+
+  if(DB['ecomprofit'] && DB['ecomprofit'].calc===null) DB['ecomprofit'].calc=function(v){
+    var gstRate=parseFloat(v.gstRate_ec)||18;
+    var gstAmt=v.sellingPrice_ec*gstRate/(100+gstRate);
+    var platformFeeAmt=v.sellingPrice_ec*v.platformFee/100;
+    var totalCost=v.productCost_ec+v.shippingCost+platformFeeAmt+v.adSpend+v.packagingCost;
+    var grossProfit=v.sellingPrice_ec-gstAmt-totalCost;
+    var returnCost=(v.productCost_ec+v.shippingCost*2)*v.returnRate_ec/100;
+    var netProfit=grossProfit-returnCost;
+    var margin=(netProfit/v.sellingPrice_ec)*100;
+    var breakEvenUnits=v.adSpend>0?Math.ceil(v.adSpend/(grossProfit-returnCost+v.adSpend)):0;
+    return {
+      main:{label:"Net Profit per Order",value:"₹"+netProfit.toFixed(2),pos:netProfit>0},
+      secondary:[
+        {label:"Selling Price",value:"₹"+v.sellingPrice_ec},
+        {label:"GST ("+gstRate+"%)",value:"₹"+gstAmt.toFixed(2)},
+        {label:"Platform Fee ("+v.platformFee+"%)",value:"₹"+platformFeeAmt.toFixed(2)},
+        {label:"Product + Packaging + Shipping",value:"₹"+(v.productCost_ec+v.packagingCost+v.shippingCost)},
+        {label:"Ad Spend per Order",value:"₹"+v.adSpend},
+        {label:"Return/RTO Cost ("+v.returnRate_ec+"%)",value:"₹"+returnCost.toFixed(2)},
+        {label:"Net Margin",value:margin.toFixed(1)+"%",pos:margin>10},
+        {label:"Monthly Profit (100 orders)",value:"₹"+Math.round(netProfit*100).toLocaleString('en-IN')}
+      ],
+      chart:{a:Math.round(totalCost+gstAmt+returnCost),b:Math.round(Math.max(0,netProfit)),lA:"Total Costs",lB:"Net Profit"}
+    };
+  };
+
+  if(DB['restaurantcost'] && DB['restaurantcost'].calc===null) DB['restaurantcost'].calc=function(v){
+    var rawCost=v.ingredientCost*(1+v.wastageFood/100)*v.portionSize;
+    var menuPrice=rawCost/(v.targetFoodCost/100);
+    var gstRateMap={"5% (non-AC restaurant)":5,"18% (AC / fine dining)":18,"0% (cloud kitchen < ₹7.5L)":0};
+    var gst=gstRateMap[v.gstFood]||5;
+    var priceWithGST=menuPrice*(1+gst/100);
+    var grossProfit=menuPrice-rawCost;
+    var margin=((grossProfit/menuPrice)*100);
+    var rounded=Math.ceil(priceWithGST/10)*10-1;
+    return {
+      main:{label:"Recommended Menu Price",value:"₹"+Math.round(menuPrice)+" (₹"+rounded+" with GST)"},
+      secondary:[
+        {label:"Raw Ingredient Cost",value:"₹"+rawCost.toFixed(2)},
+        {label:"Food Cost %",value:v.targetFoodCost+"%"},
+        {label:"Gross Profit per Plate",value:"₹"+grossProfit.toFixed(2)},
+        {label:"Gross Margin",value:margin.toFixed(1)+"%"},
+        {label:"Price incl. GST ("+gst+"%)",value:"₹"+priceWithGST.toFixed(2)},
+        {label:"Psycho-Pricing",value:"₹"+rounded},
+        {label:"For 50 plates/day",value:"₹"+Math.round(grossProfit*50).toLocaleString('en-IN')+" gross profit"}
+      ]
+    };
+  };
+
+  if(DB['subscriptionpricing'] && DB['subscriptionpricing'].calc===null) DB['subscriptionpricing'].calc=function(v){
+    var mrr=v.monthlyPrice*v.subscribers;
+    var arr=mrr*12;
+    var churnedSubs=Math.round(v.subscribers*v.monthlyChurn/100);
+    var netNewSubs=v.monthlyNewSub-churnedSubs;
+    var avgLifetime=1/(v.monthlyChurn/100);
+    var ltv=v.monthlyPrice*avgLifetime;
+    var ltvCacRatio=ltv/v.acquisitionCost;
+    var paybackMonths=v.acquisitionCost/v.monthlyPrice;
+    var annualPrice=v.monthlyPrice*12*(1-v.annualDiscountPct/100);
+    var annualSaving=v.monthlyPrice*12-annualPrice;
+    var subs6mo=v.subscribers;
+    for(var m=0;m<6;m++) subs6mo=Math.round(subs6mo*(1-v.monthlyChurn/100)+v.monthlyNewSub);
+    return {
+      main:{label:"MRR",value:"₹"+mrr.toLocaleString('en-IN')},
+      secondary:[
+        {label:"ARR",value:"₹"+arr.toLocaleString('en-IN')},
+        {label:"Monthly Churn",value:churnedSubs+" subscribers ("+v.monthlyChurn+"%)"},
+        {label:"Net Growth/Month",value:(netNewSubs>0?"+":"")+netNewSubs+" subscribers"},
+        {label:"Avg Customer Lifetime",value:avgLifetime.toFixed(1)+" months"},
+        {label:"LTV",value:"₹"+Math.round(ltv).toLocaleString('en-IN')},
+        {label:"LTV:CAC Ratio",value:ltvCacRatio.toFixed(1)+"× "+(ltvCacRatio>=3?"✅":"⚠ aim for 3×+")},
+        {label:"CAC Payback",value:paybackMonths.toFixed(1)+" months"},
+        {label:"Annual Plan Price",value:"₹"+Math.round(annualPrice)+" (save ₹"+Math.round(annualSaving)+")"},
+        {label:"Subscribers in 6 months",value:subs6mo.toLocaleString()}
+      ]
+    };
+  };
+
+  if(DB['uniteconomics'] && DB['uniteconomics'].calc===null) DB['uniteconomics'].calc=function(v){
+    var contribution=v.revenuePerUnit-v.cogsPerUnit-v.opexPerUnit;
+    var contributionMargin=(contribution/v.revenuePerUnit)*100;
+    var ltv=v.revenuePerUnit*v.avgOrders;
+    var ltvNet=contribution*v.avgOrders;
+    var ltvCac=ltvNet/v.cac_ue;
+    var paybackOrders=Math.ceil(v.cac_ue/contribution);
+    var paybackMonths=paybackOrders*(v.avgLifetimeMonths/v.avgOrders);
+    var totalCostPerCustomer=v.cac_ue+(v.cogsPerUnit+v.opexPerUnit)*v.avgOrders;
+    var netProfitPerCustomer=ltv-totalCostPerCustomer;
+    return {
+      main:{label:"Contribution per Unit",value:"₹"+contribution.toFixed(2),pos:contribution>0},
+      secondary:[
+        {label:"Contribution Margin",value:contributionMargin.toFixed(1)+"%"},
+        {label:"LTV (Revenue)",value:"₹"+ltv.toLocaleString('en-IN')},
+        {label:"LTV (Net of costs)",value:"₹"+Math.round(ltvNet).toLocaleString('en-IN')},
+        {label:"LTV:CAC Ratio",value:ltvCac.toFixed(1)+"× "+(ltvCac>=3?"✅":"⚠")},
+        {label:"CAC Payback",value:paybackOrders+" orders ("+paybackMonths.toFixed(1)+" months)"},
+        {label:"Net Profit per Customer",value:"₹"+Math.round(netProfitPerCustomer).toLocaleString('en-IN'),pos:netProfitPerCustomer>0},
+        {label:"Verdict",value:ltvCac>=3?"✅ Healthy unit economics":ltvCac>=1?"⚠ Marginal — reduce CAC or increase LTV":"❌ Unprofitable — rethink pricing"}
+      ]
+    };
+  };
+
+  if(DB['eventbudget'] && DB['eventbudget'].calc===null) DB['eventbudget'].calc=function(v){
+    var catering=v.cateringPerHead*v.guests;
+    var subtotal=v.venueCost+catering+v.decorCost+v.entertainment+v.photography_ev;
+    var misc=subtotal*v.miscPct_ev/100;
+    var total=subtotal+misc;
+    var perHead=total/v.guests;
+    return {
+      main:{label:"Total Event Budget",value:"₹"+Math.round(total).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Venue",value:"₹"+v.venueCost.toLocaleString('en-IN')+" ("+(v.venueCost/total*100).toFixed(0)+"%)"},
+        {label:"Catering ("+v.guests+" guests)",value:"₹"+catering.toLocaleString('en-IN')+" ("+(catering/total*100).toFixed(0)+"%)"},
+        {label:"Decoration",value:"₹"+v.decorCost.toLocaleString('en-IN')},
+        {label:"Entertainment / DJ",value:"₹"+v.entertainment.toLocaleString('en-IN')},
+        {label:"Photography / Video",value:"₹"+v.photography_ev.toLocaleString('en-IN')},
+        {label:"Buffer ("+v.miscPct_ev+"%)",value:"₹"+Math.round(misc).toLocaleString('en-IN')},
+        {label:"Cost per Guest",value:"₹"+Math.round(perHead).toLocaleString('en-IN')}
+      ],
+      chart:{labels:["Venue","Catering","Decor","Entertainment","Photo/Video","Buffer"],
+        data:[v.venueCost,catering,v.decorCost,v.entertainment,v.photography_ev,Math.round(misc)]}
+    };
+  };
+
+  if(DB['householdbudget'] && DB['householdbudget'].calc===null) DB['householdbudget'].calc=function(v){
+    var needs=v.rentEmi+v.groceries+v.utilities_hb+v.transport_hb+v.insurance_hb;
+    var wants=v.lifestyle_hb;
+    var targetSavings=v.monthlyIncome_hb*v.savingsTarget_hb/100;
+    var actualSavings=v.monthlyIncome_hb-needs-wants;
+    var needsPct=(needs/v.monthlyIncome_hb*100);
+    var wantsPct=(wants/v.monthlyIncome_hb*100);
+    var savingsPct=(actualSavings/v.monthlyIncome_hb*100);
+    var idealNeeds=v.monthlyIncome_hb*0.5;
+    var idealWants=v.monthlyIncome_hb*0.3;
+    var idealSavings=v.monthlyIncome_hb*0.2;
+    return {
+      main:{label:"Monthly Savings",value:"₹"+Math.round(actualSavings).toLocaleString('en-IN'),pos:actualSavings>=targetSavings},
+      secondary:[
+        {label:"Needs (rent+grocery+utilities)",value:"₹"+needs.toLocaleString('en-IN')+" ("+needsPct.toFixed(0)+"%) "+(needsPct<=50?"✅":"⚠ over 50%")},
+        {label:"Wants (lifestyle)",value:"₹"+wants.toLocaleString('en-IN')+" ("+wantsPct.toFixed(0)+"%) "+(wantsPct<=30?"✅":"⚠ over 30%")},
+        {label:"Savings",value:savingsPct.toFixed(0)+"% "+(savingsPct>=20?"✅":"⚠ below 20%")},
+        {label:"50/30/20 Target — Needs",value:"₹"+Math.round(idealNeeds).toLocaleString('en-IN')},
+        {label:"50/30/20 Target — Wants",value:"₹"+Math.round(idealWants).toLocaleString('en-IN')},
+        {label:"50/30/20 Target — Savings",value:"₹"+Math.round(idealSavings).toLocaleString('en-IN')},
+        {label:"Annual Savings (projected)",value:"₹"+Math.round(actualSavings*12).toLocaleString('en-IN')},
+        {label:"Verdict",value:savingsPct>=20?"✅ Healthy budget":savingsPct>=10?"⚠ Reduce wants":"❌ Cut non-essentials"}
+      ],
+      chart:{labels:["Needs","Wants","Savings"],data:[Math.round(needs),Math.round(wants),Math.round(Math.max(0,actualSavings))]}
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('everyday');
 })();

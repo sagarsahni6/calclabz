@@ -235,15 +235,37 @@
             const payback = v.systemCost / annualSaving;
             const lifetime25 = annualSaving * 25 - v.systemCost;
             const co2Saved = monthlyGen * 12 * 0.82 / 1000; // tonnes/year
+            // Subsidy calculation (PM Surya Ghar Yojana)
+            var subsidy=0;
+            if(v.systemKw<=2) subsidy=v.systemKw*30000;
+            else if(v.systemKw<=3) subsidy=60000+(v.systemKw-2)*18000;
+            else subsidy=78000;
+            var netCost=v.systemCost-subsidy;
+            var paybackWithSubsidy=netCost/annualSaving;
+            // Recommended system sizing
+            var unitsNeeded=v.monthlyBill/v.tariff;
+            var recommendedKw=Math.ceil(unitsNeeded/(4.5*30)*10)/10;
+            // Battery estimate
+            var batteryKwh=v.systemKw*3; // 3 hours backup
+            var batteryEstCost=Math.round(batteryKwh*8000);
+            var roi25=((annualSaving*25-netCost)/netCost*100);
             return {
                 main:{label:"Annual Savings",value:"₹"+Math.round(annualSaving).toLocaleString()},
                 secondary:[
                     {label:"Monthly Generation",value:Math.round(monthlyGen)+" units"},
                     {label:"Monthly Bill Savings",value:"₹"+Math.round(monthlySaving).toLocaleString()},
-                    {label:"Payback Period",value:payback.toFixed(1)+" years"},
-                    {label:"25-Year Net Savings",value:"₹"+Math.round(lifetime25).toLocaleString()},
-                    {label:"CO₂ Saved per Year",value:co2Saved.toFixed(2)+" tonnes"}
-                ]
+                    {label:"Govt Subsidy (Surya Ghar)",value:"₹"+subsidy.toLocaleString()},
+                    {label:"Net Cost After Subsidy",value:"₹"+Math.round(netCost).toLocaleString()},
+                    {label:"Payback (with subsidy)",value:paybackWithSubsidy.toFixed(1)+" years"},
+                    {label:"Payback (without subsidy)",value:payback.toFixed(1)+" years"},
+                    {label:"25-Year ROI",value:roi25.toFixed(0)+"%"},
+                    {label:"25-Year Net Savings",value:"₹"+Math.round(lifetime25+subsidy).toLocaleString()},
+                    {label:"CO₂ Saved per Year",value:co2Saved.toFixed(2)+" tonnes"},
+                    {label:"Recommended System Size",value:recommendedKw+" kW (for your bill)"},
+                    {label:"Battery Backup (3hr)",value:batteryKwh+" kWh — est. ₹"+batteryEstCost.toLocaleString()},
+                    {label:"Trees Equivalent",value:Math.round(co2Saved*46)+" trees planted/year"}
+                ],
+                chart:{a:Math.round(netCost),b:Math.round(annualSaving*25),lA:"Net Investment",lB:"25-Yr Savings"}
             };
         };
 
@@ -280,6 +302,90 @@
                     data:Object.values(base).map(r=>Math.round(v.area*r*qm*cm))}
             };
         };
+
+  // ══════════════════════════════════════════════════════
+  // NEW CONSTRUCTION CALCULATORS
+  // ══════════════════════════════════════════════════════
+
+  if(DB['concretemix'] && DB['concretemix'].calc===null) DB['concretemix'].calc=function(v){
+    var ratios={"M10 (1:3:6)":[1,3,6],"M15 (1:2:4)":[1,2,4],"M20 (1:1.5:3)":[1,1.5,3],"M25 (1:1:2)":[1,1,2],"M30 (Design Mix)":[1,0.75,1.5],"Custom":[v.customCement,v.customSand,v.customAggregate]};
+    var r=ratios[v.mixRatio]||[1,1.5,3];
+    var vol=v.volume_cm*(1+v.wastage_cm/100);
+    var dryVol=vol*1.54;
+    var totalParts=r[0]+r[1]+r[2];
+    var cementVol=dryVol*r[0]/totalParts;
+    var sandVol=dryVol*r[1]/totalParts;
+    var aggVol=dryVol*r[2]/totalParts;
+    var cementBags=Math.ceil(cementVol*1440/50);
+    var waterLitres=Math.round(cementBags*50*0.5);
+    return {
+      main:{label:"Cement Bags (50kg)",value:cementBags+" bags"},
+      secondary:[
+        {label:"Sand Required",value:sandVol.toFixed(3)+" m³ ("+Math.round(sandVol*1600)+" kg)"},
+        {label:"Aggregate Required",value:aggVol.toFixed(3)+" m³ ("+Math.round(aggVol*1500)+" kg)"},
+        {label:"Water (est.)",value:waterLitres+" litres"},
+        {label:"Wet Volume",value:vol.toFixed(3)+" m³"},
+        {label:"Dry Volume (×1.54)",value:dryVol.toFixed(3)+" m³"},
+        {label:"Mix Ratio",value:r.join(" : ")},
+        {label:"Wastage Added",value:v.wastage_cm+"%"}
+      ]
+    };
+  };
+
+  if(DB['materialwaste'] && DB['materialwaste'].calc===null) DB['materialwaste'].calc=function(v){
+    var coverage={"Tiles (floor/wall)":1,"Paint (interior)":100,"Paint (exterior)":80,"Laminate Flooring":1,"Wallpaper":1,"Carpet":1};
+    var unit={"Tiles (floor/wall)":"tiles","Paint (interior)":"litres","Paint (exterior)":"litres","Laminate Flooring":"sq ft","Wallpaper":"rolls","Carpet":"sq ft"};
+    var cov=coverage[v.material_mw]||1;
+    var tileSizes={"2×2 ft":4,"1×2 ft":2,"1×1 ft":1,"Custom":1};
+    var tileArea=tileSizes[v.materialSize]||1;
+    var baseQty;
+    if(v.material_mw.includes("Paint")){
+      baseQty=v.area_mw/cov*v.coats;
+    } else if(v.material_mw.includes("Tile")){
+      baseQty=Math.ceil(v.area_mw/tileArea);
+    } else if(v.material_mw.includes("Wallpaper")){
+      baseQty=Math.ceil(v.area_mw/56);
+    } else {
+      baseQty=v.area_mw;
+    }
+    var wastagePct=v.wastage_mw;
+    var totalQty=Math.ceil(baseQty*(1+wastagePct/100));
+    var wasteUnits=totalQty-baseQty;
+    return {
+      main:{label:"Total Required",value:totalQty+" "+unit[v.material_mw]},
+      secondary:[
+        {label:"Base Quantity",value:Math.ceil(baseQty)+" "+unit[v.material_mw]},
+        {label:"Extra for Wastage ("+wastagePct+"%)",value:wasteUnits+" "+unit[v.material_mw]},
+        {label:"Surface Area",value:v.area_mw+" sq ft"},
+        {label:"Material",value:v.material_mw},
+        {label:"Tip",value:v.material_mw.includes("Tile")?"Add 15% for diagonal/herringbone patterns":"Order same batch to ensure consistency"}
+      ]
+    };
+  };
+
+  if(DB['rainwater'] && DB['rainwater'].calc===null) DB['rainwater'].calc=function(v){
+    var coeffMap={"0.9 (concrete/metal roof)":0.9,"0.8 (tiled roof)":0.8,"0.6 (ground/gravel)":0.6,"Custom":v.customCoeff};
+    var coeff=coeffMap[v.runoffCoeff]||0.85;
+    var roofSqM=v.roofArea_rw*0.0929;
+    var annualCollection=roofSqM*v.annualRainfall*coeff;
+    var monthlyAvg=annualCollection/12;
+    var dailyAvg=annualCollection/365;
+    var annualDemand=v.dailyDemand_rw*365;
+    var pctDemandMet=Math.min(100,(annualCollection/annualDemand)*100);
+    var tankSize=Math.ceil(monthlyAvg*1.5/1000)*1000;
+    return {
+      main:{label:"Annual Collection",value:Math.round(annualCollection).toLocaleString()+" litres"},
+      secondary:[
+        {label:"Monthly Average",value:Math.round(monthlyAvg).toLocaleString()+" litres"},
+        {label:"Daily Average",value:Math.round(dailyAvg)+" litres"},
+        {label:"% of Demand Met",value:pctDemandMet.toFixed(1)+"%"},
+        {label:"Suggested Tank Size",value:tankSize.toLocaleString()+" litres"},
+        {label:"Roof Catchment",value:roofSqM.toFixed(1)+" m² ("+v.roofArea_rw+" sq ft)"},
+        {label:"Runoff Coefficient",value:coeff},
+        {label:"Annual Rainfall",value:v.annualRainfall+" mm"}
+      ]
+    };
+  };
 
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('construction');

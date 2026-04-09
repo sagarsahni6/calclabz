@@ -321,15 +321,27 @@
         };
 
   if(DB['gratuity'] && DB['gratuity'].calc===null) DB['gratuity'].calc=function(v){
-            if(v.years<5) return {main:{label:"Not Eligible",value:"Minimum 5 years required"}};
+            if(v.years<5) return {main:{label:"Not Eligible",value:"Minimum 5 years required"},secondary:[{label:"Years Needed",value:(5-v.years)+" more years"},{label:"Tip",value:"Complete 4 years 240 days to qualify"}]};
             const gratuity=(v.salary*15*v.years)/26;
             const taxFree=Math.min(gratuity,2000000);
+            const taxable=Math.max(0,gratuity-2000000);
+            // Leave encashment estimate
+            var leaveBalance=v.leaveBalance||30;
+            var leaveEncash=(v.salary/30)*Math.min(leaveBalance,300);
+            var leTaxFree=Math.min(leaveEncash,2500000);
+            var leTaxable=Math.max(0,leaveEncash-2500000);
+            var totalPayout=gratuity+leaveEncash;
             return {
                 main:{label:"Gratuity Amount",value:"₹"+Math.round(gratuity).toLocaleString()},
                 secondary:[
                     {label:"Tax-Free Limit",value:"₹20,00,000"},
-                    {label:"Taxable Amount",value:"₹"+Math.max(0,Math.round(gratuity-2000000)).toLocaleString()},
-                    {label:"Formula",value:"(Salary×15×Years)/26"}
+                    {label:"Taxable Gratuity",value:"₹"+Math.round(taxable).toLocaleString()},
+                    {label:"Formula",value:"(Basic×15×Years)/26"},
+                    {label:"Leave Encashment ("+leaveBalance+" days)",value:"₹"+Math.round(leaveEncash).toLocaleString()},
+                    {label:"Leave Tax-Free Limit",value:"₹25,00,000"},
+                    {label:"Taxable Leave Encash",value:"₹"+Math.round(leTaxable).toLocaleString()},
+                    {label:"Total Retirement Payout",value:"₹"+Math.round(totalPayout).toLocaleString(),pos:true},
+                    {label:"Total Taxable",value:"₹"+Math.round(taxable+leTaxable).toLocaleString()}
                 ]
             };
         };
@@ -523,16 +535,35 @@
             }
             let newT = newTax(newTaxable); if(newTaxable<=1200000) newT=0; newT=newT*1.04;
             const saving = oldT - newT;
+            // Break-even: find income where old regime becomes better
+            var breakEven=0;
+            for(var inc=500000;inc<=5000000;inc+=25000){
+              var oT2=oldTax(Math.max(0,inc-oldDeductions))*1.04;
+              var nT2=newTax(Math.max(0,inc-75000)); if(Math.max(0,inc-75000)<=1200000) nT2=0; nT2=nT2*1.04;
+              if(oT2<=nT2&&breakEven===0){breakEven=inc;break;}
+            }
+            var oldEffRate=v.income>0?(oldT/v.income*100):0;
+            var newEffRate=v.income>0?(newT/v.income*100):0;
+            var oldMarginal=oldTaxable>1000000?'30%':oldTaxable>500000?'20%':oldTaxable>250000?'5%':'0%';
+            var newMarginal=newTaxable>2400000?'30%':newTaxable>2000000?'25%':newTaxable>1600000?'20%':newTaxable>1200000?'15%':newTaxable>800000?'10%':newTaxable>400000?'5%':'0%';
             return {
                 main:{label:"Better Regime",value:saving>0?"New Regime saves ₹"+Math.round(saving).toLocaleString():saving<0?"Old Regime saves ₹"+Math.round(-saving).toLocaleString():"Both equal"},
                 secondary:[
                     {label:"Old Regime Tax",value:"₹"+Math.round(oldT).toLocaleString()},
                     {label:"Old Taxable Income",value:"₹"+Math.round(oldTaxable).toLocaleString()},
-                    {label:"Old Deductions",value:"₹"+Math.round(oldDeductions).toLocaleString()},
+                    {label:"Old Deductions Used",value:"₹"+Math.round(oldDeductions).toLocaleString()},
+                    {label:"Old Effective Rate",value:oldEffRate.toFixed(2)+"%"},
+                    {label:"Old Marginal Rate",value:oldMarginal},
                     {label:"New Regime Tax",value:"₹"+Math.round(newT).toLocaleString()},
                     {label:"New Taxable Income",value:"₹"+Math.round(newTaxable).toLocaleString()},
-                    {label:"Tax Saving",value:"₹"+Math.round(Math.abs(saving)).toLocaleString(),pos:saving>0}
-                ]
+                    {label:"New Effective Rate",value:newEffRate.toFixed(2)+"%"},
+                    {label:"New Marginal Rate",value:newMarginal},
+                    {label:"Tax Saving",value:"₹"+Math.round(Math.abs(saving)).toLocaleString()+" with "+(saving>0?"New":"Old")+" Regime",pos:true},
+                    {label:"Monthly Tax (Old)",value:"₹"+Math.round(oldT/12).toLocaleString()},
+                    {label:"Monthly Tax (New)",value:"₹"+Math.round(newT/12).toLocaleString()},
+                    {label:"Break-even Income",value:breakEven>0?"₹"+breakEven.toLocaleString()+" — Old better above this":"Old not better up to ₹50L"}
+                ],
+                chart:{a:Math.round(oldT),b:Math.round(newT),lA:"Old Regime Tax",lB:"New Regime Tax"}
             };
         };
 
@@ -1142,6 +1173,667 @@
                 chart:{a:v.currentCTC,b:annualIncrease,lA:"Old CTC",lB:"Increment"}
             };
         };
+
+  // ══════════════════════════════════════════════════════
+  // NEW FINANCE CALCULATORS
+  // ══════════════════════════════════════════════════════
+
+  if(DB['fire'] && DB['fire'].calc===null) DB['fire'].calc=function(v){
+    var fireNumber = v.annualExpense / (v.withdrawalRate/100);
+    var portfolio = v.currentSavings;
+    var r = v.returnRate/100;
+    var years = 0;
+    while(portfolio < fireNumber && years < 100){
+      portfolio = (portfolio + v.annualSaving) * (1 + r);
+      years++;
+    }
+    var coastFire = fireNumber / Math.pow(1+r, 30-years > 0 ? 30-years : 10);
+    return {
+      main:{label:"Years to FIRE",value:years < 100 ? years+" years" : "100+ years"},
+      secondary:[
+        {label:"FIRE Number",value:"₹"+Math.round(fireNumber).toLocaleString('en-IN')},
+        {label:"Monthly Expense Budget",value:"₹"+Math.round(v.annualExpense/12).toLocaleString('en-IN')},
+        {label:"Portfolio at FIRE",value:"₹"+Math.round(portfolio).toLocaleString('en-IN')},
+        {label:"Total Invested",value:"₹"+Math.round(v.currentSavings+v.annualSaving*years).toLocaleString('en-IN')},
+        {label:"Coast FIRE Number (today)",value:"₹"+Math.round(coastFire).toLocaleString('en-IN')},
+        {label:"Savings Rate",value:(v.annualSaving/(v.annualExpense+v.annualSaving)*100).toFixed(1)+"%"}
+      ],
+      chart:{a:Math.round(v.currentSavings+v.annualSaving*years),b:Math.round(portfolio-(v.currentSavings+v.annualSaving*years)),lA:"Invested",lB:"Returns",
+        timeline:(function(){
+          var labels=[],invested=[],corpus=[];
+          var p=v.currentSavings;
+          for(var y=1;y<=Math.min(years,40);y++){
+            p=(p+v.annualSaving)*(1+r);
+            labels.push('Yr '+y);
+            invested.push(Math.round(v.currentSavings+v.annualSaving*y));
+            corpus.push(Math.round(p));
+          }
+          return {labels:labels,datasets:[{label:'Invested',data:invested,fill:false},{label:'Portfolio',data:corpus,fill:true}]};
+        })()
+      }
+    };
+  };
+
+  if(DB['debtavalanche'] && DB['debtavalanche'].calc===null) DB['debtavalanche'].calc=function(v){
+    var debts=[];
+    if(v.debt1bal>0) debts.push({bal:v.debt1bal,rate:v.debt1rate/100/12,min:v.debt1min});
+    if(v.debt2bal>0) debts.push({bal:v.debt2bal,rate:v.debt2rate/100/12,min:v.debt2min});
+    if(v.debt3bal>0) debts.push({bal:v.debt3bal,rate:v.debt3rate/100/12,min:v.debt3min});
+    if(debts.length===0) return {main:{label:"Error",value:"Enter at least one debt"}};
+    function simulate(order){
+      var ds=debts.map(function(d){return{bal:d.bal,rate:d.rate,min:d.min};});
+      if(order==='avalanche') ds.sort(function(a,b){return b.rate-a.rate;});
+      else ds.sort(function(a,b){return a.bal-b.bal;});
+      var months=0,totalInt=0,extra=v.extraPay;
+      while(ds.some(function(d){return d.bal>0;})&&months<600){
+        var ex=extra;
+        for(var i=0;i<ds.length;i++){
+          if(ds[i].bal<=0) continue;
+          var int=ds[i].bal*ds[i].rate; totalInt+=int;
+          var pay=ds[i].min+ex; ex=0;
+          ds[i].bal=Math.max(0,ds[i].bal+int-pay);
+          if(ds[i].bal===0 && pay>ds[i].min+int) ex+=pay-ds[i].min-int;
+        }
+        months++;
+      }
+      return {months:months,totalInt:totalInt};
+    }
+    var av=simulate('avalanche'),sn=simulate('snowball');
+    var totalDebt=debts.reduce(function(s,d){return s+d.bal;},0);
+    var saved=sn.totalInt-av.totalInt;
+    return {
+      main:{label:"Avalanche Payoff Time",value:av.months+" months"},
+      secondary:[
+        {label:"Avalanche Total Interest",value:"₹"+Math.round(av.totalInt).toLocaleString('en-IN')},
+        {label:"Snowball Payoff Time",value:sn.months+" months"},
+        {label:"Snowball Total Interest",value:"₹"+Math.round(sn.totalInt).toLocaleString('en-IN')},
+        {label:"Interest Saved (Avalanche)",value:"₹"+Math.round(Math.max(0,saved)).toLocaleString('en-IN'),pos:saved>0},
+        {label:"Total Debt",value:"₹"+Math.round(totalDebt).toLocaleString('en-IN')},
+        {label:"Recommendation",value:saved>1000?"Avalanche (saves ₹"+Math.round(saved).toLocaleString('en-IN')+")":"Either works — pick snowball for motivation"}
+      ]
+    };
+  };
+
+  if(DB['emergencyfund'] && DB['emergencyfund'].calc===null) DB['emergencyfund'].calc=function(v){
+    var target=v.monthlyExpense*v.monthsCover;
+    var adjustedTarget=target*(1+v.dependents*0.1);
+    var gap=Math.max(0,adjustedTarget-v.currentFund);
+    var monthsNeeded=v.monthlySave>0?Math.ceil(gap/v.monthlySave):Infinity;
+    return {
+      main:{label:"Emergency Fund Target",value:"₹"+Math.round(adjustedTarget).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Base Target ("+v.monthsCover+" months)",value:"₹"+Math.round(target).toLocaleString('en-IN')},
+        {label:"Dependent Adjustment (+"+v.dependents*10+"%)",value:"₹"+Math.round(adjustedTarget-target).toLocaleString('en-IN')},
+        {label:"Current Fund",value:"₹"+Math.round(v.currentFund).toLocaleString('en-IN')},
+        {label:"Gap to Fill",value:"₹"+Math.round(gap).toLocaleString('en-IN')},
+        {label:"Months to Full Fund",value:monthsNeeded<Infinity?monthsNeeded+" months":"∞ (increase savings)"},
+        {label:"Fund Status",value:v.currentFund>=adjustedTarget?"✅ Fully funded!":v.currentFund>=target/2?"⚠ Partially funded":"❌ Underfunded"}
+      ],
+      chart:{a:Math.round(v.currentFund),b:Math.round(gap),lA:"Current Fund",lB:"Gap"}
+    };
+  };
+
+  if(DB['rentvsbuy'] && DB['rentvsbuy'].calc===null) DB['rentvsbuy'].calc=function(v){
+    var loan=v.homePrice-v.downPayment;
+    var r=v.loanRate/12/100,n=v.loanTenure*12;
+    var emi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var totalEmi=emi*n+v.downPayment;
+    var totalMaint=0,totalRent=0,rent=v.monthlyRent;
+    for(var y=0;y<v.loanTenure;y++){
+      totalRent+=rent*12; totalMaint+=v.maintenance;
+      rent*=(1+v.rentIncrease/100);
+    }
+    var propertyValue=v.homePrice*Math.pow(1+v.propertyAppreciation/100,v.loanTenure);
+    var buyCost=totalEmi+totalMaint-propertyValue;
+    var rentCost=totalRent;
+    var investReturn=v.downPayment*Math.pow(1.08,v.loanTenure);
+    return {
+      main:{label:"Better Option",value:buyCost<rentCost?"Buy (saves ₹"+Math.round(rentCost-buyCost).toLocaleString('en-IN')+")":"Rent (saves ₹"+Math.round(buyCost-rentCost).toLocaleString('en-IN')+")"},
+      secondary:[
+        {label:"Total Cost of Buying",value:"₹"+Math.round(totalEmi+totalMaint).toLocaleString('en-IN')},
+        {label:"Property Value ("+v.loanTenure+"yr)",value:"₹"+Math.round(propertyValue).toLocaleString('en-IN'),pos:true},
+        {label:"Net Buy Cost",value:"₹"+Math.round(buyCost).toLocaleString('en-IN')},
+        {label:"Monthly EMI",value:"₹"+Math.round(emi).toLocaleString('en-IN')},
+        {label:"Total Rent ("+v.loanTenure+"yr)",value:"₹"+Math.round(totalRent).toLocaleString('en-IN')},
+        {label:"Down Payment if Invested @8%",value:"₹"+Math.round(investReturn).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['carleasevsbuy'] && DB['carleasevsbuy'].calc===null) DB['carleasevsbuy'].calc=function(v){
+    var loan=v.carPrice-v.downPay;
+    var r=v.loanRateCar/12/100,n=v.loanYears*12;
+    var emi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var totalBuy=emi*n+v.downPay+v.annualInsurance*v.loanYears;
+    var resale=v.carPrice*v.resalePercent/100;
+    var netBuy=totalBuy-resale;
+    var totalLease=v.monthlyLease*v.leaseYears*12;
+    return {
+      main:{label:"Better Option",value:netBuy<totalLease?"Buy (saves ₹"+Math.round(totalLease-netBuy).toLocaleString('en-IN')+")":"Lease (saves ₹"+Math.round(netBuy-totalLease).toLocaleString('en-IN')+")"},
+      secondary:[
+        {label:"Total Buy Cost",value:"₹"+Math.round(totalBuy).toLocaleString('en-IN')},
+        {label:"Resale Value",value:"₹"+Math.round(resale).toLocaleString('en-IN'),pos:true},
+        {label:"Net Buy Cost (after resale)",value:"₹"+Math.round(netBuy).toLocaleString('en-IN')},
+        {label:"Monthly EMI",value:"₹"+Math.round(emi).toLocaleString('en-IN')},
+        {label:"Total Lease Cost ("+v.leaseYears+"yr)",value:"₹"+Math.round(totalLease).toLocaleString('en-IN')},
+        {label:"Monthly Cost: Buy",value:"₹"+Math.round(netBuy/(v.loanYears*12)).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['homedownpayment'] && DB['homedownpayment'].calc===null) DB['homedownpayment'].calc=function(v){
+    var target=v.targetHome*v.downPct/100;
+    var r=v.savingsReturn/12/100,n=v.timelineYears*12;
+    var futureCurrentSaved=v.currentSaved*Math.pow(1+r,n);
+    var remaining=Math.max(0,target-futureCurrentSaved);
+    var monthly=remaining>0?remaining*r/((Math.pow(1+r,n)-1)*(1+r)):0;
+    return {
+      main:{label:"Monthly Savings Needed",value:"₹"+Math.round(monthly).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Down Payment Target",value:"₹"+Math.round(target).toLocaleString('en-IN')},
+        {label:"Current Savings Growth",value:"₹"+Math.round(futureCurrentSaved).toLocaleString('en-IN')},
+        {label:"Gap to Fill via SIP",value:"₹"+Math.round(remaining).toLocaleString('en-IN')},
+        {label:"Total New Savings",value:"₹"+Math.round(monthly*n).toLocaleString('en-IN')},
+        {label:"Timeline",value:v.timelineYears+" years ("+n+" months)"}
+      ]
+    };
+  };
+
+  if(DB['loancompare'] && DB['loancompare'].calc===null) DB['loancompare'].calc=function(v){
+    function calc(P,rate,tenure,fee){
+      var r=rate/12/100,n=tenure;
+      var emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+      return {emi:emi,total:emi*n+fee,interest:emi*n-P+fee};
+    }
+    var b1=calc(v.amount_lc,v.rate1,v.tenure1,v.fee1);
+    var b2=calc(v.amount_lc,v.rate2,v.tenure2,v.fee2);
+    var b3=calc(v.amount_lc,v.rate3,v.tenure3,v.fee3);
+    var best=b1.total<=b2.total&&b1.total<=b3.total?"Bank 1":b2.total<=b3.total?"Bank 2":"Bank 3";
+    return {
+      main:{label:"Best Option",value:best+" (lowest total cost)"},
+      secondary:[
+        {label:"Bank 1 EMI",value:"₹"+Math.round(b1.emi).toLocaleString('en-IN')},
+        {label:"Bank 1 Total Cost",value:"₹"+Math.round(b1.total).toLocaleString('en-IN')},
+        {label:"Bank 2 EMI",value:"₹"+Math.round(b2.emi).toLocaleString('en-IN')},
+        {label:"Bank 2 Total Cost",value:"₹"+Math.round(b2.total).toLocaleString('en-IN')},
+        {label:"Bank 3 EMI",value:"₹"+Math.round(b3.emi).toLocaleString('en-IN')},
+        {label:"Bank 3 Total Cost",value:"₹"+Math.round(b3.total).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['refinance'] && DB['refinance'].calc===null) DB['refinance'].calc=function(v){
+    function totalInt(P,rate,n){var r=rate/12/100;var emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);return emi*n-P;}
+    var intOld=totalInt(v.outstandingBal,v.currentRate_r,v.remainingMonths);
+    var intNew=totalInt(v.outstandingBal,v.newRate_r,v.newTenure_r);
+    var netSaved=intOld-intNew-v.closingCost;
+    var breakEven=netSaved>0?Math.ceil(v.closingCost/((intOld-intNew)/v.remainingMonths)):0;
+    return {
+      main:{label:"Net Interest Saved",value:"₹"+Math.round(netSaved).toLocaleString('en-IN'),pos:netSaved>0},
+      secondary:[
+        {label:"Interest at Current Rate",value:"₹"+Math.round(intOld).toLocaleString('en-IN')},
+        {label:"Interest at New Rate",value:"₹"+Math.round(intNew).toLocaleString('en-IN')},
+        {label:"Refinance Costs",value:"₹"+v.closingCost.toLocaleString('en-IN')},
+        {label:"Break-even In",value:netSaved>0?breakEven+" months":"Not beneficial"},
+        {label:"Verdict",value:netSaved>0?"✅ Refinance saves money":"❌ Not worth refinancing"}
+      ]
+    };
+  };
+
+  if(DB['creditutil'] && DB['creditutil'].calc===null) DB['creditutil'].calc=function(v){
+    var cards=[];
+    if(v.card1Limit>0) cards.push({limit:v.card1Limit,used:v.card1Used});
+    if(v.card2Limit>0) cards.push({limit:v.card2Limit,used:v.card2Used});
+    if(v.card3Limit>0) cards.push({limit:v.card3Limit,used:v.card3Used});
+    var totalLimit=cards.reduce(function(s,c){return s+c.limit;},0);
+    var totalUsed=cards.reduce(function(s,c){return s+c.used;},0);
+    var util=totalLimit>0?(totalUsed/totalLimit)*100:0;
+    var rating=util<10?"Excellent":util<30?"Good":util<50?"Fair":util<75?"Poor":"Very Poor";
+    var idealMax=totalLimit*0.3;
+    return {
+      main:{label:"Overall Utilization",value:util.toFixed(1)+"%"},
+      secondary:[
+        {label:"Credit Score Impact",value:rating},
+        {label:"Total Credit Limit",value:"₹"+totalLimit.toLocaleString('en-IN')},
+        {label:"Total Balance Used",value:"₹"+totalUsed.toLocaleString('en-IN')},
+        {label:"Available Credit",value:"₹"+(totalLimit-totalUsed).toLocaleString('en-IN')},
+        {label:"Ideal Max Balance (30%)",value:"₹"+Math.round(idealMax).toLocaleString('en-IN')},
+        {label:"Reduce By",value:totalUsed>idealMax?"₹"+Math.round(totalUsed-idealMax).toLocaleString('en-IN'):"✅ Within ideal range"}
+      ],
+      chart:{a:Math.round(totalUsed),b:Math.round(totalLimit-totalUsed),lA:"Used",lB:"Available"}
+    };
+  };
+
+  if(DB['insuranceneed'] && DB['insuranceneed'].calc===null) DB['insuranceneed'].calc=function(v){
+    var inflatedIncome=v.annualIncome_i*((Math.pow(1+v.inflationAdj/100,v.yearsToReplace)-1)/(v.inflationAdj/100));
+    var totalNeed=inflatedIncome+v.outstandingLoans+v.childrenExpense;
+    var gap=Math.max(0,totalNeed-v.existingCover-v.existingSavings_i);
+    var thumbRule=v.annualIncome_i*12;
+    return {
+      main:{label:"Recommended Cover",value:"₹"+Math.round(gap).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Income Replacement ("+v.yearsToReplace+"yr, inflation adj.)",value:"₹"+Math.round(inflatedIncome).toLocaleString('en-IN')},
+        {label:"Outstanding Loans",value:"₹"+v.outstandingLoans.toLocaleString('en-IN')},
+        {label:"Children Education",value:"₹"+v.childrenExpense.toLocaleString('en-IN')},
+        {label:"Total Need",value:"₹"+Math.round(totalNeed).toLocaleString('en-IN')},
+        {label:"Existing Cover + Savings",value:"₹"+(v.existingCover+v.existingSavings_i).toLocaleString('en-IN')},
+        {label:"Thumb Rule (12× income)",value:"₹"+thumbRule.toLocaleString('en-IN')},
+        {label:"Gap",value:gap>0?"₹"+Math.round(gap).toLocaleString('en-IN')+" short":"✅ Adequately covered"}
+      ],
+      chart:{a:Math.round(v.existingCover+v.existingSavings_i),b:Math.round(gap),lA:"Existing Cover",lB:"Gap"}
+    };
+  };
+
+  if(DB['npvirr'] && DB['npvirr'].calc===null) DB['npvirr'].calc=function(v){
+    var cfs=[-v.initialInvest,v.cf1,v.cf2,v.cf3,v.cf4,v.cf5];
+    var r=v.discountRate/100;
+    var npv=0;
+    for(var i=0;i<cfs.length;i++) npv+=cfs[i]/Math.pow(1+r,i);
+    // IRR: Newton-Raphson
+    var irr=0.1;
+    for(var iter=0;iter<100;iter++){
+      var f=0,fp=0;
+      for(var j=0;j<cfs.length;j++){f+=cfs[j]/Math.pow(1+irr,j);fp-=j*cfs[j]/Math.pow(1+irr,j+1);}
+      if(Math.abs(fp)<1e-10) break;
+      irr=irr-f/fp;
+      if(Math.abs(f)<0.01) break;
+    }
+    var pi=(npv+v.initialInvest)/v.initialInvest;
+    var payback=0,cumCf=0;
+    for(var k=1;k<cfs.length;k++){cumCf+=cfs[k];if(cumCf>=v.initialInvest){payback=k;break;}}
+    return {
+      main:{label:"NPV",value:"₹"+Math.round(npv).toLocaleString('en-IN'),pos:npv>0},
+      secondary:[
+        {label:"IRR",value:(irr*100).toFixed(2)+"%",pos:irr>r},
+        {label:"Profitability Index",value:pi.toFixed(2)+"×"},
+        {label:"Payback Period",value:payback>0?payback+" years":"Beyond 5 years"},
+        {label:"Total Cash Inflows",value:"₹"+Math.round(cfs.slice(1).reduce(function(a,b){return a+b;},0)).toLocaleString('en-IN')},
+        {label:"Initial Investment",value:"₹"+v.initialInvest.toLocaleString('en-IN')},
+        {label:"Decision",value:npv>0?"✅ Accept project":"❌ Reject project"}
+      ]
+    };
+  };
+
+  if(DB['bondyield'] && DB['bondyield'].calc===null) DB['bondyield'].calc=function(v){
+    var freq={Annual:1,"Semi-Annual":2,Quarterly:4};
+    var m=freq[v.frequency]||1;
+    var coupon=v.faceValue*v.couponRate/100;
+    var currentYield=(coupon/v.marketPrice)*100;
+    // YTM approximation: (C + (F-P)/n) / ((F+P)/2)
+    var ytmApprox=((coupon/m)+(v.faceValue-v.marketPrice)/(v.yearsToMaturity*m))/((v.faceValue+v.marketPrice)/2)*m*100;
+    var totalReturn=coupon*v.yearsToMaturity+(v.faceValue-v.marketPrice);
+    return {
+      main:{label:"Yield to Maturity (approx.)",value:ytmApprox.toFixed(2)+"%"},
+      secondary:[
+        {label:"Current Yield",value:currentYield.toFixed(2)+"%"},
+        {label:"Annual Coupon",value:"₹"+coupon.toFixed(2)},
+        {label:"Total Return (if held)",value:"₹"+Math.round(totalReturn).toLocaleString('en-IN'),pos:totalReturn>0},
+        {label:"Bond Status",value:v.marketPrice<v.faceValue?"Trading at Discount":v.marketPrice>v.faceValue?"Trading at Premium":"At Par"},
+        {label:"Price vs Par",value:(((v.marketPrice/v.faceValue)-1)*100).toFixed(2)+"%"}
+      ]
+    };
+  };
+
+  if(DB['optionprofit'] && DB['optionprofit'].calc===null) DB['optionprofit'].calc=function(v){
+    var isBuy=v.optType.startsWith("Buy");
+    var isCall=v.optType.includes("Call");
+    var intrinsic=0,pl=0;
+    if(isCall) intrinsic=Math.max(0,v.exitPrice-v.strikePrice);
+    else intrinsic=Math.max(0,v.strikePrice-v.exitPrice);
+    if(isBuy) pl=(intrinsic-v.premium)*v.lotSize;
+    else pl=(v.premium-intrinsic)*v.lotSize;
+    var breakeven=isCall?v.strikePrice+v.premium:v.strikePrice-v.premium;
+    var maxLoss=isBuy?v.premium*v.lotSize:"Unlimited";
+    var maxProfit=isBuy?(isCall?"Unlimited":"₹"+(v.strikePrice-v.premium)*v.lotSize):"₹"+v.premium*v.lotSize;
+    return {
+      main:{label:"Net P&L",value:"₹"+Math.round(pl).toLocaleString('en-IN'),pos:pl>0},
+      secondary:[
+        {label:"Intrinsic Value",value:"₹"+intrinsic.toFixed(2)},
+        {label:"Break-even",value:"₹"+breakeven.toFixed(2)},
+        {label:"Max Loss",value:typeof maxLoss==='string'?maxLoss:"₹"+maxLoss.toLocaleString('en-IN')},
+        {label:"Max Profit",value:typeof maxProfit==='string'?maxProfit:maxProfit},
+        {label:"ROI",value:isBuy?((pl/(v.premium*v.lotSize))*100).toFixed(1)+"%":"N/A"},
+        {label:"P&L per Share",value:"₹"+(pl/v.lotSize).toFixed(2)}
+      ]
+    };
+  };
+
+  if(DB['forexpip'] && DB['forexpip'].calc===null) DB['forexpip'].calc=function(v){
+    var pipValues={"USD/INR":0.01,"EUR/USD":0.0001,"GBP/USD":0.0001,"USD/JPY":0.01,"EUR/INR":0.01};
+    var pipSize=pipValues[v.pair]||0.0001;
+    var pipVal=v.pipValue_override>0?v.pipValue_override:(v.pair.endsWith("INR")?1:83);
+    var riskAmount=v.accountBal*v.riskPct/100;
+    var positionSize=v.stopLossPips>0?Math.floor(riskAmount/(v.stopLossPips*pipVal)):0;
+    var standardLots=(positionSize/100000).toFixed(2);
+    var miniLots=(positionSize/10000).toFixed(2);
+    return {
+      main:{label:"Position Size",value:positionSize.toLocaleString()+" units"},
+      secondary:[
+        {label:"Standard Lots",value:standardLots},
+        {label:"Mini Lots",value:miniLots},
+        {label:"Risk Amount",value:"₹"+Math.round(riskAmount).toLocaleString('en-IN')},
+        {label:"Pip Value",value:"₹"+pipVal.toFixed(2)+" per pip"},
+        {label:"SL Distance",value:v.stopLossPips+" pips"},
+        {label:"Pair",value:v.pair}
+      ]
+    };
+  };
+
+  if(DB['portfoliorebalance'] && DB['portfoliorebalance'].calc===null) DB['portfoliorebalance'].calc=function(v){
+    var P=v.totalPortfolio;
+    var eqCur=P*v.equityCurrent/100,dtCur=P*v.debtCurrent/100,glCur=P*v.goldCurrent/100;
+    var eqTgt=P*v.equityTarget/100,dtTgt=P*v.debtTarget/100,glTgt=P*v.goldTarget/100;
+    var eqDiff=eqTgt-eqCur,dtDiff=dtTgt-dtCur,glDiff=glTgt-glCur;
+    function action(diff){return diff>0?"Buy ₹"+Math.round(diff).toLocaleString('en-IN'):diff<0?"Sell ₹"+Math.round(-diff).toLocaleString('en-IN'):"No change";}
+    return {
+      main:{label:"Rebalancing Actions",value:(v.equityTarget+v.debtTarget+v.goldTarget)===100?"Ready":"⚠ Targets must sum to 100%"},
+      secondary:[
+        {label:"Equity: "+action(eqDiff),value:v.equityCurrent+"% → "+v.equityTarget+"%"},
+        {label:"Debt: "+action(dtDiff),value:v.debtCurrent+"% → "+v.debtTarget+"%"},
+        {label:"Gold: "+action(glDiff),value:v.goldCurrent+"% → "+v.goldTarget+"%"},
+        {label:"Max Drift",value:Math.max(Math.abs(v.equityCurrent-v.equityTarget),Math.abs(v.debtCurrent-v.debtTarget),Math.abs(v.goldCurrent-v.goldTarget)).toFixed(1)+"%"},
+        {label:"Portfolio Value",value:"₹"+P.toLocaleString('en-IN')}
+      ],
+      chart:{labels:["Equity","Debt","Gold"],data:[Math.round(eqTgt),Math.round(dtTgt),Math.round(glTgt)]}
+    };
+  };
+
+  if(DB['assetallocation'] && DB['assetallocation'].calc===null) DB['assetallocation'].calc=function(v){
+    var riskMap={Conservative:{eq:30,dt:55,gl:15},Moderate:{eq:50,dt:35,gl:15},Aggressive:{eq:70,dt:20,gl:10},"Very Aggressive":{eq:85,dt:10,gl:5}};
+    var alloc=riskMap[v.riskProfile]||riskMap.Moderate;
+    var ageAdj=Math.max(0,Math.min(20,(v.ageAlloc-25)*0.5));
+    alloc={eq:Math.round(alloc.eq-ageAdj),dt:Math.round(alloc.dt+ageAdj*0.7),gl:Math.round(alloc.gl+ageAdj*0.3)};
+    var r=((alloc.eq*0.12+alloc.dt*0.07+alloc.gl*0.08)/100);
+    var monthlyR=r/12,months=v.horizon*12;
+    var fv=v.monthlyInvest_aa*((Math.pow(1+monthlyR,months)-1)/monthlyR)*(1+monthlyR);
+    return {
+      main:{label:"Suggested Allocation",value:alloc.eq+"% Equity / "+alloc.dt+"% Debt / "+alloc.gl+"% Gold"},
+      secondary:[
+        {label:"Equity Allocation",value:alloc.eq+"%"},
+        {label:"Debt Allocation",value:alloc.dt+"%"},
+        {label:"Gold Allocation",value:alloc.gl+"%"},
+        {label:"Expected Blended Return",value:(r*100).toFixed(1)+"% p.a."},
+        {label:"Projected Corpus ("+v.horizon+"yr)",value:"₹"+Math.round(fv).toLocaleString('en-IN')},
+        {label:"Gap to Target",value:"₹"+Math.round(Math.max(0,v.targetCorpus-fv)).toLocaleString('en-IN')}
+      ],
+      chart:{labels:["Equity","Debt","Gold"],data:[alloc.eq,alloc.dt,alloc.gl]}
+    };
+  };
+
+  if(DB['montecarlo'] && DB['montecarlo'].calc===null) DB['montecarlo'].calc=function(v){
+    var sims=parseInt(v.simulations)||1000;
+    var success=0,finalBalances=[];
+    for(var s=0;s<sims;s++){
+      var bal=v.corpus_mc;
+      var survived=true;
+      for(var y=0;y<v.yearsRetirement;y++){
+        var ret=(v.avgReturn_mc/100)+(v.stdDev_mc/100)*(Math.sqrt(-2*Math.log(Math.random()))*Math.cos(2*Math.PI*Math.random()));
+        bal=bal*(1+ret)-v.annualWithdrawal_mc;
+        if(bal<=0){survived=false;break;}
+      }
+      if(survived) success++;
+      finalBalances.push(Math.max(0,bal));
+    }
+    var rate=(success/sims*100);
+    finalBalances.sort(function(a,b){return a-b;});
+    var median=finalBalances[Math.floor(sims/2)];
+    var p10=finalBalances[Math.floor(sims*0.1)];
+    var p90=finalBalances[Math.floor(sims*0.9)];
+    return {
+      main:{label:"Success Rate",value:rate.toFixed(1)+"%"},
+      secondary:[
+        {label:"Simulations Run",value:sims.toLocaleString()},
+        {label:"Scenarios Survived",value:success.toLocaleString()+" / "+sims.toLocaleString()},
+        {label:"Median Final Balance",value:"₹"+Math.round(median).toLocaleString('en-IN')},
+        {label:"10th Percentile (worst case)",value:"₹"+Math.round(p10).toLocaleString('en-IN')},
+        {label:"90th Percentile (best case)",value:"₹"+Math.round(p90).toLocaleString('en-IN')},
+        {label:"Verdict",value:rate>=90?"✅ Plan is robust":rate>=70?"⚠ Consider adjustments":"❌ High failure risk"}
+      ]
+    };
+  };
+
+  if(DB['inflationgoal'] && DB['inflationgoal'].calc===null) DB['inflationgoal'].calc=function(v){
+    var inflatedGoal=v.goalAmount_ig*Math.pow(1+v.inflationRate_ig/100,v.yearsToGoal);
+    var r=v.returnRate_ig/12/100,n=v.yearsToGoal*12;
+    var futureCurrentSavings=v.currentSavings_ig*Math.pow(1+r,n);
+    var remaining=Math.max(0,inflatedGoal-futureCurrentSavings);
+    var monthly=remaining>0?remaining*r/((Math.pow(1+r,n)-1)*(1+r)):0;
+    return {
+      main:{label:"Monthly SIP Needed",value:"₹"+Math.round(monthly).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Goal (today's value)",value:"₹"+v.goalAmount_ig.toLocaleString('en-IN')},
+        {label:"Inflation-Adjusted Goal",value:"₹"+Math.round(inflatedGoal).toLocaleString('en-IN')},
+        {label:"Extra Due to Inflation",value:"₹"+Math.round(inflatedGoal-v.goalAmount_ig).toLocaleString('en-IN')},
+        {label:"Current Savings Growth",value:"₹"+Math.round(futureCurrentSavings).toLocaleString('en-IN')},
+        {label:"Gap to Fill via SIP",value:"₹"+Math.round(remaining).toLocaleString('en-IN')},
+        {label:"Total Investment Required",value:"₹"+Math.round(monthly*n+v.currentSavings_ig).toLocaleString('en-IN')}
+      ],
+      chart:{a:Math.round(v.goalAmount_ig),b:Math.round(inflatedGoal-v.goalAmount_ig),lA:"Today's Value",lB:"Inflation Premium"}
+    };
+  };
+
+  if(DB['businessloan'] && DB['businessloan'].calc===null) DB['businessloan'].calc=function(v){
+    var r=v.rate_bl/12/100,n=v.tenure_bl;
+    var emi=v.loanAmt_bl*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var totalPayment=emi*n;
+    var annualDebtService=emi*12+v.otherDebt;
+    var noi=v.annualRevenue-v.operatingExpenses;
+    var dscr=annualDebtService>0?noi/annualDebtService:0;
+    return {
+      main:{label:"Monthly EMI",value:"₹"+Math.round(emi).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Total Interest",value:"₹"+Math.round(totalPayment-v.loanAmt_bl).toLocaleString('en-IN')},
+        {label:"DSCR",value:dscr.toFixed(2)+"×"},
+        {label:"DSCR Status",value:dscr>=1.25?"✅ Lender-friendly (≥1.25)":dscr>=1?"⚠ Marginal":"❌ Below requirement"},
+        {label:"Net Operating Income",value:"₹"+Math.round(noi).toLocaleString('en-IN')},
+        {label:"Annual Debt Service",value:"₹"+Math.round(annualDebtService).toLocaleString('en-IN')},
+        {label:"Total Payment",value:"₹"+Math.round(totalPayment).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['gstinvoice'] && DB['gstinvoice'].calc===null) DB['gstinvoice'].calc=function(v){
+    var gstRate=parseFloat(v.gstRate_gi)||0;
+    var discountedPrice=v.sellingPrice_gi*(1-v.discount_gi/100);
+    var lineTotal=discountedPrice*v.quantity_gi;
+    var gstAmt=lineTotal*gstRate/100;
+    var invoiceTotal=lineTotal+gstAmt;
+    var totalCost=v.costPrice_gi*v.quantity_gi;
+    var profit=lineTotal-totalCost;
+    var margin=(profit/lineTotal)*100;
+    var isIntra=v.supplyType.includes("Intra");
+    return {
+      main:{label:"Invoice Total",value:"₹"+invoiceTotal.toFixed(2)},
+      secondary:[
+        {label:"Taxable Amount",value:"₹"+lineTotal.toFixed(2)},
+        {label:isIntra?"CGST ("+gstRate/2+"%)":"IGST ("+gstRate+"%)",value:"₹"+(isIntra?gstAmt/2:gstAmt).toFixed(2)},
+        isIntra?{label:"SGST ("+gstRate/2+"%)",value:"₹"+(gstAmt/2).toFixed(2)}:{label:"",value:""},
+        {label:"Total GST",value:"₹"+gstAmt.toFixed(2)},
+        {label:"Profit (before GST)",value:"₹"+profit.toFixed(2),pos:profit>0},
+        {label:"Profit Margin",value:margin.toFixed(1)+"%",pos:margin>0}
+      ].filter(function(r){return r.label!=='';}),
+      chart:{a:Math.round(totalCost),b:Math.round(profit>0?profit:0),lA:"Cost",lB:"Profit"}
+    };
+  };
+
+  if(DB['esoptax'] && DB['esoptax'].calc===null) DB['esoptax'].calc=function(v){
+    var perquisite=(v.fmvOnExercise-v.grantPrice)*v.sharesQty;
+    var slabRate=parseFloat(v.taxSlab)/100;
+    var perquisiteTax=perquisite*slabRate;
+    var capitalGain=(v.salePrice_esop-v.fmvOnExercise)*v.sharesQty;
+    var isLTCG=v.holdingMonths>=12;
+    var cgTax=isLTCG?Math.max(0,capitalGain-125000)*0.125:capitalGain*0.20;
+    var totalTax=perquisiteTax+cgTax;
+    var netProfit=(v.salePrice_esop-v.grantPrice)*v.sharesQty-totalTax;
+    return {
+      main:{label:"Total Tax on ESOPs",value:"₹"+Math.round(totalTax).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Perquisite Value",value:"₹"+Math.round(perquisite).toLocaleString('en-IN')},
+        {label:"Perquisite Tax (at "+Math.round(slabRate*100)+"% slab)",value:"₹"+Math.round(perquisiteTax).toLocaleString('en-IN')},
+        {label:"Capital Gain ("+(isLTCG?"LTCG":"STCG")+")",value:"₹"+Math.round(capitalGain).toLocaleString('en-IN')},
+        {label:(isLTCG?"LTCG Tax (12.5%)":"STCG Tax (20%)"),value:"₹"+Math.round(cgTax).toLocaleString('en-IN')},
+        {label:"Net Profit (after tax)",value:"₹"+Math.round(netProfit).toLocaleString('en-IN'),pos:netProfit>0},
+        {label:"Effective Tax Rate",value:((totalTax/((v.salePrice_esop-v.grantPrice)*v.sharesQty))*100).toFixed(1)+"%"}
+      ]
+    };
+  };
+
+  if(DB['freelancetax'] && DB['freelancetax'].calc===null) DB['freelancetax'].calc=function(v){
+    var is44ADA=v.regime_ft.includes("44ADA");
+    var taxableIncome=is44ADA?v.annualRevenue_ft*0.5:Math.max(0,v.annualRevenue_ft-v.expenses_ft);
+    var deductions=is44ADA?0:Math.min(v.sec80c_ft,150000)+Math.min(v.healthInsurance_ft,25000);
+    var netTaxable=Math.max(0,is44ADA?taxableIncome-75000:taxableIncome-deductions-50000);
+    // New regime slabs
+    var tax=0,rem=netTaxable;
+    var slabs=[[400000,0],[400000,0.05],[400000,0.10],[400000,0.15],[400000,0.20],[400000,0.25],[Infinity,0.30]];
+    for(var i=0;i<slabs.length;i++){if(rem<=0)break;var ch=Math.min(rem,slabs[i][0]);tax+=ch*slabs[i][1];rem-=ch;}
+    if(netTaxable<=1200000) tax=0;
+    var cess=tax*0.04;var totalTax=Math.round(tax+cess);
+    var gstRevenue=v.gstRegistered.startsWith("Yes")?v.annualRevenue_ft*0.18:0;
+    return {
+      main:{label:"Estimated Income Tax",value:"₹"+totalTax.toLocaleString('en-IN')},
+      secondary:[
+        {label:"Gross Revenue",value:"₹"+v.annualRevenue_ft.toLocaleString('en-IN')},
+        {label:is44ADA?"Deemed Profit (50%)":"Net Business Income",value:"₹"+Math.round(taxableIncome).toLocaleString('en-IN')},
+        {label:"Taxable Income",value:"₹"+Math.round(netTaxable).toLocaleString('en-IN')},
+        {label:"Effective Tax Rate",value:(totalTax/v.annualRevenue_ft*100).toFixed(1)+"%"},
+        {label:"GST to Collect (18%)",value:gstRevenue>0?"₹"+Math.round(gstRevenue).toLocaleString('en-IN'):"Not applicable"},
+        {label:"Take-Home (after tax)",value:"₹"+Math.round(v.annualRevenue_ft-totalTax).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['tcsremittance'] && DB['tcsremittance'].calc===null) DB['tcsremittance'].calc=function(v){
+    var threshold=700000;
+    var totalLRS=v.totalLRS+v.remittanceAmt;
+    var amtAboveThreshold=Math.max(0,totalLRS-threshold);
+    var amtBelow=v.remittanceAmt-amtAboveThreshold;
+    if(amtBelow<0){amtAboveThreshold=v.remittanceAmt;amtBelow=0;}
+    var rate=0;
+    if(v.purpose==="Foreign Education (loan)") rate=0.005;
+    else if(v.purpose==="Foreign Education (self)") rate=0.05;
+    else if(v.purpose==="Medical Treatment") rate=0.05;
+    else if(v.purpose==="Tour Package") rate=0.05;
+    else rate=0.20;
+    var tcs=amtAboveThreshold*rate;
+    var tourExtra=v.purpose==="Tour Package"?Math.min(v.remittanceAmt,threshold)*0.05:0;
+    tcs+=tourExtra;
+    return {
+      main:{label:"TCS Amount",value:"₹"+Math.round(tcs).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Remittance Amount",value:"₹"+v.remittanceAmt.toLocaleString('en-IN')},
+        {label:"Total LRS This FY",value:"₹"+Math.round(totalLRS).toLocaleString('en-IN')},
+        {label:"Amount Above ₹7L Threshold",value:"₹"+Math.round(amtAboveThreshold).toLocaleString('en-IN')},
+        {label:"TCS Rate",value:(rate*100).toFixed(1)+"%"},
+        {label:"Purpose",value:v.purpose},
+        {label:"Note",value:"TCS is adjustable against your income tax liability"}
+      ]
+    };
+  };
+
+  if(DB['sec80c'] && DB['sec80c'].calc===null) DB['sec80c'].calc=function(v){
+    var total=v.epf80c+v.ppf80c+v.elss80c+v.lifeInsurance80c+v.nsc80c+v.tuitionFees80c+v.homeLoanPrincipal80c;
+    var eligible=Math.min(total,150000);
+    var slab=parseFloat(v.taxSlab80c)/100;
+    var taxSaved=eligible*slab;
+    var remaining=Math.max(0,150000-total);
+    return {
+      main:{label:"Tax Saved under 80C",value:"₹"+Math.round(taxSaved).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Total 80C Investments",value:"₹"+total.toLocaleString('en-IN')},
+        {label:"Eligible (max ₹1.5L)",value:"₹"+eligible.toLocaleString('en-IN')},
+        {label:"Unused Limit",value:remaining>0?"₹"+remaining.toLocaleString('en-IN')+" — invest more!":"✅ Fully utilized"},
+        {label:"Tax Slab",value:v.taxSlab80c},
+        {label:"Suggested: Invest ₹"+remaining.toLocaleString('en-IN')+" in ELSS",value:remaining>0?"Additional tax saving: ₹"+Math.round(remaining*slab).toLocaleString('en-IN'):"Already optimized"}
+      ],
+      chart:{a:Math.round(eligible),b:Math.round(remaining),lA:"Utilized",lB:"Unused"}
+    };
+  };
+
+  if(DB['hravshomeloan'] && DB['hravshomeloan'].calc===null) DB['hravshomeloan'].calc=function(v){
+    var isMetro=v.metro_hvh==="Yes";
+    var annBasic=v.basic_hvh*12,annHra=v.hra_hvh*12,annRent=v.rent_hvh*12;
+    var r1=annHra,r2=annRent-0.1*annBasic,r3=isMetro?0.5*annBasic:0.4*annBasic;
+    var hraExempt=Math.max(0,Math.min(r1,r2,r3));
+    var hlInterest=Math.min(v.homeLoanInt,200000);
+    var hlPrincipal80c=Math.min(v.homeLoanPrin,150000);
+    var slab=parseFloat(v.slab_hvh)/100;
+    var hraTaxSaved=hraExempt*slab;
+    var hlTaxSaved=(hlInterest+hlPrincipal80c)*slab;
+    return {
+      main:{label:"Better Tax Benefit",value:hlTaxSaved>hraTaxSaved?"Home Loan (saves ₹"+Math.round(hlTaxSaved-hraTaxSaved).toLocaleString('en-IN')+" more)":"HRA (saves ₹"+Math.round(hraTaxSaved-hlTaxSaved).toLocaleString('en-IN')+" more)"},
+      secondary:[
+        {label:"HRA Exemption (annual)",value:"₹"+Math.round(hraExempt).toLocaleString('en-IN')},
+        {label:"HRA Tax Saved",value:"₹"+Math.round(hraTaxSaved).toLocaleString('en-IN')},
+        {label:"Home Loan Interest (24b)",value:"₹"+Math.round(hlInterest).toLocaleString('en-IN')},
+        {label:"Home Loan Principal (80C)",value:"₹"+Math.round(hlPrincipal80c).toLocaleString('en-IN')},
+        {label:"Home Loan Tax Saved",value:"₹"+Math.round(hlTaxSaved).toLocaleString('en-IN')},
+        {label:"Difference",value:"₹"+Math.round(Math.abs(hlTaxSaved-hraTaxSaved)).toLocaleString('en-IN')}
+      ]
+    };
+  };
+
+  if(DB['proftax'] && DB['proftax'].calc===null) DB['proftax'].calc=function(v){
+    var ptRates={
+      Maharashtra:function(s){return s<=7500?0:s<=10000?175:200;},
+      Karnataka:function(s){return s<=15000?0:s<=25000?200:200;},
+      "West Bengal":function(s){return s<=10000?0:s<=15000?110:s<=25000?130:s<=40000?150:200;},
+      "Andhra Pradesh":function(s){return s<=15000?0:s<=20000?150:200;},
+      Telangana:function(s){return s<=15000?0:s<=20000?150:200;},
+      "Tamil Nadu":function(s){return s<=21000?0:s<=30000?135:s<=45000?315:s<=60000?690:s<=75000?1025:1250;},
+      Gujarat:function(s){return s<=6000?0:s<=9000?80:s<=12000?150:200;},
+      "Madhya Pradesh":function(s){return s<=18750?0:s<=25000?125:208;},
+      Kerala:function(s){return s<=12000?0:s<=18000?120:s<=25000?180:s<=30000?250:208;},
+      Bihar:function(s){return s<=25000?0:s<=50000?83:208;},
+      Odisha:function(s){return s<=13304?0:s<=25000?125:s<=33333?167:200;},
+      Assam:function(s){return s<=10000?0:s<=15000?150:s<=25000?180:208;},
+      Jharkhand:function(s){return s<=25000?0:s<=40000?150:200;},
+      Meghalaya:function(s){return s<=14999?0:s<=20000?150:200;},
+      Tripura:function(s){return s<=7500?0:s<=10000?120:s<=15000?140:150;},
+      "Other (no PT)":function(){return 0;}
+    };
+    var fn=ptRates[v.state_pt]||function(){return 0;};
+    var monthly=fn(v.grossSalary_pt);
+    var annual=monthly*12;
+    if(annual>2500) annual=2500;
+    return {
+      main:{label:"Monthly Professional Tax",value:"₹"+monthly},
+      secondary:[
+        {label:"Annual Professional Tax",value:"₹"+annual},
+        {label:"State",value:v.state_pt},
+        {label:"Gross Salary",value:"₹"+v.grossSalary_pt.toLocaleString('en-IN')},
+        {label:"PT Deductible from Income Tax",value:"Yes (under Sec 16)"},
+        {label:"Max PT (Constitutional Limit)",value:"₹2,500 per year"}
+      ]
+    };
+  };
+
+  if(DB['leaveencash'] && DB['leaveencash'].calc===null) DB['leaveencash'].calc=function(v){
+    var dailySalary=v.basicSalary_le/30;
+    var grossEncash=dailySalary*v.leaveBalance;
+    var isGovt=v.govtEmployee.startsWith("Yes");
+    var exempt=0;
+    if(isGovt){
+      exempt=grossEncash;
+    } else {
+      var limit1=300000; // old was 3L, now 25L from FY23-24
+      var limit2=v.basicSalary_le*10;
+      var limit3=dailySalary*Math.min(v.leaveBalance,30*v.yearsOfService_le);
+      var limit4=2500000;
+      exempt=Math.min(grossEncash,limit1,limit2,limit3,limit4);
+    }
+    var taxable=Math.max(0,grossEncash-exempt);
+    return {
+      main:{label:"Leave Encashment Amount",value:"₹"+Math.round(grossEncash).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Tax-Exempt Portion",value:"₹"+Math.round(exempt).toLocaleString('en-IN'),pos:true},
+        {label:"Taxable Portion",value:"₹"+Math.round(taxable).toLocaleString('en-IN')},
+        {label:"Daily Salary",value:"₹"+Math.round(dailySalary).toLocaleString('en-IN')},
+        {label:"Leave Balance",value:v.leaveBalance+" days"},
+        {label:"Status",value:isGovt?"Fully tax-free (Govt)":"Exempt up to ₹25L (Private)"}
+      ]
+    };
+  };
 
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('finance');

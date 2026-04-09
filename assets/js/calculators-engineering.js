@@ -200,6 +200,235 @@
             };
         };
 
+  // ══════════════════════════════════════════════════════
+  // NEW ENGINEERING CALCULATORS
+  // ══════════════════════════════════════════════════════
+
+  if(DB['beamload'] && DB['beamload'].calc===null) DB['beamload'].calc=function(v){
+    var L=v.span,w=v.loadPerMeter,P=v.pointLoad;
+    var raUDL=w*L/2,rbUDL=w*L/2;
+    var raPoint=P*(L-v.loadPosition)/L,rbPoint=P*v.loadPosition/L;
+    var raTotal=raUDL+raPoint,rbTotal=rbUDL+rbPoint;
+    var maxMomentUDL=w*L*L/8;
+    var maxMomentPoint=P*v.loadPosition*(L-v.loadPosition)/L;
+    var totalMaxMoment=maxMomentUDL+maxMomentPoint;
+    var maxShear=Math.max(raTotal,rbTotal);
+    var deflection=5*w*Math.pow(L,4)/(384*v.EI);
+    return {
+      main:{label:"Max Bending Moment",value:totalMaxMoment.toFixed(2)+" kN·m"},
+      secondary:[
+        {label:"Reaction at A (RA)",value:raTotal.toFixed(2)+" kN"},
+        {label:"Reaction at B (RB)",value:rbTotal.toFixed(2)+" kN"},
+        {label:"Max Shear Force",value:maxShear.toFixed(2)+" kN"},
+        {label:"UDL Moment",value:maxMomentUDL.toFixed(2)+" kN·m"},
+        {label:"Point Load Moment",value:maxMomentPoint.toFixed(2)+" kN·m"},
+        {label:"Max Deflection (UDL only)",value:(deflection*1000).toFixed(3)+" mm"},
+        {label:"Span/Deflection Ratio",value:"L/"+(L/(deflection>0?deflection:0.001)).toFixed(0)}
+      ]
+    };
+  };
+
+  if(DB['heatexchanger'] && DB['heatexchanger'].calc===null) DB['heatexchanger'].calc=function(v){
+    var Q=v.massFlow*v.cpFluid*(v.hotInlet-v.coldInlet)*v.effectiveness/100;
+    var lmtdP=((v.hotInlet-v.coldOutlet)-(v.hotOutlet-v.coldInlet));
+    var lmtdD=Math.log((v.hotInlet-v.coldOutlet)/(v.hotOutlet-v.coldInlet));
+    var lmtd=Math.abs(lmtdD)>0.001?lmtdP/lmtdD:0;
+    var area=lmtd>0&&v.overallU>0?Q*1000/(v.overallU*lmtd):0;
+    return {
+      main:{label:"Heat Transfer Rate",value:Q.toFixed(2)+" kW"},
+      secondary:[
+        {label:"LMTD",value:lmtd.toFixed(2)+" °C"},
+        {label:"Required Area",value:area.toFixed(3)+" m²"},
+        {label:"Overall U",value:v.overallU+" W/m²·K"},
+        {label:"Effectiveness",value:v.effectiveness+"%"},
+        {label:"Mass Flow Rate",value:v.massFlow+" kg/s"}
+      ]
+    };
+  };
+
+  if(DB['fluidflow'] && DB['fluidflow'].calc===null) DB['fluidflow'].calc=function(v){
+    var area=Math.PI*Math.pow(v.pipeDia/2000,2);
+    var velocity=v.flowRate/(area*1000*60);
+    var Re=v.density*velocity*v.pipeDia/1000/v.viscosity;
+    var flowType=Re<2300?"Laminar":Re<4000?"Transitional":"Turbulent";
+    var f=Re<2300?64/Re:0.316*Math.pow(Re,-0.25);
+    var pressureDrop=f*v.pipeLength/(v.pipeDia/1000)*v.density*velocity*velocity/2;
+    return {
+      main:{label:"Flow Velocity",value:velocity.toFixed(3)+" m/s"},
+      secondary:[
+        {label:"Reynolds Number",value:Math.round(Re).toLocaleString()},
+        {label:"Flow Type",value:flowType},
+        {label:"Friction Factor (f)",value:f.toFixed(6)},
+        {label:"Pressure Drop",value:(pressureDrop/1000).toFixed(2)+" kPa"},
+        {label:"Pipe Cross-Section",value:(area*1e6).toFixed(1)+" mm²"},
+        {label:"Volume Flow",value:v.flowRate+" L/min"}
+      ]
+    };
+  };
+
+  if(DB['springforce'] && DB['springforce'].calc===null) DB['springforce'].calc=function(v){
+    var force=v.springConstant*v.displacement/1000;
+    var pe=0.5*v.springConstant*Math.pow(v.displacement/1000,2);
+    var naturalFreq=Math.sqrt(v.springConstant/v.mass_spring)/(2*Math.PI);
+    var period=1/naturalFreq;
+    var maxVelocity=v.displacement/1000*2*Math.PI*naturalFreq;
+    return {
+      main:{label:"Spring Force (F = kx)",value:force.toFixed(3)+" N"},
+      secondary:[
+        {label:"Potential Energy",value:pe.toFixed(4)+" J"},
+        {label:"Natural Frequency",value:naturalFreq.toFixed(2)+" Hz"},
+        {label:"Period",value:period.toFixed(4)+" s"},
+        {label:"Max Velocity",value:maxVelocity.toFixed(3)+" m/s"},
+        {label:"Spring Constant (k)",value:v.springConstant+" N/m"},
+        {label:"Displacement",value:v.displacement+" mm"}
+      ]
+    };
+  };
+
+  if(DB['gearratio'] && DB['gearratio'].calc===null) DB['gearratio'].calc=function(v){
+    var ratio=v.drivenTeeth/v.drivingTeeth;
+    var outputRPM=v.inputRPM/ratio;
+    var outputTorque=v.inputTorque*ratio*v.gearEfficiency/100;
+    var inputPower=v.inputTorque*v.inputRPM*2*Math.PI/60;
+    var outputPower=inputPower*v.gearEfficiency/100;
+    var speedReduction=(1-1/ratio)*100;
+    return {
+      main:{label:"Gear Ratio",value:ratio.toFixed(3)+":1"},
+      secondary:[
+        {label:"Output RPM",value:outputRPM.toFixed(1)+" RPM"},
+        {label:"Output Torque",value:outputTorque.toFixed(2)+" N·m"},
+        {label:"Input Power",value:(inputPower).toFixed(1)+" W"},
+        {label:"Output Power",value:(outputPower).toFixed(1)+" W"},
+        {label:"Speed Reduction",value:speedReduction.toFixed(1)+"%"},
+        {label:"Type",value:ratio>1?"Speed Reducer (torque ↑)":"Speed Multiplier (torque ↓)"}
+      ]
+    };
+  };
+
+  if(DB['inverterbattery'] && DB['inverterbattery'].calc===null) DB['inverterbattery'].calc=function(v){
+    var voltMap={"12V (single battery)":12,"24V (2 batteries)":24,"48V (4 batteries)":48};
+    var battV=voltMap[v.batteryVoltage]||12;
+    var inverterVA=Math.ceil(v.loadWatts/0.8/100)*100;
+    var totalEnergy=v.loadWatts*v.backupHours;
+    var battCapacityNeeded=totalEnergy/(battV*(v.dod/100));
+    var battCapacityAh=battCapacityNeeded/battV;
+    var numBatteries=Math.ceil(battV/12);
+    var actualBackup=(v.batteryAh*battV*(v.dod/100))/v.loadWatts;
+    return {
+      main:{label:"Inverter Size Required",value:inverterVA+" VA (minimum)"},
+      secondary:[
+        {label:"Battery Capacity Needed",value:Math.ceil(battCapacityAh)+" Ah"},
+        {label:"Actual Backup (with "+v.batteryAh+"Ah)",value:actualBackup.toFixed(1)+" hours"},
+        {label:"Number of Batteries",value:numBatteries+" × "+v.batteryAh+"Ah"},
+        {label:"Total Energy Need",value:totalEnergy+" Wh"},
+        {label:"Depth of Discharge",value:v.dod+"%"},
+        {label:"Load",value:v.loadWatts+" W"}
+      ]
+    };
+  };
+
+  if(DB['acbtu'] && DB['acbtu'].calc===null) DB['acbtu'].calc=function(v){
+    var areaSqFt=v.roomLength*v.roomWidth;
+    var baseBTU=areaSqFt*25;
+    var heightAdj=v.ceilingHeight>10?(v.ceilingHeight-10)*areaSqFt*2:0;
+    var floorAdj={"Ground Floor":0,"Middle Floor":0,"Top Floor (direct sun)":baseBTU*0.15}[v.floorLevel]||0;
+    var windowAdj={"North (least sun)":0,"East/West":baseBTU*0.05,"South (most sun)":baseBTU*0.10,"Multiple large windows":baseBTU*0.15}[v.windowArea]||0;
+    var occupantAdj=(v.occupants-1)*600;
+    var totalBTU=Math.round(baseBTU+heightAdj+floorAdj+windowAdj+occupantAdj);
+    var tons=totalBTU/12000;
+    var starRating=tons<=1.0?"1 Ton (3-Star)":tons<=1.5?"1.5 Ton (3-Star)":"2 Ton (3-Star)";
+    return {
+      main:{label:"AC Capacity Needed",value:tons.toFixed(2)+" Ton"},
+      secondary:[
+        {label:"BTU/hr Required",value:totalBTU.toLocaleString()+" BTU"},
+        {label:"Recommended AC",value:starRating},
+        {label:"Room Area",value:areaSqFt+" sq ft"},
+        {label:"Floor Adjustment",value:(floorAdj>0?"+":"")+(floorAdj/baseBTU*100).toFixed(0)+"%"},
+        {label:"Est. Monthly Cost (8hr/day)",value:"₹"+Math.round(tons*0.746*8*30*8).toLocaleString()+" (at ₹8/unit)"},
+        {label:"Inverter AC Saving",value:"~30-40% vs non-inverter"}
+      ]
+    };
+  };
+
+  if(DB['pipeflow'] && DB['pipeflow'].calc===null) DB['pipeflow'].calc=function(v){
+    var fluidProps={"Water (20°C)":{rho:998,mu:0.001},"Water (60°C)":{rho:983,mu:0.000467},"Oil (light)":{rho:850,mu:0.03},"Air":{rho:1.2,mu:0.000018}};
+    var roughness={"PVC (smooth)":0.0015,"Copper":0.002,"Steel (new)":0.05,"GI Pipe (old)":0.15,"HDPE":0.007};
+    var fp=fluidProps[v.fluid]||fluidProps["Water (20°C)"];
+    var D=v.pipeD/1000;
+    var A=Math.PI*Math.pow(D/2,2);
+    var velocity=v.flowRate_pf/(A*1000*60);
+    var Re=fp.rho*velocity*D/fp.mu;
+    var flowType=Re<2300?"Laminar":Re<4000?"Transitional":"Turbulent";
+    var f=Re<2300?64/Re:0.316*Math.pow(Re,-0.25);
+    var dP=f*(v.pipeLength/D)*(fp.rho*velocity*velocity/2);
+    return {
+      main:{label:"Flow Velocity",value:velocity.toFixed(3)+" m/s"},
+      secondary:[
+        {label:"Reynolds Number",value:Math.round(Re).toLocaleString()},
+        {label:"Flow Regime",value:flowType},
+        {label:"Friction Factor",value:f.toFixed(6)},
+        {label:"Pressure Drop",value:(dP/1000).toFixed(2)+" kPa ("+(dP/100000).toFixed(4)+" bar)"},
+        {label:"Pipe Area",value:(A*1e6).toFixed(1)+" mm²"},
+        {label:"Velocity Status",value:velocity>2.5?"⚠ May cause noise":"✅ Within limits"}
+      ]
+    };
+  };
+
+  if(DB['threephase'] && DB['threephase'].calc===null) DB['threephase'].calc=function(v){
+    var sqrt3=Math.sqrt(3);
+    var mode=v.calcMode_3p;
+    var P=0,I=0,V=v.voltage3p,pf=v.powerFactor3p;
+    if(mode==="Power from V & I"){
+      P=sqrt3*V*v.current3p*pf/1000;
+      I=v.current3p;
+    } else if(mode==="Current from V & Power"){
+      P=v.powerKw_3p;
+      I=P*1000/(sqrt3*V*pf);
+    } else {
+      P=v.powerKw_3p;
+      I=v.current3p;
+      V=P*1000/(sqrt3*I*pf);
+    }
+    var phaseV=V/sqrt3;
+    var phaseI=I;
+    var apparentPower=sqrt3*V*I/1000;
+    var reactivePower=apparentPower*Math.sin(Math.acos(pf));
+    return {
+      main:{label:"Active Power",value:P.toFixed(2)+" kW"},
+      secondary:[
+        {label:"Line Current",value:I.toFixed(2)+" A"},
+        {label:"Line Voltage",value:V.toFixed(1)+" V"},
+        {label:"Phase Voltage",value:phaseV.toFixed(1)+" V"},
+        {label:"Apparent Power (S)",value:apparentPower.toFixed(2)+" kVA"},
+        {label:"Reactive Power (Q)",value:reactivePower.toFixed(2)+" kVAR"},
+        {label:"Power Factor",value:pf}
+      ]
+    };
+  };
+
+  if(DB['transformercalc'] && DB['transformercalc'].calc===null) DB['transformercalc'].calc=function(v){
+    var turnsRatio=v.primaryV/v.secondaryV;
+    var primaryI=v.powerRating_t/v.primaryV;
+    var secondaryI=v.powerRating_t/v.secondaryV;
+    var outputPower=v.powerRating_t*v.efficiency_t/100;
+    var losses=v.powerRating_t-outputPower;
+    var freq=v.frequency_t.includes("50")?50:60;
+    var wireGauge_p=primaryI<0.5?"30 AWG":primaryI<1?"26 AWG":primaryI<2?"22 AWG":primaryI<5?"18 AWG":"14 AWG";
+    var wireGauge_s=secondaryI<1?"26 AWG":secondaryI<3?"22 AWG":secondaryI<5?"18 AWG":secondaryI<10?"14 AWG":"12 AWG";
+    return {
+      main:{label:"Turns Ratio",value:turnsRatio.toFixed(2)+":1"},
+      secondary:[
+        {label:"Primary Current",value:primaryI.toFixed(3)+" A"},
+        {label:"Secondary Current",value:secondaryI.toFixed(2)+" A"},
+        {label:"Output Power (at "+v.efficiency_t+"%)",value:outputPower.toFixed(1)+" W"},
+        {label:"Power Loss",value:losses.toFixed(1)+" W"},
+        {label:"Primary Wire (approx.)",value:wireGauge_p},
+        {label:"Secondary Wire (approx.)",value:wireGauge_s},
+        {label:"Type",value:turnsRatio>1?"Step-Down":"Step-Up"}
+      ]
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('engineering');
 })();
