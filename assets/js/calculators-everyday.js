@@ -114,7 +114,7 @@
             };
         };
 
-  if(DB['calories_food'] && DB['calories_food'].calc===null) DB['calories_food'].calc=function(v){
+  if(DB['caloriesfood'] && DB['caloriesfood'].calc===null) DB['caloriesfood'].calc=function(v){
             const pCal=v.protein*4, cCal=v.carbs*4, fCal=v.fat*9, total=pCal+cCal+fCal;
             return {
                 main:{label:"Total Calories",value:Math.round(total)+" kcal"},

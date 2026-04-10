@@ -309,7 +309,7 @@ simpleinterest: {
         calc: null  // lazy-loaded
     },
 
-incomeTax: {
+incometax: {
         name:"Income Tax Calculator", desc:"New regime FY 2025-26 (India)",
         icon:"fa-landmark", cat:"finance",
         inputs:[
@@ -976,18 +976,7 @@ pregnancy: {
         calc: null  // lazy-loaded
     },
 
-bodyFat: {
-        name:"Body Fat % Calculator", desc:"US Navy method body fat estimation",
-        icon:"fa-person", cat:"health",
-        inputs:[
-            {id:"gender",label:"Gender",type:"select",options:["Male","Female"]},
-            {id:"height",label:"Height",default:170,suffix:"cm"},
-            {id:"waist",label:"Waist Circumference",default:85,suffix:"cm"},
-            {id:"neck",label:"Neck Circumference",default:38,suffix:"cm"},
-            {id:"hip",label:"Hip (women only)",default:95,suffix:"cm"}
-        ],
-        calc: null  // lazy-loaded
-    },
+/* bodyFat entry removed — merged into 'bodyfat' below to resolve slug collision */
 
 idealweight: {
         name:"Ideal Weight Calculator", desc:"Multiple formula ideal body weight",
@@ -1033,7 +1022,7 @@ alcohol: {
         calc: null  // lazy-loaded
     },
 
-waistHip: {
+waisthip: {
         name:"Waist-to-Hip Ratio", desc:"Cardiovascular risk indicator",
         icon:"fa-ruler-horizontal", cat:"health",
         inputs:[
@@ -1066,7 +1055,7 @@ vitamins: {
         calc: null  // lazy-loaded
     },
 
-lungCapacity: {
+lungcapacity: {
         name:"Lung Capacity (FVC) Estimator", desc:"Forced Vital Capacity prediction",
         icon:"fa-lungs", cat:"health",
         inputs:[
@@ -1357,7 +1346,7 @@ workingdays: {
         calc: null  // lazy-loaded
     },
 
-ageNextBday: {
+agenextbday: {
         name:"Next Birthday Calculator", desc:"Days until next birthday & age you'll turn",
         icon:"fa-cake-candles", cat:"datetime",
         inputs:[{id:"dob",label:"Date of Birth",type:"date"}],
@@ -1572,7 +1561,7 @@ loanaffordability: {
         calc: null  // lazy-loaded
     },
 
-calories_food: {
+caloriesfood: {
         name:"Food Calorie Tracker", desc:"Calories from protein, carbs & fat intake",
         icon:"fa-utensils", cat:"everyday",
         inputs:[

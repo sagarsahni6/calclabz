@@ -91,7 +91,7 @@
             };
         };
 
-  if(DB['ageNextBday'] && DB['ageNextBday'].calc===null) DB['ageNextBday'].calc=function(v){
+  if(DB['agenextbday'] && DB['agenextbday'].calc===null) DB['agenextbday'].calc=function(v){
             if(!v.dob) return {main:{label:"Error",value:"Select your birthday"}};
             const dob=new Date(v.dob), today=new Date();
             let nextBday=new Date(today.getFullYear(),dob.getMonth(),dob.getDate());

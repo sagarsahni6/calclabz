@@ -79,6 +79,18 @@
         {
           "type": "query",
           "key": "calc",
+          "value": "incometax"
+        }
+      ],
+      "destination": "/incometax-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
           "value": "percentage"
         }
       ],
@@ -799,6 +811,18 @@
         {
           "type": "query",
           "key": "calc",
+          "value": "waisthip"
+        }
+      ],
+      "destination": "/waisthip-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
           "value": "calories_food"
         }
       ],
@@ -824,6 +848,18 @@
           "type": "query",
           "key": "calc",
           "value": "lungCapacity"
+        }
+      ],
+      "destination": "/lungcapacity-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "lungcapacity"
         }
       ],
       "destination": "/lungcapacity-calculator",
@@ -1352,6 +1388,18 @@
           "type": "query",
           "key": "calc",
           "value": "ageNextBday"
+        }
+      ],
+      "destination": "/agenextbday-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "calc",
+          "value": "agenextbday"
         }
       ],
       "destination": "/agenextbday-calculator",

@@ -131,7 +131,7 @@
             };
         };
 
-  if(DB['incomeTax'] && DB['incomeTax'].calc===null) DB['incomeTax'].calc=function(v){
+  if(DB['incometax'] && DB['incometax'].calc===null) DB['incometax'].calc=function(v){
             const income=v.income;
             let tax=0;
             if(v.regime==="New Regime"){

@@ -1,4 +1,4 @@
-﻿// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // Calc Labz — Formula Definitions for ALL Calculators
 // Used by the "How is this calculated?" accordion
 // ═══════════════════════════════════════════════════
@@ -218,7 +218,7 @@ bmr: {
     variables: "W = Weight (kg) | H = Height (cm) | A = Age (years) | TDEE = BMR × Activity multiplier",
     explanation: "Basal Metabolic Rate — calories your body burns at complete rest. TDEE includes daily activity."
 },
-waistHip: {
+waisthip: {
     formula: "WHR = Waist Circumference / Hip Circumference",
     variables: "Low risk: ≤0.90 (male), ≤0.80 (female) | High risk: >0.95 (male), >0.85 (female)",
     explanation: "Waist-to-hip ratio is a better predictor of cardiovascular risk than BMI alone."
@@ -233,7 +233,7 @@ vitamins: {
     variables: "Optimal Vitamin D: 40–60 ng/mL | Deficient: <20 ng/mL | Insufficient: 20–30 ng/mL",
     explanation: "Estimation only. Darker skin produces less vitamin D. Blood test (25-OH) is the gold standard."
 },
-lungCapacity: {
+lungcapacity: {
     formula: "FVC (Male) = 0.057×H − 0.022×A − 4.241 | FVC (Female) = 0.041×H − 0.018×A − 2.690",
     variables: "H = Height (cm) | A = Age (years) | FEV1/FVC > 70% is normal",
     explanation: "Forced Vital Capacity prediction. Actual spirometry test is needed for diagnosis."
@@ -521,7 +521,7 @@ homerenovation: {
 },
 
 // ── EVERYDAY ─────────────────────────────────────
-calories_food: {
+caloriesfood: {
     formula: "Total = Protein×4 + Carbs×4 + Fat×9",
     variables: "Protein = 4 kcal/g | Carbs = 4 kcal/g | Fat = 9 kcal/g | Net Carbs = Carbs − Fiber",
     explanation: "Fat has more than double the calories per gram compared to protein and carbs."
@@ -695,7 +695,7 @@ workingdays: {
     variables: "Weekends = Saturdays + Sundays | Net = Working Days − Public Holidays",
     explanation: "Standard work year ≈ 260 days (52 weeks × 5 days). Useful for project planning."
 },
-ageNextBday: {
+agenextbday: {
     formula: "Days Until = Next Birthday Date − Today",
     variables: "Next Birthday = This year or next year (whichever is in the future)",
     explanation: "Calculates exact days remaining and the day of the week your birthday falls on."

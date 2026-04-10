@@ -159,27 +159,7 @@
             };
         };
 
-  if(DB['bodyFat'] && DB['bodyFat'].calc===null) DB['bodyFat'].calc=function(v){
-            let bf;
-            if(v.gender==="Male"){
-                bf=495/(1.0324-0.19077*Math.log10(v.waist-v.neck)+0.15456*Math.log10(v.height))-450;
-            } else {
-                bf=495/(1.29579-0.35004*Math.log10(v.waist+v.hip-v.neck)+0.22100*Math.log10(v.height))-450;
-            }
-            bf=Math.max(0,bf);
-            const cat=v.gender==="Male"?
-                (bf<6?"Essential":bf<14?"Athletic":bf<18?"Fitness":bf<25?"Acceptable":"Obese"):
-                (bf<14?"Essential":bf<21?"Athletic":bf<25?"Fitness":bf<32?"Acceptable":"Obese");
-            return {
-                main:{label:"Body Fat %",value:bf.toFixed(1)+"%"},
-                secondary:[
-                    {label:"Category",value:cat},
-                    {label:"Fat Mass",value:(v.height*v.height*0.0001*22*(bf/100)).toFixed(1)+" kg (est)"},
-                    {label:"Healthy Range (M)",value:"14–18%"},
-                    {label:"Healthy Range (F)",value:"21–25%"}
-                ]
-            };
-        };
+  /* bodyFat calc function removed — merged into bodyfat (line 321+) to resolve slug collision */
 
   if(DB['idealweight'] && DB['idealweight'].calc===null) DB['idealweight'].calc=function(v){
             const hIn=(v.height-152.4)/2.54;
@@ -255,7 +235,7 @@
             };
         };
 
-  if(DB['waistHip'] && DB['waistHip'].calc===null) DB['waistHip'].calc=function(v){
+  if(DB['waisthip'] && DB['waisthip'].calc===null) DB['waisthip'].calc=function(v){
             const ratio=(v.waist/v.hip);
             const low=v.gender==="Male"?0.90:0.80;
             const mod=v.gender==="Male"?0.95:0.85;
@@ -304,7 +284,7 @@
             };
         };
 
-  if(DB['lungCapacity'] && DB['lungCapacity'].calc===null) DB['lungCapacity'].calc=function(v){
+  if(DB['lungcapacity'] && DB['lungcapacity'].calc===null) DB['lungcapacity'].calc=function(v){
             const h=v.height/100;
             const fvc=v.gender==="Male"?(0.057*v.height-0.022*v.age-4.241):(0.041*v.height-0.018*v.age-2.690);
             const fev1=fvc*(v.age<40?0.85:0.78);
@@ -492,7 +472,8 @@
             const bmr = v.gender==="Male" ? 10*v.weight+6.25*v.height-5*v.age+5 : 10*v.weight+6.25*v.height-5*v.age-161;
             const actMult = {"Sedentary":1.2,"Lightly Active":1.375,"Moderately Active":1.55,"Very Active":1.725};
             const tdee = Math.round(bmr * (actMult[v.activity]||1.2));
-            const lossRate = parseFloat(v.rate);
+            // Extract numeric prefix from select string (e.g., "0.5 kg/week (moderate)" → 0.5)
+            const lossRate = parseFloat(v.rate) || 0.5;
             const deficitPerDay = Math.round(lossRate * 7700 / 7);
             const targetCalories = Math.max(1200, tdee - deficitPerDay);
             const actualDeficit = tdee - targetCalories;

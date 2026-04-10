@@ -95,9 +95,27 @@ function ensureCalcLoaded(calcId, callback) {
 // ── CALC SLUG MAP (SEO: clean URL routing) ──────────
 // Maps 'emi-calculator' → 'emi', 'bmi-calculator' → 'bmi', etc.
 var _calcSlugMap = {};
+// Redirect map: old slugs from renamed calculator IDs → new canonical ID
+var _slugRedirects = {
+    'bodyfat-calculator': 'bodyfat',       // was bodyFat (duplicate removed)
+    'incometax-calculator': 'incometax',   // was incomeTax (renamed)
+    'waisthip-calculator': 'waisthip',     // was waistHip (renamed)
+    'lungcapacity-calculator': 'lungcapacity', // was lungCapacity (renamed)
+    'agenextbday-calculator': 'agenextbday',   // was ageNextBday (renamed)
+    'calories-food-calculator': 'caloriesfood' // was calories_food (renamed)
+};
 (function() {
     Object.keys(DB).forEach(function(id) {
-        _calcSlugMap[id.toLowerCase().replace(/_/g, '-') + '-calculator'] = id;
+        var slug = id.toLowerCase().replace(/_/g, '-') + '-calculator';
+        // Dev-time collision detection
+        if (_calcSlugMap[slug]) {
+            console.warn('[calclabz] SLUG COLLISION: "' + slug + '" maps to both "' + _calcSlugMap[slug] + '" and "' + id + '". Fix in calculators-core.js.');
+        }
+        _calcSlugMap[slug] = id;
+    });
+    // Apply redirects for old slugs
+    Object.keys(_slugRedirects).forEach(function(oldSlug) {
+        if (!_calcSlugMap[oldSlug]) _calcSlugMap[oldSlug] = _slugRedirects[oldSlug];
     });
 }());
 function findCalcBySlug(slug) { return _calcSlugMap[slug] || null; }
@@ -497,13 +515,14 @@ function _openCalcRender(catKey, calcId) {
         }
         if(inp.type==='text'){
             return '<div class="inp-grp"><div class="tip-wrap"><label>'+inp.label+'</label>'+tip+'</div>'
-                +'<div class="inp-wrap"><input type="text" id="inp_'+inp.id+'" value="'+(inp.default||'')+'" oninput="calculate(\''+calcId+'\')"></div></div>';
+                +'<div class="inp-wrap"><input type="text" id="inp_'+inp.id+'" value="'+(inp.default||'')+'" oninput="debouncedCalculate(\''+calcId+'\')"></div></div>';
         }
         var d = inp.default!==undefined?inp.default:'';
-        return '<div class="inp-grp"><div class="tip-wrap"><label>'+inp.label+'</label>'+tip+'</div>'
+        return '<div class="inp-grp" id="inpgrp_'+inp.id+'"><div class="tip-wrap"><label>'+inp.label+'</label>'+tip+'</div>'
             +'<div class="inp-wrap">'+(inp.prefix?'<span class="inp-pfx">'+inp.prefix+'</span>':'')
-            +'<input type="number" id="inp_'+inp.id+'" value="'+d+'" step="any" class="'+(inp.prefix?'has-pfx':'')+(inp.suffix?' has-sfx':'')+'" oninput="calculate(\''+calcId+'\')">'
-            +(inp.suffix?'<span class="inp-sfx">'+inp.suffix+'</span>':'')+'</div></div>';
+            +'<input type="number" id="inp_'+inp.id+'" value="'+d+'" step="any" class="'+(inp.prefix?'has-pfx':'')+(inp.suffix?' has-sfx':'')+'" oninput="debouncedCalculate(\''+calcId+'\')">'
+            +(inp.suffix?'<span class="inp-sfx">'+inp.suffix+'</span>':'')+'</div>'
+            +'<div class="inp-error" id="err_'+inp.id+'"></div></div>';
     }).join('');
 
     var presetsHTML = '';
@@ -552,7 +571,7 @@ function _openCalcRender(catKey, calcId) {
         +'<button class="ibtn" onclick="savePDF(\''+calcId+'\')" title="Save PDF"><i class="fas fa-file-pdf"></i></button>'
         +'<button class="ibtn" onclick="openCmpMode(\''+catKey+'\',\''+calcId+'\')" title="Compare"><i class="fas fa-columns"></i></button>'
         +'</div></div></div>'
-        +'<div class="calc-badges"><span class="badge-verified"><i class="fas fa-check-circle"></i>Verified Formula</span><span class="badge-updated"><i class="fas fa-clock"></i>Updated 2026</span></div>'
+        +'<div class="calc-badges">'+(fData?'<span class="badge-verified"><i class="fas fa-check-circle"></i>Verified Formula</span>':'<span class="badge-standard"><i class="fas fa-calculator"></i>Standard Formula</span>')+'<span class="badge-updated"><i class="fas fa-clock"></i>Updated 2026</span></div>'
         +presetsHTML
         +'<div class="inp-grid">'+inputsHTML+'</div>'
         +'<div class="btn-row"><button class="btn btn-p" onclick="calculate(\''+calcId+'\')"><i class="fas fa-calculator"></i> Calculate</button>'
@@ -560,6 +579,7 @@ function _openCalcRender(catKey, calcId) {
         +'<button class="undo-btn" onclick="undoCalc(\''+calcId+'\')"><i class="fas fa-undo"></i> Undo</button>'
         +'<button class="preset-save" onclick="savePreset(\''+calcId+'\')"><i class="fas fa-bookmark"></i> Save Preset</button></div>'
         +'<div class="results" id="res-'+calcId+'" style="display:none"></div>'
+        +'<div id="calcDisclaimer-'+calcId+'"></div>'
         +'<div id="aiInterpret-'+calcId+'"></div>'
         +'<div id="chartArea-'+calcId+'"></div>'
         +'<div id="amortArea-'+calcId+'"></div>'
@@ -571,8 +591,8 @@ function _openCalcRender(catKey, calcId) {
         +'<button class="fb-btn dn" onclick="giveFeedback(this,\''+calcId+'\',-1)"><i class="fas fa-thumbs-down"></i></button>'
         +'<span class="fb-thanks" id="fbt-'+calcId+'">Thanks!</span></div>'
         +'<div class="trust-bar"><span class="trust-item"><i class="fas fa-check-circle"></i>Free forever</span>'
-        +'<span class="trust-item"><i class="fas fa-lock"></i>No personal data stored</span>'
-        +'<span class="trust-item"><i class="fas fa-wifi"></i>Works offline</span></div>'
+        +'<span class="trust-item"><i class="fas fa-lock"></i>Data stays on your device</span>'
+        +'<span class="trust-item"><i class="fas fa-wifi"></i>Works offline (PWA)</span></div>'
         +noteHTML
         +relatedHTML
         +'</div>';
@@ -588,16 +608,65 @@ function _openCalcRender(catKey, calcId) {
     }, 100);
 }
 
+// ── DEBOUNCED AUTO-CALCULATE (Phase 3) ─────────────
+var _calcTimer = {};
+function debouncedCalculate(calcId) {
+    clearTimeout(_calcTimer[calcId]);
+    _calcTimer[calcId] = setTimeout(function(){ calculate(calcId); }, 300);
+}
+
 // ── CALCULATOR ENGINE ──────────────────────────────
 function getValues(calcId) {
     var calc = DB[calcId]; if(!calc) return {};
-    var vals = {};
+    var vals = {}, hasError = false;
     calc.inputs.forEach(function(inp){
         var el = document.getElementById('inp_'+inp.id);
         if(!el) return;
-        if(inp.type==='select'||inp.type==='text'||inp.type==='date'||inp.type==='time') vals[inp.id]=el.value;
-        else vals[inp.id] = parseFloat(el.value)||0;
+        var errEl = document.getElementById('err_'+inp.id);
+        var grpEl = document.getElementById('inpgrp_'+inp.id);
+        // Clear previous validation state
+        if(errEl) errEl.textContent = '';
+        if(grpEl) grpEl.classList.remove('inp-invalid');
+        if(el) el.classList.remove('inp-err');
+
+        if(inp.type==='select'||inp.type==='text'||inp.type==='date'||inp.type==='time'||inp.type==='datetime-local') {
+            vals[inp.id]=el.value;
+        } else {
+            // Numeric input — NaN-aware parsing (Phase 2)
+            var raw = el.value.trim();
+            if(raw === '') {
+                // Empty input: mark as invalid instead of silently using 0
+                if(errEl) errEl.textContent = inp.label + ' is required';
+                if(grpEl) grpEl.classList.add('inp-invalid');
+                if(el) el.classList.add('inp-err');
+                vals[inp.id] = NaN;
+                hasError = true;
+            } else {
+                var num = parseFloat(raw);
+                if(isNaN(num)) {
+                    if(errEl) errEl.textContent = 'Enter a valid number';
+                    if(grpEl) grpEl.classList.add('inp-invalid');
+                    if(el) el.classList.add('inp-err');
+                    vals[inp.id] = NaN;
+                    hasError = true;
+                } else {
+                    // Range validation from input metadata
+                    if(inp.min !== undefined && num < inp.min) {
+                        if(errEl) errEl.textContent = 'Minimum: ' + inp.min;
+                        if(grpEl) grpEl.classList.add('inp-invalid');
+                        if(el) el.classList.add('inp-err');
+                    }
+                    if(inp.max !== undefined && num > inp.max) {
+                        if(errEl) errEl.textContent = 'Maximum: ' + inp.max;
+                        if(grpEl) grpEl.classList.add('inp-invalid');
+                        if(el) el.classList.add('inp-err');
+                    }
+                    vals[inp.id] = num;
+                }
+            }
+        }
     });
+    vals._hasError = hasError;
     return vals;
 }
 
@@ -610,6 +679,15 @@ function calculate(calcId) {
     }
     saveUndoState(calcId);
     var vals = getValues(calcId);
+    // Phase 2: Block calculation if any required numeric input is invalid
+    if(vals._hasError) {
+        var section = document.getElementById('res-'+calcId);
+        if(section) {
+            section.style.display = 'block';
+            section.innerHTML = '<div class="res-grid"><div class="res-card hi" style="border-color:var(--err)"><div class="res-lbl">Validation Error</div><div class="res-val" style="color:var(--err);font-size:1rem">Please fill in all required fields with valid numbers</div></div></div>';
+        }
+        return;
+    }
     var results; try { results = calc.calc(vals); } catch(e) { return; }
     if(!results) return;
     var section = document.getElementById('res-'+calcId);
@@ -620,7 +698,7 @@ function calculate(calcId) {
     if(results.main) html += '<div class="res-card hi"><div class="res-lbl">'+escHtml(results.main.label)+'</div><div class="res-val">'+escHtml(String(results.main.value))+'</div></div>';
     if(results.secondary) results.secondary.forEach(function(r){
         if(!r.label) return;
-        html += '<div class="res-card"><div class="res-lbl">'+escHtml(r.label)+'</div><div class="res-val sm'+(r.pos?' pos':'')+'">'+escHtml(String(r.value))+'</div></div>';
+        html += '<div class="res-card"><div class="res-lbl">'+escHtml(r.label)+'</div><div class="res-val sm'+(r.pos?' pos':'')+'">' +escHtml(String(r.value))+'</div></div>';
     });
     html += '</div>';
     section.innerHTML = html;
@@ -629,9 +707,25 @@ function calculate(calcId) {
     renderChart(calcId, results, vals);
     renderAmortTable(calcId, vals);
     interpretResult(calcId, results);
+    // Phase 6: Category-specific disclaimers
+    renderDisclaimer(calcId, calc);
     saveHistory(calcId, calc.name, results.main?String(results.main.value):'', vals);
     saveInputMemory(calcId);
     try { navigator.vibrate(40); } catch(e){}
+}
+
+// ── CATEGORY DISCLAIMERS (Phase 6) ──────────────────
+var _taxCalcIds = ['incometax','capitalgains','taxregime','tds','advancetax','taxsaving'];
+function renderDisclaimer(calcId, calc) {
+    var wrap = document.getElementById('calcDisclaimer-'+calcId);
+    if(!wrap) return;
+    var msg = '';
+    if(calc.cat === 'health') {
+        msg = '<div class="disclaimer disclaimer-health"><i class="fas fa-staff-snake"></i> This tool provides estimates only. Consult a qualified healthcare professional for medical advice.</div>';
+    } else if(_taxCalcIds.indexOf(calcId) !== -1) {
+        msg = '<div class="disclaimer disclaimer-finance"><i class="fas fa-file-invoice"></i> Results are illustrative. Consult a Chartered Accountant for tax filing decisions.</div>';
+    }
+    wrap.innerHTML = msg;
 }
 
 function resetCalc(calcId) {
@@ -793,6 +887,9 @@ function renderChart(calcId, results, vals) {
     var ch = results.chart;
     var chartType = ch.type || 'doughnut';
     _currentChartType = chartType;
+    // Phase 5: Category-aware currency prefix (only financial calculators show ₹)
+    var _calc = DB[calcId];
+    var _currencyPrefix = (_calc && (_calc.cat === 'finance' || _calc.cat === 'everyday' || _calc.cat === 'construction')) ? '\u20b9' : '';
 
     // P4: Show shimmer placeholder immediately so chart area isn't blank during Chart.js load
     area.innerHTML = '<div class="chart-skeleton"><div class="shimmer"></div></div>';
@@ -812,7 +909,7 @@ function renderChart(calcId, results, vals) {
     var total = data.reduce(function(s, v) { return s + v; }, 0);
     var centerHTML = '';
     if (chartType === 'doughnut' || chartType === 'pie') {
-        centerHTML = '<div class="chart-center-label"><div class="ccl-val">\u20b9' + formatINR(Math.round(total)) + '</div><div class="ccl-lbl">Total</div></div>';
+        centerHTML = '<div class="chart-center-label"><div class="ccl-val">' + _currencyPrefix + formatINR(Math.round(total)) + '</div><div class="ccl-lbl">Total</div></div>';
     }
 
     area.innerHTML = '<div class="chart-wrap"><div class="chart-title"><span><i class="fas fa-chart-pie" style="color:var(--p)"></i> Breakdown</span>'
@@ -853,7 +950,7 @@ function renderChart(calcId, results, vals) {
                         bodyColor: isDark ? '#a1a1aa' : '#52525b',
                         borderColor: isDark ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.1)',
                         borderWidth: 1, cornerRadius: 8, padding: 10,
-                        callbacks: { label: function(ctx) { return ctx.label + ': \u20b9' + formatINR(Math.round(ctx.raw)); } }
+                        callbacks: { label: function(ctx) { return ctx.label + ': ' + _currencyPrefix + formatINR(Math.round(ctx.raw)); } }
                     }
                 }
             }
@@ -865,7 +962,7 @@ function renderChart(calcId, results, vals) {
         if (_currentChartType === 'bar') {
             chartConfig.options.indexAxis = 'y';
             chartConfig.options.scales = {
-                x: { grid: { color: gridColor }, ticks: { color: txtColor, callback: function(v) { return '\u20b9' + (v >= 100000 ? (v/100000).toFixed(1)+'L' : v >= 1000 ? (v/1000).toFixed(0)+'K' : v); } } },
+                x: { grid: { color: gridColor }, ticks: { color: txtColor, callback: function(v) { return _currencyPrefix + (v >= 100000 ? (v/100000).toFixed(1)+'L' : v >= 1000 ? (v/1000).toFixed(0)+'K' : v); } } },
                 y: { grid: { display: false }, ticks: { color: txtColor } }
             };
             chartConfig.options.plugins.legend.display = false;
@@ -897,7 +994,7 @@ function renderChart(calcId, results, vals) {
                     animation: { duration: 1000, easing: 'easeOutQuart' },
                     scales: {
                         x: { grid: { color: gridColor }, ticks: { color: txtColor } },
-                        y: { grid: { color: gridColor }, ticks: { color: txtColor, callback: function(v) { return '\u20b9' + (v >= 100000 ? (v/100000).toFixed(1)+'L' : v >= 1000 ? (v/1000).toFixed(0)+'K' : v); } } }
+                        y: { grid: { color: gridColor }, ticks: { color: txtColor, callback: function(v) { return _currencyPrefix + (v >= 100000 ? (v/100000).toFixed(1)+'L' : v >= 1000 ? (v/1000).toFixed(0)+'K' : v); } } }
                     },
                     plugins: {
                         legend: { labels: { color: txtColor, usePointStyle: true, padding: 14 } },
@@ -907,7 +1004,7 @@ function renderChart(calcId, results, vals) {
                             bodyColor: isDark ? '#a1a1aa' : '#52525b',
                             borderColor: isDark ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.1)',
                             borderWidth: 1, cornerRadius: 8, padding: 10,
-                            callbacks: { label: function(ctx) { return ctx.dataset.label + ': \u20b9' + formatINR(Math.round(ctx.raw)); } }
+                            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + _currencyPrefix + formatINR(Math.round(ctx.raw)); } }
                         }
                     }
                 }
@@ -999,7 +1096,7 @@ function buildCalcFAQ(calcId, calc) {
             { q: 'How to use this calculator?', a: 'Enter your values in the input fields above. Results update automatically as you type, or click the Calculate button for a full breakdown with charts.' }
         ];
         if (calc.tips && calc.tips.length) faqs.push({ q: 'Any tips for better results?', a: calc.tips.join('. ') + '.' });
-        faqs.push({ q: 'Is this calculator free?', a: 'Yes, 100% free forever. No signup required, no personal data stored. Calc Labz works offline as a PWA — install it for instant access anytime. We show ads to keep the service free.' });
+        faqs.push({ q: 'Is this calculator free?', a: 'Yes, 100% free forever. No signup required — your data stays on your device. Calc Labz works offline as a PWA — install it for instant access anytime. We show ads to keep the service free.' });
     }
 
     // Inject FAQPage JSON-LD schema for SEO (deduplicated with updateMeta)
@@ -1542,7 +1639,7 @@ function showAboutPage() {
         + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#10b981,#34d399)"><i class="fas fa-lock"></i></div><h3>No Personal Data</h3><p>We never collect personal data, no user accounts, and no login. Your calculation inputs stay on your device. We use anonymous analytics &amp; ads to keep Calc Labz free.</p></div>'
         + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><i class="fas fa-wifi"></i></div><h3>Works Offline (PWA)</h3><p>Install Calc Labz as a Progressive Web App and use it anywhere — even without an internet connection.</p></div>'
         + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#f0544f,#fb7185)"><i class="fas fa-heart"></i></div><h3>Made in India</h3><p>Built with ❤️ in India. Designed around Indian financial tools — GST, PPF, Income Tax, SIP and more.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)"><i class="fas fa-trophy"></i></div><h3>Verified Formulas</h3><p>Every calculator uses industry-standard, peer-reviewed formulas. Results match those of leading banks and institutions.</p></div>'
+        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)"><i class="fas fa-trophy"></i></div><h3>Documented Formulas</h3><p>Every calculator uses industry-standard formulas. Formula sources and methodology are documented where available for full transparency.</p></div>'
         + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"><i class="fas fa-universal-access"></i></div><h3>Accessible & Fast</h3><p>Built with accessibility in mind — keyboard navigable, screen-reader friendly, and mobile-first. We are actively working toward full WCAG 2.1 AA conformance.</p></div>'
         + '</div>'
 
