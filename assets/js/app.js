@@ -495,6 +495,28 @@ function openCalc(catKey, calcId) {
 function _openCalcRender(catKey, calcId) {
     var calc = DB[calcId]; if(!calc) return;
     var cat = CATS[catKey] || {};
+
+    // ── Preserve SEO educational content before innerHTML destroys it ────
+    // Save unique sections that the interactive UI does NOT render:
+    // What is X, How-to steps, Formula/Worked Example, Use Cases, Common Mistakes
+    var seoEducational = '';
+    var seoEl = document.getElementById('seo-content');
+    if (seoEl) {
+        var sections = seoEl.querySelectorAll('.seo-section');
+        var kept = [];
+        sections.forEach(function(sec) {
+            var heading = sec.querySelector('h2');
+            if (!heading) return;
+            var text = heading.textContent || '';
+            // Skip sections the interactive UI already provides
+            if (text.indexOf('Related Calculators') !== -1) return;
+            kept.push(sec.outerHTML);
+        });
+        if (kept.length) {
+            seoEducational = '<div class="seo-educational">' + kept.join('') + '</div>';
+        }
+    }
+
     setQBtn(''); closeSidebar(); addToRecent(catKey, calcId); updateSidebarActive('');
     document.querySelectorAll('.clink').forEach(function(l){ l.classList.remove('active'); });
     var cl = document.getElementById('clink-'+calcId); if(cl) cl.classList.add('active');
@@ -595,7 +617,8 @@ function _openCalcRender(catKey, calcId) {
         +'<span class="trust-item"><i class="fas fa-wifi"></i>Works offline (PWA)</span></div>'
         +noteHTML
         +relatedHTML
-        +'</div>';
+        +'</div>'
+        +seoEducational;
 
     // Auto-restore input memory and calculate
     if(loadInputMemory(calcId)) { setTimeout(function(){ calculate(calcId); }, 50); }

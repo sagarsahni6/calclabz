@@ -965,3 +965,33 @@ input.inp-err:focus{border-color:#f0544f!important;
 .disclaimer-finance{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);
   color:var(--txt1)}
 .disclaimer-finance i{color:var(--gold)}
+
+/* ── SEO EDUCATIONAL CONTENT (visible below calculator) ── */
+.seo-educational{margin-top:16px;animation:fadeUp .4s ease .15s both}
+.seo-educational .seo-section{background:var(--bg1);border:1px solid var(--brd);
+  border-radius:var(--rmd);padding:20px;margin-bottom:12px;
+  position:relative;overflow:hidden;transition:var(--transition)}
+.seo-educational .seo-section::before{content:'';position:absolute;top:0;left:0;
+  width:3px;height:100%;background:var(--p);opacity:.5;border-radius:3px 0 0 3px}
+.seo-educational .seo-section:hover{border-color:rgba(99,102,241,.2);
+  box-shadow:0 2px 12px rgba(99,102,241,.06)}
+.seo-educational .seo-section h2{font-size:.95rem;font-weight:700;
+  color:var(--txt);margin-bottom:10px;padding-left:4px;
+  display:flex;align-items:center;gap:8px}
+.seo-educational .seo-section h3{font-size:.88rem;font-weight:700;
+  color:var(--txt);margin:14px 0 8px}
+.seo-educational .seo-section p{font-size:.85rem;color:var(--txt1);
+  line-height:1.7;margin-bottom:8px}
+.seo-educational .seo-section ol,
+.seo-educational .seo-section ul{padding-left:0;margin:8px 0;
+  display:flex;flex-direction:column;gap:4px}
+.seo-educational .seo-section li{font-size:.84rem;color:var(--txt1);
+  line-height:1.6;padding:6px 10px 6px 28px;position:relative;
+  background:var(--bg2);border-radius:6px;list-style:none}
+.seo-educational .seo-section ul li::before{content:'→';position:absolute;
+  left:9px;color:var(--p);font-size:.75rem}
+.seo-educational .seo-section ol{counter-reset:seo-counter}
+.seo-educational .seo-section ol li{counter-increment:seo-counter}
+.seo-educational .seo-section ol li::before{content:counter(seo-counter) '.';
+  position:absolute;left:8px;color:var(--p);font-size:.75rem;font-weight:700}
+.seo-educational .seo-section strong{color:var(--txt);font-weight:600}
