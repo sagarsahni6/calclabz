@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,16 +58,18 @@
     <!-- ═══ FONTS ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" media="print" id="css-fonts">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
 
     <!-- ═══ FONT AWESOME ═══ -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" id="css-fa">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- ═══ MAIN CSS ═══ -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css" media="print" id="css-main">
+    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
 
-    <!-- ═══ PRELOAD — core JS bundle (P1: replaces monolithic calculators.js) ═══ -->
-    <link rel="preload" as="script" href="assets/js/calculators-core.js">
+    <!-- Preload removed: calculators-core.js is deferred; preload wastes priority -->
 
     <!-- ═══ CRITICAL INLINE CSS (P3) — ~6KB, unblocks FCP ═══ -->
     <!-- Covers all above-the-fold elements: header, body, layout, cards, hero, nav -->
@@ -217,7 +219,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- ═══ HEADER ═══ -->
     <header class="hdr">
         <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu"><i class="fas fa-bars" aria-hidden="true"></i></button>
-        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32"></a></div>
+        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32" fetchpriority="high"></a></div>
         <div class="hdr-search" role="search" aria-label="Search calculators">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input type="text" id="srInput" placeholder="Search calculators… (Ctrl+K)" aria-label="Search calculators" aria-autocomplete="list" aria-controls="srDrop" aria-expanded="false" role="combobox" autocomplete="off">
@@ -435,6 +437,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- ═══ SCRIPTS (deferred) ═══ -->
     <!-- P1: calculators-core.js replaces monolithic calculators.js (333KB→100KB) -->
     <!-- Per-category files (finance/health/math etc.) lazy-load on first use -->
+    <!-- css-swap.js MUST be first: swaps non-blocking stylesheets from media="print" to "all" -->
+    <script defer src="assets/js/css-swap.js"></script>
     <script defer src="assets/js/calculators-core.js"></script>
     <script defer src="assets/js/blog-posts.js"></script>
     <script defer src="assets/js/faq-data.js"></script>

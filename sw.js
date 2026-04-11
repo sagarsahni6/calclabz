@@ -4,7 +4,7 @@
    - Never cache error/non-ok responses
    - Offline fallback to cached index.html for navigation requests
 */
-const CACHE = 'calclabz-v18';
+const CACHE = 'calclabz-v19';
 const ASSETS = [
     './',
     'index.html',
@@ -12,6 +12,7 @@ const ASSETS = [
     'manifest.json',
     'assets/css/main.css',
     // Core stubs
+    'assets/js/css-swap.js',
     'assets/js/calculators-core.js',
     'assets/js/blog-posts.js',
     'assets/js/faq-data.js',
