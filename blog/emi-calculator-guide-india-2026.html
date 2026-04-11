@@ -2,18 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- ═══ GOOGLE ANALYTICS ═══ -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBNL7BG63K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KBNL7BG63K');
-    </script>
-
-    <!-- ═══ GOOGLE ADSENSE ═══ -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3010631666598300" crossorigin="anonymous"></script>
+    <!-- GA & AdSense are loaded by consent.js after user consent -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
@@ -66,19 +55,19 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-    <!-- ═══ FONTS (non-blocking) ═══ -->
+    <!-- ═══ FONTS (non-blocking — upgraded to stylesheet by JS) ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="preload" as="style" data-href="fonts" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
 
     <!-- ═══ FONT AWESOME (non-blocking) ═══ -->
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" as="style" data-href="icons" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- ═══ MAIN CSS — async non-blocking (P3) ═══ -->
     <!-- Critical CSS is inlined below; main.css loads without blocking render -->
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="assets/css/main.css">
+    <link rel="preload" as="style" data-href="main" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
 
     <!-- ═══ PRELOAD — core JS bundle (P1: replaces monolithic calculators.js) ═══ -->
@@ -223,7 +212,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     "url": "https://calclabz.com"
   },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-04-10",
+  "dateModified": "2026-04-11",
   "mainEntityOfPage": "https://calclabz.com/blog/emi-calculator-guide-india-2026"
 }
 </script>
@@ -428,6 +417,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <script defer src="assets/js/blog-posts.js"></script>
     <script defer src="assets/js/faq-data.js"></script>
     <script defer src="assets/js/formulas.js"></script>
+    <script defer src="assets/js/consent.js"></script>
     <script defer src="assets/js/app.js"></script>
 </body>
 </html>
