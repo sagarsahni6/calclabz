@@ -94,7 +94,7 @@
                     {label:"Total Days",value:days.toLocaleString()},
                     {label:"Total Weeks",value:Math.floor(days/7).toLocaleString()},
                     {label:"Total Months",value:(y*12+m)},
-                    {label:"Birthday in",value:daysToB+" days"}
+                    {label:"Birthday in",value:daysToB + " days"}
                 ]
             };
         };

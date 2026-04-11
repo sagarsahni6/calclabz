@@ -810,6 +810,9 @@ function animateCounters(section) {
     if (!section) return;
     section.querySelectorAll('.res-val').forEach(function (el) {
         var text = el.textContent.trim();
+        // Skip animation for non-numeric values (contains letters like "36y 3m 10d", "Normal ✓", etc.)
+        // Only animate values that are purely numeric with optional currency prefix and unit suffix
+        if (/[a-zA-Z]/.test(text.replace(/^[₹$£€]\s*/, '').replace(/[\d,.\s%+-]+/g, '').replace(/[^\x20-\x7E]/g, ''))) return;
         var num = parseFloat(text.replace(/[₹,%\s,]/g, '').replace(/[^\d.-]/g, ''));
         if (isNaN(num) || num === 0 || text.length > 22) return;
         var prefix = (text[0] === '₹' || text[0] === '$') ? text[0] : '';
