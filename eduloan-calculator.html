@@ -55,20 +55,16 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-    <!-- ═══ FONTS (non-blocking — upgraded to stylesheet by JS) ═══ -->
+    <!-- ═══ FONTS ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" data-href="fonts" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
-    <!-- ═══ FONT AWESOME (non-blocking) ═══ -->
-    <link rel="preload" as="style" data-href="icons" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <!-- ═══ FONT AWESOME ═══ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- ═══ MAIN CSS — async non-blocking (P3) ═══ -->
-    <!-- Critical CSS is inlined below; main.css loads without blocking render -->
-    <link rel="preload" as="style" data-href="main" href="assets/css/main.css">
-    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    <!-- ═══ MAIN CSS ═══ -->
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!-- ═══ PRELOAD — core JS bundle (P1: replaces monolithic calculators.js) ═══ -->
     <link rel="preload" as="script" href="assets/js/calculators-core.js">

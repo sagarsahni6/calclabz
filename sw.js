@@ -1,18 +1,24 @@
-/* Calc Labz Service Worker — Stale-While-Revalidate (P6) */
-const CACHE = 'calclabz-v16';
+/* Calc Labz Service Worker — Production Hardened (v17)
+   - HTML: Network-first with offline cache fallback
+   - Assets (JS/CSS/images): Cache-first with background revalidation
+   - Never cache error/non-ok responses
+   - Offline fallback to cached index.html for navigation requests
+*/
+const CACHE = 'calclabz-v18';
 const ASSETS = [
     './',
     'index.html',
     'calclabz-logo.png',
     'manifest.json',
     'assets/css/main.css',
-    // P1: Core stubs (100 KB — replaces monolithic 333 KB calculators.js)
+    // Core stubs
     'assets/js/calculators-core.js',
     'assets/js/blog-posts.js',
     'assets/js/faq-data.js',
     'assets/js/formulas.js',
+    'assets/js/consent.js',
     'assets/js/app.js',
-    // P1: Lazy-loaded category files (pre-cached for offline-first)
+    // Lazy-loaded category files (pre-cached for offline-first)
     'assets/js/calculators-finance.js',
     'assets/js/calculators-health.js',
     'assets/js/calculators-math.js',
@@ -25,33 +31,64 @@ const ASSETS = [
     'assets/js/calculators-education.js'
 ];
 
-
 self.addEventListener('install', e => {
-    e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+    e.waitUntil(
+        caches.open(CACHE)
+            .then(c => c.addAll(ASSETS))
+            .then(() => self.skipWaiting())
+    );
 });
 
 self.addEventListener('activate', e => {
-    e.waitUntil(caches.keys().then(keys => Promise.all(
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
-    )).then(() => self.clients.claim()));
+    e.waitUntil(
+        caches.keys().then(keys =>
+            Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+        ).then(() => self.clients.claim())
+    );
 });
 
 self.addEventListener('fetch', e => {
     if (e.request.method !== 'GET') return;
     const url = new URL(e.request.url);
-    // Cache-first for same-origin assets
-    if (url.origin === self.location.origin) {
+    if (url.origin !== self.location.origin) return;
+
+    // HTML navigation requests: Network-first
+    // Ensures users always get fresh HTML after deploys
+    const isNavigation = e.request.mode === 'navigate';
+    const isHTML = (e.request.headers.get('accept') || '').includes('text/html');
+
+    if (isNavigation || isHTML) {
         e.respondWith(
-            caches.match(e.request).then(cached => {
-                const fetchPromise = fetch(e.request).then(response => {
-                    if (response && response.status === 200) {
+            fetch(e.request)
+                .then(response => {
+                    // Only cache successful HTML responses
+                    if (response.ok) {
                         const clone = response.clone();
                         caches.open(CACHE).then(c => c.put(e.request, clone));
                     }
                     return response;
-                }).catch(() => cached);
-                return cached || fetchPromise;
-            })
+                })
+                .catch(() =>
+                    // Offline: try cache, then fall back to index.html
+                    caches.match(e.request)
+                        .then(cached => cached || caches.match('index.html'))
+                )
         );
+        return;
     }
+
+    // Static assets (JS, CSS, images, fonts): Cache-first with background revalidation
+    e.respondWith(
+        caches.match(e.request).then(cached => {
+            const fetchPromise = fetch(e.request).then(response => {
+                // Only cache successful responses
+                if (response.ok) {
+                    const clone = response.clone();
+                    caches.open(CACHE).then(c => c.put(e.request, clone));
+                }
+                return response;
+            }).catch(() => cached);
+            return cached || fetchPromise;
+        })
+    );
 });
