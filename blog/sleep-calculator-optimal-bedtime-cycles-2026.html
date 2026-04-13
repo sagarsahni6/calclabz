@@ -55,19 +55,19 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-    <!-- ═══ FONTS ═══ -->
+    <!-- ═══ FONTS (non-blocking: media=print, swapped by css-swap.js) ═══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" media="print" id="css-fonts">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
 
-    <!-- ═══ FONT AWESOME ═══ -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ═══ FONT AWESOME (non-blocking: media=print, swapped by css-swap.js) ═══ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" id="css-fa">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-    <!-- ═══ MAIN CSS ═══ -->
-    <link rel="stylesheet" href="assets/css/main.css">
-
-    <!-- ═══ PRELOAD — core JS bundle (P1: replaces monolithic calculators.js) ═══ -->
-    <link rel="preload" as="script" href="assets/js/calculators-core.js">
+    <!-- ═══ MAIN CSS (non-blocking: media=print, swapped by css-swap.js) ═══ -->
+    <link rel="stylesheet" href="assets/css/main.css" media="print" id="css-main">
+    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
 
     <!-- ═══ CRITICAL INLINE CSS (P3) — ~6KB, unblocks FCP ═══ -->
     <!-- Covers all above-the-fold elements: header, body, layout, cards, hero, nav -->
@@ -190,6 +190,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-article-cta{margin:24px 0;padding:16px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:var(--rmd);text-align:center}
 .seo-article-cta a{display:inline-block;padding:10px 24px;background:var(--p);color:#fff;border-radius:var(--rsm);font-size:.9rem;font-weight:600;text-decoration:none;transition:var(--transition)}
 .seo-article-cta a:hover{background:var(--p2)}
+.seo-article table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
+.seo-article th,.seo-article td{padding:8px 12px;border:1px solid var(--brd);text-align:left}
+.seo-article th{background:var(--bg2);font-weight:600;color:var(--txt)}
+.seo-article td{color:var(--txt1)}
+.seo-article h3{font-size:1rem;font-weight:600;margin:16px 0 6px;color:var(--txt)}
+.seo-article a{color:var(--p);text-decoration:none}
+.seo-article a:hover{text-decoration:underline}
     </style>
 
         <script type="application/ld+json" id="jsonld-article">
@@ -208,7 +215,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     "url": "https://calclabz.com"
   },
   "datePublished": "2026-03-01",
-  "dateModified": "2026-04-11",
+  "dateModified": "2026-04-13",
   "mainEntityOfPage": "https://calclabz.com/blog/sleep-calculator-optimal-bedtime-cycles-2026"
 }
 </script>
@@ -243,7 +250,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- ═══ HEADER ═══ -->
     <header class="hdr">
         <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu"><i class="fas fa-bars" aria-hidden="true"></i></button>
-        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32"></a></div>
+        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32" fetchpriority="high"></a></div>
         <div class="hdr-search" role="search" aria-label="Search calculators">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input type="text" id="srInput" placeholder="Search calculators… (Ctrl+K)" aria-label="Search calculators" aria-autocomplete="list" aria-controls="srDrop" aria-expanded="false" role="combobox" autocomplete="off">
@@ -305,8 +312,18 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         </div>
       </article>
 
+      <section class="seo-section">
+        <h2>Related Articles</h2>
+        <div class="seo-related-grid">
+          <a href="/blog/bmi-calculator-chart-india-2026">BMI Chart India 2026: Are You in Healthy Range?</a>
+          <a href="/blog/tdee-calculator-daily-calorie-needs-2026">TDEE Calculator: How Many Calories Do You Really Need?</a>
+          <a href="/blog/bmr-calculator-basal-metabolic-rate-2026">BMR Calculator: Understanding Your Resting Metabolism</a>
+          <a href="/blog/water-intake-calculator-daily-hydration-guide-2026">Water Intake Calculator: Daily Hydration Guide 2026</a>
+        </div>
+      </section>
+
       <div class="seo-trust">
-        <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>
+        <p><strong>Medical disclaimer:</strong> This article provides general health information and is not a substitute for professional medical advice. Consult a healthcare professional for personalized guidance.</p>
         <p><strong>Last updated:</strong> Mar 2026</p>
       </div>
     </div>
@@ -407,10 +424,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     </footer>
 
     <!-- ═══ SCRIPTS (deferred) ═══ -->
+    <!-- css-swap.js MUST be first: swaps non-blocking stylesheets from media="print" to "all" -->
+    <script defer src="assets/js/css-swap.js"></script>
     <!-- P1: calculators-core.js replaces monolithic calculators.js (333KB→100KB) -->
     <!-- Per-category files (finance/health/math etc.) lazy-load on first use -->
     <script defer src="assets/js/calculators-core.js"></script>
     <script defer src="assets/js/blog-posts.js"></script>
+    <script defer src="assets/js/blog-content-finance.js"></script>
+    <script defer src="assets/js/blog-content-health.js"></script>
+    <script defer src="assets/js/blog-content-education.js"></script>
+    <script defer src="assets/js/blog-content-lifestyle.js"></script>
     <script defer src="assets/js/faq-data.js"></script>
     <script defer src="assets/js/formulas.js"></script>
     <script defer src="assets/js/consent.js"></script>

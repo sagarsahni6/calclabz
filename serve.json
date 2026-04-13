@@ -1152,8 +1152,428 @@
       "destination": "/blog/age-calculator-exact-years-months-days-2026.html"
     },
     {
-      "source": "/blog/**",
-      "destination": "/index.html"
+      "source": "/blog/in-hand-salary-ctc-take-home-india",
+      "destination": "/blog/in-hand-salary-ctc-take-home-india.html"
+    },
+    {
+      "source": "/blog/hra-exemption-calculation-rules-india",
+      "destination": "/blog/hra-exemption-calculation-rules-india.html"
+    },
+    {
+      "source": "/blog/gratuity-calculation-formula-eligibility",
+      "destination": "/blog/gratuity-calculation-formula-eligibility.html"
+    },
+    {
+      "source": "/blog/income-tax-calculator-fy-2025-26-slabs",
+      "destination": "/blog/income-tax-calculator-fy-2025-26-slabs.html"
+    },
+    {
+      "source": "/blog/section-80c-deductions-complete-list",
+      "destination": "/blog/section-80c-deductions-complete-list.html"
+    },
+    {
+      "source": "/blog/tds-rates-sections-calculate-refund",
+      "destination": "/blog/tds-rates-sections-calculate-refund.html"
+    },
+    {
+      "source": "/blog/advance-tax-due-dates-calculation-penalty",
+      "destination": "/blog/advance-tax-due-dates-calculation-penalty.html"
+    },
+    {
+      "source": "/blog/professional-tax-state-wise-rates-india",
+      "destination": "/blog/professional-tax-state-wise-rates-india.html"
+    },
+    {
+      "source": "/blog/capital-gains-tax-stcg-ltcg-calculation",
+      "destination": "/blog/capital-gains-tax-stcg-ltcg-calculation.html"
+    },
+    {
+      "source": "/blog/salary-hike-percentage-calculation-tips",
+      "destination": "/blog/salary-hike-percentage-calculation-tips.html"
+    },
+    {
+      "source": "/blog/ctc-breakup-salary-structure-explained",
+      "destination": "/blog/ctc-breakup-salary-structure-explained.html"
+    },
+    {
+      "source": "/blog/freelancer-tax-guide-itr-filing-india",
+      "destination": "/blog/freelancer-tax-guide-itr-filing-india.html"
+    },
+    {
+      "source": "/blog/esop-taxation-india-exercise-sale-tax",
+      "destination": "/blog/esop-taxation-india-exercise-sale-tax.html"
+    },
+    {
+      "source": "/blog/leave-encashment-tax-rules-exemption",
+      "destination": "/blog/leave-encashment-tax-rules-exemption.html"
+    },
+    {
+      "source": "/blog/gst-invoice-generator-format-rules",
+      "destination": "/blog/gst-invoice-generator-format-rules.html"
+    },
+    {
+      "source": "/blog/car-loan-emi-calculator-interest-rates",
+      "destination": "/blog/car-loan-emi-calculator-interest-rates.html"
+    },
+    {
+      "source": "/blog/loan-eligibility-income-cibil-criteria",
+      "destination": "/blog/loan-eligibility-income-cibil-criteria.html"
+    },
+    {
+      "source": "/blog/loan-prepayment-calculator-save-interest",
+      "destination": "/blog/loan-prepayment-calculator-save-interest.html"
+    },
+    {
+      "source": "/blog/home-loan-down-payment-how-much-needed",
+      "destination": "/blog/home-loan-down-payment-how-much-needed.html"
+    },
+    {
+      "source": "/blog/home-loan-balance-transfer-when-switch",
+      "destination": "/blog/home-loan-balance-transfer-when-switch.html"
+    },
+    {
+      "source": "/blog/business-loan-calculator-eligibility-rates",
+      "destination": "/blog/business-loan-calculator-eligibility-rates.html"
+    },
+    {
+      "source": "/blog/education-loan-calculator-interest-repayment",
+      "destination": "/blog/education-loan-calculator-interest-repayment.html"
+    },
+    {
+      "source": "/blog/loan-comparison-calculator-best-deal",
+      "destination": "/blog/loan-comparison-calculator-best-deal.html"
+    },
+    {
+      "source": "/blog/rent-vs-buy-calculator-home-decision",
+      "destination": "/blog/rent-vs-buy-calculator-home-decision.html"
+    },
+    {
+      "source": "/blog/simple-vs-compound-interest-difference",
+      "destination": "/blog/simple-vs-compound-interest-difference.html"
+    },
+    {
+      "source": "/blog/lumpsum-investment-calculator-vs-sip",
+      "destination": "/blog/lumpsum-investment-calculator-vs-sip.html"
+    },
+    {
+      "source": "/blog/step-up-sip-calculator-annual-increase",
+      "destination": "/blog/step-up-sip-calculator-annual-increase.html"
+    },
+    {
+      "source": "/blog/swp-calculator-systematic-withdrawal-plan",
+      "destination": "/blog/swp-calculator-systematic-withdrawal-plan.html"
+    },
+    {
+      "source": "/blog/cagr-calculator-investment-growth-rate",
+      "destination": "/blog/cagr-calculator-investment-growth-rate.html"
+    },
+    {
+      "source": "/blog/elss-vs-ppf-vs-fd-tax-saving-comparison",
+      "destination": "/blog/elss-vs-ppf-vs-fd-tax-saving-comparison.html"
+    },
+    {
+      "source": "/blog/mutual-fund-returns-calculator-cagr-xirr",
+      "destination": "/blog/mutual-fund-returns-calculator-cagr-xirr.html"
+    },
+    {
+      "source": "/blog/xirr-calculator-sip-irregular-investments",
+      "destination": "/blog/xirr-calculator-sip-irregular-investments.html"
+    },
+    {
+      "source": "/blog/goal-based-sip-calculator-target-corpus",
+      "destination": "/blog/goal-based-sip-calculator-target-corpus.html"
+    },
+    {
+      "source": "/blog/dividend-yield-calculator-stock-income",
+      "destination": "/blog/dividend-yield-calculator-stock-income.html"
+    },
+    {
+      "source": "/blog/gold-investment-calculator-returns-comparison",
+      "destination": "/blog/gold-investment-calculator-returns-comparison.html"
+    },
+    {
+      "source": "/blog/stock-returns-calculator-profit-loss",
+      "destination": "/blog/stock-returns-calculator-profit-loss.html"
+    },
+    {
+      "source": "/blog/asset-allocation-calculator-portfolio-strategy",
+      "destination": "/blog/asset-allocation-calculator-portfolio-strategy.html"
+    },
+    {
+      "source": "/blog/nps-calculator-returns-tax-benefits-india",
+      "destination": "/blog/nps-calculator-returns-tax-benefits-india.html"
+    },
+    {
+      "source": "/blog/epf-calculator-interest-rate-withdrawal-rules",
+      "destination": "/blog/epf-calculator-interest-rate-withdrawal-rules.html"
+    },
+    {
+      "source": "/blog/retirement-calculator-corpus-needed-india",
+      "destination": "/blog/retirement-calculator-corpus-needed-india.html"
+    },
+    {
+      "source": "/blog/fire-calculator-early-retirement-india",
+      "destination": "/blog/fire-calculator-early-retirement-india.html"
+    },
+    {
+      "source": "/blog/emergency-fund-calculator-how-much-save",
+      "destination": "/blog/emergency-fund-calculator-how-much-save.html"
+    },
+    {
+      "source": "/blog/sukanya-samriddhi-yojana-calculator-benefits",
+      "destination": "/blog/sukanya-samriddhi-yojana-calculator-benefits.html"
+    },
+    {
+      "source": "/blog/recurring-deposit-calculator-monthly-savings",
+      "destination": "/blog/recurring-deposit-calculator-monthly-savings.html"
+    },
+    {
+      "source": "/blog/atal-pension-yojana-calculator-benefits",
+      "destination": "/blog/atal-pension-yojana-calculator-benefits.html"
+    },
+    {
+      "source": "/blog/nsc-calculator-interest-rate-tax-benefits",
+      "destination": "/blog/nsc-calculator-interest-rate-tax-benefits.html"
+    },
+    {
+      "source": "/blog/scss-calculator-senior-citizen-savings-scheme",
+      "destination": "/blog/scss-calculator-senior-citizen-savings-scheme.html"
+    },
+    {
+      "source": "/blog/savings-goal-calculator-monthly-target",
+      "destination": "/blog/savings-goal-calculator-monthly-target.html"
+    },
+    {
+      "source": "/blog/sip-vs-lumpsum-which-is-better",
+      "destination": "/blog/sip-vs-lumpsum-which-is-better.html"
+    },
+    {
+      "source": "/blog/fd-interest-rates-comparison-best-banks",
+      "destination": "/blog/fd-interest-rates-comparison-best-banks.html"
+    },
+    {
+      "source": "/blog/inflation-adjusted-returns-calculator-real-returns",
+      "destination": "/blog/inflation-adjusted-returns-calculator-real-returns.html"
+    },
+    {
+      "source": "/blog/credit-card-payoff-calculator-minimum-payment-trap",
+      "destination": "/blog/credit-card-payoff-calculator-minimum-payment-trap.html"
+    },
+    {
+      "source": "/blog/body-fat-calculator-percentage-measurement",
+      "destination": "/blog/body-fat-calculator-percentage-measurement.html"
+    },
+    {
+      "source": "/blog/ideal-weight-calculator-bmi-height-chart",
+      "destination": "/blog/ideal-weight-calculator-bmi-height-chart.html"
+    },
+    {
+      "source": "/blog/protein-calculator-daily-intake-muscle-building",
+      "destination": "/blog/protein-calculator-daily-intake-muscle-building.html"
+    },
+    {
+      "source": "/blog/calorie-deficit-calculator-weight-loss-plan",
+      "destination": "/blog/calorie-deficit-calculator-weight-loss-plan.html"
+    },
+    {
+      "source": "/blog/pregnancy-due-date-calculator-week-by-week",
+      "destination": "/blog/pregnancy-due-date-calculator-week-by-week.html"
+    },
+    {
+      "source": "/blog/ovulation-calculator-fertile-window-tracking",
+      "destination": "/blog/ovulation-calculator-fertile-window-tracking.html"
+    },
+    {
+      "source": "/blog/heart-rate-zones-calculator-training-guide",
+      "destination": "/blog/heart-rate-zones-calculator-training-guide.html"
+    },
+    {
+      "source": "/blog/one-rep-max-calculator-strength-training",
+      "destination": "/blog/one-rep-max-calculator-strength-training.html"
+    },
+    {
+      "source": "/blog/bmi-calculator-india-asian-cutoffs",
+      "destination": "/blog/bmi-calculator-india-asian-cutoffs.html"
+    },
+    {
+      "source": "/blog/body-recomposition-calculator-muscle-fat",
+      "destination": "/blog/body-recomposition-calculator-muscle-fat.html"
+    },
+    {
+      "source": "/blog/running-pace-calculator-km-mile-splits",
+      "destination": "/blog/running-pace-calculator-km-mile-splits.html"
+    },
+    {
+      "source": "/blog/sleep-debt-calculator-recovery-strategy",
+      "destination": "/blog/sleep-debt-calculator-recovery-strategy.html"
+    },
+    {
+      "source": "/blog/smoking-cost-calculator-savings-health",
+      "destination": "/blog/smoking-cost-calculator-savings-health.html"
+    },
+    {
+      "source": "/blog/attendance-calculator-percentage-requirements",
+      "destination": "/blog/attendance-calculator-percentage-requirements.html"
+    },
+    {
+      "source": "/blog/gpa-calculator-cgpa-conversion-formula",
+      "destination": "/blog/gpa-calculator-cgpa-conversion-formula.html"
+    },
+    {
+      "source": "/blog/grade-calculator-final-exam-score-needed",
+      "destination": "/blog/grade-calculator-final-exam-score-needed.html"
+    },
+    {
+      "source": "/blog/percentile-calculator-rank-score-analysis",
+      "destination": "/blog/percentile-calculator-rank-score-analysis.html"
+    },
+    {
+      "source": "/blog/study-hours-calculator-exam-preparation",
+      "destination": "/blog/study-hours-calculator-exam-preparation.html"
+    },
+    {
+      "source": "/blog/pomodoro-timer-technique-productivity",
+      "destination": "/blog/pomodoro-timer-technique-productivity.html"
+    },
+    {
+      "source": "/blog/exam-score-calculator-marks-percentage",
+      "destination": "/blog/exam-score-calculator-marks-percentage.html"
+    },
+    {
+      "source": "/blog/education-loan-vs-self-fund-decision",
+      "destination": "/blog/education-loan-vs-self-fund-decision.html"
+    },
+    {
+      "source": "/blog/electricity-bill-calculator-units-tariff",
+      "destination": "/blog/electricity-bill-calculator-units-tariff.html"
+    },
+    {
+      "source": "/blog/fuel-cost-calculator-trip-petrol-diesel",
+      "destination": "/blog/fuel-cost-calculator-trip-petrol-diesel.html"
+    },
+    {
+      "source": "/blog/mileage-calculator-kmpl-fuel-efficiency",
+      "destination": "/blog/mileage-calculator-kmpl-fuel-efficiency.html"
+    },
+    {
+      "source": "/blog/discount-calculator-sale-price-savings",
+      "destination": "/blog/discount-calculator-sale-price-savings.html"
+    },
+    {
+      "source": "/blog/tip-calculator-guide-how-much-to-tip",
+      "destination": "/blog/tip-calculator-guide-how-much-to-tip.html"
+    },
+    {
+      "source": "/blog/wedding-budget-calculator-planning-india",
+      "destination": "/blog/wedding-budget-calculator-planning-india.html"
+    },
+    {
+      "source": "/blog/household-budget-calculator-50-30-20-rule",
+      "destination": "/blog/household-budget-calculator-50-30-20-rule.html"
+    },
+    {
+      "source": "/blog/ev-vs-petrol-car-cost-comparison",
+      "destination": "/blog/ev-vs-petrol-car-cost-comparison.html"
+    },
+    {
+      "source": "/blog/freelance-rate-calculator-hourly-pricing",
+      "destination": "/blog/freelance-rate-calculator-hourly-pricing.html"
+    },
+    {
+      "source": "/blog/stamp-duty-calculator-property-registration",
+      "destination": "/blog/stamp-duty-calculator-property-registration.html"
+    },
+    {
+      "source": "/blog/rent-affordability-calculator-budget-rule",
+      "destination": "/blog/rent-affordability-calculator-budget-rule.html"
+    },
+    {
+      "source": "/blog/credit-utilization-calculator-cibil-score",
+      "destination": "/blog/credit-utilization-calculator-cibil-score.html"
+    },
+    {
+      "source": "/blog/debt-avalanche-calculator-fastest-payoff",
+      "destination": "/blog/debt-avalanche-calculator-fastest-payoff.html"
+    },
+    {
+      "source": "/blog/insurance-need-calculator-life-cover-amount",
+      "destination": "/blog/insurance-need-calculator-life-cover-amount.html"
+    },
+    {
+      "source": "/blog/net-worth-calculator-track-financial-health",
+      "destination": "/blog/net-worth-calculator-track-financial-health.html"
+    },
+    {
+      "source": "/blog/tcs-remittance-foreign-transfer-tax-india",
+      "destination": "/blog/tcs-remittance-foreign-transfer-tax-india.html"
+    },
+    {
+      "source": "/blog/hra-vs-home-loan-tax-benefit-comparison",
+      "destination": "/blog/hra-vs-home-loan-tax-benefit-comparison.html"
+    },
+    {
+      "source": "/blog/break-even-calculator-business-profitability",
+      "destination": "/blog/break-even-calculator-business-profitability.html"
+    },
+    {
+      "source": "/blog/car-lease-vs-buy-calculator-comparison",
+      "destination": "/blog/car-lease-vs-buy-calculator-comparison.html"
+    },
+    {
+      "source": "/blog/tax-saving-investment-planner-80c-80d-nps",
+      "destination": "/blog/tax-saving-investment-planner-80c-80d-nps.html"
+    },
+    {
+      "source": "/blog/brokerage-calculator-trading-costs-charges",
+      "destination": "/blog/brokerage-calculator-trading-costs-charges.html"
+    },
+    {
+      "source": "/blog/npv-irr-calculator-project-profitability",
+      "destination": "/blog/npv-irr-calculator-project-profitability.html"
+    },
+    {
+      "source": "/blog/loan-affordability-calculator-how-much-borrow",
+      "destination": "/blog/loan-affordability-calculator-how-much-borrow.html"
+    },
+    {
+      "source": "/blog/blood-pressure-chart-normal-ranges-meaning",
+      "destination": "/blog/blood-pressure-chart-normal-ranges-meaning.html"
+    },
+    {
+      "source": "/blog/vo2-max-calculator-aerobic-fitness-level",
+      "destination": "/blog/vo2-max-calculator-aerobic-fitness-level.html"
+    },
+    {
+      "source": "/blog/diabetes-risk-calculator-type-2-assessment",
+      "destination": "/blog/diabetes-risk-calculator-type-2-assessment.html"
+    },
+    {
+      "source": "/blog/child-height-predictor-adult-estimate",
+      "destination": "/blog/child-height-predictor-adult-estimate.html"
+    },
+    {
+      "source": "/blog/lean-body-mass-calculator-muscle-mass",
+      "destination": "/blog/lean-body-mass-calculator-muscle-mass.html"
+    },
+    {
+      "source": "/blog/gpa-planner-target-required-grades",
+      "destination": "/blog/gpa-planner-target-required-grades.html"
+    },
+    {
+      "source": "/blog/cutoff-predictor-jee-neet-engineering-exams",
+      "destination": "/blog/cutoff-predictor-jee-neet-engineering-exams.html"
+    },
+    {
+      "source": "/blog/solar-panel-calculator-roi-savings-payback",
+      "destination": "/blog/solar-panel-calculator-roi-savings-payback.html"
+    },
+    {
+      "source": "/blog/construction-cost-calculator-building-india",
+      "destination": "/blog/construction-cost-calculator-building-india.html"
+    },
+    {
+      "source": "/blog/travel-budget-calculator-trip-expenses",
+      "destination": "/blog/travel-budget-calculator-trip-expenses.html"
     },
     {
       "source": "/blog",

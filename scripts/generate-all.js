@@ -178,18 +178,17 @@ function updateServeRewrites() {
     });
   } catch (e) { /* ignore */ }
 
-  // Blog catch-all for non-pre-rendered blog routes (AFTER specific blog rewrites)
-  var blogCatchAll = [{ source: '/blog/**', destination: '/index.html' }];
-
-  // 404 catch-all (LAST)
-  var fallback = [{ source: '/**', destination: '/404.html' }];
+  // Note: cleanUrls:true handles .html resolution automatically.
+  // Only add specific SPA routes — no broad catch-alls that override cleanUrls.
+  var spaRoutes = [
+    { source: '/blog', destination: '/index.html' }
+  ];
 
   serve.rewrites = staticRewrites
     .concat(calcRewrites)
     .concat(categoryRewrites)
     .concat(blogRewrites)
-    .concat(blogCatchAll)
-    .concat(fallback);
+    .concat(spaRoutes);
 
   fs.writeFileSync(SERVE_PATH, JSON.stringify(serve, null, 2) + '\n', 'utf8');
   console.log('  ✓  serve.json — ' + calcRewrites.length + ' calculators + ' + categoryRewrites.length + ' categories + ' + blogRewrites.length + ' blog + 404');

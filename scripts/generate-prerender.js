@@ -64,7 +64,14 @@ var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-article strong{color:var(--txt)}\n' +
 '.seo-article-cta{margin:24px 0;padding:16px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:var(--rmd);text-align:center}\n' +
 '.seo-article-cta a{display:inline-block;padding:10px 24px;background:var(--p);color:#fff;border-radius:var(--rsm);font-size:.9rem;font-weight:600;text-decoration:none;transition:var(--transition)}\n' +
-'.seo-article-cta a:hover{background:var(--p2)}\n';
+'.seo-article-cta a:hover{background:var(--p2)}\n' +
+'.seo-article table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}\n' +
+'.seo-article th,.seo-article td{padding:8px 12px;border:1px solid var(--brd);text-align:left}\n' +
+'.seo-article th{background:var(--bg2);font-weight:600;color:var(--txt)}\n' +
+'.seo-article td{color:var(--txt1)}\n' +
+'.seo-article h3{font-size:1rem;font-weight:600;margin:16px 0 6px;color:var(--txt)}\n' +
+'.seo-article a{color:var(--p);text-decoration:none}\n' +
+'.seo-article a:hover{text-decoration:underline}\n';
 
 // ── CALCULATORS — loaded from centralized SEO content module ────────────────
 var CALCULATORS = require('./seo-content-top50');
@@ -688,6 +695,15 @@ function generateBlogPages() {
   vm.createContext(sandbox);
   vm.runInContext(blogSrc, sandbox);
 
+  // Load additional blog content files (split for maintainability)
+  var contentFiles = ['blog-content-finance.js', 'blog-content-health.js', 'blog-content-education.js', 'blog-content-lifestyle.js'];
+  contentFiles.forEach(function(file) {
+    try {
+      var src = fs.readFileSync(path.join(ROOT, 'assets', 'js', file), 'utf8');
+      vm.runInContext(src, sandbox);
+    } catch (e) { /* file doesn't exist yet — skip */ }
+  });
+
   var BLOG_POSTS = sandbox.BLOG_POSTS || [];
   var BLOG_CONTENT = sandbox.BLOG_CONTENT || {};
 
@@ -782,9 +798,30 @@ function generateBlogPages() {
 
     body += '      </article>\n\n';
 
+    // Related articles section
+    var relatedPosts = BLOG_POSTS.filter(function(p) {
+      return p.cat === post.cat && p.id !== post.id && BLOG_CONTENT[p.id];
+    }).slice(0, 4);
+    if (relatedPosts.length) {
+      body += '      <section class="seo-section">\n';
+      body += '        <h2>Related Articles</h2>\n';
+      body += '        <div class="seo-related-grid">\n';
+      relatedPosts.forEach(function(rp) {
+        body += '          <a href="/blog/' + rp.slug + '">' + rp.title + '</a>\n';
+      });
+      body += '        </div>\n';
+      body += '      </section>\n\n';
+    }
+
     // Trust section
     body += '      <div class="seo-trust">\n';
-    body += '        <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>\n';
+    if (post.cat === 'Finance' || post.cat === 'Tax') {
+      body += '        <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or tax advice. Tax laws and rates may change. Consult a qualified chartered accountant or financial advisor for decisions specific to your situation.</p>\n';
+    } else if (post.cat === 'Health') {
+      body += '        <p><strong>Medical disclaimer:</strong> This article provides general health information and is not a substitute for professional medical advice. Consult a healthcare professional for personalized guidance.</p>\n';
+    } else {
+      body += '        <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>\n';
+    }
     body += '        <p><strong>Last updated:</strong> ' + (content.meta.date || 'April 2026') + '</p>\n';
     body += '      </div>\n';
 
