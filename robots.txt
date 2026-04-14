@@ -11,5 +11,8 @@ User-agent: Googlebot
 Allow: /assets/
 Allow: /
 
-# Sitemap location
+# Sitemap location (index + individual sitemaps for faster discovery)
 Sitemap: https://calclabz.com/sitemap.xml
+Sitemap: https://calclabz.com/sitemap-core.xml
+Sitemap: https://calclabz.com/sitemap-calculators.xml
+Sitemap: https://calclabz.com/sitemap-blog.xml

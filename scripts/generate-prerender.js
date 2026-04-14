@@ -735,7 +735,7 @@ function generateAllRegistryCalcs() {
 
     var catDisplay = CAT_DISPLAY[entry.cat] || 'Tools';
     var catSlug = entry.cat + '-calculators';
-    var shortName = formatSlugToName(entry.slug);
+    var shortName = entry.name || formatSlugToName(entry.slug);
     var pageUrl = BASE_URL + '/' + entry.slug;
     var nameLC = shortName.toLowerCase();
     var catContent = CAT_CONTENT[entry.cat] || CAT_CONTENT.everyday;
@@ -857,7 +857,7 @@ function generateAllRegistryCalcs() {
       body += '        <h2>Related Calculators</h2>\n';
       body += '        <div class="seo-related-grid">\n';
       relatedCalcs.forEach(function(r) {
-        body += '          <a href="/' + r.slug + '">' + formatSlugToName(r.slug) + '</a>\n';
+        body += '          <a href="/' + r.slug + '">' + (r.name || formatSlugToName(r.slug)) + '</a>\n';
       });
       body += '        </div>\n';
       body += '      </section>\n\n';

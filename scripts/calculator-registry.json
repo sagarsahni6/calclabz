@@ -3,127 +3,148 @@
     "id": "stampdutycalc",
     "slug": "stampdutycalc-calculator",
     "cat": "construction",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Stamp Duty Calculator"
   },
   {
     "id": "constructioncost",
     "slug": "constructioncost-calculator",
     "cat": "construction",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Construction Cost Calculator"
   },
   {
     "id": "homerenovation",
     "slug": "homerenovation-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Home Renovation Calculator"
   },
   {
     "id": "concrete",
     "slug": "concrete-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Concrete Calculator"
   },
   {
     "id": "bricks",
     "slug": "bricks-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Bricks Calculator"
   },
   {
     "id": "paint",
     "slug": "paint-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Paint Calculator"
   },
   {
     "id": "flooring",
     "slug": "flooring-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Flooring Calculator"
   },
   {
     "id": "steel",
     "slug": "steel-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Steel Calculator"
   },
   {
     "id": "roofing",
     "slug": "roofing-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Roofing Calculator"
   },
   {
     "id": "landarea",
     "slug": "landarea-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Land Area Calculator"
   },
   {
     "id": "solarpanel",
     "slug": "solarpanel-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Solar Panel Calculator"
   },
   {
     "id": "concretemix",
     "slug": "concretemix-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Concrete Mix Calculator"
   },
   {
     "id": "materialwaste",
     "slug": "materialwaste-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Material Waste Calculator"
   },
   {
     "id": "rainwater",
     "slug": "rainwater-calculator",
     "cat": "construction",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Rainwater Harvesting Calculator"
   },
   {
     "id": "earthwork",
     "slug": "earthwork-calculator",
     "cat": "construction",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Earthwork Calculator"
   },
   {
     "id": "plasterwork",
     "slug": "plasterwork-calculator",
     "cat": "construction",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Plasterwork Calculator"
   },
   {
     "id": "dateiff",
     "slug": "dateiff-calculator",
     "cat": "datetime",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Date Difference Calculator"
   },
   {
     "id": "workingdays",
     "slug": "workingdays-calculator",
     "cat": "datetime",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Working Days Calculator"
   },
   {
     "id": "timeconv",
     "slug": "timeconv-calculator",
     "cat": "datetime",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Time Converter"
   },
   {
     "id": "countdown",
     "slug": "countdown-calculator",
     "cat": "datetime",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Countdown Timer"
   },
   {
     "id": "timezone",
     "slug": "timezone-calculator",
     "cat": "datetime",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Timezone Converter"
   },
   {
     "id": "cgpa",
@@ -133,397 +154,463 @@
     "prerender": true,
     "title": "CGPA Calculator — CGPA to Percentage Converter | Calc Labz",
     "desc": "Calculate CGPA from marks, convert CGPA to percentage for any university scale (10-point, 4-point). Free CGPA calculator and GPA converter — updated 2026.",
-    "blogSlug": "cgpa-to-percentage-converter-formula-2026"
+    "blogSlug": "cgpa-to-percentage-converter-formula-2026",
+    "name": "CGPA Calculator"
   },
   {
     "id": "eduloan",
     "slug": "eduloan-calculator",
     "cat": "education",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Education Loan Calculator"
   },
   {
     "id": "examneeded",
     "slug": "examneeded-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Exam Score Calculator"
   },
   {
     "id": "studyhours",
     "slug": "studyhours-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Study Hours Calculator"
   },
   {
     "id": "scholarship",
     "slug": "scholarship-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Scholarship Calculator"
   },
   {
     "id": "pomodoro",
     "slug": "pomodoro-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Pomodoro Timer"
   },
   {
     "id": "gpaconverter",
     "slug": "gpaconverter-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "GPA Converter"
   },
   {
     "id": "readingtime",
     "slug": "readingtime-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Reading Time Calculator"
   },
   {
     "id": "typingtest",
     "slug": "typingtest-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Typing Test"
   },
   {
     "id": "spellingbee",
     "slug": "spellingbee-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Spelling Bee Practice"
   },
   {
     "id": "attendance",
     "slug": "attendance-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Attendance Calculator"
   },
   {
     "id": "gpaplanner",
     "slug": "gpaplanner-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "GPA Planner"
   },
   {
     "id": "percentile",
     "slug": "percentile-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Percentile Calculator"
   },
   {
     "id": "cutoffpredictor",
     "slug": "cutoffpredictor-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Cutoff Predictor"
   },
   {
     "id": "revisionplanner",
     "slug": "revisionplanner-calculator",
     "cat": "education",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Revision Planner"
   },
   {
     "id": "pythagorean",
     "slug": "pythagorean-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Pythagorean Theorem Calculator"
   },
   {
     "id": "ohmslaw",
     "slug": "ohmslaw-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Ohm's Law Calculator"
   },
   {
     "id": "resistor",
     "slug": "resistor-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Resistor Calculator"
   },
   {
     "id": "power",
     "slug": "power-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Power Calculator"
   },
   {
     "id": "inverterbattery",
     "slug": "inverterbattery-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Inverter Battery Calculator"
   },
   {
     "id": "acbtu",
     "slug": "acbtu-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "AC BTU Calculator"
   },
   {
     "id": "beamload",
     "slug": "beamload-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Beam Load Calculator"
   },
   {
     "id": "pipeflow",
     "slug": "pipeflow-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Pipe Flow Calculator"
   },
   {
     "id": "threephase",
     "slug": "threephase-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Three Phase Power Calculator"
   },
   {
     "id": "transformercalc",
     "slug": "transformercalc-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Transformer Calculator"
   },
   {
     "id": "heatexchanger",
     "slug": "heatexchanger-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Heat Exchanger Calculator"
   },
   {
     "id": "fluidflow",
     "slug": "fluidflow-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Fluid Flow Calculator"
   },
   {
     "id": "springforce",
     "slug": "springforce-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Spring Force Calculator"
   },
   {
     "id": "gearratio",
     "slug": "gearratio-calculator",
     "cat": "engineering",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Gear Ratio Calculator"
   },
   {
     "id": "torque",
     "slug": "torque-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Torque Calculator"
   },
   {
     "id": "decibel",
     "slug": "decibel-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Decibel Calculator"
   },
   {
     "id": "antennalen",
     "slug": "antennalen-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Antenna Length Calculator"
   },
   {
     "id": "ledresistor",
     "slug": "ledresistor-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "LED Resistor Calculator"
   },
   {
     "id": "voltdivider",
     "slug": "voltdivider-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Voltage Divider Calculator"
   },
   {
     "id": "batterylife",
     "slug": "batterylife-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Battery Life Calculator"
   },
   {
     "id": "pcbtrace",
     "slug": "pcbtrace-calculator",
     "cat": "engineering",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "PCB Trace Width Calculator"
   },
   {
     "id": "loanaffordability",
     "slug": "loanaffordability-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Loan Affordability Calculator"
   },
   {
     "id": "salary",
     "slug": "salary-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Salary Calculator"
   },
   {
     "id": "tip",
     "slug": "tip-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Tip Calculator"
   },
   {
     "id": "discount",
     "slug": "discount-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Discount Calculator"
   },
   {
     "id": "fuel",
     "slug": "fuel-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Fuel Cost Calculator"
   },
   {
     "id": "mileage",
     "slug": "mileage-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Mileage Calculator"
   },
   {
     "id": "electricbill",
     "slug": "electricbill-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Electricity Bill Calculator"
   },
   {
     "id": "grade",
     "slug": "grade-calculator",
     "cat": "everyday",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Grade Calculator"
   },
   {
     "id": "freelancerate",
     "slug": "freelancerate-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Freelance Rate Calculator"
   },
   {
     "id": "tipsplit",
     "slug": "tipsplit-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Tip Split Calculator"
   },
   {
     "id": "evpetrolsavings",
     "slug": "evpetrolsavings-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "EV vs Petrol Savings Calculator"
   },
   {
     "id": "weddingbudget",
     "slug": "weddingbudget-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Wedding Budget Calculator"
   },
   {
     "id": "rentafford",
     "slug": "rentafford-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Rent Affordability Calculator"
   },
   {
     "id": "travelbudget",
     "slug": "travelbudget-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Travel Budget Calculator"
   },
   {
     "id": "carbonfootprint",
     "slug": "carbonfootprint-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Carbon Footprint Calculator"
   },
   {
     "id": "ecomprofit",
     "slug": "ecomprofit-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "E-commerce Profit Calculator"
   },
   {
     "id": "restaurantcost",
     "slug": "restaurantcost-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Restaurant Cost Calculator"
   },
   {
     "id": "subscriptionpricing",
     "slug": "subscriptionpricing-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Subscription Pricing Calculator"
   },
   {
     "id": "uniteconomics",
     "slug": "uniteconomics-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Unit Economics Calculator"
   },
   {
     "id": "eventbudget",
     "slug": "eventbudget-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Event Budget Calculator"
   },
   {
     "id": "householdbudget",
     "slug": "householdbudget-calculator",
     "cat": "everyday",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Household Budget Calculator"
   },
   {
     "id": "laundry",
     "slug": "laundry-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Laundry Calculator"
   },
   {
     "id": "cooking",
     "slug": "cooking-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Cooking Measurement Converter"
   },
   {
     "id": "shoesize",
     "slug": "shoesize-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Shoe Size Converter"
   },
   {
     "id": "petage",
     "slug": "petage-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Pet Age Calculator"
   },
   {
     "id": "stopwatch",
     "slug": "stopwatch-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Stopwatch"
   },
   {
     "id": "randomnum",
     "slug": "randomnum-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Random Number Generator"
   },
   {
     "id": "cartco",
     "slug": "cartco-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Shopping Cart Calculator"
   },
   {
     "id": "wiresize",
     "slug": "wiresize-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Wire Size Calculator"
   },
   {
     "id": "pixelresolution",
     "slug": "pixelresolution-calculator",
     "cat": "everyday",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Pixel Resolution Calculator"
   },
   {
     "id": "emi",
@@ -533,7 +620,8 @@
     "prerender": true,
     "title": "EMI Calculator — Free Loan EMI Calculator India 2026 | Calc Labz",
     "desc": "Calculate home loan, car loan & personal loan EMI instantly. Get monthly EMI, total interest paid, and full amortization schedule. Free, no signup, updated for 2026.",
-    "blogSlug": "emi-calculator-guide-india-2026"
+    "blogSlug": "emi-calculator-guide-india-2026",
+    "name": "EMI Calculator"
   },
   {
     "id": "sip",
@@ -543,7 +631,8 @@
     "prerender": true,
     "title": "SIP Calculator — Free SIP Returns Calculator India 2026 | Calc Labz",
     "desc": "Calculate SIP returns, wealth gained, and future value of your mutual fund investments. See the power of compounding with our free SIP calculator — updated for 2026.",
-    "blogSlug": "sip-calculator-mutual-fund-investment-2026"
+    "blogSlug": "sip-calculator-mutual-fund-investment-2026",
+    "name": "SIP Calculator"
   },
   {
     "id": "gst",
@@ -553,7 +642,8 @@
     "prerender": true,
     "title": "GST Calculator — Free Online GST Calculator India 2026 | Calc Labz",
     "desc": "Calculate GST amount with CGST, SGST, and IGST breakdown for any rate (5%, 12%, 18%, 28%). Add or remove GST from any price. Free, instant, no signup required.",
-    "blogSlug": "gst-calculator-cgst-sgst-igst-guide-2026"
+    "blogSlug": "gst-calculator-cgst-sgst-igst-guide-2026",
+    "name": "GST Calculator"
   },
   {
     "id": "taxregime",
@@ -563,7 +653,8 @@
     "prerender": true,
     "title": "Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz",
     "desc": "Compare Old vs New income tax regime for FY 2025-26. Find out which regime saves you more tax with deductions like 80C, HRA, NPS. Free, instant calculator.",
-    "blogSlug": "old-vs-new-tax-regime-comparison-fy-2025-26"
+    "blogSlug": "old-vs-new-tax-regime-comparison-fy-2025-26",
+    "name": "Tax Regime Comparison Calculator"
   },
   {
     "id": "compoundinterest",
@@ -573,7 +664,8 @@
     "prerender": true,
     "title": "Compound Interest Calculator — Free Online CI Calculator | Calc Labz",
     "desc": "Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.",
-    "blogSlug": "compound-interest-calculator-rule-of-72"
+    "blogSlug": "compound-interest-calculator-rule-of-72",
+    "name": "Compound Interest Calculator"
   },
   {
     "id": "incometax",
@@ -582,7 +674,8 @@
     "priority": "0.8",
     "prerender": true,
     "title": "Income Tax Calculator FY 2025-26 — Free Online Tax Calculator | Calc Labz",
-    "desc": "Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free income tax calculator for salaried and business income."
+    "desc": "Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free income tax calculator for salaried and business income.",
+    "name": "Income Tax Calculator"
   },
   {
     "id": "ppf",
@@ -592,7 +685,8 @@
     "prerender": true,
     "title": "PPF Calculator — Public Provident Fund Maturity Calculator 2026 | Calc Labz",
     "desc": "Calculate PPF maturity amount, total interest earned, and year-wise balance for your Public Provident Fund account. Free PPF calculator with 15-year projection.",
-    "blogSlug": "ppf-calculator-tax-free-returns-maturity-2026"
+    "blogSlug": "ppf-calculator-tax-free-returns-maturity-2026",
+    "name": "PPF Calculator"
   },
   {
     "id": "fd",
@@ -602,7 +696,8 @@
     "prerender": true,
     "title": "FD Calculator — Fixed Deposit Maturity Calculator India 2026 | Calc Labz",
     "desc": "Calculate Fixed Deposit maturity amount, total interest, and returns for any compounding frequency. Compare FD rates across banks. Free FD calculator — no signup.",
-    "blogSlug": "fixed-deposit-calculator-best-fd-rates-2026"
+    "blogSlug": "fixed-deposit-calculator-best-fd-rates-2026",
+    "name": "Fixed Deposit Calculator"
   },
   {
     "id": "mortgage",
@@ -612,13 +707,15 @@
     "prerender": true,
     "title": "Mortgage Calculator — Home Loan EMI Calculator India | Calc Labz",
     "desc": "Calculate home loan mortgage EMI, total interest, and amortization schedule. Compare loan offers from different banks. Free mortgage calculator for India.",
-    "blogSlug": "home-loan-emi-calculator-eligibility-tax-benefits-2026"
+    "blogSlug": "home-loan-emi-calculator-eligibility-tax-benefits-2026",
+    "name": "Mortgage Calculator"
   },
   {
     "id": "salaryhike",
     "slug": "salaryhike-calculator",
     "cat": "finance",
-    "priority": "0.8"
+    "priority": "0.8",
+    "name": "Salary Hike Calculator"
   },
   {
     "id": "inhandsalary",
@@ -627,13 +724,15 @@
     "priority": "0.8",
     "prerender": true,
     "title": "In-Hand Salary Calculator — Take Home Salary Calculator India | Calc Labz",
-    "desc": "Calculate your monthly in-hand (take-home) salary from CTC. Includes PF, professional tax, income tax TDS, and HRA deductions. Free salary calculator for India 2026."
+    "desc": "Calculate your monthly in-hand (take-home) salary from CTC. Includes PF, professional tax, income tax TDS, and HRA deductions. Free salary calculator for India 2026.",
+    "name": "In-Hand Salary Calculator"
   },
   {
     "id": "pregst",
     "slug": "pregst-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Pre-GST Price Calculator"
   },
   {
     "id": "simpleinterest",
@@ -642,14 +741,16 @@
     "priority": "0.7",
     "prerender": true,
     "title": "Simple Interest Calculator — Free SI Calculator Online | Calc Labz",
-    "desc": "Calculate simple interest, total amount payable, and monthly interest for any loan or investment. Free simple interest calculator — instant results, no signup."
+    "desc": "Calculate simple interest, total amount payable, and monthly interest for any loan or investment. Free simple interest calculator — instant results, no signup.",
+    "name": "Simple Interest Calculator"
   },
   {
     "id": "roi",
     "slug": "roi-calculator",
     "cat": "finance",
     "priority": "0.7",
-    "blogSlug": "roi-cagr-calculator-investment-returns-2026"
+    "blogSlug": "roi-cagr-calculator-investment-returns-2026",
+    "name": "ROI Calculator"
   },
   {
     "id": "rd",
@@ -658,13 +759,15 @@
     "priority": "0.7",
     "prerender": true,
     "title": "RD Calculator — Recurring Deposit Maturity Calculator India | Calc Labz",
-    "desc": "Calculate Recurring Deposit maturity amount and total interest earned for monthly deposits. Free RD calculator for all Indian banks. No signup required."
+    "desc": "Calculate Recurring Deposit maturity amount and total interest earned for monthly deposits. Free RD calculator for all Indian banks. No signup required.",
+    "name": "Recurring Deposit Calculator"
   },
   {
     "id": "carloan",
     "slug": "carloan-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Car Loan EMI Calculator"
   },
   {
     "id": "inflation",
@@ -674,7 +777,8 @@
     "prerender": true,
     "title": "Inflation Calculator — Purchasing Power Calculator India | Calc Labz",
     "desc": "Calculate the impact of inflation on purchasing power. Find future value of today\\",
-    "blogSlug": "inflation-calculator-india-purchasing-power-2026"
+    "blogSlug": "inflation-calculator-india-purchasing-power-2026",
+    "name": "Inflation Calculator"
   },
   {
     "id": "cagr",
@@ -683,367 +787,428 @@
     "priority": "0.7",
     "prerender": true,
     "title": "CAGR Calculator — Compound Annual Growth Rate Calculator | Calc Labz",
-    "desc": "Calculate CAGR (Compound Annual Growth Rate) for investments, revenues, and portfolios. Compare investment performance with annualised returns. Free CAGR calculator."
+    "desc": "Calculate CAGR (Compound Annual Growth Rate) for investments, revenues, and portfolios. Compare investment performance with annualised returns. Free CAGR calculator.",
+    "name": "CAGR Calculator"
   },
   {
     "id": "swp",
     "slug": "swp-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "SWP Calculator"
   },
   {
     "id": "lumpsum",
     "slug": "lumpsum-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Lumpsum Investment Calculator"
   },
   {
     "id": "nps",
     "slug": "nps-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "NPS Calculator"
   },
   {
     "id": "gratuity",
     "slug": "gratuity-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Gratuity Calculator"
   },
   {
     "id": "hra",
     "slug": "hra-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "HRA Exemption Calculator"
   },
   {
     "id": "creditcard",
     "slug": "creditcard-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Credit Card Payoff Calculator"
   },
   {
     "id": "prepayment",
     "slug": "prepayment-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Loan Prepayment Calculator"
   },
   {
     "id": "stepupsip",
     "slug": "stepupsip-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Step-up SIP Calculator"
   },
   {
     "id": "savingsgoal",
     "slug": "savingsgoal-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Savings Goal Calculator"
   },
   {
     "id": "capitalgains",
     "slug": "capitalgains-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Capital Gains Tax Calculator"
   },
   {
     "id": "tds",
     "slug": "tds-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "TDS Calculator"
   },
   {
     "id": "epf",
     "slug": "epf-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "EPF Calculator"
   },
   {
     "id": "loaneligibility",
     "slug": "loaneligibility-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Loan Eligibility Calculator"
   },
   {
     "id": "ssy",
     "slug": "ssy-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Sukanya Samriddhi Calculator"
   },
   {
     "id": "retirementcorpus",
     "slug": "retirementcorpus-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Retirement Corpus Calculator"
   },
   {
     "id": "goalsip",
     "slug": "goalsip-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Goal-based SIP Calculator"
   },
   {
     "id": "taxsaving",
     "slug": "taxsaving-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Tax Saving Calculator"
   },
   {
     "id": "advancetax",
     "slug": "advancetax-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Advance Tax Calculator"
   },
   {
     "id": "ctcbreakup",
     "slug": "ctcbreakup-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "CTC Breakup Calculator"
   },
   {
     "id": "fire",
     "slug": "fire-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "FIRE Calculator"
   },
   {
     "id": "debtavalanche",
     "slug": "debtavalanche-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Debt Avalanche Calculator"
   },
   {
     "id": "emergencyfund",
     "slug": "emergencyfund-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Emergency Fund Calculator"
   },
   {
     "id": "rentvsbuy",
     "slug": "rentvsbuy-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Rent vs Buy Calculator"
   },
   {
     "id": "carleasevsbuy",
     "slug": "carleasevsbuy-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Car Lease vs Buy Calculator"
   },
   {
     "id": "homedownpayment",
     "slug": "homedownpayment-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Home Down Payment Calculator"
   },
   {
     "id": "loancompare",
     "slug": "loancompare-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Loan Comparison Calculator"
   },
   {
     "id": "refinance",
     "slug": "refinance-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Loan Refinance Calculator"
   },
   {
     "id": "creditutil",
     "slug": "creditutil-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Credit Utilization Calculator"
   },
   {
     "id": "insuranceneed",
     "slug": "insuranceneed-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Insurance Need Calculator"
   },
   {
     "id": "npvirr",
     "slug": "npvirr-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "NPV & IRR Calculator"
   },
   {
     "id": "bondyield",
     "slug": "bondyield-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Bond Yield Calculator"
   },
   {
     "id": "optionprofit",
     "slug": "optionprofit-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Options Profit Calculator"
   },
   {
     "id": "forexpip",
     "slug": "forexpip-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Forex Pip Calculator"
   },
   {
     "id": "portfoliorebalance",
     "slug": "portfoliorebalance-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Portfolio Rebalance Calculator"
   },
   {
     "id": "assetallocation",
     "slug": "assetallocation-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Asset Allocation Calculator"
   },
   {
     "id": "montecarlo",
     "slug": "montecarlo-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Monte Carlo Simulator"
   },
   {
     "id": "inflationgoal",
     "slug": "inflationgoal-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Inflation-Adjusted Goal Calculator"
   },
   {
     "id": "businessloan",
     "slug": "businessloan-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Business Loan Calculator"
   },
   {
     "id": "gstinvoice",
     "slug": "gstinvoice-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "GST Invoice Generator"
   },
   {
     "id": "esoptax",
     "slug": "esoptax-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "ESOP Tax Calculator"
   },
   {
     "id": "freelancetax",
     "slug": "freelancetax-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Freelancer Tax Calculator"
   },
   {
     "id": "tcsremittance",
     "slug": "tcsremittance-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "TCS on Remittance Calculator"
   },
   {
     "id": "sec80c",
     "slug": "sec80c-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Section 80C Calculator"
   },
   {
     "id": "hravshomeloan",
     "slug": "hravshomeloan-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "HRA vs Home Loan Calculator"
   },
   {
     "id": "leaveencash",
     "slug": "leaveencash-calculator",
     "cat": "finance",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Leave Encashment Calculator"
   },
   {
     "id": "breakeven",
     "slug": "breakeven-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Break-even Calculator"
   },
   {
     "id": "networth",
     "slug": "networth-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Net Worth Calculator"
   },
   {
     "id": "dividendyield",
     "slug": "dividendyield-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Dividend Yield Calculator"
   },
   {
     "id": "goldinvestment",
     "slug": "goldinvestment-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Gold Investment Calculator"
   },
   {
     "id": "profitloss",
     "slug": "profitloss-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Profit & Loss Calculator"
   },
   {
     "id": "stockreturn",
     "slug": "stockreturn-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Stock Return Calculator"
   },
   {
     "id": "mutualfundreturns",
     "slug": "mutualfundreturns-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Mutual Fund Returns Calculator"
   },
   {
     "id": "xirr",
     "slug": "xirr-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "XIRR Calculator"
   },
   {
     "id": "balancetransfer",
     "slug": "balancetransfer-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Balance Transfer Calculator"
   },
   {
     "id": "scss",
     "slug": "scss-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Senior Citizen Savings Calculator"
   },
   {
     "id": "elssreturns",
     "slug": "elssreturns-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "ELSS Returns Calculator"
   },
   {
     "id": "nsccalculator",
     "slug": "nsccalculator-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "NSC Calculator"
   },
   {
     "id": "apycalculator",
     "slug": "apycalculator-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "APY Calculator"
   },
   {
     "id": "brokerage",
     "slug": "brokerage-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Brokerage Calculator"
   },
   {
     "id": "salarycomparison",
     "slug": "salarycomparison-calculator",
     "cat": "finance",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Salary Comparison Calculator"
   },
   {
     "id": "bmi",
@@ -1053,7 +1218,8 @@
     "prerender": true,
     "title": "BMI Calculator — Free Body Mass Index Calculator India | Calc Labz",
     "desc": "Calculate your BMI (Body Mass Index) instantly. Know if you are underweight, normal, overweight, or obese. Includes Asian BMI scale. Free, no signup required.",
-    "blogSlug": "bmi-calculator-chart-india-2026"
+    "blogSlug": "bmi-calculator-chart-india-2026",
+    "name": "BMI Calculator"
   },
   {
     "id": "bmr",
@@ -1063,7 +1229,8 @@
     "prerender": true,
     "title": "BMR Calculator — Basal Metabolic Rate Calculator | Calc Labz",
     "desc": "Calculate your Basal Metabolic Rate (BMR) using Mifflin-St Jeor formula. Find the minimum calories your body needs at rest. Free BMR calculator with TDEE breakdown.",
-    "blogSlug": "bmr-calculator-basal-metabolic-rate-2026"
+    "blogSlug": "bmr-calculator-basal-metabolic-rate-2026",
+    "name": "BMR Calculator"
   },
   {
     "id": "tdee",
@@ -1073,20 +1240,23 @@
     "prerender": true,
     "title": "TDEE Calculator — Total Daily Energy Expenditure Calculator | Calc Labz",
     "desc": "Calculate your TDEE (Total Daily Energy Expenditure) based on activity level. Find exact daily calories needed to maintain, lose, or gain weight. Free TDEE calculator.",
-    "blogSlug": "tdee-calculator-daily-calorie-needs-2026"
+    "blogSlug": "tdee-calculator-daily-calorie-needs-2026",
+    "name": "TDEE Calculator"
   },
   {
     "id": "water",
     "slug": "water-calculator",
     "cat": "health",
     "priority": "0.7",
-    "blogSlug": "water-intake-calculator-daily-hydration-guide-2026"
+    "blogSlug": "water-intake-calculator-daily-hydration-guide-2026",
+    "name": "Water Intake Calculator"
   },
   {
     "id": "heartrate",
     "slug": "heartrate-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Heart Rate Zone Calculator"
   },
   {
     "id": "age",
@@ -1096,172 +1266,200 @@
     "prerender": true,
     "title": "Age Calculator — Exact Age in Years, Months & Days | Calc Labz",
     "desc": "Calculate your exact age in years, months, days, hours, and minutes from your date of birth. Find days until your next birthday. Free age calculator — instant results.",
-    "blogSlug": "age-calculator-exact-years-months-days-2026"
+    "blogSlug": "age-calculator-exact-years-months-days-2026",
+    "name": "Age Calculator"
   },
   {
     "id": "calories",
     "slug": "calories-calculator",
     "cat": "health",
     "priority": "0.7",
-    "blogSlug": "calories-burned-calculator-exercise-fat-loss-2026"
+    "blogSlug": "calories-burned-calculator-exercise-fat-loss-2026",
+    "name": "Calories Burned Calculator"
   },
   {
     "id": "sleep",
     "slug": "sleep-calculator",
     "cat": "health",
     "priority": "0.7",
-    "blogSlug": "sleep-calculator-optimal-bedtime-cycles-2026"
+    "blogSlug": "sleep-calculator-optimal-bedtime-cycles-2026",
+    "name": "Sleep Cycle Calculator"
   },
   {
     "id": "macros",
     "slug": "macros-calculator",
     "cat": "health",
     "priority": "0.7",
-    "blogSlug": "macro-calculator-protein-carbs-fat-2026"
+    "blogSlug": "macro-calculator-protein-carbs-fat-2026",
+    "name": "Macro Calculator"
   },
   {
     "id": "pregnancy",
     "slug": "pregnancy-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Pregnancy Due Date Calculator"
   },
   {
     "id": "bodyfat",
     "slug": "bodyfat-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Body Fat Calculator"
   },
   {
     "id": "idealweight",
     "slug": "idealweight-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Ideal Weight Calculator"
   },
   {
     "id": "ovulation",
     "slug": "ovulation-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Ovulation Calculator"
   },
   {
     "id": "bloodpressure",
     "slug": "bloodpressure-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Blood Pressure Calculator"
   },
   {
     "id": "proteinintake",
     "slug": "proteinintake-calculator",
     "cat": "health",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Protein Intake Calculator"
   },
   {
     "id": "ibw",
     "slug": "ibw-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Ideal Body Weight Calculator"
   },
   {
     "id": "bsa",
     "slug": "bsa-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Body Surface Area Calculator"
   },
   {
     "id": "alcohol",
     "slug": "alcohol-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "BAC Calculator"
   },
   {
     "id": "vitamins",
     "slug": "vitamins-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Vitamin & Mineral Calculator"
   },
   {
     "id": "smokingcost",
     "slug": "smokingcost-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Smoking Cost Calculator"
   },
   {
     "id": "childheight",
     "slug": "childheight-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Child Height Predictor"
   },
   {
     "id": "diabetesrisk",
     "slug": "diabetesrisk-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Diabetes Risk Calculator"
   },
   {
     "id": "sleepdebt",
     "slug": "sleepdebt-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Sleep Debt Calculator"
   },
   {
     "id": "anemia",
     "slug": "anemia-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Anemia Risk Calculator"
   },
   {
     "id": "cholesterolratio",
     "slug": "cholesterolratio-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Cholesterol Ratio Calculator"
   },
   {
     "id": "caloriedeficit",
     "slug": "caloriedeficit-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Calorie Deficit Calculator"
   },
   {
     "id": "onerepmax",
     "slug": "onerepmax-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "One Rep Max Calculator"
   },
   {
     "id": "runningpace",
     "slug": "runningpace-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Running Pace Calculator"
   },
   {
     "id": "bodyrecomp",
     "slug": "bodyrecomp-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Body Recomposition Calculator"
   },
   {
     "id": "vo2max",
     "slug": "vo2max-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "VO2 Max Calculator"
   },
   {
     "id": "leanbodymass",
     "slug": "leanbodymass-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Lean Body Mass Calculator"
   },
   {
     "id": "caloriegoal",
     "slug": "caloriegoal-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Calorie Goal Calculator"
   },
   {
     "id": "electrolyte",
     "slug": "electrolyte-calculator",
     "cat": "health",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Electrolyte Calculator"
   },
   {
     "id": "percentage",
@@ -1271,336 +1469,392 @@
     "prerender": true,
     "title": "Percentage Calculator — Free Online % Calculator | Calc Labz",
     "desc": "Calculate percentages easily: what is X% of Y, percentage increase/decrease, percentage difference, and reverse percentage. Free online percentage calculator.",
-    "blogSlug": "percentage-calculator-tricks-formulas-examples"
+    "blogSlug": "percentage-calculator-tricks-formulas-examples",
+    "name": "Percentage Calculator"
   },
   {
     "id": "average",
     "slug": "average-calculator",
     "cat": "math",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Average Calculator"
   },
   {
     "id": "ratio",
     "slug": "ratio-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Ratio Calculator"
   },
   {
     "id": "squareroot",
     "slug": "squareroot-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Square Root Calculator"
   },
   {
     "id": "logarithm",
     "slug": "logarithm-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Logarithm Calculator"
   },
   {
     "id": "factorial",
     "slug": "factorial-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Factorial Calculator"
   },
   {
     "id": "quadratic",
     "slug": "quadratic-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Quadratic Equation Solver"
   },
   {
     "id": "prime",
     "slug": "prime-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Prime Number Checker"
   },
   {
     "id": "numbersystem",
     "slug": "numbersystem-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Number System Converter"
   },
   {
     "id": "statistics",
     "slug": "statistics-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Statistics Calculator"
   },
   {
     "id": "lcmgcd",
     "slug": "lcmgcd-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "LCM & GCD Calculator"
   },
   {
     "id": "fraction",
     "slug": "fraction-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Fraction Calculator"
   },
   {
     "id": "scientific",
     "slug": "scientific-calculator",
     "cat": "math",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Scientific Calculator"
   },
   {
     "id": "matrix2x2",
     "slug": "matrix2x2-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "2×2 Matrix Calculator"
   },
   {
     "id": "combinations",
     "slug": "combinations-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Combinations & Permutations Calculator"
   },
   {
     "id": "stddev",
     "slug": "stddev-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Standard Deviation Calculator"
   },
   {
     "id": "lineareq",
     "slug": "lineareq-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Linear Equation Solver"
   },
   {
     "id": "determinant",
     "slug": "determinant-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Matrix Determinant Calculator"
   },
   {
     "id": "complexnum",
     "slug": "complexnum-calculator",
     "cat": "math",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Complex Number Calculator"
   },
   {
     "id": "newtons",
     "slug": "newtons-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Newton's Laws Calculator"
   },
   {
     "id": "density",
     "slug": "density-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Density Calculator"
   },
   {
     "id": "wavelength",
     "slug": "wavelength-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Wavelength Calculator"
   },
   {
     "id": "gravitational",
     "slug": "gravitational-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Gravitational Force Calculator"
   },
   {
     "id": "halflife",
     "slug": "halflife-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Half-Life Calculator"
   },
   {
     "id": "ph",
     "slug": "ph-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "pH Calculator"
   },
   {
     "id": "thermodynamics",
     "slug": "thermodynamics-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Thermodynamics Calculator"
   },
   {
     "id": "acceleration",
     "slug": "acceleration-calculator",
     "cat": "science",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Acceleration Calculator"
   },
   {
     "id": "length",
     "slug": "length-calculator",
     "cat": "unit",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Length Converter"
   },
   {
     "id": "weight",
     "slug": "weight-calculator",
     "cat": "unit",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Weight Converter"
   },
   {
     "id": "temperature",
     "slug": "temperature-calculator",
     "cat": "unit",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Temperature Converter"
   },
   {
     "id": "currency",
     "slug": "currency-calculator",
     "cat": "unit",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Currency Converter"
   },
   {
     "id": "area",
     "slug": "area-calculator",
     "cat": "unit",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Area Converter"
   },
   {
     "id": "speed",
     "slug": "speed-calculator",
     "cat": "unit",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Speed Converter"
   },
   {
     "id": "volume",
     "slug": "volume-calculator",
     "cat": "unit",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Volume Converter"
   },
   {
     "id": "data",
     "slug": "data-calculator",
     "cat": "unit",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Data Storage Converter"
   },
   {
     "id": "pressure",
     "slug": "pressure-calculator",
     "cat": "unit",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Pressure Converter"
   },
   {
     "id": "energy",
     "slug": "energy-calculator",
     "cat": "unit",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Energy Converter"
   },
   {
     "id": "angle",
     "slug": "angle-calculator",
     "cat": "unit",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Angle Converter"
   },
   {
     "id": "investvsrent",
     "slug": "investvsrent-calculator",
     "cat": "unknown",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Invest vs Rent Calculator"
   },
   {
     "id": "professionaltax",
     "slug": "professionaltax-calculator",
     "cat": "unknown",
-    "priority": "0.7"
+    "priority": "0.7",
+    "name": "Professional Tax Calculator"
   },
   {
     "id": "trianglearea",
     "slug": "trianglearea-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Triangle Area Calculator"
   },
   {
     "id": "waisthip",
     "slug": "waisthip-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Waist-to-Hip Ratio Calculator"
   },
   {
     "id": "calories-food",
     "slug": "calories-food-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Food Calorie Calculator"
   },
   {
     "id": "lungcapacity",
     "slug": "lungcapacity-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Lung Capacity Calculator"
   },
   {
     "id": "unitprice",
     "slug": "unitprice-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Unit Price Calculator"
   },
   {
     "id": "petrolparity",
     "slug": "petrolparity-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Petrol Price Parity Calculator"
   },
   {
     "id": "agenextbday",
     "slug": "agenextbday-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Next Birthday Calculator"
   },
   {
     "id": "speed-dist",
     "slug": "speed-dist-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Speed & Distance Calculator"
   },
   {
     "id": "construction",
     "slug": "construction-calculator",
     "cat": "unknown",
-    "priority": "0.6"
+    "priority": "0.6",
+    "name": "Construction Estimator"
   },
   {
     "id": "romannumeral",
     "slug": "romannumeral-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Roman Numeral Converter"
   },
   {
     "id": "circlecalc",
     "slug": "circlecalc-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Circle Calculator"
   },
   {
     "id": "typing-speed",
     "slug": "typing-speed-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Typing Speed Test"
   },
   {
     "id": "ohm-advanced",
     "slug": "ohm-advanced-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Advanced Ohm's Law Calculator"
   },
   {
     "id": "chemmolar",
     "slug": "chemmolar-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Molar Mass Calculator"
   },
   {
     "id": "kinematiccalc",
     "slug": "kinematiccalc-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Kinematics Calculator"
   },
   {
     "id": "watertank",
     "slug": "watertank-calculator",
     "cat": "unknown",
-    "priority": "0.5"
+    "priority": "0.5",
+    "name": "Water Tank Size Calculator"
   }
 ]
