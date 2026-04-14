@@ -5,15 +5,27 @@
   "rewrites": [
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
     },
     {
       "source": "/privacy",
-      "destination": "/index.html"
+      "destination": "/privacy.html"
     },
     {
       "source": "/terms",
-      "destination": "/index.html"
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/disclaimer.html"
+    },
+    {
+      "source": "/editorial-policy",
+      "destination": "/editorial-policy.html"
     },
     {
       "source": "/stampdutycalc-calculator",

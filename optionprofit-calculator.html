@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
-    <meta name="description" content="Free online optionprofit calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="description" content="Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagram at expiry.">
     <meta name="author" content="Calc Labz Team">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-IN">
@@ -19,7 +19,7 @@
     <meta property="og:locale" content="en_IN">
     <meta property="og:url" content="https://calclabz.com/optionprofit-calculator">
     <meta property="og:title" content="Optionprofit Calculator — Free Online Calculator | Calc Labz">
-    <meta property="og:description" content="Free online optionprofit calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta property="og:description" content="Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagram at expiry.">
     <meta property="og:image" content="https://calclabz.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@calclabz">
     <meta name="twitter:title" content="Optionprofit Calculator — Free Online Calculator | Calc Labz">
-    <meta name="twitter:description" content="Free online optionprofit calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="twitter:description" content="Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagram at expiry.">
     <meta name="twitter:image" content="https://calclabz.com/og-image.png">
     <meta name="twitter:image:alt" content="Calc Labz — 300+ Free Online Calculators">
 
@@ -225,6 +225,30 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-faq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is options profit calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call buyer profit = (Spot Price − Strike Price − Premium) × Lot Size (when spot > strike). Put buyer profit = (Strike Price − Spot Price − Premium) × Lot Size (when spot < strike)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the lot size for Nifty and Bank Nifty options?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nifty: 25 units per lot. Bank Nifty: 15 units per lot. Lot sizes are set by NSE and are periodically revised based on the underlying value."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -280,10 +304,50 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </nav>
 
       <h1>Optionprofit Calculator</h1>
-      <p class="seo-intro">Free online optionprofit calculator. Calculate instantly with accurate results. No signup required — Calc Labz.</p>
+      <p class="seo-intro">Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagram at expiry.</p>
+
+      <section class="seo-section">
+        <h2>What is Optionprofit Calculator?</h2>
+        <p>This options profit calculator determines your potential profit or loss from buying/selling call and put options. Enter the strike price, premium, lot size, and expected price at expiry to view the payoff analysis.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>How to Use This Calculator</h2>
+        <ol>
+          <li>Enter your values in the input fields above</li>
+          <li>Adjust any optional parameters as needed</li>
+          <li>Results are calculated automatically as you type</li>
+          <li>Review the breakdown and charts for detailed insights</li>
+        </ol>
+      </section>
+
+      <section class="seo-faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>How is options profit calculated?</summary>
+          <p>Call buyer profit = (Spot Price − Strike Price − Premium) × Lot Size (when spot > strike). Put buyer profit = (Strike Price − Spot Price − Premium) × Lot Size (when spot < strike).</p>
+        </details>
+        <details>
+          <summary>What is the lot size for Nifty and Bank Nifty options?</summary>
+          <p>Nifty: 25 units per lot. Bank Nifty: 15 units per lot. Lot sizes are set by NSE and are periodically revised based on the underlying value.</p>
+        </details>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Calculators</h2>
+        <div class="seo-related-grid">
+          <a href="/emi-calculator">Emi Calculator</a>
+          <a href="/sip-calculator">Sip Calculator</a>
+          <a href="/gst-calculator">Gst Calculator</a>
+          <a href="/taxregime-calculator">Taxregime Calculator</a>
+          <a href="/compoundinterest-calculator">Compoundinterest Calculator</a>
+          <a href="/incometax-calculator">Incometax Calculator</a>
+        </div>
+      </section>
 
       <div class="seo-trust">
-        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Consult a qualified financial advisor before making financial decisions.</p>
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>
+        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
       </div>
     </div>
@@ -370,9 +434,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
                     <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/contact" class="footer-link"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Us</a>
                     <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
                     <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
-                    <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
+                    <a href="/disclaimer" class="footer-link"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Disclaimer</a>
+                    <a href="/editorial-policy" class="footer-link"><i class="fas fa-clipboard-check" aria-hidden="true"></i>Editorial Policy</a>
                 </div>
             </div>
         </div>

@@ -25,6 +25,23 @@ var ROOT     = path.resolve(__dirname, '..');
 var TEMPLATE = path.join(ROOT, 'index.html');
 var TODAY    = new Date().toISOString().split('T')[0];
 
+// Import updated footer template with trust page links
+var UPDATED_FOOTER;
+try {
+  UPDATED_FOOTER = require('./generate-trust-pages.js').UPDATED_FOOTER;
+} catch (e) {
+  UPDATED_FOOTER = null; // trust pages module not yet available
+}
+
+// Import unique per-calculator SEO content for basic (non-top-50) pages
+var UNIQUE_BASIC_CONTENT;
+try {
+  UNIQUE_BASIC_CONTENT = require('./seo-content-basic');
+} catch (e) {
+  UNIQUE_BASIC_CONTENT = {};
+  console.warn('  ⚠  seo-content-basic not found — basic pages will use category templates.');
+}
+
 // ── SEO CSS ─────────────────────────────────────────────────────────────────
 var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-breadcrumb{padding:8px 0;font-size:.82rem;color:var(--txt2)}\n' +
@@ -216,18 +233,19 @@ function getRelatedCalcs(calc) {
 function buildTrustSection(calc) {
   var html = '<div class="seo-trust">\n';
   if (calc.cat === 'Finance') {
-    html += '  <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions.</p>\n';
+    html += '  <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>\n';
     if (calc.howCalculated) {
-      html += '  <p><strong>Methodology:</strong> Formula based on standard financial calculation methods widely used in the banking industry.</p>\n';
+      html += '  <p><strong>Methodology:</strong> Formula based on standard financial calculation methods widely used in the banking industry. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate calculators.</p>\n';
     }
   } else if (calc.cat === 'Health') {
-    html += '  <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance.</p>\n';
+    html += '  <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>\n';
     if (calc.howCalculated) {
-      html += '  <p><strong>Methodology:</strong> Based on clinically validated formulas used in nutrition and medical research.</p>\n';
+      html += '  <p><strong>Methodology:</strong> Based on clinically validated formulas used in nutrition and medical research. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate content.</p>\n';
     }
   } else {
     html += '  <p><strong>Note:</strong> This calculator provides estimates for informational purposes only. For professional advice, consult a qualified expert in the relevant field.</p>\n';
   }
+  html += '  <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>\n';
   html += '  <p><strong>Last updated:</strong> April 2026</p>\n';
   html += '</div>\n';
   return html;
@@ -479,6 +497,14 @@ function generate() {
       bodyHtml
     );
 
+    // 14. Update footer with trust page links
+    if (UPDATED_FOOTER) {
+      html = html.replace(
+        /    <!-- ═══ FOOTER ═══ -->[\s\S]*?<\/footer>/,
+        UPDATED_FOOTER
+      );
+    }
+
     // Write output file
     var outFile = path.join(ROOT, calc.slug + '.html');
     fs.writeFileSync(outFile, html, 'utf8');
@@ -557,6 +583,14 @@ function generateCategories() {
       bodyHtml
     );
 
+    // Update footer with trust page links
+    if (UPDATED_FOOTER) {
+      html = html.replace(
+        /    <!-- ═══ FOOTER ═══ -->[\s\S]*?<\/footer>/,
+        UPDATED_FOOTER
+      );
+    }
+
     // Write output file
     var outFile = path.join(ROOT, cat.slug + '.html');
     fs.writeFileSync(outFile, html, 'utf8');
@@ -589,6 +623,112 @@ function generateAllRegistryCalcs() {
   var alreadyGenerated = {};
   CALCULATORS.forEach(function(c) { alreadyGenerated[c.slug] = true; });
 
+  // Category-specific content templates for enriching basic pages
+  var CAT_CONTENT = {
+    finance: {
+      whatPrefix: 'This calculator helps you compute ',
+      whatSuffix: ' with instant, accurate results. All calculations use standard formulas widely used in the Indian banking and financial planning industry.',
+      useCases: ['Planning your monthly budget', 'Comparing financial products', 'Making informed investment or loan decisions', 'Tax planning and compliance'],
+      faqs: [
+        { q: 'Is this calculator accurate?', a: 'Our calculator uses standard financial formulas used by banks and financial institutions. Results are estimates — actual amounts may vary based on specific terms, fees, and conditions from your financial provider.' },
+        { q: 'Do I need to sign up to use this?', a: 'No. All calculations run locally in your browser. We do not collect any personal or financial data.' },
+        { q: 'Can I use this for tax filing?', a: 'This calculator provides estimates for planning purposes. Always verify figures with a qualified chartered accountant or use the official Income Tax Department portal for filing.' }
+      ],
+      disclaimer: '<p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
+    },
+    health: {
+      whatPrefix: 'This calculator helps you estimate ',
+      whatSuffix: ' based on clinically validated formulas. Results provide general guidance — individual needs may vary based on personal health factors.',
+      useCases: ['Tracking your fitness and health metrics', 'Setting realistic health and nutrition goals', 'Understanding your body measurements', 'Discussing results with your healthcare provider'],
+      faqs: [
+        { q: 'How accurate are the results?', a: 'This calculator uses peer-reviewed formulas from medical and nutrition research. Results are general estimates — individual results may vary. Consult a healthcare professional for personalized advice.' },
+        { q: 'Is my health data stored?', a: 'No. All calculations happen locally in your browser. We do not collect, store, or transmit any health data.' },
+        { q: 'Should I use this to diagnose a condition?', a: 'No. This tool is for informational and educational purposes only. It is not a substitute for professional medical diagnosis. Always consult a qualified healthcare provider.' }
+      ],
+      disclaimer: '<p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
+    },
+    math: {
+      whatPrefix: 'This calculator helps you solve ',
+      whatSuffix: ' problems quickly and accurately. Enter your values and get instant results with clear output.',
+      useCases: ['Homework and exam preparation', 'Quick verification of manual calculations', 'Understanding mathematical concepts', 'Professional and academic research'],
+      faqs: [
+        { q: 'What formulas does this calculator use?', a: 'This calculator uses standard mathematical formulas from established textbooks and academic references.' },
+        { q: 'Can I use this for exams?', a: 'This tool is designed for practice and learning. Check your institution\'s policy on calculator use during exams.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> This calculator provides results based on standard mathematical formulas. Always verify important calculations independently.</p>'
+    },
+    everyday: {
+      whatPrefix: 'This calculator helps you quickly figure out ',
+      whatSuffix: ' for everyday decisions. Simple inputs, instant results — no complex setup needed.',
+      useCases: ['Daily budgeting and spending decisions', 'Planning purchases and comparing options', 'Quick estimations for everyday tasks', 'Saving time on routine calculations'],
+      faqs: [
+        { q: 'Is this calculator free?', a: 'Yes, all calculators on Calc Labz are completely free to use with no signup required.' },
+        { q: 'Does it work on mobile?', a: 'Yes, our calculators are fully responsive and work on smartphones, tablets, and desktops. You can also install Calc Labz as an app for offline access.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> This calculator provides estimates for informational purposes only. Results may vary based on local conditions and individual circumstances.</p>'
+    },
+    education: {
+      whatPrefix: 'This calculator helps students and educators with ',
+      whatSuffix: ' calculations. Designed to save time and provide accurate academic results.',
+      useCases: ['Academic grade tracking and GPA planning', 'Exam preparation and score analysis', 'Study schedule optimization', 'Understanding grading systems and requirements'],
+      faqs: [
+        { q: 'Which grading system does this support?', a: 'Our education calculators support common Indian university grading scales as well as international 4.0 GPA systems. Check the specific calculator for supported scales.' },
+        { q: 'Can I rely on this for official results?', a: 'Our calculators provide accurate estimates based on standard formulas, but you should always verify with your institution\'s official grading policy.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> Results are based on standard formulas and may not account for institution-specific grading policies. Verify with your school or university.</p>'
+    },
+    engineering: {
+      whatPrefix: 'This engineering calculator helps you compute ',
+      whatSuffix: ' using standard engineering formulas. Ideal for students, hobbyists, and professionals doing preliminary calculations.',
+      useCases: ['Engineering coursework and homework', 'Preliminary design calculations', 'Quick verification of engineering parameters', 'Hobby electronics and DIY projects'],
+      faqs: [
+        { q: 'Can I use these results in a real project?', a: 'Our calculators provide preliminary estimates. All structural, electrical, and mechanical calculations for actual projects must be verified and approved by a licensed professional engineer.' },
+        { q: 'What standards are these based on?', a: 'Our engineering calculators use widely accepted formulas from standard engineering references and textbooks.' }
+      ],
+      disclaimer: '<p><strong>Engineering disclaimer:</strong> This calculator provides preliminary estimates. All calculations for actual engineering projects must be verified by a licensed professional engineer. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
+    },
+    construction: {
+      whatPrefix: 'This construction calculator helps you estimate ',
+      whatSuffix: ' for your building or renovation project. Get material quantities, costs, and measurements instantly.',
+      useCases: ['Estimating construction material quantities', 'Budget planning for building projects', 'Comparing material options and costs', 'Quick reference for contractors and homeowners'],
+      faqs: [
+        { q: 'How accurate are the material estimates?', a: 'Our estimates use standard construction industry formulas and include typical waste factors. Actual quantities may vary based on site conditions, material quality, and construction methods.' },
+        { q: 'Should I buy materials based on these estimates?', a: 'Use our estimates as a starting point for planning. Always consult with a contractor or engineer for final quantities before purchasing materials.' }
+      ],
+      disclaimer: '<p><strong>Construction disclaimer:</strong> Material estimates are approximate. Actual quantities depend on site conditions, wastage, and construction methods. Consult a qualified contractor or engineer before purchasing materials. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
+    },
+    unit: {
+      whatPrefix: 'This converter helps you quickly convert ',
+      whatSuffix: ' between different measurement systems. Supports metric, imperial, and other standard units.',
+      useCases: ['Converting between metric and imperial units', 'International trade and travel calculations', 'Academic and scientific unit conversions', 'Cooking and recipe conversions'],
+      faqs: [
+        { q: 'Which unit systems are supported?', a: 'We support conversions between metric (SI), imperial, US customary, and other commonly used measurement systems.' },
+        { q: 'How precise are the conversions?', a: 'Our conversions use standard conversion factors with high precision. Results are suitable for most practical applications.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> Conversions use standard factors. For scientific or industrial applications requiring extreme precision, verify with authoritative reference sources.</p>'
+    },
+    datetime: {
+      whatPrefix: 'This date/time calculator helps you compute ',
+      whatSuffix: ' with precision. Handles calendar math, time zones, and scheduling calculations.',
+      useCases: ['Counting days between dates', 'Planning schedules and deadlines', 'Time zone conversions for international calls', 'Age calculations and milestone tracking'],
+      faqs: [
+        { q: 'Does it account for leap years?', a: 'Yes, our date calculators correctly handle leap years, varying month lengths, and calendar edge cases.' },
+        { q: 'Which calendar system is used?', a: 'Our calculators use the Gregorian calendar, which is the standard civil calendar used worldwide.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> Date calculations use the Gregorian calendar. Results are accurate for all practical purposes.</p>'
+    },
+    science: {
+      whatPrefix: 'This science calculator helps you solve ',
+      whatSuffix: ' problems using established physics, chemistry, or biology formulas. Perfect for students and educators.',
+      useCases: ['Physics and chemistry homework', 'Lab calculations and data analysis', 'Exam preparation and concept verification', 'Quick reference for scientific formulas'],
+      faqs: [
+        { q: 'What formulas are used?', a: 'Our science calculators implement standard formulas from physics, chemistry, and biology textbooks used in CBSE, ICSE, and university-level curricula.' },
+        { q: 'Are these suitable for lab work?', a: 'For preliminary estimates yes. Critical lab calculations should be verified using calibrated instruments and peer-reviewed reference values.' }
+      ],
+      disclaimer: '<p><strong>Note:</strong> Calculations use standard scientific formulas. For critical research or industrial applications, verify results with authoritative references.</p>'
+    }
+  };
+
   var count = 0;
   registry.forEach(function(entry) {
     if (alreadyGenerated[entry.slug]) return; // Skip — already has rich page
@@ -597,8 +737,15 @@ function generateAllRegistryCalcs() {
     var catSlug = entry.cat + '-calculators';
     var shortName = formatSlugToName(entry.slug);
     var pageUrl = BASE_URL + '/' + entry.slug;
+    var nameLC = shortName.toLowerCase();
+    var catContent = CAT_CONTENT[entry.cat] || CAT_CONTENT.everyday;
+
+    // Look up unique per-calculator content (overrides category template)
+    var unique = UNIQUE_BASIC_CONTENT[entry.id] || null;
+
     var pageTitle = shortName + ' — Free Online Calculator | Calc Labz';
-    var pageDesc = 'Free online ' + shortName.toLowerCase() + '. Calculate instantly with accurate results. No signup required — Calc Labz.';
+    // Use unique desc if available, otherwise generic
+    var pageDesc = unique ? unique.desc : 'Use our free ' + nameLC + ' for instant, accurate results. Understand the methodology, see examples, and make informed decisions. No signup required.';
 
     var html = template;
 
@@ -615,7 +762,7 @@ function generateAllRegistryCalcs() {
     // Remove hreflang
     html = html.replace(/[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\r?\n/g, '');
 
-    // Remove homepage JSON-LD, inject breadcrumb
+    // Remove homepage JSON-LD, inject breadcrumb + FAQ
     html = html.replace(/<!-- ═══ JSON-LD: SoftwareApplication[\s\S]*?<\/script>\s*\n/, '');
     html = html.replace(/<!-- ═══ JSON-LD: WebSite[\s\S]*?<\/script>\s*\n/, '');
 
@@ -627,12 +774,25 @@ function generateAllRegistryCalcs() {
         { '@type': 'ListItem', position: 3, name: shortName, item: pageUrl }
       ]
     };
-    html = html.replace('</head>', jsonLdTag('jsonld-breadcrumb', bc) + '\n</head>');
+
+    // Use unique FAQs for structured data if available, else category template
+    var faqsForSchema = (unique && unique.faqs) ? unique.faqs : catContent.faqs;
+    var faqSchema = {
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: faqsForSchema.map(function(f) {
+        return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } };
+      })
+    };
+
+    html = html.replace('</head>',
+      jsonLdTag('jsonld-breadcrumb', bc) + '\n' +
+      jsonLdTag('jsonld-faq', faqSchema) + '\n</head>'
+    );
 
     // Inject SEO CSS
     html = html.replace('    </style>', SEO_CSS + '    </style>');
 
-    // Build basic body content
+    // Build enriched body content
     var body = '\n    <!-- SEO Pre-rendered Content -->\n';
     body += '    <div id="seo-content">\n';
     body += '      <nav class="seo-breadcrumb" aria-label="Breadcrumb">\n';
@@ -643,23 +803,72 @@ function generateAllRegistryCalcs() {
     body += '      <h1>' + shortName + '</h1>\n';
     body += '      <p class="seo-intro">' + pageDesc + '</p>\n\n';
 
-    // Trust section
-    if (entry.cat === 'finance') {
-      body += '      <div class="seo-trust">\n';
-      body += '        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Consult a qualified financial advisor before making financial decisions.</p>\n';
-      body += '        <p><strong>Last updated:</strong> April 2026</p>\n';
-      body += '      </div>\n';
-    } else if (entry.cat === 'health') {
-      body += '      <div class="seo-trust">\n';
-      body += '        <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice. Consult a healthcare professional for personalized guidance.</p>\n';
-      body += '        <p><strong>Last updated:</strong> April 2026</p>\n';
-      body += '      </div>\n';
+    // What it does section — unique or category template
+    body += '      <section class="seo-section">\n';
+    body += '        <h2>What is ' + shortName + '?</h2>\n';
+    if (unique && unique.what) {
+      body += '        <p>' + unique.what + '</p>\n';
     } else {
-      body += '      <div class="seo-trust">\n';
-      body += '        <p><strong>Note:</strong> This calculator provides estimates for informational purposes only.</p>\n';
-      body += '        <p><strong>Last updated:</strong> April 2026</p>\n';
-      body += '      </div>\n';
+      body += '        <p>' + catContent.whatPrefix + nameLC.replace(/ calculator$/, '') + ' values' + catContent.whatSuffix + '</p>\n';
     }
+    body += '      </section>\n\n';
+
+    // How to use section
+    body += '      <section class="seo-section">\n';
+    body += '        <h2>How to Use This Calculator</h2>\n';
+    body += '        <ol>\n';
+    body += '          <li>Enter your values in the input fields above</li>\n';
+    body += '          <li>Adjust any optional parameters as needed</li>\n';
+    body += '          <li>Results are calculated automatically as you type</li>\n';
+    body += '          <li>Review the breakdown and charts for detailed insights</li>\n';
+    body += '        </ol>\n';
+    body += '      </section>\n\n';
+
+    // Use cases section (only if NO unique content — unique pages get FAQ instead)
+    if (!unique) {
+      body += '      <section class="seo-section">\n';
+      body += '        <h2>Common Use Cases</h2>\n';
+      body += '        <ul>\n';
+      catContent.useCases.forEach(function(uc) {
+        body += '          <li>' + uc + '</li>\n';
+      });
+      body += '        </ul>\n';
+      body += '      </section>\n\n';
+    }
+
+    // FAQ section — unique per-calculator FAQs or category template
+    var pageFaqs = (unique && unique.faqs) ? unique.faqs : catContent.faqs;
+    body += '      <section class="seo-faq">\n';
+    body += '        <h2>Frequently Asked Questions</h2>\n';
+    pageFaqs.forEach(function(faq) {
+      body += '        <details>\n';
+      body += '          <summary>' + faq.q + '</summary>\n';
+      body += '          <p>' + faq.a + '</p>\n';
+      body += '        </details>\n';
+    });
+    body += '      </section>\n\n';
+
+    // Related calculators from same category
+    var relatedCalcs = registry.filter(function(c) {
+      return c.cat === entry.cat && c.slug !== entry.slug;
+    }).slice(0, 6);
+    if (relatedCalcs.length) {
+      body += '      <section class="seo-section">\n';
+      body += '        <h2>Related Calculators</h2>\n';
+      body += '        <div class="seo-related-grid">\n';
+      relatedCalcs.forEach(function(r) {
+        body += '          <a href="/' + r.slug + '">' + formatSlugToName(r.slug) + '</a>\n';
+      });
+      body += '        </div>\n';
+      body += '      </section>\n\n';
+    }
+
+    // Trust section with author and disclaimer
+    body += '      <div class="seo-trust">\n';
+    body += '        ' + catContent.disclaimer + '\n';
+    body += '        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>\n';
+    body += '        <p><strong>Last updated:</strong> April 2026</p>\n';
+    body += '      </div>\n';
 
     body += '    </div>\n';
 
@@ -669,12 +878,18 @@ function generateAllRegistryCalcs() {
       body
     );
 
+    // Update footer with trust page links
+    html = html.replace(
+      /    <!-- ═══ FOOTER ═══ -->[\s\S]*?<\/footer>/,
+      UPDATED_FOOTER
+    );
+
     var outFile = path.join(ROOT, entry.slug + '.html');
     fs.writeFileSync(outFile, html, 'utf8');
     count++;
   });
 
-  console.log('  ✓  Generated ' + count + ' additional calculator pages (basic).\n');
+  console.log('  ✓  Generated ' + count + ' additional calculator pages (enriched).\n');
   return count;
 }
 
@@ -832,6 +1047,14 @@ function generateBlogPages() {
       /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
       body
     );
+
+    // Update footer with trust page links
+    if (UPDATED_FOOTER) {
+      html = html.replace(
+        /    <!-- ═══ FOOTER ═══ -->[\s\S]*?<\/footer>/,
+        UPDATED_FOOTER
+      );
+    }
 
     var outFile = path.join(blogDir, post.slug + '.html');
     fs.writeFileSync(outFile, html, 'utf8');

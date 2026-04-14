@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
-    <meta name="description" content="Free online decibel calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="description" content="Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition and distance attenuation.">
     <meta name="author" content="Calc Labz Team">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-IN">
@@ -19,7 +19,7 @@
     <meta property="og:locale" content="en_IN">
     <meta property="og:url" content="https://calclabz.com/decibel-calculator">
     <meta property="og:title" content="Decibel Calculator — Free Online Calculator | Calc Labz">
-    <meta property="og:description" content="Free online decibel calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta property="og:description" content="Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition and distance attenuation.">
     <meta property="og:image" content="https://calclabz.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@calclabz">
     <meta name="twitter:title" content="Decibel Calculator — Free Online Calculator | Calc Labz">
-    <meta name="twitter:description" content="Free online decibel calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="twitter:description" content="Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition and distance attenuation.">
     <meta name="twitter:image" content="https://calclabz.com/og-image.png">
     <meta name="twitter:image:alt" content="Calc Labz — 300+ Free Online Calculators">
 
@@ -225,6 +225,30 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-faq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why don't decibels add normally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Decibels are logarithmic. Two 60 dB sources together produce 63 dB, not 120 dB. Formula: dB_total = 10 × log₁₀(10^(dB₁/10) + 10^(dB₂/10)). Two identical sources add only 3 dB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What dB level is safe for hearing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Below 85 dB for 8 hours. Every 3 dB increase halves safe exposure time. 88 dB: 4 hours. 91 dB: 2 hours. 100 dB (concert): 15 minutes. 120 dB: immediate pain. Use ear protection above 85 dB."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -280,10 +304,50 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </nav>
 
       <h1>Decibel Calculator</h1>
-      <p class="seo-intro">Free online decibel calculator. Calculate instantly with accurate results. No signup required — Calc Labz.</p>
+      <p class="seo-intro">Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition and distance attenuation.</p>
+
+      <section class="seo-section">
+        <h2>What is Decibel Calculator?</h2>
+        <p>This decibel calculator performs dB addition (combining sound sources), distance attenuation, and power-to-dB conversion. Helps assess noise exposure for workplace safety compliance and understand how sound levels combine non-linearly.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>How to Use This Calculator</h2>
+        <ol>
+          <li>Enter your values in the input fields above</li>
+          <li>Adjust any optional parameters as needed</li>
+          <li>Results are calculated automatically as you type</li>
+          <li>Review the breakdown and charts for detailed insights</li>
+        </ol>
+      </section>
+
+      <section class="seo-faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>Why don't decibels add normally?</summary>
+          <p>Decibels are logarithmic. Two 60 dB sources together produce 63 dB, not 120 dB. Formula: dB_total = 10 × log₁₀(10^(dB₁/10) + 10^(dB₂/10)). Two identical sources add only 3 dB.</p>
+        </details>
+        <details>
+          <summary>What dB level is safe for hearing?</summary>
+          <p>Below 85 dB for 8 hours. Every 3 dB increase halves safe exposure time. 88 dB: 4 hours. 91 dB: 2 hours. 100 dB (concert): 15 minutes. 120 dB: immediate pain. Use ear protection above 85 dB.</p>
+        </details>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Calculators</h2>
+        <div class="seo-related-grid">
+          <a href="/pythagorean-calculator">Pythagorean Calculator</a>
+          <a href="/ohmslaw-calculator">Ohmslaw Calculator</a>
+          <a href="/resistor-calculator">Resistor Calculator</a>
+          <a href="/power-calculator">Power Calculator</a>
+          <a href="/inverterbattery-calculator">Inverterbattery Calculator</a>
+          <a href="/acbtu-calculator">Acbtu Calculator</a>
+        </div>
+      </section>
 
       <div class="seo-trust">
-        <p><strong>Note:</strong> This calculator provides estimates for informational purposes only.</p>
+        <p><strong>Engineering disclaimer:</strong> This calculator provides preliminary estimates. All calculations for actual engineering projects must be verified by a licensed professional engineer. See our full <a href="/disclaimer">Disclaimer</a>.</p>
+        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
       </div>
     </div>
@@ -370,9 +434,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
                     <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/contact" class="footer-link"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Us</a>
                     <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
                     <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
-                    <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
+                    <a href="/disclaimer" class="footer-link"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Disclaimer</a>
+                    <a href="/editorial-policy" class="footer-link"><i class="fas fa-clipboard-check" aria-hidden="true"></i>Editorial Policy</a>
                 </div>
             </div>
         </div>

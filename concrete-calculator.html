@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
-    <meta name="description" content="Free online concrete calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="description" content="Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings with mix ratio.">
     <meta name="author" content="Calc Labz Team">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-IN">
@@ -19,7 +19,7 @@
     <meta property="og:locale" content="en_IN">
     <meta property="og:url" content="https://calclabz.com/concrete-calculator">
     <meta property="og:title" content="Concrete Calculator — Free Online Calculator | Calc Labz">
-    <meta property="og:description" content="Free online concrete calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta property="og:description" content="Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings with mix ratio.">
     <meta property="og:image" content="https://calclabz.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@calclabz">
     <meta name="twitter:title" content="Concrete Calculator — Free Online Calculator | Calc Labz">
-    <meta name="twitter:description" content="Free online concrete calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="twitter:description" content="Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings with mix ratio.">
     <meta name="twitter:image" content="https://calclabz.com/og-image.png">
     <meta name="twitter:image:alt" content="Calc Labz — 300+ Free Online Calculators">
 
@@ -225,6 +225,30 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-faq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate concrete volume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volume = Length × Width × Thickness (all in meters). A 10×12 feet slab, 5 inches thick: 3.048 × 3.657 × 0.127 = 1.415 cubic meters. Add 5–10% for wastage. For circular columns: π × r² × height."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many bags of cement per cubic meter of M20 concrete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "M20 (1:1.5:3 ratio): approximately 8 bags (400 kg) cement, 0.42 m³ sand, 0.83 m³ aggregate per cubic meter of concrete. This is the most common grade for residential construction."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -280,10 +304,50 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </nav>
 
       <h1>Concrete Calculator</h1>
-      <p class="seo-intro">Free online concrete calculator. Calculate instantly with accurate results. No signup required — Calc Labz.</p>
+      <p class="seo-intro">Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings with mix ratio.</p>
+
+      <section class="seo-section">
+        <h2>What is Concrete Calculator?</h2>
+        <p>This concrete calculator determines the volume of concrete needed for your structure and the quantities of cement, sand, and aggregate based on your chosen mix ratio (M15, M20, M25). Shows exact number of 50kg cement bags required.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>How to Use This Calculator</h2>
+        <ol>
+          <li>Enter your values in the input fields above</li>
+          <li>Adjust any optional parameters as needed</li>
+          <li>Results are calculated automatically as you type</li>
+          <li>Review the breakdown and charts for detailed insights</li>
+        </ol>
+      </section>
+
+      <section class="seo-faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>How do I calculate concrete volume?</summary>
+          <p>Volume = Length × Width × Thickness (all in meters). A 10×12 feet slab, 5 inches thick: 3.048 × 3.657 × 0.127 = 1.415 cubic meters. Add 5–10% for wastage. For circular columns: π × r² × height.</p>
+        </details>
+        <details>
+          <summary>How many bags of cement per cubic meter of M20 concrete?</summary>
+          <p>M20 (1:1.5:3 ratio): approximately 8 bags (400 kg) cement, 0.42 m³ sand, 0.83 m³ aggregate per cubic meter of concrete. This is the most common grade for residential construction.</p>
+        </details>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Calculators</h2>
+        <div class="seo-related-grid">
+          <a href="/stampdutycalc-calculator">Stampdutycalc Calculator</a>
+          <a href="/constructioncost-calculator">Constructioncost Calculator</a>
+          <a href="/homerenovation-calculator">Homerenovation Calculator</a>
+          <a href="/bricks-calculator">Bricks Calculator</a>
+          <a href="/paint-calculator">Paint Calculator</a>
+          <a href="/flooring-calculator">Flooring Calculator</a>
+        </div>
+      </section>
 
       <div class="seo-trust">
-        <p><strong>Note:</strong> This calculator provides estimates for informational purposes only.</p>
+        <p><strong>Construction disclaimer:</strong> Material estimates are approximate. Actual quantities depend on site conditions, wastage, and construction methods. Consult a qualified contractor or engineer before purchasing materials. See our full <a href="/disclaimer">Disclaimer</a>.</p>
+        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
       </div>
     </div>
@@ -370,9 +434,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
                     <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/contact" class="footer-link"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Us</a>
                     <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
                     <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
-                    <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
+                    <a href="/disclaimer" class="footer-link"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Disclaimer</a>
+                    <a href="/editorial-policy" class="footer-link"><i class="fas fa-clipboard-check" aria-hidden="true"></i>Editorial Policy</a>
                 </div>
             </div>
         </div>

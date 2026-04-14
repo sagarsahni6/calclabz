@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
-    <meta name="description" content="Free online workingdays calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="description" content="Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.">
     <meta name="author" content="Calc Labz Team">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-IN">
@@ -19,7 +19,7 @@
     <meta property="og:locale" content="en_IN">
     <meta property="og:url" content="https://calclabz.com/workingdays-calculator">
     <meta property="og:title" content="Workingdays Calculator — Free Online Calculator | Calc Labz">
-    <meta property="og:description" content="Free online workingdays calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta property="og:description" content="Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.">
     <meta property="og:image" content="https://calclabz.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@calclabz">
     <meta name="twitter:title" content="Workingdays Calculator — Free Online Calculator | Calc Labz">
-    <meta name="twitter:description" content="Free online workingdays calculator. Calculate instantly with accurate results. No signup required — Calc Labz.">
+    <meta name="twitter:description" content="Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.">
     <meta name="twitter:image" content="https://calclabz.com/og-image.png">
     <meta name="twitter:image:alt" content="Calc Labz — 300+ Free Online Calculators">
 
@@ -225,6 +225,30 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-faq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many working days are in a month?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically 20–23 working days per month (excluding weekends). Monthly average: 22 days. In months with public holidays, actual working days may drop to 18–20. Annual total: approximately 250–260 days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate a delivery date from working days?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add working days to the start date, skipping weekends. \"10 working days from Monday\" = the Monday two weeks later (10 weekdays). Our calculator handles this automatically including holiday skipping."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -280,10 +304,48 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </nav>
 
       <h1>Workingdays Calculator</h1>
-      <p class="seo-intro">Free online workingdays calculator. Calculate instantly with accurate results. No signup required — Calc Labz.</p>
+      <p class="seo-intro">Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.</p>
+
+      <section class="seo-section">
+        <h2>What is Workingdays Calculator?</h2>
+        <p>This working days calculator counts only business days (Monday–Friday) between two dates, excluding weekends. Optionally exclude Indian public holidays for precise project scheduling and delivery date estimation.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>How to Use This Calculator</h2>
+        <ol>
+          <li>Enter your values in the input fields above</li>
+          <li>Adjust any optional parameters as needed</li>
+          <li>Results are calculated automatically as you type</li>
+          <li>Review the breakdown and charts for detailed insights</li>
+        </ol>
+      </section>
+
+      <section class="seo-faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>How many working days are in a month?</summary>
+          <p>Typically 20–23 working days per month (excluding weekends). Monthly average: 22 days. In months with public holidays, actual working days may drop to 18–20. Annual total: approximately 250–260 days.</p>
+        </details>
+        <details>
+          <summary>How do I calculate a delivery date from working days?</summary>
+          <p>Add working days to the start date, skipping weekends. "10 working days from Monday" = the Monday two weeks later (10 weekdays). Our calculator handles this automatically including holiday skipping.</p>
+        </details>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Calculators</h2>
+        <div class="seo-related-grid">
+          <a href="/dateiff-calculator">Dateiff Calculator</a>
+          <a href="/timeconv-calculator">Timeconv Calculator</a>
+          <a href="/countdown-calculator">Countdown Calculator</a>
+          <a href="/timezone-calculator">Timezone Calculator</a>
+        </div>
+      </section>
 
       <div class="seo-trust">
-        <p><strong>Note:</strong> This calculator provides estimates for informational purposes only.</p>
+        <p><strong>Note:</strong> Date calculations use the Gregorian calendar. Results are accurate for all practical purposes.</p>
+        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
       </div>
     </div>
@@ -370,9 +432,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
                 <h4><i class="fas fa-shield-halved" aria-hidden="true"></i>About &amp; Legal</h4>
                 <div class="footer-col-links">
                     <a href="/about" class="footer-link"><i class="fas fa-info-circle" aria-hidden="true"></i>About Calc Labz</a>
+                    <a href="/contact" class="footer-link"><i class="fas fa-envelope" aria-hidden="true"></i>Contact Us</a>
                     <a href="/privacy" class="footer-link"><i class="fas fa-user-shield" aria-hidden="true"></i>Privacy Policy</a>
                     <a href="/terms" class="footer-link"><i class="fas fa-file-contract" aria-hidden="true"></i>Terms of Use</a>
-                    <button class="footer-link" data-action="installPWA"><i class="fas fa-download" aria-hidden="true"></i>Install App (PWA)</button>
+                    <a href="/disclaimer" class="footer-link"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Disclaimer</a>
+                    <a href="/editorial-policy" class="footer-link"><i class="fas fa-clipboard-check" aria-hidden="true"></i>Editorial Policy</a>
                 </div>
             </div>
         </div>

@@ -30,6 +30,9 @@ var TODAY = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 var prerender = require('./generate-prerender.js');
 var CATEGORIES = prerender.CATEGORIES || [];
 
+// Import trust page generator — generates about, privacy, terms, contact, disclaimer, editorial-policy
+var trustPages = require('./generate-trust-pages.js');
+
 // ── 1. GENERATE SITEMAP.XML ────────────────────────────────────────────────
 
 function generateSitemap() {
@@ -61,8 +64,9 @@ function generateSitemap() {
 
   // Static pages
   xml += '  <!-- STATIC PAGES -->\n';
-  ['about', 'privacy', 'terms'].forEach(function(page) {
-    xml = addUrl(xml, BASE + '/' + page, TODAY, 'monthly', page === 'about' ? '0.5' : '0.4');
+  ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'editorial-policy'].forEach(function(page) {
+    var pri = (page === 'about' || page === 'contact') ? '0.5' : '0.4';
+    xml = addUrl(xml, BASE + '/' + page, TODAY, 'monthly', pri);
   });
   xml += '\n';
 
@@ -145,11 +149,14 @@ function updateServeRewrites() {
   // Enable clean URLs so /emi-calculator auto-resolves to /emi-calculator.html
   serve.cleanUrls = true;
 
-  // Static page rewrites (blog catch-all MUST come AFTER specific blog rewrites)
+  // Static page rewrites — point to actual HTML files with pre-rendered content
   var staticRewrites = [
-    { source: '/about',    destination: '/index.html' },
-    { source: '/privacy',  destination: '/index.html' },
-    { source: '/terms',    destination: '/index.html' }
+    { source: '/about',             destination: '/about.html' },
+    { source: '/contact',           destination: '/contact.html' },
+    { source: '/privacy',           destination: '/privacy.html' },
+    { source: '/terms',             destination: '/terms.html' },
+    { source: '/disclaimer',        destination: '/disclaimer.html' },
+    { source: '/editorial-policy',  destination: '/editorial-policy.html' }
   ];
 
   // ALL calculator rewrites (every registry entry gets a rewrite)
@@ -206,10 +213,13 @@ function updateVercelRewrites() {
   // Build new rewrites
   var rewrites = [];
 
-  // Static pages (blog handled by rewrite pattern + individual posts)
-  rewrites.push({ source: '/about', destination: '/index.html' });
-  rewrites.push({ source: '/privacy', destination: '/index.html' });
-  rewrites.push({ source: '/terms', destination: '/index.html' });
+  // Static pages — real HTML files with pre-rendered content
+  rewrites.push({ source: '/about', destination: '/about.html' });
+  rewrites.push({ source: '/contact', destination: '/contact.html' });
+  rewrites.push({ source: '/privacy', destination: '/privacy.html' });
+  rewrites.push({ source: '/terms', destination: '/terms.html' });
+  rewrites.push({ source: '/disclaimer', destination: '/disclaimer.html' });
+  rewrites.push({ source: '/editorial-policy', destination: '/editorial-policy.html' });
 
   // ALL calculator rewrites
   REGISTRY.forEach(function(c) {
