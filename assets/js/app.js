@@ -336,6 +336,7 @@ function renderStat(value, label) {
 
 // ── HOME ───────────────────────────────────────────
 function showHome() {
+
     setQBtn('qHome'); setMobileNav('mnavHome'); closeSidebar(); updateSidebarActive('qHome');
     resetMeta();
     var popular = Object.entries(DB).filter(function (e) { return e[1].badge === 'Popular'; }).slice(0, 8);
@@ -1568,12 +1569,18 @@ function isSafeBlogId(id) {
 }
 
 function handleRoute() {
-    var path = window.location.pathname;
+    // Normalize path: strip trailing slash for consistent matching (except root '/')
+    var rawPath = window.location.pathname;
+    var path = rawPath.length > 1 ? rawPath.replace(/\/+$/, '') : rawPath;
     var params = new URLSearchParams(window.location.search);
     var calcId = params.get('calc');
 
+
+    // Pre-rendered static pages — preserve existing HTML content (check first to avoid overwrite)
+    if (path === '/contact' || path === '/disclaimer' || path === '/editorial-policy') { return; }
+
     // Blog index: /blog
-    if (path === '/blog' || path === '/blog/') {
+    if (path === '/blog') {
         showBlogSection();
         return;
     }
