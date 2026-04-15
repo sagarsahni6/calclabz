@@ -972,7 +972,7 @@
             };
         };
 
-  if(DB['nsccalculator'] && DB['nsccalculator'].calc===null) DB['nsccalculator'].calc=function(v){
+  if(DB['nsc'] && DB['nsc'].calc===null) DB['nsc'].calc=function(v){
             const maturity = v.amount * Math.pow(1 + v.rate/100, v.tenure);
             const interest = maturity - v.amount;
             const taxBenefit80C = Math.min(v.amount, 150000) * parseFloat(v.taxslab)/100;
@@ -996,7 +996,7 @@
             };
         };
 
-  if(DB['apycalculator'] && DB['apycalculator'].calc===null) DB['apycalculator'].calc=function(v){
+  if(DB['apy'] && DB['apy'].calc===null) DB['apy'].calc=function(v){
             const pensionAmt = parseInt(v.pension.replace(/[₹,]/g,''));
             const yearsToContribute = 60 - v.age;
             // Approximate APY contribution table

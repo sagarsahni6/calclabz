@@ -274,7 +274,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
+            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
         </div>
         <div id="catList">
             <!-- Static category links for crawlers — JS replaces this at runtime -->
@@ -314,11 +314,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter your values in the input fields above</li>
-          <li>Adjust any optional parameters as needed</li>
-          <li>Results are calculated automatically as you type</li>
-          <li>Review the breakdown and charts for detailed insights</li>
+          <li>Enter the required engineering parameters (values, dimensions, electrical ratings, etc.)</li>
+          <li>Select the appropriate units or configuration if specified</li>
+          <li>View the calculated result with the formula and working shown</li>
+          <li>Use the output for preliminary design verification or academic reference</li>
         </ol>
+      </section>
+
+      <section class="seo-section">
+        <h2>How Transformer Calculator is Calculated</h2>
+        <p>This calculator applies standard engineering formulas from established reference texts and codes (IS/IEEE/ASME). The transformer computation uses accepted engineering principles. Results are preliminary estimates and must be verified by a licensed professional for any real-world application.</p>
       </section>
 
       <section class="seo-faq">
@@ -360,7 +365,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         <button class="mnav-btn active" id="mnavHome" aria-label="Home page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
         <button class="mnav-btn" id="mnavFav" aria-label="My favorites"><i class="fas fa-star" aria-hidden="true"></i>Favs</button>
         <button class="mnav-btn" id="mnav-search-btn" aria-label="Search calculators"><i class="fas fa-search" aria-hidden="true"></i>Search</button>
-        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Stats</button>
+        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
         <button class="mnav-btn" id="mnav-theme-btn" aria-label="Toggle light or dark theme"><i class="fas fa-moon" aria-hidden="true"></i>Theme</button>
     </nav>
 

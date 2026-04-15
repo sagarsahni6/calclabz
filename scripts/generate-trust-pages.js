@@ -41,7 +41,16 @@ var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-section li{margin:4px 0}\n' +
 '.seo-trust{margin:24px 0;padding:16px;background:var(--bg2);border-radius:var(--rsm);border-left:3px solid var(--p)}\n' +
 '.seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}\n' +
-'.seo-trust strong{color:var(--txt1)}\n';
+'.seo-trust strong{color:var(--txt1)}\n' +
+'/* Contact Form */\n' +
+'.contact-form{display:flex;flex-direction:column;gap:14px;margin-top:12px}\n' +
+'.cf-row{display:flex;flex-direction:column;gap:4px}\n' +
+'.cf-row label{font-size:.85rem;font-weight:600;color:var(--txt)}\n' +
+'.cf-row input,.cf-row select,.cf-row textarea{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--rsm);padding:10px 14px;font:inherit;font-size:.9rem;color:var(--txt);transition:var(--transition)}\n' +
+'.cf-row input:focus,.cf-row select:focus,.cf-row textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px rgba(99,102,241,.15)}\n' +
+'.cf-row textarea{resize:vertical;min-height:100px}\n' +
+'.cf-submit{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--p);color:#fff;border:none;border-radius:var(--rsm);font-size:.9rem;font-weight:600;cursor:pointer;transition:var(--transition);align-self:flex-start}\n' +
+'.cf-submit:hover{background:var(--p3);transform:translateY(-1px);box-shadow:0 4px 12px rgba(99,102,241,.3)}\n';
 
 // ── UPDATED FOOTER ──────────────────────────────────────────────────────────
 var UPDATED_FOOTER = `    <!-- ═══ FOOTER ═══ -->
@@ -114,7 +123,7 @@ var TRUST_PAGES = [
       <section class="seo-section">
         <h2>Our Mission</h2>
         <p>We started Calc Labz with a simple observation: most online calculators are either buried behind ads and popups, or they give results without showing the methodology. We wanted to build something different — a platform where every calculation is transparent, every formula is documented, and every result can be verified.</p>
-        <p>Today, Calc Labz offers over 250 calculators spanning finance, health &amp; fitness, mathematics, education, engineering, and everyday decision-making. Each tool is designed to give you clear, actionable results with full transparency into how the numbers are computed.</p>
+        <p>Today, Calc Labz offers over 300 calculators spanning finance, health &amp; fitness, mathematics, education, engineering, and everyday decision-making. Each tool is designed to give you clear, actionable results with full transparency into how the numbers are computed.</p>
       </section>
 
       <section class="seo-section">
@@ -196,6 +205,36 @@ var TRUST_PAGES = [
           <li>What you expected the result to be (and how you calculated it)</li>
         </ol>
         <p>We investigate every accuracy report and will update the calculator if an error is confirmed.</p>
+      </section>
+
+      <section class="seo-section">
+        <h2>Send Us a Message</h2>
+        <p>Use the form below to get in touch. When you click "Send Message", your default email app will open with the details pre-filled.</p>
+        <form id="contact-form" class="contact-form" action="mailto:sagarsahni69@gmail.com" method="get" enctype="text/plain">
+          <div class="cf-row">
+            <label for="cf-name">Your Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="e.g., Rahul Sharma" required>
+          </div>
+          <div class="cf-row">
+            <label for="cf-email">Your Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="cf-row">
+            <label for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Bug Report">Bug Report / Calculation Error</option>
+              <option value="Calculator Request">Calculator Request</option>
+              <option value="Feedback">Feedback &amp; Suggestions</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="cf-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="body" rows="5" placeholder="Describe your question, issue, or suggestion in detail…" required></textarea>
+          </div>
+          <button type="submit" class="cf-submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
+        </form>
       </section>
 
       <section class="seo-section">

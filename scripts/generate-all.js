@@ -88,12 +88,14 @@ function generateSitemap() {
     var pri = (page === 'about' || page === 'contact') ? '0.5' : '0.4';
     core += addUrl(BASE + '/' + page, '2026-03-01', 'monthly', pri);
   });
+  core += '\n  <!-- BLOG LISTING -->\n';
+  core += addUrl(BASE + '/blog', TODAY, 'weekly', '0.7');
   core += '\n  <!-- CATEGORY PAGES (' + CATEGORIES.length + ') -->\n';
   CATEGORIES.forEach(function(cat) {
     core += addUrl(BASE + '/' + cat.slug, '2026-02-15', 'weekly', '0.8');
   });
   core += '\n</urlset>\n';
-  var coreCount = 1 + 6 + CATEGORIES.length;
+  var coreCount = 1 + 6 + 1 + CATEGORIES.length;
   totalUrls += coreCount;
   fs.writeFileSync(path.join(ROOT, 'sitemap-core.xml'), core, 'utf8');
   console.log('  ✓  sitemap-core.xml — ' + coreCount + ' URLs');
@@ -228,7 +230,7 @@ function updateServeRewrites() {
   // Note: cleanUrls:true handles .html resolution automatically.
   // Only add specific SPA routes — no broad catch-alls that override cleanUrls.
   var spaRoutes = [
-    { source: '/blog', destination: '/index.html' }
+    { source: '/blog', destination: '/blog.html' }
   ];
 
   serve.rewrites = staticRewrites
@@ -248,6 +250,19 @@ function updateVercelRewrites() {
 
   // Keep existing redirects intact
   var existingRedirects = vercel.redirects || [];
+
+  // Add old slug redirects for renamed calculators
+  var slugRedirects = [
+    { source: '/nsccalculator-calculator', destination: '/nsc-calculator', statusCode: 301 },
+    { source: '/apycalculator-calculator', destination: '/apy-calculator', statusCode: 301 }
+  ];
+  // Merge with existing redirects (avoid duplicates)
+  var existingSources = {};
+  existingRedirects.forEach(function(r) { existingSources[r.source] = true; });
+  slugRedirects.forEach(function(r) {
+    if (!existingSources[r.source]) existingRedirects.push(r);
+  });
+
   var existingHeaders = vercel.headers || [];
 
   // Build new rewrites
@@ -285,6 +300,9 @@ function updateVercelRewrites() {
       });
     });
   } catch (e) { /* ignore */ }
+
+  // Blog listing page
+  rewrites.push({ source: '/blog', destination: '/blog.html' });
 
   // Blog catch-all for non-pre-rendered blog routes
   rewrites.push({ source: '/blog/:path*', destination: '/index.html' });

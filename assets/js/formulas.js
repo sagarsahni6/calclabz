@@ -176,12 +176,12 @@ elssreturns: {
     variables: "LTCG Tax = (Gains − 1.25L) × 12.5% | Lock-in = 3 years",
     explanation: "ELSS gives dual benefit — equity market returns plus Section 80C tax deduction."
 },
-nsccalculator: {
+nsc: {
     formula: "Maturity = Principal × (1 + r)^n",
     variables: "r = NSC annual rate | n = 5 years | Interest compounded annually, paid at maturity",
     explanation: "NSC interest is reinvested and also qualifies for 80C deduction (except last year)."
 },
-apycalculator: {
+apy: {
     formula: "Contribution based on age and desired pension (government-fixed table)",
     variables: "Pension options: ₹1K–₹5K/month | Entry age: 18–40 | Pension starts at 60",
     explanation: "APY guarantees fixed monthly pension after 60. Spouse inherits pension, nominee gets corpus."

@@ -166,6 +166,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust{margin:24px 0;padding:16px;background:var(--bg2);border-radius:var(--rsm);border-left:3px solid var(--p)}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
+/* Contact Form */
+.contact-form{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.cf-row{display:flex;flex-direction:column;gap:4px}
+.cf-row label{font-size:.85rem;font-weight:600;color:var(--txt)}
+.cf-row input,.cf-row select,.cf-row textarea{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--rsm);padding:10px 14px;font:inherit;font-size:.9rem;color:var(--txt);transition:var(--transition)}
+.cf-row input:focus,.cf-row select:focus,.cf-row textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.cf-row textarea{resize:vertical;min-height:100px}
+.cf-submit{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--p);color:#fff;border:none;border-radius:var(--rsm);font-size:.9rem;font-weight:600;cursor:pointer;transition:var(--transition);align-self:flex-start}
+.cf-submit:hover{background:var(--p3);transform:translateY(-1px);box-shadow:0 4px 12px rgba(99,102,241,.3)}
     </style>
 
         <script type="application/ld+json" id="jsonld-breadcrumb">
@@ -213,7 +222,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
+            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
         </div>
         <div id="catList">
             <!-- Static category links for crawlers — JS replaces this at runtime -->
@@ -247,7 +256,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Our Mission</h2>
         <p>We started Calc Labz with a simple observation: most online calculators are either buried behind ads and popups, or they give results without showing the methodology. We wanted to build something different — a platform where every calculation is transparent, every formula is documented, and every result can be verified.</p>
-        <p>Today, Calc Labz offers over 250 calculators spanning finance, health &amp; fitness, mathematics, education, engineering, and everyday decision-making. Each tool is designed to give you clear, actionable results with full transparency into how the numbers are computed.</p>
+        <p>Today, Calc Labz offers over 300 calculators spanning finance, health &amp; fitness, mathematics, education, engineering, and everyday decision-making. Each tool is designed to give you clear, actionable results with full transparency into how the numbers are computed.</p>
       </section>
 
       <section class="seo-section">
@@ -300,7 +309,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         <button class="mnav-btn active" id="mnavHome" aria-label="Home page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
         <button class="mnav-btn" id="mnavFav" aria-label="My favorites"><i class="fas fa-star" aria-hidden="true"></i>Favs</button>
         <button class="mnav-btn" id="mnav-search-btn" aria-label="Search calculators"><i class="fas fa-search" aria-hidden="true"></i>Search</button>
-        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Stats</button>
+        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
         <button class="mnav-btn" id="mnav-theme-btn" aria-label="Toggle light or dark theme"><i class="fas fa-moon" aria-hidden="true"></i>Theme</button>
     </nav>
 

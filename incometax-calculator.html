@@ -317,7 +317,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
+            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
         </div>
         <div id="catList">
             <!-- Static category links for crawlers — JS replaces this at runtime -->
@@ -368,7 +368,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         <h2>How Income Tax Calculator FY 2025-26 is Calculated</h2>
         <p>Tax is calculated by applying progressive slab rates to your taxable income (gross income minus eligible deductions). A 4% Health &amp; Education Cess is added to the computed tax. Surcharge applies for income above &#8377;50 lakhs.</p>
         <h3>Worked Example</h3>
-        <p>For annual income &#8377;12,00,000 under new regime: Up to &#8377;3L = &#8377;0, &#8377;3&ndash;7L = &#8377;20,000 (5%), &#8377;7&ndash;10L = &#8377;30,000 (10%), &#8377;10&ndash;12L = &#8377;30,000 (15%). Total tax = &#8377;80,000 + 4% cess = &#8377;83,200.</p>
+        <p>For annual income &#8377;15,00,000 under new regime (after &#8377;75,000 standard deduction, taxable income = &#8377;14,25,000): Up to &#8377;4L = &#8377;0, &#8377;4&ndash;8L = &#8377;20,000 (5%), &#8377;8&ndash;12L = &#8377;40,000 (10%), &#8377;12&ndash;14.25L = &#8377;33,750 (15%). Total tax = &#8377;93,750 + 4% cess = &#8377;97,500. Note: salaried individuals with gross income up to &#8377;12,75,000 pay zero tax under the new regime due to the Section 87A rebate.</p>
       </section>
 
       <section class="seo-section">
@@ -387,7 +387,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
           <li>Confusing financial year with assessment year &mdash; FY 2025-26 (income earned) is assessed in AY 2026-27 (tax filed).</li>
           <li>Not claiming all eligible deductions under the old regime &mdash; many people miss NPS (80CCD), education loan interest (80E), or medical insurance (80D).</li>
           <li>Forgetting to add 4% Health &amp; Education Cess on top of the calculated tax amount.</li>
-          <li>Ignoring the rebate under Section 87A &mdash; under the new regime, no tax is payable if taxable income is up to &#8377;12 lakhs (after standard deduction).</li>
+          <li>Ignoring the Section 87A rebate &mdash; under the new regime, salaried individuals with gross income up to &#8377;12,75,000 (taxable income up to &#8377;12 lakhs after &#8377;75,000 standard deduction) pay zero tax.</li>
         </ul>
       </section>
 
@@ -416,7 +416,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       <div class="seo-trust">
-        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual outcomes may vary based on applicable rates, policies, and individual circumstances. Consult a qualified financial advisor or chartered accountant before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Methodology:</strong> Formula based on standard financial calculation methods widely used in the banking industry. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate calculators.</p>
         <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
@@ -431,7 +431,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         <button class="mnav-btn active" id="mnavHome" aria-label="Home page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
         <button class="mnav-btn" id="mnavFav" aria-label="My favorites"><i class="fas fa-star" aria-hidden="true"></i>Favs</button>
         <button class="mnav-btn" id="mnav-search-btn" aria-label="Search calculators"><i class="fas fa-search" aria-hidden="true"></i>Search</button>
-        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Stats</button>
+        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
         <button class="mnav-btn" id="mnav-theme-btn" aria-label="Toggle light or dark theme"><i class="fas fa-moon" aria-hidden="true"></i>Theme</button>
     </nav>
 

@@ -98,8 +98,8 @@ var CATEGORIES = [
   {
     id: 'finance', slug: 'finance-calculators',
     name: 'Finance Calculators',
-    title: 'Finance Calculators: EMI, SIP, Tax, FD &amp; 50+ Free Tools | Calc Labz',
-    desc: 'Free online finance calculators for EMI, SIP, GST, income tax, PPF, FD, mortgage, and 50+ more. Instant results for loan planning, investment returns, and tax savings. No signup required.'
+    title: 'Finance Calculators: EMI, SIP, Tax, FD &amp; 75+ Free Tools | Calc Labz',
+    desc: 'Free online finance calculators for EMI, SIP, GST, income tax, PPF, FD, mortgage, and 75+ more. Instant results for loan planning, investment returns, and tax savings. No signup required.'
   },
   {
     id: 'health', slug: 'health-calculators',
@@ -198,7 +198,7 @@ function buildBreadcrumbSchema(calc) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL + '/' },
       { '@type': 'ListItem', position: 2, name: calc.cat + ' Calculators', item: BASE_URL + '/' + catSlug },
-      { '@type': 'ListItem', position: 3, name: calc.title.split(':')[0].split(' —')[0], item: pageUrl }
+      { '@type': 'ListItem', position: 3, name: calc.title.split(':')[0].split(' —')[0].split('|')[0].trim(), item: pageUrl }
     ]
   };
 }
@@ -207,7 +207,7 @@ function buildSoftwareSchema(calc) {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: calc.title.split(':')[0].split(' —')[0],
+    name: calc.title.split(':')[0].split(' —')[0].split('|')[0].trim(),
     description: calc.desc.replace(/&amp;/g, '&').replace(/&mdash;/g, '—').replace(/&#8377;/g, '₹').replace(/<[^>]+>/g, ''),
     applicationCategory: 'UtilitiesApplication',
     applicationSubCategory: 'Calculator',
@@ -233,7 +233,7 @@ function getRelatedCalcs(calc) {
 function buildTrustSection(calc) {
   var html = '<div class="seo-trust">\n';
   if (calc.cat === 'Finance') {
-    html += '  <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>\n';
+    html += '  <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual outcomes may vary based on applicable rates, policies, and individual circumstances. Consult a qualified financial advisor or chartered accountant before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>\n';
     if (calc.howCalculated) {
       html += '  <p><strong>Methodology:</strong> Formula based on standard financial calculation methods widely used in the banking industry. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate calculators.</p>\n';
     }
@@ -252,7 +252,7 @@ function buildTrustSection(calc) {
 }
 
 function buildBodyHTML(calc) {
-  var shortName = calc.title.split(':')[0].split(' —')[0];
+  var shortName = calc.title.split(':')[0].split(' —')[0].split('|')[0].trim();
   var catSlug = calc.cat.toLowerCase() + '-calculators';
   var catName = calc.cat + ' Calculators';
 
@@ -381,8 +381,11 @@ function buildCategoryBodyHTML(cat, calcs) {
   // Calculator grid
   html += '      <div class="seo-calc-grid">\n';
   calcs.forEach(function(c) {
-    var name = c.title ? c.title.split(':')[0].split(' —')[0].split('|')[0].trim() : formatSlugToName(c.slug);
-    var cDesc = c.desc || 'Free online ' + name.toLowerCase() + '. Instant results, no signup.';
+    // Prefer registry name > title extraction > slug-to-name fallback
+    var name = c.name || (c.title ? c.title.split(':')[0].split(' —')[0].split('|')[0].trim() : formatSlugToName(c.slug));
+    // Look up unique description from basic content modules, then top-50 desc, then generic
+    var unique = UNIQUE_BASIC_CONTENT[c.id] || null;
+    var cDesc = (unique && unique.desc) ? unique.desc : (c.desc || 'Free online ' + name.toLowerCase() + '. Instant results, no signup.');
     if (cDesc.length > 120) cDesc = cDesc.substring(0, 117) + '...';
     html += '        <a href="/' + c.slug + '" class="seo-calc-card">\n';
     html += '          <strong>' + name + '</strong>\n';
@@ -634,7 +637,7 @@ function generateAllRegistryCalcs() {
         { q: 'Do I need to sign up to use this?', a: 'No. All calculations run locally in your browser. We do not collect any personal or financial data.' },
         { q: 'Can I use this for tax filing?', a: 'This calculator provides estimates for planning purposes. Always verify figures with a qualified chartered accountant or use the official Income Tax Department portal for filing.' }
       ],
-      disclaimer: '<p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
+      disclaimer: '<p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual outcomes may vary based on applicable rates, policies, and individual circumstances. Consult a qualified financial advisor or chartered accountant before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>'
     },
     health: {
       whatPrefix: 'This calculator helps you estimate ',
@@ -813,16 +816,30 @@ function generateAllRegistryCalcs() {
     }
     body += '      </section>\n\n';
 
-    // How to use section
+    // How to use section — unique or generic
     body += '      <section class="seo-section">\n';
     body += '        <h2>How to Use This Calculator</h2>\n';
     body += '        <ol>\n';
-    body += '          <li>Enter your values in the input fields above</li>\n';
-    body += '          <li>Adjust any optional parameters as needed</li>\n';
-    body += '          <li>Results are calculated automatically as you type</li>\n';
-    body += '          <li>Review the breakdown and charts for detailed insights</li>\n';
+    if (unique && unique.howToSteps) {
+      unique.howToSteps.forEach(function(step) {
+        body += '          <li>' + step + '</li>\n';
+      });
+    } else {
+      body += '          <li>Enter your values in the input fields above</li>\n';
+      body += '          <li>Adjust any optional parameters as needed</li>\n';
+      body += '          <li>Results are calculated automatically as you type</li>\n';
+      body += '          <li>Review the breakdown and charts for detailed insights</li>\n';
+    }
     body += '        </ol>\n';
     body += '      </section>\n\n';
+
+    // Methodology section (if unique content has it)
+    if (unique && unique.methodology) {
+      body += '      <section class="seo-section">\n';
+      body += '        <h2>How ' + shortName + ' is Calculated</h2>\n';
+      body += '        <p>' + unique.methodology + '</p>\n';
+      body += '      </section>\n\n';
+    }
 
     // Use cases section (only if NO unique content — unique pages get FAQ instead)
     if (!unique) {
@@ -1071,12 +1088,111 @@ function monthToNum(dateStr) {
   return months[parts[0]] || '01';
 }
 
+// ── GENERATOR: Blog Listing Page ────────────────────────────────────────────
+
+function generateBlogListingPage() {
+  var template = fs.readFileSync(TEMPLATE, 'utf8');
+  var vm = require('vm');
+  var blogSrc;
+  try {
+    blogSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'blog-posts.js'), 'utf8');
+  } catch (e) {
+    console.warn('  ⚠  blog-posts.js not found, skipping blog listing page.');
+    return;
+  }
+
+  var sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(blogSrc, sandbox);
+  var BLOG_POSTS = sandbox.BLOG_POSTS || [];
+
+  if (!BLOG_POSTS.length) {
+    console.warn('  ⚠  No blog posts found, skipping blog listing page.');
+    return;
+  }
+
+  var pageUrl = BASE_URL + '/blog';
+  var pageTitle = 'Guides & Articles — Finance, Health & Calculator Tips | Calc Labz';
+  var pageDesc = 'Free guides and articles on personal finance, health metrics, tax planning, and how to use online calculators. Expert tips to make smarter decisions with data.';
+  var html = template;
+
+  // Head metadata
+  html = html.replace(/<title>.*?<\/title>/, '<title>' + pageTitle + '</title>');
+  html = html.replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="' + pageDesc + '">');
+  html = html.replace(/<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + pageUrl + '">');
+  html = html.replace(/<meta property="og:url" content="[^"]*">/, '<meta property="og:url" content="' + pageUrl + '">');
+  html = html.replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="' + pageTitle + '">');
+  html = html.replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="' + pageDesc + '">');
+  html = html.replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="' + pageTitle + '">');
+  html = html.replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="' + pageDesc + '">');
+
+  // Remove hreflang
+  html = html.replace(/[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\r?\n/g, '');
+
+  // Remove homepage JSON-LD, inject breadcrumb
+  html = html.replace(/<!-- ═══ JSON-LD: SoftwareApplication[\s\S]*?<\/script>\s*\n/, '');
+  html = html.replace(/<!-- ═══ JSON-LD: WebSite[\s\S]*?<\/script>\s*\n/, '');
+
+  var blogBreadcrumb = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Guides & Blog', item: pageUrl }
+    ]
+  };
+  html = html.replace('</head>', jsonLdTag('jsonld-breadcrumb', blogBreadcrumb) + '\n</head>');
+
+  // Inject SEO CSS
+  html = html.replace('    </style>', SEO_CSS + '    </style>');
+
+  // Build blog listing body
+  var body = '\n    <!-- SEO Pre-rendered Blog Listing -->\n';
+  body += '    <div id="seo-content">\n';
+  body += '      <nav class="seo-breadcrumb" aria-label="Breadcrumb">\n';
+  body += '        <a href="/">Home</a> &rsaquo; <span>Guides &amp; Blog</span>\n';
+  body += '      </nav>\n\n';
+  body += '      <h1>Guides &amp; Articles</h1>\n';
+  body += '      <p class="seo-intro">Expert guides on personal finance, tax planning, health metrics, and more. Learn how to make the most of our calculators with practical tips, worked examples, and in-depth explanations.</p>\n\n';
+
+  // Blog cards grid
+  body += '      <div class="seo-calc-grid">\n';
+  BLOG_POSTS.forEach(function(post) {
+    var desc = post.desc || '';
+    if (desc.length > 120) desc = desc.substring(0, 117) + '...';
+    body += '        <a href="/blog/' + post.slug + '" class="seo-calc-card">\n';
+    body += '          <strong>' + post.title + '</strong>\n';
+    body += '          <span>' + desc + '</span>\n';
+    body += '        </a>\n';
+  });
+  body += '      </div>\n';
+  body += '    </div>\n';
+
+  // Replace body placeholder
+  html = html.replace(
+    /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
+    body
+  );
+
+  // Update footer
+  if (UPDATED_FOOTER) {
+    html = html.replace(
+      /    <!-- ═══ FOOTER ═══ -->[\s\S]*?<\/footer>/,
+      UPDATED_FOOTER
+    );
+  }
+
+  var outFile = path.join(ROOT, 'blog.html');
+  fs.writeFileSync(outFile, html, 'utf8');
+  console.log('  ✓  blog.html (listing page with ' + BLOG_POSTS.length + ' posts)\n');
+}
+
 // ── EXPORTS / MAIN ──────────────────────────────────────────────────────────
 module.exports = {
   generate: generate,
   generateCategories: generateCategories,
   generateAllRegistryCalcs: generateAllRegistryCalcs,
   generateBlogPages: generateBlogPages,
+  generateBlogListingPage: generateBlogListingPage,
   CALCULATORS: CALCULATORS,
   CATEGORIES: CATEGORIES
 };
@@ -1093,4 +1209,8 @@ generateCategories();
 console.log('📝 Pre-rendering blog pages...\n');
 generateBlogPages();
 
+console.log('📝 Pre-rendering blog listing page...\n');
+generateBlogListingPage();
+
 console.log('✅ Pre-render complete.\n');
+

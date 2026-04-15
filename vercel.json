@@ -2197,6 +2197,16 @@
       ],
       "destination": "/scientific-calculator",
       "permanent": true
+    },
+    {
+      "source": "/nsccalculator-calculator",
+      "destination": "/nsc-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/apycalculator-calculator",
+      "destination": "/apy-calculator",
+      "statusCode": 301
     }
   ],
   "rewrites": [
@@ -2869,12 +2879,12 @@
       "destination": "/elssreturns-calculator.html"
     },
     {
-      "source": "/nsccalculator-calculator",
-      "destination": "/nsccalculator-calculator.html"
+      "source": "/nsc-calculator",
+      "destination": "/nsc-calculator.html"
     },
     {
-      "source": "/apycalculator-calculator",
-      "destination": "/apycalculator-calculator.html"
+      "source": "/apy-calculator",
+      "destination": "/apy-calculator.html"
     },
     {
       "source": "/brokerage-calculator",
@@ -3783,6 +3793,10 @@
     {
       "source": "/blog/travel-budget-calculator-trip-expenses",
       "destination": "/blog/travel-budget-calculator-trip-expenses.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
     },
     {
       "source": "/blog/:path*",

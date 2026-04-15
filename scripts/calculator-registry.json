@@ -1183,15 +1183,15 @@
     "name": "ELSS Returns Calculator"
   },
   {
-    "id": "nsccalculator",
-    "slug": "nsccalculator-calculator",
+    "id": "nsc",
+    "slug": "nsc-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "NSC Calculator"
   },
   {
-    "id": "apycalculator",
-    "slug": "apycalculator-calculator",
+    "id": "apy",
+    "slug": "apy-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "APY Calculator"

@@ -81,7 +81,7 @@ var SEO_CONTENT_TOP50 = [
     },
     faqs: [
       { q: 'What is SIP?', a: 'SIP (Systematic Investment Plan) lets you invest a fixed amount monthly in mutual funds. It leverages rupee-cost averaging &mdash; buying more units when prices fall, fewer when high.' },
-      { q: 'How much can &#8377;5,000/month grow in 20 years?', a: 'At 12% annual returns, &#8377;5,000/month for 20 years becomes approximately &#8377;49.5 lakhs. Your &#8377;12 lakh investment grows nearly 4x through compounding.' },
+      { q: 'How much can &#8377;5,000/month grow in 20 years?', a: 'At 12% annual returns, &#8377;5,000/month for 20 years becomes approximately &#8377;50 lakhs (&#8377;49,95,740 to be precise). Your &#8377;12 lakh investment grows nearly 4x through compounding.' },
       { q: 'Is SIP better than a lumpsum investment?', a: 'SIP outperforms lumpsum during volatile markets via rupee-cost averaging. Lumpsum can outperform in consistently rising markets. SIP is safer for most investors.' }
     ]
   },
@@ -190,12 +190,12 @@ var SEO_CONTENT_TOP50 = [
     desc: 'Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free income tax calculator for salaried and business income.',
     whatItDoes: 'The Income Tax Calculator computes your total tax liability for FY 2025-26 under both old and new tax regimes. It factors in all major deductions and shows a slab-wise breakdown of your tax.',
     howCalculated: 'Tax is calculated by applying progressive slab rates to your taxable income (gross income minus eligible deductions). A 4% Health &amp; Education Cess is added to the computed tax. Surcharge applies for income above &#8377;50 lakhs.',
-    workedExample: 'For annual income &#8377;12,00,000 under new regime: Up to &#8377;3L = &#8377;0, &#8377;3&ndash;7L = &#8377;20,000 (5%), &#8377;7&ndash;10L = &#8377;30,000 (10%), &#8377;10&ndash;12L = &#8377;30,000 (15%). Total tax = &#8377;80,000 + 4% cess = &#8377;83,200.',
+    workedExample: 'For annual income &#8377;15,00,000 under new regime (after &#8377;75,000 standard deduction, taxable income = &#8377;14,25,000): Up to &#8377;4L = &#8377;0, &#8377;4&ndash;8L = &#8377;20,000 (5%), &#8377;8&ndash;12L = &#8377;40,000 (10%), &#8377;12&ndash;14.25L = &#8377;33,750 (15%). Total tax = &#8377;93,750 + 4% cess = &#8377;97,500. Note: salaried individuals with gross income up to &#8377;12,75,000 pay zero tax under the new regime due to the Section 87A rebate.',
     commonMistakes: [
       'Confusing financial year with assessment year &mdash; FY 2025-26 (income earned) is assessed in AY 2026-27 (tax filed).',
       'Not claiming all eligible deductions under the old regime &mdash; many people miss NPS (80CCD), education loan interest (80E), or medical insurance (80D).',
       'Forgetting to add 4% Health &amp; Education Cess on top of the calculated tax amount.',
-      'Ignoring the rebate under Section 87A &mdash; under the new regime, no tax is payable if taxable income is up to &#8377;12 lakhs (after standard deduction).'
+      'Ignoring the Section 87A rebate &mdash; under the new regime, salaried individuals with gross income up to &#8377;12,75,000 (taxable income up to &#8377;12 lakhs after &#8377;75,000 standard deduction) pay zero tax.'
     ],
     useCases: ['Annual tax liability estimation', 'Salary restructuring for tax efficiency', '80C investment planning', 'Advance tax calculation'],
     howTo: {

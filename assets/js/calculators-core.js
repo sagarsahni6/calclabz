@@ -792,7 +792,7 @@ elssreturns: {
         tips:["ELSS has the shortest lock-in (3 years) among 80C instruments","Max ₹1.5 lakh/year deduction under Section 80C","LTCG above ₹1.25 lakh taxed at 12.5% (FY 2025-26)"]
     },
 
-nsccalculator: {
+nsc: {
         name:"NSC Calculator", desc:"National Savings Certificate maturity & tax benefit",
         icon:"fa-stamp", cat:"finance",
         inputs:[
@@ -805,7 +805,7 @@ nsccalculator: {
         tips:["NSC qualifies for Section 80C deduction","Interest is compounded annually but paid at maturity","Accrued interest (except last year) also qualifies for 80C"]
     },
 
-apycalculator: {
+apy: {
         name:"APY Calculator", desc:"Atal Pension Yojana — monthly contribution & pension estimate",
         icon:"fa-umbrella", cat:"finance",
         inputs:[

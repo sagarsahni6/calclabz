@@ -672,12 +672,12 @@
       "destination": "/elssreturns-calculator.html"
     },
     {
-      "source": "/nsccalculator-calculator",
-      "destination": "/nsccalculator-calculator.html"
+      "source": "/nsc-calculator",
+      "destination": "/nsc-calculator.html"
     },
     {
-      "source": "/apycalculator-calculator",
-      "destination": "/apycalculator-calculator.html"
+      "source": "/apy-calculator",
+      "destination": "/apy-calculator.html"
     },
     {
       "source": "/brokerage-calculator",
@@ -1589,7 +1589,7 @@
     },
     {
       "source": "/blog",
-      "destination": "/index.html"
+      "destination": "/blog.html"
     }
   ],
   "headers": [

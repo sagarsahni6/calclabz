@@ -274,7 +274,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
             <a href="/" class="qbtn active" id="qHome" aria-current="page"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
             <button class="qbtn" id="qFav"><i class="fas fa-star" aria-hidden="true"></i>Favorites</button>
             <button class="qbtn" id="qDash"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
-            <a href="/blog" class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</a>
+            <button class="qbtn" id="qBlog"><i class="fas fa-newspaper" aria-hidden="true"></i>Guides</button>
         </div>
         <div id="catList">
             <!-- Static category links for crawlers — JS replaces this at runtime -->
@@ -314,11 +314,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter your values in the input fields above</li>
-          <li>Adjust any optional parameters as needed</li>
-          <li>Results are calculated automatically as you type</li>
-          <li>Review the breakdown and charts for detailed insights</li>
+          <li>Enter the total GST-inclusive amount (the price you paid or see on the bill)</li>
+          <li>Select the applicable GST slab — 5%, 12%, 18%, or 28%</li>
+          <li>View the base price before GST, the GST amount, and the CGST/SGST split</li>
+          <li>Use the result for invoice verification, input tax credit claims, or price comparison</li>
         </ol>
+      </section>
+
+      <section class="seo-section">
+        <h2>How Pre-GST Price Calculator is Calculated</h2>
+        <p>The base price is calculated using the formula: Pre-GST Price = GST-Inclusive Price ÷ (1 + GST Rate/100). For example, at 18% GST, the divisor is 1.18. The GST amount is then split equally into CGST and SGST for intra-state transactions, or shown as IGST for inter-state.</p>
       </section>
 
       <section class="seo-faq">
@@ -346,7 +351,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       <div class="seo-trust">
-        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual amounts may vary based on bank policies, processing fees, and other factors. Consult a qualified financial advisor before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Actual outcomes may vary based on applicable rates, policies, and individual circumstances. Consult a qualified financial advisor or chartered accountant before making financial decisions. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>
         <p><strong>Last updated:</strong> April 2026</p>
       </div>
@@ -360,7 +365,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         <button class="mnav-btn active" id="mnavHome" aria-label="Home page"><i class="fas fa-house" aria-hidden="true"></i>Home</button>
         <button class="mnav-btn" id="mnavFav" aria-label="My favorites"><i class="fas fa-star" aria-hidden="true"></i>Favs</button>
         <button class="mnav-btn" id="mnav-search-btn" aria-label="Search calculators"><i class="fas fa-search" aria-hidden="true"></i>Search</button>
-        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Stats</button>
+        <button class="mnav-btn" id="mnavDash" aria-label="Stats dashboard"><i class="fas fa-chart-line" aria-hidden="true"></i>Dashboard</button>
         <button class="mnav-btn" id="mnav-theme-btn" aria-label="Toggle light or dark theme"><i class="fas fa-moon" aria-hidden="true"></i>Theme</button>
     </nav>
 
