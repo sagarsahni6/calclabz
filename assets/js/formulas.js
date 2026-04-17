@@ -22,9 +22,9 @@ fd: {
     explanation: "Compound interest formula for fixed deposits. Indian banks typically compound quarterly."
 },
 ppf: {
-    formula: "FV = P × ((1+r)ⁿ − 1) / r",
+    formula: "FV = P × ((1+r)ⁿ − 1) / r × (1+r)",
     variables: "P = Annual deposit | r = Annual interest rate | n = Number of years (15)",
-    explanation: "Future value of annuity. PPF compounds annually with a 15-year lock-in under Section 80C."
+    explanation: "Future value of annuity-due (deposits at beginning of year). PPF compounds annually with a 15-year lock-in under Section 80C. The extra (1+r) factor accounts for beginning-of-period deposits."
 },
 gst: {
     formula: "GST = Base Price × Rate/100 | Total = Base + GST",

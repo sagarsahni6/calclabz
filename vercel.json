@@ -2207,6 +2207,161 @@
       "source": "/apycalculator-calculator",
       "destination": "/apy-calculator",
       "statusCode": 301
+    },
+    {
+      "source": "/carloan-calculator",
+      "destination": "/car-loan-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/compoundinterest-calculator",
+      "destination": "/compound-interest-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/simpleinterest-calculator",
+      "destination": "/simple-interest-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/incometax-calculator",
+      "destination": "/income-tax-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/capitalgains-calculator",
+      "destination": "/capital-gains-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/creditcard-calculator",
+      "destination": "/credit-card-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/taxregime-calculator",
+      "destination": "/tax-regime-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/stepupsip-calculator",
+      "destination": "/step-up-sip-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/savingsgoal-calculator",
+      "destination": "/savings-goal-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/goldinvestment-calculator",
+      "destination": "/gold-investment-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/dividendyield-calculator",
+      "destination": "/dividend-yield-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/stockreturn-calculator",
+      "destination": "/stock-return-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/loaneligibility-calculator",
+      "destination": "/loan-eligibility-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/advancetax-calculator",
+      "destination": "/advance-tax-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/balancetransfer-calculator",
+      "destination": "/balance-transfer-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/loanaffordability-calculator",
+      "destination": "/loan-affordability-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/bodyfat-calculator",
+      "destination": "/body-fat-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/bloodpressure-calculator",
+      "destination": "/blood-pressure-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/proteinintake-calculator",
+      "destination": "/protein-intake-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/smokingcost-calculator",
+      "destination": "/smoking-cost-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/childheight-calculator",
+      "destination": "/child-height-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/diabetesrisk-calculator",
+      "destination": "/diabetes-risk-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/caloriedeficit-calculator",
+      "destination": "/calorie-deficit-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/inhandsalary-calculator",
+      "destination": "/in-hand-salary-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/ctcbreakup-calculator",
+      "destination": "/ctc-breakup-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/retirementcorpus-calculator",
+      "destination": "/retirement-corpus-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/taxsaving-calculator",
+      "destination": "/tax-saving-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/solarpanel-calculator",
+      "destination": "/solar-panel-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/constructioncost-calculator",
+      "destination": "/construction-cost-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/homerenovation-calculator",
+      "destination": "/home-renovation-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/stampdutycalc-calculator",
+      "destination": "/stamp-duty-calculator",
+      "statusCode": 301
     }
   ],
   "rewrites": [

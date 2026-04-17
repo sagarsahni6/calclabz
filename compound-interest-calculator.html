@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ═══ PRIMARY META ═══ -->
-    <meta name="description" content="Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.">
+    <meta name="description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.">
     <meta name="author" content="Calc Labz Team">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-IN">
@@ -17,9 +17,9 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Calc Labz">
     <meta property="og:locale" content="en_IN">
-    <meta property="og:url" content="https://calclabz.com/creditcard-calculator">
-    <meta property="og:title" content="Credit Card Interest Calculator: Payoff &amp; Minimum Payment | Calc Labz">
-    <meta property="og:description" content="Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.">
+    <meta property="og:url" content="https://calclabz.com/compound-interest-calculator">
+    <meta property="og:title" content="Compound Interest Calculator: CI with Multiple Frequencies | Calc Labz">
+    <meta property="og:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.">
     <meta property="og:image" content="https://calclabz.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
     <!-- ═══ TWITTER CARD ═══ -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@calclabz">
-    <meta name="twitter:title" content="Credit Card Interest Calculator: Payoff &amp; Minimum Payment | Calc Labz">
-    <meta name="twitter:description" content="Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.">
+    <meta name="twitter:title" content="Compound Interest Calculator: CI with Multiple Frequencies | Calc Labz">
+    <meta name="twitter:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.">
     <meta name="twitter:image" content="https://calclabz.com/og-image.png">
     <meta name="twitter:image:alt" content="Calc Labz — 300+ Free Online Calculators">
 
@@ -43,12 +43,12 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- ═══ CANONICAL & HREFLANG ═══ -->
-    <link rel="canonical" href="https://calclabz.com/creditcard-calculator">
+    <link rel="canonical" href="https://calclabz.com/compound-interest-calculator">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
 
-    <title>Credit Card Interest Calculator: Payoff &amp; Minimum Payment | Calc Labz</title>
+    <title>Compound Interest Calculator: CI with Multiple Frequencies | Calc Labz</title>
 
     <!-- ═══ DNS PREFETCH ═══ -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -203,24 +203,28 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to Calculate Credit Card Interest",
-  "description": "Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.",
+  "name": "How to Calculate Compound Interest",
+  "description": "Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.",
   "step": [
     {
       "@type": "HowToStep",
-      "text": "Enter your current credit card outstanding balance"
+      "text": "Enter the principal amount"
     },
     {
       "@type": "HowToStep",
-      "text": "Enter the annual interest rate (APR) from your credit card statement"
+      "text": "Enter the annual interest rate"
     },
     {
       "@type": "HowToStep",
-      "text": "Enter your planned monthly payment amount"
+      "text": "Select the compounding frequency (monthly, quarterly, annually)"
     },
     {
       "@type": "HowToStep",
-      "text": "Click Calculate to see payoff timeline, total interest, and minimum payment comparison"
+      "text": "Enter the time period in years"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Click Calculate to see final amount, total compound interest, and growth chart"
     }
   ]
 }
@@ -232,18 +236,18 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is credit card APR?",
+      "name": "What is the compound interest formula?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "APR (Annual Percentage Rate) is the yearly interest rate on your credit card. In India, it ranges from 24% to 48%. Monthly rate = APR / 12. Interest applies only if you don't pay the full bill by the due date."
+        "text": "A = P(1 + r/n)^(nt), where A = final amount, P = principal, r = annual rate (decimal), n = compounding frequency per year, t = time in years."
       }
     },
     {
       "@type": "Question",
-      "name": "Is it better to pay minimum or full amount?",
+      "name": "What is the Rule of 72?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Always pay the full amount to avoid interest. If you can't, pay as much as possible above the minimum. Paying only minimum on ₹1L at 42% APR costs you ₹50,000+ in interest."
+        "text": "Divide 72 by your annual return rate to estimate how many years it takes to double your money. At 8% returns, money doubles in 72/8 = 9 years."
       }
     }
   ]
@@ -269,8 +273,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Credit Card Interest Calculator",
-      "item": "https://calclabz.com/creditcard-calculator"
+      "name": "Compound Interest Calculator",
+      "item": "https://calclabz.com/compound-interest-calculator"
     }
   ]
 }
@@ -279,8 +283,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Credit Card Interest Calculator",
-  "description": "Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.",
+  "name": "Compound Interest Calculator",
+  "description": "Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.",
   "applicationCategory": "UtilitiesApplication",
   "applicationSubCategory": "Calculator",
   "operatingSystem": "All",
@@ -343,63 +347,64 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- SEO Pre-rendered Content — visible to crawlers; JS app hydrates over this -->
     <div id="seo-content">
       <nav class="seo-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> &rsaquo; <a href="/finance-calculators">Finance Calculators</a> &rsaquo; <span>Credit Card Interest Calculator</span>
+        <a href="/">Home</a> &rsaquo; <a href="/finance-calculators">Finance Calculators</a> &rsaquo; <span>Compound Interest Calculator</span>
       </nav>
 
-      <h1>Credit Card Interest Calculator</h1>
-      <p class="seo-intro">Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.</p>
+      <h1>Compound Interest Calculator</h1>
+      <p class="seo-intro">Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.</p>
 
       <section class="seo-section">
-        <h2>What is Credit Card Interest Calculator?</h2>
-        <p>The Credit Card Calculator shows the true cost of revolving credit card debt. It calculates monthly interest, compares minimum-only payments vs fixed payments, and shows how long it takes to become debt-free with each approach.</p>
+        <h2>What is Compound Interest Calculator?</h2>
+        <p>The Compound Interest Calculator shows how money grows when interest earns interest. You can compare different compounding frequencies (daily, monthly, quarterly, annually) to see how each affects your final returns.</p>
       </section>
 
       <section class="seo-section">
-        <h2>How to Calculate Credit Card Interest</h2>
+        <h2>How to Calculate Compound Interest</h2>
         <ol>
-          <li>Enter your current credit card outstanding balance</li>
-          <li>Enter the annual interest rate (APR) from your credit card statement</li>
-          <li>Enter your planned monthly payment amount</li>
-          <li>Click Calculate to see payoff timeline, total interest, and minimum payment comparison</li>
+          <li>Enter the principal amount</li>
+          <li>Enter the annual interest rate</li>
+          <li>Select the compounding frequency (monthly, quarterly, annually)</li>
+          <li>Enter the time period in years</li>
+          <li>Click Calculate to see final amount, total compound interest, and growth chart</li>
         </ol>
       </section>
 
       <section class="seo-section">
-        <h2>How Credit Card Interest Calculator is Calculated</h2>
-        <p><strong>Monthly Interest = Outstanding Balance &times; APR / 12 / 100</strong>. Minimum payment is typically 5% of outstanding or &#8377;200 (whichever is higher). Interest compounds monthly on the unpaid balance.</p>
+        <h2>How Compound Interest Calculator is Calculated</h2>
+        <p><strong>A = P &times; (1 + r/n)<sup>(n&times;t)</sup></strong>, where A = final amount, P = principal, r = annual interest rate as a decimal, n = number of times interest compounds per year, t = time in years. Compound Interest = A &minus; P.</p>
         <h3>Worked Example</h3>
-        <p>&#8377;1,00,000 balance at 42% APR, minimum payment only: It takes approximately 36 months to pay off, with total interest of &#8377;52,000+. Paying &#8377;10,000/month instead: paid off in 12 months with &#8377;23,000 interest.</p>
+        <p>&#8377;1,00,000 at 8% for 10 years with quarterly compounding: A = 1,00,000 &times; (1 + 0.08/4)^40 = &#8377;2,20,804. CI = &#8377;1,20,804. Compare with simple interest: &#8377;80,000 &mdash; compounding earned &#8377;40,804 extra.</p>
       </section>
 
       <section class="seo-section">
         <h2>Common Use Cases</h2>
         <ul>
-          <li>Understanding true cost of credit card debt</li>
-          <li>Planning debt payoff strategy</li>
-          <li>Comparing minimum payment vs fixed payment</li>
-          <li>Deciding on EMI conversion for large purchases</li>
+          <li>Understanding how compounding grows wealth</li>
+          <li>Comparing bank FD compounding options</li>
+          <li>Teaching the Rule of 72</li>
+          <li>Investment growth projections</li>
         </ul>
       </section>
 
       <section class="seo-section">
         <h2>Common Mistakes to Avoid</h2>
         <ul>
-          <li>Paying only the minimum amount &mdash; at 42% APR, paying minimum only on &#8377;1 lakh can cost &#8377;50,000+ in interest over 3 years.</li>
-          <li>Not knowing your APR &mdash; credit card interest rates in India range from 24% to 48% per annum, among the highest lending rates.</li>
-          <li>Making new purchases while carrying a balance &mdash; you lose the interest-free period on all transactions when you carry forward a balance.</li>
-          <li>Converting to EMI without checking the rate &mdash; some credit card EMI conversions charge 12&ndash;18% vs the standard 42% revolving rate, which is a better deal.</li>
+          <li>Confusing the annual rate with the rate per compounding period &mdash; an 8% annual rate compounds as 2% per quarter, not 8%.</li>
+          <li>Assuming more frequent compounding always makes a huge difference &mdash; the marginal gain from daily vs monthly compounding is small for typical rates.</li>
+          <li>Using nominal rate instead of effective annual rate when comparing investments with different compounding frequencies.</li>
+          <li>Forgetting that Rule of 72 gives only an approximation &mdash; 72 / rate gives the approximate years to double, but is less accurate above 15%.</li>
         </ul>
       </section>
 
       <section class="seo-faq">
         <h2>Frequently Asked Questions</h2>
         <details>
-          <summary>What is credit card APR?</summary>
-          <p>APR (Annual Percentage Rate) is the yearly interest rate on your credit card. In India, it ranges from 24% to 48%. Monthly rate = APR / 12. Interest applies only if you don't pay the full bill by the due date.</p>
+          <summary>What is the compound interest formula?</summary>
+          <p>A = P(1 + r/n)^(nt), where A = final amount, P = principal, r = annual rate (decimal), n = compounding frequency per year, t = time in years.</p>
         </details>
         <details>
-          <summary>Is it better to pay minimum or full amount?</summary>
-          <p>Always pay the full amount to avoid interest. If you can't, pay as much as possible above the minimum. Paying only minimum on &#8377;1L at 42% APR costs you &#8377;50,000+ in interest.</p>
+          <summary>What is the Rule of 72?</summary>
+          <p>Divide 72 by your annual return rate to estimate how many years it takes to double your money. At 8% returns, money doubles in 72/8 = 9 years.</p>
         </details>
       </section>
 

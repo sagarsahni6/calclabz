@@ -1,21 +1,21 @@
 [
   {
     "id": "stampdutycalc",
-    "slug": "stampdutycalc-calculator",
+    "slug": "stamp-duty-calculator",
     "cat": "construction",
     "priority": "0.7",
     "name": "Stamp Duty Calculator"
   },
   {
     "id": "constructioncost",
-    "slug": "constructioncost-calculator",
+    "slug": "construction-cost-calculator",
     "cat": "construction",
     "priority": "0.7",
     "name": "Construction Cost Calculator"
   },
   {
     "id": "homerenovation",
-    "slug": "homerenovation-calculator",
+    "slug": "home-renovation-calculator",
     "cat": "construction",
     "priority": "0.6",
     "name": "Home Renovation Calculator"
@@ -71,7 +71,7 @@
   },
   {
     "id": "solarpanel",
-    "slug": "solarpanel-calculator",
+    "slug": "solar-panel-calculator",
     "cat": "construction",
     "priority": "0.6",
     "name": "Solar Panel Calculator"
@@ -404,7 +404,7 @@
   },
   {
     "id": "loanaffordability",
-    "slug": "loanaffordability-calculator",
+    "slug": "loan-affordability-calculator",
     "cat": "everyday",
     "priority": "0.7",
     "name": "Loan Affordability Calculator"
@@ -647,7 +647,7 @@
   },
   {
     "id": "taxregime",
-    "slug": "taxregime-calculator",
+    "slug": "tax-regime-calculator",
     "cat": "finance",
     "priority": "0.9",
     "prerender": true,
@@ -658,7 +658,7 @@
   },
   {
     "id": "compoundinterest",
-    "slug": "compoundinterest-calculator",
+    "slug": "compound-interest-calculator",
     "cat": "finance",
     "priority": "0.8",
     "prerender": true,
@@ -669,7 +669,7 @@
   },
   {
     "id": "incometax",
-    "slug": "incometax-calculator",
+    "slug": "income-tax-calculator",
     "cat": "finance",
     "priority": "0.8",
     "prerender": true,
@@ -719,7 +719,7 @@
   },
   {
     "id": "inhandsalary",
-    "slug": "inhandsalary-calculator",
+    "slug": "in-hand-salary-calculator",
     "cat": "finance",
     "priority": "0.8",
     "prerender": true,
@@ -736,7 +736,7 @@
   },
   {
     "id": "simpleinterest",
-    "slug": "simpleinterest-calculator",
+    "slug": "simple-interest-calculator",
     "cat": "finance",
     "priority": "0.7",
     "prerender": true,
@@ -764,7 +764,7 @@
   },
   {
     "id": "carloan",
-    "slug": "carloan-calculator",
+    "slug": "car-loan-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Car Loan EMI Calculator"
@@ -827,7 +827,7 @@
   },
   {
     "id": "creditcard",
-    "slug": "creditcard-calculator",
+    "slug": "credit-card-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Credit Card Payoff Calculator"
@@ -841,21 +841,21 @@
   },
   {
     "id": "stepupsip",
-    "slug": "stepupsip-calculator",
+    "slug": "step-up-sip-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Step-up SIP Calculator"
   },
   {
     "id": "savingsgoal",
-    "slug": "savingsgoal-calculator",
+    "slug": "savings-goal-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Savings Goal Calculator"
   },
   {
     "id": "capitalgains",
-    "slug": "capitalgains-calculator",
+    "slug": "capital-gains-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Capital Gains Tax Calculator"
@@ -876,7 +876,7 @@
   },
   {
     "id": "loaneligibility",
-    "slug": "loaneligibility-calculator",
+    "slug": "loan-eligibility-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Loan Eligibility Calculator"
@@ -890,7 +890,7 @@
   },
   {
     "id": "retirementcorpus",
-    "slug": "retirementcorpus-calculator",
+    "slug": "retirement-corpus-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Retirement Corpus Calculator"
@@ -904,21 +904,21 @@
   },
   {
     "id": "taxsaving",
-    "slug": "taxsaving-calculator",
+    "slug": "tax-saving-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Tax Saving Calculator"
   },
   {
     "id": "advancetax",
-    "slug": "advancetax-calculator",
+    "slug": "advance-tax-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "Advance Tax Calculator"
   },
   {
     "id": "ctcbreakup",
-    "slug": "ctcbreakup-calculator",
+    "slug": "ctc-breakup-calculator",
     "cat": "finance",
     "priority": "0.7",
     "name": "CTC Breakup Calculator"
@@ -1121,14 +1121,14 @@
   },
   {
     "id": "dividendyield",
-    "slug": "dividendyield-calculator",
+    "slug": "dividend-yield-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "Dividend Yield Calculator"
   },
   {
     "id": "goldinvestment",
-    "slug": "goldinvestment-calculator",
+    "slug": "gold-investment-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "Gold Investment Calculator"
@@ -1142,7 +1142,7 @@
   },
   {
     "id": "stockreturn",
-    "slug": "stockreturn-calculator",
+    "slug": "stock-return-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "Stock Return Calculator"
@@ -1163,7 +1163,7 @@
   },
   {
     "id": "balancetransfer",
-    "slug": "balancetransfer-calculator",
+    "slug": "balance-transfer-calculator",
     "cat": "finance",
     "priority": "0.6",
     "name": "Balance Transfer Calculator"
@@ -1302,7 +1302,7 @@
   },
   {
     "id": "bodyfat",
-    "slug": "bodyfat-calculator",
+    "slug": "body-fat-calculator",
     "cat": "health",
     "priority": "0.7",
     "name": "Body Fat Calculator"
@@ -1323,14 +1323,14 @@
   },
   {
     "id": "bloodpressure",
-    "slug": "bloodpressure-calculator",
+    "slug": "blood-pressure-calculator",
     "cat": "health",
     "priority": "0.7",
     "name": "Blood Pressure Calculator"
   },
   {
     "id": "proteinintake",
-    "slug": "proteinintake-calculator",
+    "slug": "protein-intake-calculator",
     "cat": "health",
     "priority": "0.7",
     "name": "Protein Intake Calculator"
@@ -1365,21 +1365,21 @@
   },
   {
     "id": "smokingcost",
-    "slug": "smokingcost-calculator",
+    "slug": "smoking-cost-calculator",
     "cat": "health",
     "priority": "0.6",
     "name": "Smoking Cost Calculator"
   },
   {
     "id": "childheight",
-    "slug": "childheight-calculator",
+    "slug": "child-height-calculator",
     "cat": "health",
     "priority": "0.6",
     "name": "Child Height Predictor"
   },
   {
     "id": "diabetesrisk",
-    "slug": "diabetesrisk-calculator",
+    "slug": "diabetes-risk-calculator",
     "cat": "health",
     "priority": "0.6",
     "name": "Diabetes Risk Calculator"
@@ -1407,7 +1407,7 @@
   },
   {
     "id": "caloriedeficit",
-    "slug": "caloriedeficit-calculator",
+    "slug": "calorie-deficit-calculator",
     "cat": "health",
     "priority": "0.6",
     "name": "Calorie Deficit Calculator"

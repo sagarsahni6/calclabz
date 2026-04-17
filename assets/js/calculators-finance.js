@@ -8,7 +8,7 @@
 
   if(DB['emi'] && DB['emi'].calc===null) DB['emi'].calc=function(v){
             const P=v.principal,r=v.rate/12/100,n=v.tenure;
-            const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+            const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
             const total=emi*n, interest=total-P;
             return {
                 main:{label:"Monthly EMI",value:"₹"+Math.round(emi).toLocaleString()},
@@ -217,7 +217,7 @@
 
   if(DB['mortgage'] && DB['mortgage'].calc===null) DB['mortgage'].calc=function(v){
             const P=v.amount,r=v.rate/12/100,n=v.term*12;
-            const pmt=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+            const pmt=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
             const total=pmt*n, interest=total-P;
             return {
                 main:{label:"Monthly Payment",value:"₹"+Math.round(pmt).toLocaleString()},
@@ -231,7 +231,7 @@
 
   if(DB['carloan'] && DB['carloan'].calc===null) DB['carloan'].calc=function(v){
             const P=v.amount,r=v.rate/12/100,n=v.tenure*12;
-            const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+            const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
             const total=emi*n, interest=total-P;
             return {
                 main:{label:"Monthly EMI",value:"₹"+Math.round(emi).toLocaleString()},

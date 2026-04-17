@@ -96,13 +96,45 @@ function ensureCalcLoaded(calcId, callback) {
 // Maps 'emi-calculator' → 'emi', 'bmi-calculator' → 'bmi', etc.
 var _calcSlugMap = {};
 // Redirect map: old slugs from renamed calculator IDs → new canonical ID
+// Also maps new hyphenated slugs → internal DB keys
 var _slugRedirects = {
-    'bodyfat-calculator': 'bodyfat',       // was bodyFat (duplicate removed)
-    'incometax-calculator': 'incometax',   // was incomeTax (renamed)
-    'waisthip-calculator': 'waisthip',     // was waistHip (renamed)
-    'lungcapacity-calculator': 'lungcapacity', // was lungCapacity (renamed)
-    'agenextbday-calculator': 'agenextbday',   // was ageNextBday (renamed)
-    'calories-food-calculator': 'caloriesfood' // was calories_food (renamed)
+    // Legacy camelCase renames
+    'waisthip-calculator': 'waisthip',
+    'lungcapacity-calculator': 'lungcapacity',
+    'agenextbday-calculator': 'agenextbday',
+    'calories-food-calculator': 'caloriesfood',
+    // Hyphenated slug mappings (new canonical URLs → DB keys)
+    'car-loan-calculator': 'carloan',
+    'compound-interest-calculator': 'compoundinterest',
+    'simple-interest-calculator': 'simpleinterest',
+    'income-tax-calculator': 'incometax',
+    'capital-gains-calculator': 'capitalgains',
+    'credit-card-calculator': 'creditcard',
+    'tax-regime-calculator': 'taxregime',
+    'step-up-sip-calculator': 'stepupsip',
+    'savings-goal-calculator': 'savingsgoal',
+    'gold-investment-calculator': 'goldinvestment',
+    'dividend-yield-calculator': 'dividendyield',
+    'stock-return-calculator': 'stockreturn',
+    'loan-eligibility-calculator': 'loaneligibility',
+    'advance-tax-calculator': 'advancetax',
+    'balance-transfer-calculator': 'balancetransfer',
+    'loan-affordability-calculator': 'loanaffordability',
+    'body-fat-calculator': 'bodyfat',
+    'blood-pressure-calculator': 'bloodpressure',
+    'protein-intake-calculator': 'proteinintake',
+    'smoking-cost-calculator': 'smokingcost',
+    'child-height-calculator': 'childheight',
+    'diabetes-risk-calculator': 'diabetesrisk',
+    'calorie-deficit-calculator': 'caloriedeficit',
+    'in-hand-salary-calculator': 'inhandsalary',
+    'ctc-breakup-calculator': 'ctcbreakup',
+    'retirement-corpus-calculator': 'retirementcorpus',
+    'tax-saving-calculator': 'taxsaving',
+    'solar-panel-calculator': 'solarpanel',
+    'construction-cost-calculator': 'constructioncost',
+    'home-renovation-calculator': 'homerenovation',
+    'stamp-duty-calculator': 'stampdutycalc'
 };
 (function () {
     Object.keys(DB).forEach(function (id) {
