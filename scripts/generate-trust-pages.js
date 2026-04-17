@@ -82,7 +82,7 @@ var UPDATED_FOOTER = `    <!-- ═══ FOOTER ═══ -->
                     <a href="/sip-calculator" class="footer-link"><i class="fas fa-seedling" aria-hidden="true"></i>SIP Calculator</a>
                     <a href="/gst-calculator" class="footer-link"><i class="fas fa-receipt" aria-hidden="true"></i>GST Calculator</a>
                     <a href="/bmi-calculator" class="footer-link"><i class="fas fa-heartbeat" aria-hidden="true"></i>BMI Calculator</a>
-                    <a href="/incometax-calculator" class="footer-link"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>Income Tax Calculator</a>
+                    <a href="/income-tax-calculator" class="footer-link"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>Income Tax Calculator</a>
                 </div>
             </div>
             <div class="footer-col">

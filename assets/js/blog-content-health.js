@@ -29,7 +29,7 @@ BLOG_CONTENT['body-fat-guide'] = {
     '<tr><td>Skinfold calipers</td><td>\u00b13%</td><td>\u20b9200\u2013500</td><td>Gym, home</td></tr>' +
     '<tr><td>Bioelectrical impedance (scale)</td><td>\u00b14\u20138%</td><td>\u20b91,000\u20135,000</td><td>Home</td></tr>' +
     '</tbody></table>' +
-    '<p>The Navy method (waist and neck measurements) is the most accessible and reasonably accurate option. Use the <a href="/bodyfat-calculator">body fat calculator</a> to estimate yours now. For tracking trends, consistency matters more than absolute accuracy \u2014 measure at the same time, same conditions each week.</p>' +
+    '<p>The Navy method (waist and neck measurements) is the most accessible and reasonably accurate option. Use the <a href="/body-fat-calculator">body fat calculator</a> to estimate yours now. For tracking trends, consistency matters more than absolute accuracy \u2014 measure at the same time, same conditions each week.</p>' +
     '<h2>Reducing Body Fat</h2>' +
     '<ul>' +
     '<li>Create a moderate <a href="/blog/calorie-deficit-calculator-weight-loss-plan">calorie deficit</a> (300\u2013500 cal/day)</li>' +
@@ -350,7 +350,7 @@ BLOG_CONTENT['smoking-cost-guide'] = {
     '<li><strong>Year 1:</strong> \u20b91.28 lakh saved + lung function improves 10%</li>' +
     '<li><strong>Year 5:</strong> \u20b96.4 lakh saved + stroke risk equals non-smoker\u2019s</li>' +
     '</ul>' +
-    '<p>Use the <a href="/smokingcost-calculator">smoking cost calculator</a> to see your personal savings timeline if you quit today.</p>',
+    '<p>Use the <a href="/smoking-cost-calculator">smoking cost calculator</a> to see your personal savings timeline if you quit today.</p>',
   cta: { text: 'Calculate smoking cost', calc: 'smokingcost', cat: 'health' }
 };
 
@@ -378,7 +378,7 @@ BLOG_CONTENT['blood-pressure-guide'] = {
     '<li><strong>Family history:</strong> 2\u00d7 higher risk if a parent has hypertension</li>' +
     '<li><strong>Age:</strong> Risk increases significantly after 35</li>' +
     '</ul>' +
-    '<p>Track your readings with the <a href="/bloodpressure-calculator">blood pressure calculator</a>. Also check your <a href="/blog/heart-rate-zones-calculator-training-guide">heart rate zones</a> for cardio health.</p>' +
+    '<p>Track your readings with the <a href="/blood-pressure-calculator">blood pressure calculator</a>. Also check your <a href="/blog/heart-rate-zones-calculator-training-guide">heart rate zones</a> for cardio health.</p>' +
     '<p><em>Disclaimer: This is general health information, not medical advice. Consult a qualified healthcare professional for diagnosis and treatment.</em></p>',
   cta: { text: 'Check your blood pressure', calc: 'bloodpressure', cat: 'health' }
 };
@@ -440,7 +440,7 @@ BLOG_CONTENT['diabetes-risk-guide'] = {
     '<li>Replace refined carbs with whole grains and millets</li>' +
     '<li>Get fasting glucose and HbA1c tested annually after 35</li>' +
     '</ul>' +
-    '<p>Assess your personal risk with the <a href="/diabetesrisk-calculator">diabetes risk calculator</a>. Track your <a href="/blog/bmi-calculator-india-asian-cutoffs">BMI with Asian cutoffs</a> for better context.</p>' +
+    '<p>Assess your personal risk with the <a href="/diabetes-risk-calculator">diabetes risk calculator</a>. Track your <a href="/blog/bmi-calculator-india-asian-cutoffs">BMI with Asian cutoffs</a> for better context.</p>' +
     '<p><em>Disclaimer: This tool provides a risk estimate, not a diagnosis. Consult a healthcare professional for proper screening.</em></p>',
   cta: { text: 'Check your diabetes risk', calc: 'diabetesrisk', cat: 'health' }
 };
@@ -475,7 +475,7 @@ BLOG_CONTENT['child-height-guide'] = {
     '<li><strong>Physical activity:</strong> Weight-bearing exercise stimulates bone growth</li>' +
     '<li><strong>Chronic illness:</strong> Untreated thyroid issues or celiac disease can stunt growth</li>' +
     '</ul>' +
-    '<p>Estimate your child\u2019s predicted height with the <a href="/childheight-calculator">child height predictor</a>.</p>',
+    '<p>Estimate your child\u2019s predicted height with the <a href="/child-height-calculator">child height predictor</a>.</p>',
   cta: { text: 'Predict adult height', calc: 'childheight', cat: 'health' }
 };
 

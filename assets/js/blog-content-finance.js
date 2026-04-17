@@ -45,7 +45,7 @@ BLOG_CONTENT['in-hand-salary-guide'] = {
     '<p>The biggest deductions for most salaried employees:</p>' +
     '<ul>' +
     '<li><strong>EPF contribution:</strong> 12% of basic from your side, 12% from employer (total 24% of basic locked until retirement). Use the <a href="/epf-calculator">EPF calculator</a> to see your corpus projection.</li>' +
-    '<li><strong>Income tax TDS:</strong> Varies by regime and deductions. Use the <a href="/incometax-calculator">income tax calculator</a> to estimate your exact TDS.</li>' +
+    '<li><strong>Income tax TDS:</strong> Varies by regime and deductions. Use the <a href="/income-tax-calculator">income tax calculator</a> to estimate your exact TDS.</li>' +
     '<li><strong>Professional tax:</strong> \u20b9200/month in most states (max \u20b92,500/year). See our <a href="/professionaltax-calculator">professional tax calculator</a> for state-wise rates.</li>' +
     '</ul>' +
     '<h2>Old Regime vs New Regime Impact on In-Hand Salary</h2>' +
@@ -58,7 +58,7 @@ BLOG_CONTENT['in-hand-salary-guide'] = {
     '<li><strong>Not negotiating structure:</strong> You can sometimes negotiate a lower basic (reducing PF lock-in) for higher special allowance, increasing immediate take-home.</li>' +
     '</ul>' +
     '<h2>When to Use the In-Hand Salary Calculator</h2>' +
-    '<p>Use it when evaluating job offers, planning monthly budgets, or understanding why your bank credit differs from your CTC. Input your CTC, basic salary percentage, city (metro/non-metro), and regime choice to get an accurate breakdown. The <a href="/inhandsalary-calculator">in-hand salary calculator</a> handles PF, professional tax, HRA exemption, and income tax automatically.</p>',
+    '<p>Use it when evaluating job offers, planning monthly budgets, or understanding why your bank credit differs from your CTC. Input your CTC, basic salary percentage, city (metro/non-metro), and regime choice to get an accurate breakdown. The <a href="/in-hand-salary-calculator">in-hand salary calculator</a> handles PF, professional tax, HRA exemption, and income tax automatically.</p>',
   cta: { text: 'Calculate your in-hand salary', calc: 'inhandsalary', cat: 'finance' }
 };
 
@@ -110,7 +110,7 @@ BLOG_CONTENT['hra-guide'] = {
     '<h2>Can You Claim HRA While Paying Home Loan EMI?</h2>' +
     '<p>Yes, but with conditions. If you own a house in one city and rent in another (common for people posted in a different city), you can claim both HRA exemption and home loan tax benefits (Section 24(b) + 80C). However, if you live in the same city where you own a house, claiming HRA becomes difficult to justify during scrutiny. Use our <a href="/hravshomeloan-calculator">HRA vs Home Loan calculator</a> to compare which benefit saves more tax.</p>' +
     '<h2>HRA Under New Tax Regime</h2>' +
-    '<p>Under the new tax regime, <strong>HRA exemption is not available</strong>. This is one of the key reasons people with high rent payments sometimes prefer the old regime. Compare both scenarios using the <a href="/taxregime-calculator">old vs new tax regime calculator</a>.</p>' +
+    '<p>Under the new tax regime, <strong>HRA exemption is not available</strong>. This is one of the key reasons people with high rent payments sometimes prefer the old regime. Compare both scenarios using the <a href="/tax-regime-calculator">old vs new tax regime calculator</a>.</p>' +
     '<h2>Common HRA Mistakes</h2>' +
     '<ul>' +
     '<li>Paying rent to parents without proper documentation (it\u2019s allowed, but the parent must declare the rental income)</li>' +
@@ -223,7 +223,7 @@ BLOG_CONTENT['income-tax-guide'] = {
     '<tr><td>You earn under \u20b912.75 lakh (zero tax)</td><td>You have a home loan with interest above \u20b92 lakh</td></tr>' +
     '<tr><td>You don\u2019t want the hassle of savings proofs</td><td>You\u2019re maximizing every possible deduction</td></tr>' +
     '</tbody></table>' +
-    '<p>Use our <a href="/taxregime-calculator">old vs new tax regime calculator</a> to compare your exact numbers in both regimes.</p>' +
+    '<p>Use our <a href="/tax-regime-calculator">old vs new tax regime calculator</a> to compare your exact numbers in both regimes.</p>' +
     '<h2>Deductions Available Only in Old Regime</h2>' +
     '<ul>' +
     '<li><a href="/blog/section-80c-deductions-complete-list">Section 80C</a>: \u20b91.5 lakh (PF, PPF, ELSS, life insurance, tuition fees)</li>' +
@@ -268,7 +268,7 @@ BLOG_CONTENT['sec80c-guide'] = {
     '<h2>The EPF Trap: You\u2019re Already Saving Under 80C</h2>' +
     '<p>Many employees don\u2019t realise their EPF contribution already counts toward the 80C limit. If your basic salary is \u20b940,000/month, your EPF contribution is \u20b94,800/month = \u20b957,600/year. That\u2019s already 38% of the \u20b91.5L limit used up. Before investing separately for 80C, check how much room is actually left.</p>' +
     '<h2>80C Doesn\u2019t Work Under New Regime</h2>' +
-    '<p>A critical point: Section 80C deductions are <strong>not available under the new tax regime</strong>. If you\u2019ve chosen the new regime, your 80C investments don\u2019t reduce your tax liability. They\u2019re still good investments (EPF, PPF, ELSS are excellent saving vehicles), but they won\u2019t give you tax benefits. Use the <a href="/taxregime-calculator">regime comparison calculator</a> to see if your 80C savings tip the balance toward the old regime.</p>' +
+    '<p>A critical point: Section 80C deductions are <strong>not available under the new tax regime</strong>. If you\u2019ve chosen the new regime, your 80C investments don\u2019t reduce your tax liability. They\u2019re still good investments (EPF, PPF, ELSS are excellent saving vehicles), but they won\u2019t give you tax benefits. Use the <a href="/tax-regime-calculator">regime comparison calculator</a> to see if your 80C savings tip the balance toward the old regime.</p>' +
     '<h2>Beyond 80C: Other Deductions to Stack</h2>' +
     '<ul>' +
     '<li><strong>80CCD(1B):</strong> Additional \u20b950,000 for <a href="/nps-calculator">NPS contributions</a> (works in old regime only)</li>' +
@@ -318,7 +318,7 @@ BLOG_CONTENT['tds-guide'] = {
     '<h2>Claiming TDS Refund</h2>' +
     '<p>File your Income Tax Return (ITR) to claim excess TDS back. The refund process:</p>' +
     '<ol>' +
-    '<li>Calculate actual tax liability using the <a href="/incometax-calculator">income tax calculator</a></li>' +
+    '<li>Calculate actual tax liability using the <a href="/income-tax-calculator">income tax calculator</a></li>' +
     '<li>Compare with total TDS deducted (from Form 26AS)</li>' +
     '<li>If TDS > actual tax, file ITR claiming the refund</li>' +
     '<li>Refund is typically processed within 30\u201360 days of ITR verification</li>' +
@@ -376,7 +376,7 @@ BLOG_CONTENT['advance-tax-guide'] = {
     '<li>Enter PAN, assessment year (2026-27 for FY 2025-26), and amount</li>' +
     '<li>Pay via net banking, UPI, or debit card</li>' +
     '</ol>' +
-    '<p>Estimate your quarterly instalments with the <a href="/advancetax-calculator">advance tax calculator</a>. If you also have TDS being deducted by clients, account for it using the <a href="/tds-calculator">TDS calculator</a> to avoid overpaying.</p>',
+    '<p>Estimate your quarterly instalments with the <a href="/advance-tax-calculator">advance tax calculator</a>. If you also have TDS being deducted by clients, account for it using the <a href="/tds-calculator">TDS calculator</a> to avoid overpaying.</p>',
   cta: { text: 'Calculate your advance tax', calc: 'advancetax', cat: 'finance' }
 };
 
@@ -427,7 +427,7 @@ BLOG_CONTENT['professional-tax-guide'] = {
     '<li>People with disabilities above certain threshold (state-specific)</li>' +
     '<li>Agricultural income earners (in most states)</li>' +
     '</ul>' +
-    '<p>Check your specific state\u2019s rules for exemptions. Use the <a href="/professionaltax-calculator">professional tax calculator</a> to find out the exact deduction for your state and salary level. To see the full impact on your take-home pay, try the <a href="/inhandsalary-calculator">in-hand salary calculator</a>.</p>',
+    '<p>Check your specific state\u2019s rules for exemptions. Use the <a href="/professionaltax-calculator">professional tax calculator</a> to find out the exact deduction for your state and salary level. To see the full impact on your take-home pay, try the <a href="/in-hand-salary-calculator">in-hand salary calculator</a>.</p>',
   cta: { text: 'Calculate professional tax', calc: 'professionaltax', cat: 'finance' }
 };
 
@@ -480,7 +480,7 @@ BLOG_CONTENT['capital-gains-guide'] = {
     '<li><strong>Not reporting exempt LTCG:</strong> Even if your equity LTCG is below \u20b91.25 lakh, you should report it in your ITR</li>' +
     '<li><strong>Mixing SIP redemption dates:</strong> Each SIP instalment has its own purchase date \u2014 some may be short-term while others are long-term</li>' +
     '</ul>' +
-    '<p>Use the <a href="/capitalgains-calculator">capital gains calculator</a> to compute your gain and tax liability accurately. For SIP investors, pair it with the <a href="/sip-calculator">SIP calculator</a> to plan redemptions tax-efficiently.</p>',
+    '<p>Use the <a href="/capital-gains-calculator">capital gains calculator</a> to compute your gain and tax liability accurately. For SIP investors, pair it with the <a href="/sip-calculator">SIP calculator</a> to plan redemptions tax-efficiently.</p>',
   cta: { text: 'Calculate capital gains tax', calc: 'capitalgains', cat: 'finance' }
 };
 
@@ -505,7 +505,7 @@ BLOG_CONTENT['salary-hike-guide'] = {
     '<tr><td>\u20b915 LPA</td><td>25%</td><td>\u20b93,75,000/year</td><td>~\u20b92,80,000 (15\u201320% marginal rate)</td></tr>' +
     '<tr><td>\u20b925 LPA</td><td>20%</td><td>\u20b95,00,000/year</td><td>~\u20b93,40,000 (25\u201330% marginal rate)</td></tr>' +
     '</tbody></table>' +
-    '<p>At higher salaries, up to 30% + cess of your increment goes to tax. That\u2019s why a \u20b95 lakh gross hike may only add \u20b928,000/month to your bank balance. Use the <a href="/inhandsalary-calculator">in-hand salary calculator</a> to see the exact after-tax impact of your proposed hike.</p>' +
+    '<p>At higher salaries, up to 30% + cess of your increment goes to tax. That\u2019s why a \u20b95 lakh gross hike may only add \u20b928,000/month to your bank balance. Use the <a href="/in-hand-salary-calculator">in-hand salary calculator</a> to see the exact after-tax impact of your proposed hike.</p>' +
     '<h2>Industry Benchmarks: What\u2019s a Good Hike?</h2>' +
     '<ul>' +
     '<li><strong>Annual increment (same company):</strong> 8\u201312% is typical in IT services; 12\u201318% for high performers; below 5% signals stagnation</li>' +
@@ -559,7 +559,7 @@ BLOG_CONTENT['ctc-breakup-guide'] = {
     '<tr><td>Gross Salary</td><td>CTC minus employer-only costs</td><td>Basic + HRA + allowances (what appears on payslip before deductions)</td></tr>' +
     '<tr><td>Net / In-Hand</td><td>Gross minus deductions</td><td>What reaches your bank after employee PF, PT, and TDS</td></tr>' +
     '</tbody></table>' +
-    '<p>Use the <a href="/inhandsalary-calculator">in-hand salary calculator</a> to see the exact conversion from your CTC to bank credit. For tax planning implications, try the <a href="/incometax-calculator">income tax calculator</a>.</p>',
+    '<p>Use the <a href="/in-hand-salary-calculator">in-hand salary calculator</a> to see the exact conversion from your CTC to bank credit. For tax planning implications, try the <a href="/income-tax-calculator">income tax calculator</a>.</p>',
   cta: { text: 'Calculate CTC breakup', calc: 'ctcbreakup', cat: 'finance' }
 };
 
@@ -597,7 +597,7 @@ BLOG_CONTENT['freelancer-tax-guide'] = {
     '<li><strong>Health insurance:</strong> Claimable under Section 80D (old regime)</li>' +
     '</ul>' +
     '<h2>Advance Tax: Don\u2019t Skip the Quarterly Payments</h2>' +
-    '<p>After TDS deduction by clients, if your remaining tax liability exceeds \u20b910,000, you must pay <a href="/blog/advance-tax-due-dates-calculation-penalty">advance tax</a> in quarterly instalments. Missing deadlines costs 1% per month interest. Use the <a href="/advancetax-calculator">advance tax calculator</a> to plan your quarterly payments.</p>' +
+    '<p>After TDS deduction by clients, if your remaining tax liability exceeds \u20b910,000, you must pay <a href="/blog/advance-tax-due-dates-calculation-penalty">advance tax</a> in quarterly instalments. Missing deadlines costs 1% per month interest. Use the <a href="/advance-tax-calculator">advance tax calculator</a> to plan your quarterly payments.</p>' +
     '<h2>GST for Freelancers</h2>' +
     '<p>GST registration is mandatory if annual receipts exceed \u20b920 lakh (\u20b910 lakh for special category states). For export of services (foreign clients), you can register under LUT (Letter of Undertaking) and charge 0% GST. Use the <a href="/gst-calculator">GST calculator</a> for invoice calculations.</p>',
   cta: { text: 'Calculate freelancer tax', calc: 'freelancetax', cat: 'finance' }
@@ -827,7 +827,7 @@ BLOG_CONTENT['loan-eligibility-guide'] = {
     '<li><strong>Car loan:</strong> 2\u20133\u00d7 annual income</li>' +
     '<li><strong>Personal loan:</strong> 8\u201312\u00d7 monthly salary</li>' +
     '</ul>' +
-    '<p>These are rough guidelines. Use the <a href="/loaneligibility-calculator">loan eligibility calculator</a> for an accurate estimate based on your specific income, existing obligations, and desired tenure.</p>' +
+    '<p>These are rough guidelines. Use the <a href="/loan-eligibility-calculator">loan eligibility calculator</a> for an accurate estimate based on your specific income, existing obligations, and desired tenure.</p>' +
     '<h2>How to Maximize Your Loan Eligibility</h2>' +
     '<ol>' +
     '<li><strong>Close credit card dues:</strong> Even minimum payments count as obligations in FOIR</li>' +
@@ -900,7 +900,7 @@ BLOG_CONTENT['down-payment-guide'] = {
     '<ol>' +
     '<li><strong>Keep 6 months emergency fund:</strong> Don\u2019t drain all savings into the down payment</li>' +
     '<li><strong>Budget for additional costs:</strong> Registration (5\u20138%), stamp duty (3\u20138%), brokerage (1\u20132%), interior work, and moving expenses add 12\u201320% on top of the property price</li>' +
-    '<li><strong>EMI should not exceed 35\u201340% of take-home pay:</strong> Use the <a href="/loaneligibility-calculator">loan eligibility calculator</a> to verify</li>' +
+    '<li><strong>EMI should not exceed 35\u201340% of take-home pay:</strong> Use the <a href="/loan-eligibility-calculator">loan eligibility calculator</a> to verify</li>' +
     '<li><strong>Don\u2019t liquidate investments prematurely:</strong> Breaking an FD is fine, but redeeming ELSS or PPF before maturity has penalties and lost tax benefits</li>' +
     '</ol>' +
     '<h2>Down Payment Sources</h2>' +
@@ -962,7 +962,7 @@ BLOG_CONTENT['balance-transfer-guide'] = {
     '<li>Property mortgage transfers to the new bank (registered at sub-registrar\u2019s office)</li>' +
     '<li>Start paying EMIs to the new bank</li>' +
     '</ol>' +
-    '<p>The entire process typically takes 2\u20134 weeks. Use the <a href="/balancetransfer-calculator">balance transfer calculator</a> to estimate savings, or compare rates using the <a href="/loancompare-calculator">loan comparison calculator</a>.</p>',
+    '<p>The entire process typically takes 2\u20134 weeks. Use the <a href="/balance-transfer-calculator">balance transfer calculator</a> to estimate savings, or compare rates using the <a href="/loancompare-calculator">loan comparison calculator</a>.</p>',
   cta: { text: 'Calculate transfer savings', calc: 'balancetransfer', cat: 'finance' }
 };
 
@@ -1171,7 +1171,7 @@ BLOG_CONTENT['si-vs-ci-guide'] = {
     '<tr><td>Monthly</td><td>10.47%</td><td>\u20b91,64,531</td></tr>' +
     '<tr><td>Daily</td><td>10.52%</td><td>\u20b91,64,866</td></tr>' +
     '</tbody></table>' +
-    '<p>Most Indian FDs compound quarterly. Savings accounts compound daily. PPF compounds annually. The more frequent the compounding, the higher the effective return. Use the <a href="/compoundinterest-calculator">compound interest calculator</a> to compare different frequencies.</p>' +
+    '<p>Most Indian FDs compound quarterly. Savings accounts compound daily. PPF compounds annually. The more frequent the compounding, the higher the effective return. Use the <a href="/compound-interest-calculator">compound interest calculator</a> to compare different frequencies.</p>' +
     '<h2>The Rule of 72</h2>' +
     '<p>A quick mental shortcut: divide 72 by the interest rate to find how many years it takes to double your money with compound interest. At 12%, your money doubles in 72/12 = <strong>6 years</strong>. At 8%, it takes 72/8 = <strong>9 years</strong>. This rule helps you quickly evaluate investment and loan propositions.</p>' +
     '<h2>Where Each Type Is Used in Real Life</h2>' +
@@ -1180,7 +1180,7 @@ BLOG_CONTENT['si-vs-ci-guide'] = {
     '<li><strong>Compound interest:</strong> FDs, RDs, <a href="/ppf-calculator">PPF</a>, <a href="/sip-calculator">SIPs</a>, home loan interest, credit card outstanding</li>' +
     '<li><strong>Reducing balance (a form of CI):</strong> Most EMI-based loans \u2014 interest is charged on remaining principal, not original amount</li>' +
     '</ul>' +
-    '<p>Try the <a href="/simpleinterest-calculator">simple interest calculator</a> and <a href="/compoundinterest-calculator">compound interest calculator</a> side by side to see the difference for your specific amounts and time periods.</p>',
+    '<p>Try the <a href="/simple-interest-calculator">simple interest calculator</a> and <a href="/compound-interest-calculator">compound interest calculator</a> side by side to see the difference for your specific amounts and time periods.</p>',
   cta: { text: 'Compare simple vs compound interest', calc: 'simpleinterest', cat: 'finance' }
 };
 
@@ -1236,7 +1236,7 @@ BLOG_CONTENT['stepup-sip-guide'] = {
     '<li><strong>Moderate:</strong> 10% step-up (matches typical salary increment \u2014 recommended)</li>' +
     '<li><strong>Aggressive:</strong> 15\u201320% step-up (only if your income is growing rapidly, e.g., early career in tech)</li>' +
     '</ul>' +
-    '<p>The key is to automate \u2014 most mutual fund platforms allow you to set annual step-up instructions. Use the <a href="/stepupsip-calculator">step-up SIP calculator</a> to see how different step-up rates affect your specific goal.</p>',
+    '<p>The key is to automate \u2014 most mutual fund platforms allow you to set annual step-up instructions. Use the <a href="/step-up-sip-calculator">step-up SIP calculator</a> to see how different step-up rates affect your specific goal.</p>',
   cta: { text: 'Calculate step-up SIP', calc: 'stepupsip', cat: 'finance' }
 };
 
@@ -1413,7 +1413,7 @@ BLOG_CONTENT['dividend-guide'] = {
     '<tr><td>Above 6%</td><td>Unusually high \u2014 check if sustainable</td><td>May indicate distress</td></tr>' +
     '</tbody></table>' +
     '<h2>Taxation of Dividends in India</h2>' +
-    '<p>Since FY 2020-21, dividends are taxable in the hands of the recipient at slab rates. For someone in the 30% bracket, a 5% dividend yield gives only ~3.4% after tax \u2014 barely better than a savings account. TDS of 10% is deducted if annual dividends from a company exceed \u20b95,000. Factor in tax impact using the <a href="/dividendyield-calculator">dividend yield calculator</a> and compare after-tax yields with <a href="/fd-calculator">FD returns</a>.</p>',
+    '<p>Since FY 2020-21, dividends are taxable in the hands of the recipient at slab rates. For someone in the 30% bracket, a 5% dividend yield gives only ~3.4% after tax \u2014 barely better than a savings account. TDS of 10% is deducted if annual dividends from a company exceed \u20b95,000. Factor in tax impact using the <a href="/dividend-yield-calculator">dividend yield calculator</a> and compare after-tax yields with <a href="/fd-calculator">FD returns</a>.</p>',
   cta: { text: 'Calculate dividend yield', calc: 'dividendyield', cat: 'finance' }
 };
 
@@ -1576,7 +1576,7 @@ BLOG_CONTENT['retirement-guide'] = {
     '<tr><td>5%</td><td>\u20b925L/year</td><td>\u20b92.08L</td><td>~25 years</td></tr>' +
     '<tr><td>6%</td><td>\u20b930L/year</td><td>\u20b92.5L</td><td>~20 years</td></tr>' +
     '</tbody></table>' +
-    '<p>Use the <a href="/retirementcorpus-calculator">retirement calculator</a> to compute your specific number. Factor in EPF, NPS, PPF, and any pension income to reduce the required corpus.</p>',
+    '<p>Use the <a href="/retirement-corpus-calculator">retirement calculator</a> to compute your specific number. Factor in EPF, NPS, PPF, and any pension income to reduce the required corpus.</p>',
   cta: { text: 'Calculate retirement corpus', calc: 'retirementcorpus', cat: 'finance' }
 };
 
@@ -1792,7 +1792,7 @@ BLOG_CONTENT['savings-goal-guide'] = {
     '</tbody></table>' +
     '<p>For short-term goals (under 3 years), the difference between FD and SIP returns is minimal, so use guaranteed instruments like <a href="/rd-calculator">RD</a> or <a href="/fd-calculator">FD</a>. For goals beyond 5 years, equity <a href="/sip-calculator">SIPs</a> significantly reduce the monthly savings needed.</p>' +
     '<h2>Inflation Adjustment</h2>' +
-    '<p>If your goal is more than 3 years away, inflate the target: \u20b910L at 6% inflation for 5 years = \u20b913.4L. Always plan for the inflated amount. Use the <a href="/savingsgoal-calculator">savings goal calculator</a> for precise monthly targets.</p>',
+    '<p>If your goal is more than 3 years away, inflate the target: \u20b910L at 6% inflation for 5 years = \u20b913.4L. Always plan for the inflated amount. Use the <a href="/savings-goal-calculator">savings goal calculator</a> for precise monthly targets.</p>',
   cta: { text: 'Plan your savings goal', calc: 'savingsgoal', cat: 'finance' }
 };
 
@@ -1900,7 +1900,7 @@ BLOG_CONTENT['credit-payoff-guide'] = {
     '<li><strong>Balance transfer:</strong> Some banks offer 0% or low-rate balance transfer for 6\u201312 months \u2014 use this window to aggressively pay down principal</li>' +
     '<li><strong>Personal loan:</strong> 10\u201316% rates are far better than 36% credit card interest. Convert outstanding to a personal loan with fixed EMIs.</li>' +
     '<li><strong>EMI conversion:</strong> Most cards allow converting outstanding to EMI at 12\u201318% \u2014 better than revolving at 36%</li>' +
-    '<p>Use the <a href="/creditcard-calculator">credit card payoff calculator</a> to see how much you\u2019ll save by paying more than the minimum. If you have multiple debts, plan the optimal payoff sequence.</p>',
+    '<p>Use the <a href="/credit-card-calculator">credit card payoff calculator</a> to see how much you\u2019ll save by paying more than the minimum. If you have multiple debts, plan the optimal payoff sequence.</p>',
   cta: { text: 'Plan your card payoff', calc: 'creditcard', cat: 'finance' }
 };
 
@@ -2151,7 +2151,7 @@ BLOG_CONTENT['tax-saving-planner-guide'] = {
     '<li><strong>24(b):</strong> Home loan interest up to \u20b92,00,000</li>' +
     '<li><strong>80E:</strong> Education loan interest (no limit, up to 8 years)</li>' +
     '</ul>' +
-    '<p>Plan your tax-saving investments with the <a href="/taxsaving-calculator">tax saving planner</a>. Compare with the <a href="/blog/old-vs-new-tax-regime-comparison-fy-2025-26">new vs old regime analysis</a> first.</p>',
+    '<p>Plan your tax-saving investments with the <a href="/tax-saving-calculator">tax saving planner</a>. Compare with the <a href="/blog/old-vs-new-tax-regime-comparison-fy-2025-26">new vs old regime analysis</a> first.</p>',
   cta: { text: 'Plan your tax savings', calc: 'taxsaving', cat: 'finance' }
 };
 
@@ -2229,6 +2229,6 @@ BLOG_CONTENT['loan-afford-guide'] = {
     '<li><strong>Choose longer tenure:</strong> 30-year tenure vs 20-year increases eligibility by ~25%</li>' +
     '<li><strong>Improve CIBIL score:</strong> 750+ gets you better rates, which increases eligible amount at same EMI</li>' +
     '</ul>' +
-    '<p>Check your maximum borrowing capacity with the <a href="/loanaffordability-calculator">loan affordability calculator</a>. Compare specific loan offers with the <a href="/blog/loan-comparison-calculator-best-deal">loan comparison tool</a>.</p>',
+    '<p>Check your maximum borrowing capacity with the <a href="/loan-affordability-calculator">loan affordability calculator</a>. Compare specific loan offers with the <a href="/blog/loan-comparison-calculator-best-deal">loan comparison tool</a>.</p>',
   cta: { text: 'Check loan affordability', calc: 'loanaffordability', cat: 'finance' }
 };

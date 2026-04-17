@@ -336,7 +336,7 @@ BLOG_CONTENT['solar-panel-guide'] = {
     '</ul>' +
     '<h2>Net Metering: How It Works</h2>' +
     '<p>Excess solar electricity is exported to the grid. Your meter runs backward. At month-end, you pay only the net difference. Some states offer \u20b92\u20133/unit for exported power.</p>' +
-    '<p>Calculate your solar savings and payback with the <a href="/solarpanel-calculator">solar panel calculator</a>. Compare with your current <a href="/blog/electricity-bill-calculator-units-tariff">electricity bill</a>.</p>',
+    '<p>Calculate your solar savings and payback with the <a href="/solar-panel-calculator">solar panel calculator</a>. Compare with your current <a href="/blog/electricity-bill-calculator-units-tariff">electricity bill</a>.</p>',
   cta: { text: 'Calculate solar savings', calc: 'solarpanel', cat: 'everyday' }
 };
 
@@ -374,7 +374,7 @@ BLOG_CONTENT['construction-cost-guide'] = {
     '<li>Temporary electricity & water connection</li>' +
     '<li>Interior work (adds 30\u201350% to construction cost)</li>' +
     '</ul>' +
-    '<p>Get a detailed estimate with the <a href="/constructioncost-calculator">construction cost calculator</a>.</p>',
+    '<p>Get a detailed estimate with the <a href="/construction-cost-calculator">construction cost calculator</a>.</p>',
   cta: { text: 'Estimate construction cost', calc: 'constructioncost', cat: 'everyday' }
 };
 

@@ -1023,8 +1023,23 @@ function generateBlogPages() {
 
     // CTA
     if (content.cta) {
+      // Map old calc IDs to canonical hyphenated slugs
+      var CTA_SLUG_MAP = {
+        'incometax':'income-tax','compoundinterest':'compound-interest','simpleinterest':'simple-interest',
+        'taxregime':'tax-regime','creditcard':'credit-card','carloan':'car-loan',
+        'inhandsalary':'in-hand-salary','capitalgains':'capital-gains','stepupsip':'step-up-sip',
+        'bodyfat':'body-fat','bloodpressure':'blood-pressure','proteinintake':'protein-intake',
+        'smokingcost':'smoking-cost','childheight':'child-height','diabetesrisk':'diabetes-risk',
+        'caloriedeficit':'calorie-deficit','loaneligibility':'loan-eligibility','advancetax':'advance-tax',
+        'balancetransfer':'balance-transfer','ctcbreakup':'ctc-breakup','dividendyield':'dividend-yield',
+        'goldinvestment':'gold-investment','stockreturn':'stock-return','retirementcorpus':'retirement-corpus',
+        'savingsgoal':'savings-goal','loanaffordability':'loan-affordability','taxsaving':'tax-saving',
+        'solarpanel':'solar-panel','constructioncost':'construction-cost','homerenovation':'home-renovation',
+        'stampdutycalc':'stamp-duty'
+      };
+      var ctaSlug = CTA_SLUG_MAP[content.cta.calc] || content.cta.calc;
       body += '        <div class="seo-article-cta">\n';
-      body += '          <a href="/' + content.cta.calc + '-calculator">' + content.cta.text + ' &rarr;</a>\n';
+      body += '          <a href="/' + ctaSlug + '-calculator">' + content.cta.text + ' &rarr;</a>\n';
       body += '        </div>\n';
     }
 

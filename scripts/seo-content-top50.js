@@ -154,7 +154,7 @@ var SEO_CONTENT_TOP50 = [
   // 5. Tax Regime Calculator
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'taxregime', slug: 'taxregime-calculator', cat: 'Finance',
+    id: 'taxregime', slug: 'tax-regime-calculator', cat: 'Finance',
     title: 'Old vs New Tax Regime Calculator FY 2025-26 | Calc Labz',
     desc: 'Compare Old vs New income tax regime for FY 2025-26. Find out which regime saves you more tax with deductions like 80C, HRA, NPS. Free, instant calculator.',
     whatItDoes: 'The Old vs New Tax Regime Calculator compares your tax liability under both Indian income tax regimes side by side, helping you choose the one that saves you more tax based on your actual deductions.',
@@ -185,7 +185,7 @@ var SEO_CONTENT_TOP50 = [
   // 6. Income Tax Calculator
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'incometax', slug: 'incometax-calculator', cat: 'Finance',
+    id: 'incometax', slug: 'income-tax-calculator', cat: 'Finance',
     title: 'Income Tax Calculator FY 2025-26: Slab-wise Tax Breakdown | Calc Labz',
     desc: 'Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free income tax calculator for salaried and business income.',
     whatItDoes: 'The Income Tax Calculator computes your total tax liability for FY 2025-26 under both old and new tax regimes. It factors in all major deductions and shows a slab-wise breakdown of your tax.',
@@ -314,7 +314,7 @@ var SEO_CONTENT_TOP50 = [
   // 10. Compound Interest Calculator
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'compoundinterest', slug: 'compoundinterest-calculator', cat: 'Finance',
+    id: 'compoundinterest', slug: 'compound-interest-calculator', cat: 'Finance',
     title: 'Compound Interest Calculator: CI with Multiple Frequencies | Calc Labz',
     desc: 'Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with the power of compounding. Free, instant calculator.',
     whatItDoes: 'The Compound Interest Calculator shows how money grows when interest earns interest. You can compare different compounding frequencies (daily, monthly, quarterly, annually) to see how each affects your final returns.',
@@ -347,7 +347,7 @@ var SEO_CONTENT_TOP50 = [
   // 11. Simple Interest Calculator
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'simpleinterest', slug: 'simpleinterest-calculator', cat: 'Finance',
+    id: 'simpleinterest', slug: 'simple-interest-calculator', cat: 'Finance',
     title: 'Simple Interest Calculator: SI Formula &amp; Total Amount | Calc Labz',
     desc: 'Calculate simple interest, total amount payable, and monthly interest for any loan or investment. Free simple interest calculator &mdash; instant results, no signup.',
     whatItDoes: 'The Simple Interest Calculator computes interest on the original principal only (no compounding). It is commonly used for short-term loans, some car loans, and informal lending where interest is calculated linearly.',
@@ -632,7 +632,7 @@ var SEO_CONTENT_TOP50 = [
   // 20. In-Hand Salary Calculator
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'inhandsalary', slug: 'inhandsalary-calculator', cat: 'Finance',
+    id: 'inhandsalary', slug: 'in-hand-salary-calculator', cat: 'Finance',
     title: 'In-Hand Salary Calculator: Take Home Pay from CTC | Calc Labz',
     desc: 'Calculate your monthly in-hand (take-home) salary from CTC. Includes PF, professional tax, income tax TDS, and HRA deductions. Free salary calculator for India 2026.',
     whatItDoes: 'The In-Hand Salary Calculator converts your annual CTC (Cost to Company) into the actual monthly amount credited to your bank account, after deducting employee PF, professional tax, and income tax TDS.',
@@ -887,7 +887,7 @@ var SEO_CONTENT_TOP50 = [
   // 28. Credit Card Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'creditcard', slug: 'creditcard-calculator', cat: 'Finance',
+    id: 'creditcard', slug: 'credit-card-calculator', cat: 'Finance',
     title: 'Credit Card Interest Calculator: Payoff &amp; Minimum Payment | Calc Labz',
     desc: 'Calculate credit card interest, minimum payment cost, and payoff timeline. See how much paying only the minimum costs you over time. Free credit card calculator.',
     whatItDoes: 'The Credit Card Calculator shows the true cost of revolving credit card debt. It calculates monthly interest, compares minimum-only payments vs fixed payments, and shows how long it takes to become debt-free with each approach.',
@@ -919,7 +919,7 @@ var SEO_CONTENT_TOP50 = [
   // 29. Capital Gains Tax Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'capitalgains', slug: 'capitalgains-calculator', cat: 'Finance',
+    id: 'capitalgains', slug: 'capital-gains-calculator', cat: 'Finance',
     title: 'Capital Gains Tax Calculator: STCG &amp; LTCG Tax India | Calc Labz',
     desc: 'Calculate capital gains tax on shares, mutual funds, and property. Know STCG and LTCG tax rates for FY 2025-26. Free capital gains calculator for India.',
     whatItDoes: 'The Capital Gains Tax Calculator computes your short-term (STCG) and long-term (LTCG) capital gains tax on equity, debt, and property transactions. It applies the correct tax rates and holding period thresholds for each asset type.',
@@ -983,7 +983,7 @@ var SEO_CONTENT_TOP50 = [
   // 31. Step-up SIP Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'stepupsip', slug: 'stepupsip-calculator', cat: 'Finance',
+    id: 'stepupsip', slug: 'step-up-sip-calculator', cat: 'Finance',
     title: 'Step-up SIP Calculator: Increasing SIP Returns | Calc Labz',
     desc: 'Calculate step-up SIP returns by increasing your SIP amount annually. See how a 10% yearly step-up dramatically boosts your corpus. Free step-up SIP calculator.',
     whatItDoes: 'The Step-up SIP Calculator shows how increasing your monthly SIP amount by a fixed percentage each year accelerates wealth creation. It compares regular SIP returns with step-up SIP to highlight the corpus difference.',
@@ -1016,7 +1016,7 @@ var SEO_CONTENT_TOP50 = [
   // 32. Car Loan Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'carloan', slug: 'carloan-calculator', cat: 'Finance',
+    id: 'carloan', slug: 'car-loan-calculator', cat: 'Finance',
     title: 'Car Loan EMI Calculator: Auto Loan Interest &amp; Payments | Calc Labz',
     desc: 'Calculate car loan EMI, total interest, and amortization schedule. Compare auto loan offers from banks and NBFCs. Free car loan calculator for India.',
     whatItDoes: 'The Car Loan EMI Calculator helps you estimate your monthly car payment, total interest cost, and provides a loan amortization breakdown. Use it to compare loan offers and decide between different car financing options.',
@@ -1048,7 +1048,7 @@ var SEO_CONTENT_TOP50 = [
   // 33. Retirement Corpus Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'retirementcorpus', slug: 'retirementcorpus-calculator', cat: 'Finance',
+    id: 'retirementcorpus', slug: 'retirement-corpus-calculator', cat: 'Finance',
     title: 'Retirement Corpus Calculator: How Much Do You Need? | Calc Labz',
     desc: 'Calculate your retirement corpus needed based on current expenses, inflation, and expected returns. Plan for financial independence. Free retirement calculator.',
     whatItDoes: 'The Retirement Corpus Calculator estimates how much money you need at retirement to maintain your current lifestyle, accounting for inflation. It calculates the required monthly savings to reach that target.',
@@ -1081,7 +1081,7 @@ var SEO_CONTENT_TOP50 = [
   // 34. Loan Eligibility Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'loaneligibility', slug: 'loaneligibility-calculator', cat: 'Finance',
+    id: 'loaneligibility', slug: 'loan-eligibility-calculator', cat: 'Finance',
     title: 'Loan Eligibility Calculator: How Much Loan Can You Get? | Calc Labz',
     desc: 'Calculate your maximum loan eligibility based on income, existing EMIs, and credit score. Check home loan, personal loan, and car loan eligibility. Free calculator.',
     whatItDoes: 'The Loan Eligibility Calculator estimates the maximum loan amount banks are likely to approve based on your income, existing EMI obligations, and the target interest rate. It uses the FOIR (Fixed Obligations to Income Ratio) method used by lenders.',
@@ -1303,7 +1303,7 @@ var SEO_CONTENT_TOP50 = [
   // 41. Body Fat Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'bodyfat', slug: 'bodyfat-calculator', cat: 'Health',
+    id: 'bodyfat', slug: 'body-fat-calculator', cat: 'Health',
     title: 'Body Fat Calculator: Estimate Body Fat Percentage | Calc Labz',
     desc: 'Estimate your body fat percentage using the US Navy method. Enter basic body measurements to get an accurate estimate without expensive equipment. Free body fat calculator.',
     whatItDoes: 'The Body Fat Calculator estimates your body fat percentage using the US Navy body circumference method. It uses waist, neck, and height measurements (plus hip for women) to provide a reliable estimate without needing calipers or DEXA scans.',
@@ -1555,7 +1555,7 @@ var SEO_CONTENT_TOP50 = [
   // 49. Loan Affordability Calculator (NEW)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'loanaffordability', slug: 'loanaffordability-calculator', cat: 'Everyday',
+    id: 'loanaffordability', slug: 'loan-affordability-calculator', cat: 'Everyday',
     title: 'Loan Affordability Calculator: How Much Can You Borrow? | Calc Labz',
     desc: 'Calculate how much loan you can afford based on your income, expenses, and EMI budget. Plan your home, car, or personal loan within budget. Free affordability calculator.',
     whatItDoes: 'The Loan Affordability Calculator estimates the maximum loan amount you can comfortably service based on your monthly income, existing expenses, and the percentage of income you are willing to allocate to EMI payments.',

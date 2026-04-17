@@ -59,7 +59,7 @@
           "value": "taxregime"
         }
       ],
-      "destination": "/taxregime-calculator",
+      "destination": "/tax-regime-calculator",
       "permanent": true
     },
     {
@@ -71,7 +71,7 @@
           "value": "incomeTax"
         }
       ],
-      "destination": "/incometax-calculator",
+      "destination": "/income-tax-calculator",
       "permanent": true
     },
     {
@@ -83,7 +83,7 @@
           "value": "incometax"
         }
       ],
-      "destination": "/incometax-calculator",
+      "destination": "/income-tax-calculator",
       "permanent": true
     },
     {
@@ -155,7 +155,7 @@
           "value": "compoundinterest"
         }
       ],
-      "destination": "/compoundinterest-calculator",
+      "destination": "/compound-interest-calculator",
       "permanent": true
     },
     {
@@ -167,7 +167,7 @@
           "value": "simpleinterest"
         }
       ],
-      "destination": "/simpleinterest-calculator",
+      "destination": "/simple-interest-calculator",
       "permanent": true
     },
     {
@@ -275,7 +275,7 @@
           "value": "creditcard"
         }
       ],
-      "destination": "/creditcard-calculator",
+      "destination": "/credit-card-calculator",
       "permanent": true
     },
     {
@@ -335,7 +335,7 @@
           "value": "stepupsip"
         }
       ],
-      "destination": "/stepupsip-calculator",
+      "destination": "/step-up-sip-calculator",
       "permanent": true
     },
     {
@@ -347,7 +347,7 @@
           "value": "savingsgoal"
         }
       ],
-      "destination": "/savingsgoal-calculator",
+      "destination": "/savings-goal-calculator",
       "permanent": true
     },
     {
@@ -359,7 +359,7 @@
           "value": "capitalgains"
         }
       ],
-      "destination": "/capitalgains-calculator",
+      "destination": "/capital-gains-calculator",
       "permanent": true
     },
     {
@@ -383,7 +383,7 @@
           "value": "stockreturn"
         }
       ],
-      "destination": "/stockreturn-calculator",
+      "destination": "/stock-return-calculator",
       "permanent": true
     },
     {
@@ -419,7 +419,7 @@
           "value": "loaneligibility"
         }
       ],
-      "destination": "/loaneligibility-calculator",
+      "destination": "/loan-eligibility-calculator",
       "permanent": true
     },
     {
@@ -431,7 +431,7 @@
           "value": "balancetransfer"
         }
       ],
-      "destination": "/balancetransfer-calculator",
+      "destination": "/balance-transfer-calculator",
       "permanent": true
     },
     {
@@ -467,7 +467,7 @@
           "value": "advancetax"
         }
       ],
-      "destination": "/advancetax-calculator",
+      "destination": "/advance-tax-calculator",
       "permanent": true
     },
     {
@@ -479,7 +479,7 @@
           "value": "inhandsalary"
         }
       ],
-      "destination": "/inhandsalary-calculator",
+      "destination": "/in-hand-salary-calculator",
       "permanent": true
     },
     {
@@ -491,7 +491,7 @@
           "value": "ctcbreakup"
         }
       ],
-      "destination": "/ctcbreakup-calculator",
+      "destination": "/ctc-breakup-calculator",
       "permanent": true
     },
     {
@@ -515,7 +515,7 @@
           "value": "carloan"
         }
       ],
-      "destination": "/carloan-calculator",
+      "destination": "/car-loan-calculator",
       "permanent": true
     },
     {
@@ -551,7 +551,7 @@
           "value": "dividendyield"
         }
       ],
-      "destination": "/dividendyield-calculator",
+      "destination": "/dividend-yield-calculator",
       "permanent": true
     },
     {
@@ -563,7 +563,7 @@
           "value": "goldinvestment"
         }
       ],
-      "destination": "/goldinvestment-calculator",
+      "destination": "/gold-investment-calculator",
       "permanent": true
     },
     {
@@ -719,7 +719,7 @@
           "value": "bodyfat"
         }
       ],
-      "destination": "/bodyfat-calculator",
+      "destination": "/body-fat-calculator",
       "permanent": true
     },
     {
@@ -779,7 +779,7 @@
           "value": "bloodpressure"
         }
       ],
-      "destination": "/bloodpressure-calculator",
+      "destination": "/blood-pressure-calculator",
       "permanent": true
     },
     {
@@ -875,7 +875,7 @@
           "value": "proteinintake"
         }
       ],
-      "destination": "/proteinintake-calculator",
+      "destination": "/protein-intake-calculator",
       "permanent": true
     },
     {
@@ -887,7 +887,7 @@
           "value": "smokingcost"
         }
       ],
-      "destination": "/smokingcost-calculator",
+      "destination": "/smoking-cost-calculator",
       "permanent": true
     },
     {
@@ -899,7 +899,7 @@
           "value": "childheight"
         }
       ],
-      "destination": "/childheight-calculator",
+      "destination": "/child-height-calculator",
       "permanent": true
     },
     {
@@ -911,7 +911,7 @@
           "value": "diabetesrisk"
         }
       ],
-      "destination": "/diabetesrisk-calculator",
+      "destination": "/diabetes-risk-calculator",
       "permanent": true
     },
     {
@@ -959,7 +959,7 @@
           "value": "caloriedeficit"
         }
       ],
-      "destination": "/caloriedeficit-calculator",
+      "destination": "/calorie-deficit-calculator",
       "permanent": true
     },
     {
@@ -1199,7 +1199,7 @@
           "value": "homerenovation"
         }
       ],
-      "destination": "/homerenovation-calculator",
+      "destination": "/home-renovation-calculator",
       "permanent": true
     },
     {
@@ -1835,7 +1835,7 @@
           "value": "stampdutycalc"
         }
       ],
-      "destination": "/stampdutycalc-calculator",
+      "destination": "/stamp-duty-calculator",
       "permanent": true
     },
     {
@@ -1847,7 +1847,7 @@
           "value": "constructioncost"
         }
       ],
-      "destination": "/constructioncost-calculator",
+      "destination": "/construction-cost-calculator",
       "permanent": true
     },
     {
@@ -1871,7 +1871,7 @@
           "value": "solarpanel"
         }
       ],
-      "destination": "/solarpanel-calculator",
+      "destination": "/solar-panel-calculator",
       "permanent": true
     },
     {
@@ -2390,18 +2390,6 @@
       "destination": "/editorial-policy.html"
     },
     {
-      "source": "/stampdutycalc-calculator",
-      "destination": "/stampdutycalc-calculator.html"
-    },
-    {
-      "source": "/constructioncost-calculator",
-      "destination": "/constructioncost-calculator.html"
-    },
-    {
-      "source": "/homerenovation-calculator",
-      "destination": "/homerenovation-calculator.html"
-    },
-    {
       "source": "/concrete-calculator",
       "destination": "/concrete-calculator.html"
     },
@@ -2428,10 +2416,6 @@
     {
       "source": "/landarea-calculator",
       "destination": "/landarea-calculator.html"
-    },
-    {
-      "source": "/solarpanel-calculator",
-      "destination": "/solarpanel-calculator.html"
     },
     {
       "source": "/concretemix-calculator",
@@ -2618,10 +2602,6 @@
       "destination": "/pcbtrace-calculator.html"
     },
     {
-      "source": "/loanaffordability-calculator",
-      "destination": "/loanaffordability-calculator.html"
-    },
-    {
       "source": "/salary-calculator",
       "destination": "/salary-calculator.html"
     },
@@ -2750,18 +2730,6 @@
       "destination": "/gst-calculator.html"
     },
     {
-      "source": "/taxregime-calculator",
-      "destination": "/taxregime-calculator.html"
-    },
-    {
-      "source": "/compoundinterest-calculator",
-      "destination": "/compoundinterest-calculator.html"
-    },
-    {
-      "source": "/incometax-calculator",
-      "destination": "/incometax-calculator.html"
-    },
-    {
       "source": "/ppf-calculator",
       "destination": "/ppf-calculator.html"
     },
@@ -2778,16 +2746,8 @@
       "destination": "/salaryhike-calculator.html"
     },
     {
-      "source": "/inhandsalary-calculator",
-      "destination": "/inhandsalary-calculator.html"
-    },
-    {
       "source": "/pregst-calculator",
       "destination": "/pregst-calculator.html"
-    },
-    {
-      "source": "/simpleinterest-calculator",
-      "destination": "/simpleinterest-calculator.html"
     },
     {
       "source": "/roi-calculator",
@@ -2796,10 +2756,6 @@
     {
       "source": "/rd-calculator",
       "destination": "/rd-calculator.html"
-    },
-    {
-      "source": "/carloan-calculator",
-      "destination": "/carloan-calculator.html"
     },
     {
       "source": "/inflation-calculator",
@@ -2830,24 +2786,8 @@
       "destination": "/hra-calculator.html"
     },
     {
-      "source": "/creditcard-calculator",
-      "destination": "/creditcard-calculator.html"
-    },
-    {
       "source": "/prepayment-calculator",
       "destination": "/prepayment-calculator.html"
-    },
-    {
-      "source": "/stepupsip-calculator",
-      "destination": "/stepupsip-calculator.html"
-    },
-    {
-      "source": "/savingsgoal-calculator",
-      "destination": "/savingsgoal-calculator.html"
-    },
-    {
-      "source": "/capitalgains-calculator",
-      "destination": "/capitalgains-calculator.html"
     },
     {
       "source": "/tds-calculator",
@@ -2858,32 +2798,12 @@
       "destination": "/epf-calculator.html"
     },
     {
-      "source": "/loaneligibility-calculator",
-      "destination": "/loaneligibility-calculator.html"
-    },
-    {
       "source": "/ssy-calculator",
       "destination": "/ssy-calculator.html"
     },
     {
-      "source": "/retirementcorpus-calculator",
-      "destination": "/retirementcorpus-calculator.html"
-    },
-    {
       "source": "/goalsip-calculator",
       "destination": "/goalsip-calculator.html"
-    },
-    {
-      "source": "/taxsaving-calculator",
-      "destination": "/taxsaving-calculator.html"
-    },
-    {
-      "source": "/advancetax-calculator",
-      "destination": "/advancetax-calculator.html"
-    },
-    {
-      "source": "/ctcbreakup-calculator",
-      "destination": "/ctcbreakup-calculator.html"
     },
     {
       "source": "/fire-calculator",
@@ -2998,20 +2918,8 @@
       "destination": "/networth-calculator.html"
     },
     {
-      "source": "/dividendyield-calculator",
-      "destination": "/dividendyield-calculator.html"
-    },
-    {
-      "source": "/goldinvestment-calculator",
-      "destination": "/goldinvestment-calculator.html"
-    },
-    {
       "source": "/profitloss-calculator",
       "destination": "/profitloss-calculator.html"
-    },
-    {
-      "source": "/stockreturn-calculator",
-      "destination": "/stockreturn-calculator.html"
     },
     {
       "source": "/mutualfundreturns-calculator",
@@ -3020,10 +2928,6 @@
     {
       "source": "/xirr-calculator",
       "destination": "/xirr-calculator.html"
-    },
-    {
-      "source": "/balancetransfer-calculator",
-      "destination": "/balancetransfer-calculator.html"
     },
     {
       "source": "/scss-calculator",
@@ -3090,24 +2994,12 @@
       "destination": "/pregnancy-calculator.html"
     },
     {
-      "source": "/bodyfat-calculator",
-      "destination": "/bodyfat-calculator.html"
-    },
-    {
       "source": "/idealweight-calculator",
       "destination": "/idealweight-calculator.html"
     },
     {
       "source": "/ovulation-calculator",
       "destination": "/ovulation-calculator.html"
-    },
-    {
-      "source": "/bloodpressure-calculator",
-      "destination": "/bloodpressure-calculator.html"
-    },
-    {
-      "source": "/proteinintake-calculator",
-      "destination": "/proteinintake-calculator.html"
     },
     {
       "source": "/ibw-calculator",
@@ -3126,18 +3018,6 @@
       "destination": "/vitamins-calculator.html"
     },
     {
-      "source": "/smokingcost-calculator",
-      "destination": "/smokingcost-calculator.html"
-    },
-    {
-      "source": "/childheight-calculator",
-      "destination": "/childheight-calculator.html"
-    },
-    {
-      "source": "/diabetesrisk-calculator",
-      "destination": "/diabetesrisk-calculator.html"
-    },
-    {
       "source": "/sleepdebt-calculator",
       "destination": "/sleepdebt-calculator.html"
     },
@@ -3148,10 +3028,6 @@
     {
       "source": "/cholesterolratio-calculator",
       "destination": "/cholesterolratio-calculator.html"
-    },
-    {
-      "source": "/caloriedeficit-calculator",
-      "destination": "/caloriedeficit-calculator.html"
     },
     {
       "source": "/onerepmax-calculator",
