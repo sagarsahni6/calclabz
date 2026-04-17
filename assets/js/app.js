@@ -1199,6 +1199,7 @@ function showDashboard() {
 // BLOG_CAT_COLORS and BLOG_CAT_ICONS moved to faq-data.js
 
 function showBlogSection(filterCat) {
+    if (typeof filterCat !== 'string') filterCat = undefined;
     setQBtn('qBlog'); closeSidebar(); updateSidebarActive('qBlog');
     var blogTitle = (filterCat || 'Calculator') + ' Guides & Articles | Calc Labz';
     var blogDesc = 'Free in-depth guides on ' + (filterCat || 'finance, health, math and more') + '. Expert articles with calculator tools by Calc Labz.';
@@ -1851,7 +1852,7 @@ function initDOMHandlers() {
     if (qDash) qDash.addEventListener('click', showDashboard);
 
     var qBlog = document.getElementById('qBlog');
-    if (qBlog) qBlog.addEventListener('click', showBlogSection);
+    if (qBlog) qBlog.addEventListener('click', function() { showBlogSection(); });
 
     // ── MOBILE BOTTOM NAV ────────────────────────────
     var mnavHome = document.getElementById('mnavHome');

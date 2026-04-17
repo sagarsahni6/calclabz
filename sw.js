@@ -4,7 +4,7 @@
    - Never cache error/non-ok responses
    - Offline fallback to cached index.html for navigation requests
 */
-const CACHE = 'calclabz-v22';
+const CACHE = 'calclabz-v23';
 const ASSETS = [
     './',
     'index.html',
