@@ -605,5 +605,80 @@ module.exports = {
       { q: 'What is IST in relation to GMT?', a: 'IST (Indian Standard Time) is UTC+5:30 — 5 hours 30 minutes ahead of GMT. India is one of few countries using a half-hour offset. When it is 12:00 PM IST, it is 6:30 AM GMT.' },
       { q: 'When is the best time for India-US meetings?', a: 'IST to EST (New York): 8:30 PM IST = 11:00 AM EST works best. IST to PST (California): 9:30 PM IST = 9:00 AM PST. Morning IST rarely works as it is nighttime in the US.' }
     ]
+  },
+  intermittentFasting: {
+    desc: 'Calculate your intermittent fasting eating and fasting windows. Plan 16:8, 18:6, 20:4, and OMAD schedules based on your preferred meal times.',
+    what: 'This intermittent fasting calculator determines your eating and fasting windows based on your chosen IF protocol (16:8, 18:6, 20:4, or OMAD) and preferred first meal time. Shows exactly when to start and stop eating, estimated calorie burn during the fasted state, and tips for each fasting phase.',
+    howToSteps: [
+      'Enter your personal details such as age, gender, height, and weight as required',
+      'Fill in any activity-specific or health-specific parameters the calculator needs',
+      'View your results instantly — the calculator updates as you enter values',
+      'Read the interpretation guide below your results for health-context recommendations'
+    ],
+    methodology: 'This calculator uses clinically validated formulas from peer-reviewed nutrition and medical research. The intermittent fasting computation follows WHO guidelines and established health science methodology. Results are general estimates — individual variations based on genetics, medical conditions, and lifestyle factors may apply.',
+    faqs: [
+      { q: 'Which intermittent fasting schedule is best for beginners?', a: 'Start with 16:8 — fast for 16 hours and eat within an 8-hour window. For example, first meal at 12 PM, last meal by 8 PM. This is the most sustainable IF protocol and aligns naturally with skipping breakfast.' },
+      { q: 'Does intermittent fasting actually help weight loss?', a: 'Yes — studies show IF reduces calorie intake by 10–25% naturally and increases fat oxidation. However, IF alone without a calorie deficit will not cause weight loss. It is a timing tool, not a magic solution. Avoid compensating by overeating during the eating window.' }
+    ]
+  },
+  waistHeightRatio: {
+    desc: 'Calculate your Waist-to-Height Ratio (WHtR) — a better predictor of cardiovascular risk than BMI. Check if your waist circumference is in the healthy range.',
+    what: 'This waist-to-height ratio calculator divides your waist circumference by your height to assess central obesity and cardiometabolic risk. WHtR is considered a superior health indicator to BMI because it directly measures abdominal fat, which is the most dangerous type of body fat.',
+    howToSteps: [
+      'Enter your personal details such as age, gender, height, and weight as required',
+      'Fill in any activity-specific or health-specific parameters the calculator needs',
+      'View your results instantly — the calculator updates as you enter values',
+      'Read the interpretation guide below your results for health-context recommendations'
+    ],
+    methodology: 'This calculator uses clinically validated formulas from peer-reviewed nutrition and medical research. The waist-to-height ratio computation follows WHO guidelines and established health science methodology. Results are general estimates — individual variations based on genetics, medical conditions, and lifestyle factors may apply.',
+    faqs: [
+      { q: 'What is a healthy waist-to-height ratio?', a: 'WHtR below 0.5 is healthy — this means your waist should be less than half your height. 0.5–0.6 is overweight/increased risk. Above 0.6 is obese/high risk. This rule works for all ages, genders, and ethnicities, making it simpler than BMI.' },
+      { q: 'Why is WHtR better than BMI?', a: 'BMI cannot distinguish between muscle and fat, or where fat is stored. WHtR directly measures visceral (belly) fat, which is linked to heart disease, diabetes, and stroke. A muscular person may have high BMI but healthy WHtR.' }
+    ]
+  },
+  cgpaToPercentage: {
+    desc: 'Convert CGPA to Percentage for CBSE, VTU, Mumbai University, Anna University, and 10+ Indian grading scales. Accurate multi-university converter.',
+    what: 'This CGPA to percentage converter supports multiple Indian university conversion formulas — CBSE (×9.5), VTU (×10 − 7.5), Mumbai University (×7.25 + 11), Anna University, AKTU, and custom multipliers. Enter your CGPA and select your institution to get the accurate equivalent percentage.',
+    howToSteps: [
+      'Enter your academic data such as grades, marks, credits, or study parameters',
+      'Select your grading scale or institution type if prompted',
+      'Results are computed automatically — review your calculated CGPA to percentage output',
+      'Use the results for academic planning, exam preparation, or performance tracking'
+    ],
+    methodology: 'This calculator implements standard academic formulas used by universities and examination boards. The CGPA to percentage calculation follows grading policies from UGC, CBSE, and international standards. Results should be verified against your specific institution\'s policies.',
+    faqs: [
+      { q: 'What is the CBSE formula for CGPA to percentage?', a: 'CBSE officially uses: Percentage = CGPA × 9.5. So 8.0 CGPA = 76%, 9.0 CGPA = 85.5%, 10.0 CGPA = 95%. Note: this is an indicative conversion — for Class 10 results, the exact marks are on the marksheet.' },
+      { q: 'Do all universities use the same conversion formula?', a: 'No — each university has its own formula. VTU: (CGPA × 10) − 7.5. Mumbai University: (CGPA × 7.25) + 11. AKTU: CGPA × 10. Anna University: (CGPA − 0.75) × 10. Always check your university\'s official conversion formula.' }
+    ]
+  },
+  retirementDate: {
+    desc: 'Calculate your retirement date, days remaining to retirement, and total working days left. Plan your career timeline and financial milestones.',
+    what: 'This retirement date calculator computes your exact retirement date based on your date of birth and retirement age (58, 60, 62, or 65). Shows days, months, and years remaining, total working days left, and key milestones like gratuity eligibility (5 years) and pension vesting dates.',
+    howToSteps: [
+      'Enter the required date, time, or duration values',
+      'Select any additional options like format, timezone, or calendar preferences',
+      'View the calculated result with detailed breakdown',
+      'Use the result for scheduling, planning, or record-keeping needs'
+    ],
+    methodology: 'This calculator uses the Gregorian calendar system with correct handling of leap years, varying month lengths, and day-of-week algorithms. The retirement date computation accounts for calendar edge cases. Timezone calculations reference the IANA Time Zone Database.',
+    faqs: [
+      { q: 'What is the retirement age for government employees in India?', a: 'Central government: 60 years. State government: varies (58–62 by state). Judiciary: High Court judges 62, Supreme Court judges 65. Private sector: no fixed retirement age — typically 58–65 as per company policy. EPFO pension starts at 58.' },
+      { q: 'How many working days do I have until retirement?', a: 'A 30-year career has approximately 7,500–7,800 working days (250–260 per year). At age 40 with retirement at 60, you have roughly 5,000 working days left. This helps plan career goals, savings milestones, and skill development timelines.' }
+    ]
+  },
+  ageUnits: {
+    desc: 'Calculate your exact age in years, months, weeks, days, hours, minutes, and seconds. See your age in every possible time unit.',
+    what: 'This age in units calculator converts your age from years into every time unit: months, weeks, days, hours, minutes, seconds, and even heartbeats. A fun and interesting way to visualize how much time has passed since your birth.',
+    howToSteps: [
+      'Enter the required date, time, or duration values',
+      'Select any additional options like format, timezone, or calendar preferences',
+      'View the calculated result with detailed breakdown',
+      'Use the result for scheduling, planning, or record-keeping needs'
+    ],
+    methodology: 'This calculator uses the Gregorian calendar system with correct handling of leap years, varying month lengths, and day-of-week algorithms. The age in units computation accounts for calendar edge cases. Timezone calculations reference the IANA Time Zone Database.',
+    faqs: [
+      { q: 'How many days old am I at age 30?', a: 'At 30 years, you are approximately 10,957 days old (accounting for 7–8 leap years). That is also about 262,968 hours, 15.78 million minutes, or roughly 946 million seconds. Your heart has beaten about 1.15 billion times.' },
+      { q: 'How many weeks are in a human lifetime?', a: 'The average Indian lifespan of 70 years contains about 3,652 weeks. At age 25, you have already lived 1,304 weeks — roughly 36% of your life. This perspective helps prioritize how you spend your remaining weeks.' }
+    ]
   }
 };

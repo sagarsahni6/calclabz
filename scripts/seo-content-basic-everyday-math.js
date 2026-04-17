@@ -603,5 +603,20 @@ module.exports = {
       { q: 'What are complex numbers used for in real life?', a: 'AC circuit analysis (impedance = R + jX), signal processing (Fourier transforms), quantum mechanics (wave functions), control systems, and fluid dynamics. The "imaginary" part has very real applications.' },
       { q: 'How do I multiply complex numbers?', a: '(a+bi)(c+di) = (ac−bd) + (ad+bc)i. Use FOIL and remember i² = −1. Example: (3+2i)(1+4i) = 3+12i+2i+8i² = 3+14i−8 = −5+14i.' }
     ]
+  },
+  dataUsage: {
+    desc: 'Calculate your monthly mobile data usage based on streaming, social media, browsing, and app activity. Find the right data plan for your needs.',
+    what: 'This mobile data usage calculator estimates your monthly data consumption based on daily activities — video streaming (YouTube, Netflix), social media (Instagram, WhatsApp), music streaming, video calls, browsing, and email. Helps you choose the right Jio, Airtel, or Vi data plan.',
+    howToSteps: [
+      'Enter the required values for your data usage calculation',
+      'Adjust any optional settings or preferences as needed',
+      'View your results instantly — calculations update in real time',
+      'Use the output for budgeting, comparison, or planning decisions'
+    ],
+    methodology: 'This calculator uses straightforward mathematical formulas for the data usage computation. Calculations are based on standard rates, ratios, and conversion factors. Results are practical estimates suitable for everyday planning and decision-making.',
+    faqs: [
+      { q: 'How much data does YouTube use per hour?', a: '480p: 500 MB/hour. 720p (HD): 1 GB/hour. 1080p (Full HD): 1.5–2 GB/hour. 4K: 7 GB/hour. Instagram Reels and YouTube Shorts use 700 MB–1.2 GB per hour of scrolling. Enabling data saver mode reduces usage by 50–70%.' },
+      { q: 'How much data does the average Indian use monthly?', a: 'India averages 19–22 GB per user per month (2024) — the highest in the world. Heavy users (daily streaming) need 2–3 GB/day (60–90 GB/month). Light users (WhatsApp, browsing) need 1–1.5 GB/day. Most Jio/Airtel plans offer 1.5–2 GB/day.' }
+    ]
   }
 };

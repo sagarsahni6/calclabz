@@ -1856,5 +1856,96 @@
     "cat": "unknown",
     "priority": "0.5",
     "name": "Water Tank Size Calculator"
+  },
+  {
+    "id": "sgb",
+    "slug": "sgb-calculator",
+    "cat": "finance",
+    "priority": "0.8",
+    "name": "Sovereign Gold Bond (SGB) Calculator"
+  },
+  {
+    "id": "foTurnover",
+    "slug": "fo-turnover-calculator",
+    "cat": "finance",
+    "priority": "0.8",
+    "name": "F&O Turnover Calculator"
+  },
+  {
+    "id": "presumptiveTax",
+    "slug": "presumptive-tax-calculator",
+    "cat": "finance",
+    "priority": "0.8",
+    "name": "Presumptive Tax Calculator (44AD/44ADA)"
+  },
+  {
+    "id": "homeloanTaxBenefit",
+    "slug": "homeloan-taxbenefit-calculator",
+    "cat": "finance",
+    "priority": "0.7",
+    "name": "Home Loan Tax Benefit Calculator"
+  },
+  {
+    "id": "indexedCost",
+    "slug": "indexed-cost-calculator",
+    "cat": "finance",
+    "priority": "0.7",
+    "name": "Indexed Cost of Acquisition Calculator"
+  },
+  {
+    "id": "goldComparison",
+    "slug": "gold-comparison-calculator",
+    "cat": "finance",
+    "priority": "0.7",
+    "name": "Digital Gold vs SGB vs Gold ETF Calculator"
+  },
+  {
+    "id": "rentYield",
+    "slug": "rent-yield-calculator",
+    "cat": "finance",
+    "priority": "0.7",
+    "name": "Rental Yield Calculator"
+  },
+  {
+    "id": "intermittentFasting",
+    "slug": "intermittent-fasting-calculator",
+    "cat": "health",
+    "priority": "0.7",
+    "name": "Intermittent Fasting Window Calculator"
+  },
+  {
+    "id": "waistHeightRatio",
+    "slug": "waist-height-ratio-calculator",
+    "cat": "health",
+    "priority": "0.7",
+    "name": "Waist-to-Height Ratio Calculator"
+  },
+  {
+    "id": "cgpaToPercentage",
+    "slug": "cgpa-to-percentage-calculator",
+    "cat": "education",
+    "priority": "0.8",
+    "name": "CGPA to Percentage Converter"
+  },
+  {
+    "id": "retirementDate",
+    "slug": "retirement-date-calculator",
+    "cat": "datetime",
+    "priority": "0.7",
+    "name": "Retirement Date Calculator"
+  },
+  {
+    "id": "ageUnits",
+    "slug": "age-units-calculator",
+    "cat": "datetime",
+    "priority": "0.6",
+    "name": "Age in Days Hours Minutes Calculator"
+  },
+  {
+    "id": "dataUsage",
+    "slug": "data-usage-calculator",
+    "cat": "everyday",
+    "priority": "0.6",
+    "name": "Mobile Data Usage Calculator"
   }
 ]

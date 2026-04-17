@@ -8,26 +8,26 @@
   <url><loc>https://calclabz.com/</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 
   <!-- STATIC PAGES -->
-  <url><loc>https://calclabz.com/about</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://calclabz.com/contact</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://calclabz.com/privacy</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://calclabz.com/terms</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://calclabz.com/disclaimer</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://calclabz.com/editorial-policy</loc><lastmod>2026-04-17</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://calclabz.com/about</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://calclabz.com/contact</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://calclabz.com/privacy</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://calclabz.com/terms</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://calclabz.com/disclaimer</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://calclabz.com/editorial-policy</loc><lastmod>2026-03-01</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
 
   <!-- BLOG LISTING -->
   <url><loc>https://calclabz.com/blog</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <!-- CATEGORY PAGES (10) -->
-  <url><loc>https://calclabz.com/finance-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/health-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/math-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/everyday-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/education-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/engineering-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/construction-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/unit-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/datetime-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calclabz.com/science-calculators</loc><lastmod>2026-04-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/finance-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/health-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/math-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/everyday-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/education-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/engineering-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/construction-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/unit-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/datetime-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://calclabz.com/science-calculators</loc><lastmod>2026-02-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
 </urlset>

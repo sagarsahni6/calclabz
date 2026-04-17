@@ -110,6 +110,79 @@
             };
         };
 
+  // ══════════════════════════════════════════════════════
+  // NEW DATETIME CALCULATORS — April 2026 Batch
+  // ══════════════════════════════════════════════════════
+
+  if(DB['retirementDate'] && DB['retirementDate'].calc===null) DB['retirementDate'].calc=function(v){
+    if(!v.rd_dob) return {main:{label:"Error",value:"Select your date of birth"}};
+    var dob=new Date(v.rd_dob);
+    var retireAgeText=typeof v.rd_retireAge==='string'?v.rd_retireAge:'60 years';
+    var retireAge=parseInt(retireAgeText)||60;
+    var retireDate=new Date(dob.getFullYear()+retireAge,dob.getMonth(),dob.getDate());
+    var today=new Date();
+    var diff=retireDate-today;
+    if(diff<=0) return {main:{label:"Retirement Status",value:"🎉 Already retired!"},secondary:[{label:"Retirement Date",value:retireDate.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})},{label:"Retired Since",value:Math.round(-diff/86400000)+" days ago"}]};
+    var daysLeft=Math.floor(diff/86400000);
+    var monthsLeft=Math.floor(daysLeft/30.44);
+    var yearsLeft=Math.floor(daysLeft/365.25);
+    var remMonths=Math.floor((daysLeft-yearsLeft*365.25)/30.44);
+    var dayOfWeek=retireDate.toLocaleDateString('en-IN',{weekday:'long'});
+    // Working days estimate (weekdays minus holidays)
+    var workingDaysLeft=Math.round(daysLeft*5/7)-Math.round(yearsLeft*15);
+    return {
+      main:{label:"Days to Retirement",value:daysLeft.toLocaleString()+" days"},
+      secondary:[
+        {label:"Retirement Date",value:retireDate.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})},
+        {label:"Falls on",value:dayOfWeek},
+        {label:"Time Remaining",value:yearsLeft+"y "+remMonths+"m"},
+        {label:"Working Days Left (est.)",value:workingDaysLeft.toLocaleString()},
+        {label:"Weekends Until Then",value:Math.round(daysLeft*2/7).toLocaleString()},
+        {label:"Retirement Age",value:retireAge+" years"},
+        {label:"Current Age",value:Math.floor((today-dob)/31557600000)+" years"},
+        {label:"Months Left",value:monthsLeft+" months"}
+      ]
+    };
+  };
+
+  if(DB['ageUnits'] && DB['ageUnits'].calc===null) DB['ageUnits'].calc=function(v){
+    if(!v.au_dob) return {main:{label:"Error",value:"Select your date of birth"}};
+    var dob=new Date(v.au_dob);
+    var birthTime=v.au_time||"00:00";
+    var timeParts=birthTime.split(':');
+    dob.setHours(parseInt(timeParts[0])||0,parseInt(timeParts[1])||0);
+    var now=new Date();
+    var diffMs=now-dob;
+    if(diffMs<0) return {main:{label:"Error",value:"Date of birth is in the future"}};
+    var totalDays=Math.floor(diffMs/86400000);
+    var totalHours=Math.floor(diffMs/3600000);
+    var totalMinutes=Math.floor(diffMs/60000);
+    var totalWeeks=Math.floor(totalDays/7);
+    var totalMonths=Math.floor(totalDays/30.44);
+    var totalYears=Math.floor(totalDays/365.25);
+    // Exact age breakdown
+    var y=now.getFullYear()-dob.getFullYear(), m=now.getMonth()-dob.getMonth(), d=now.getDate()-dob.getDate();
+    if(d<0){m--;d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+    if(m<0){y--;m+=12;}
+    // Next birthday
+    var nextBday=new Date(now.getFullYear(),dob.getMonth(),dob.getDate());
+    if(nextBday<now) nextBday.setFullYear(now.getFullYear()+1);
+    var daysToB=Math.ceil((nextBday-now)/86400000);
+    return {
+      main:{label:"Your Age",value:y+"y "+m+"m "+d+"d"},
+      secondary:[
+        {label:"Total Days",value:totalDays.toLocaleString()+" days"},
+        {label:"Total Hours",value:totalHours.toLocaleString()+" hours"},
+        {label:"Total Minutes",value:totalMinutes.toLocaleString()+" minutes"},
+        {label:"Total Weeks",value:totalWeeks.toLocaleString()+" weeks"},
+        {label:"Total Months",value:totalMonths+" months"},
+        {label:"Next Birthday In",value:daysToB===0?"🎉 Today!":daysToB+" days"},
+        {label:"Born On",value:dob.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})},
+        {label:"You'll Turn "+(y+1),value:nextBday.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}
+      ]
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('datetime');
 })();

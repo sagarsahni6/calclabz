@@ -3150,6 +3150,175 @@ householdbudget: {
     tips:["50/30/20 rule: 50% needs, 30% wants, 20% savings","Automate savings on salary day","Track spending weekly to catch overruns early"]
 },
 
+// ═══════════════════════════════════════════════════
+// NEW CALCULATORS — April 2026 Batch
+// ═══════════════════════════════════════════════════
+
+sgb: {
+    name:"Sovereign Gold Bond (SGB) Calculator", desc:"SGB maturity value, interest earned & returns vs physical gold",
+    icon:"fa-coins", cat:"finance", badge:"New",
+    inputs:[
+        {id:"sgb_amount",label:"Investment Amount",default:100000,prefix:"₹"},
+        {id:"sgb_issuePrice",label:"Issue Price per Gram",default:6000,prefix:"₹"},
+        {id:"sgb_expectedPrice",label:"Expected Gold Price at Maturity (₹/gram)",default:9000,prefix:"₹"},
+        {id:"sgb_holding",label:"Holding Period",default:8,suffix:"years",type:"select",options:["5 years (premature)","8 years (maturity)"]}
+    ],
+    calc: null,
+    tips:["SGB gives 2.5% annual interest + capital gains tax-free at maturity","Maximum 4 kg per person per financial year","Premature exit allowed from 5th year on interest payment dates"]
+},
+
+foTurnover: {
+    name:"F&O Turnover Calculator (ITR-3)", desc:"Calculate F&O trading turnover for income tax filing as per ICAI guidelines",
+    icon:"fa-chart-line", cat:"finance", badge:"New",
+    inputs:[
+        {id:"fo_futuresProfit",label:"Futures Total Profit",default:22000,prefix:"₹"},
+        {id:"fo_futuresLoss",label:"Futures Total Loss (absolute)",default:14000,prefix:"₹"},
+        {id:"fo_optionsPremium",label:"Options Premium Received",default:18000,prefix:"₹"},
+        {id:"fo_optionsPL",label:"Options Net Profit/Loss (absolute)",default:6000,prefix:"₹"}
+    ],
+    calc: null,
+    tips:["Turnover < ₹1 crore: Presumptive tax under 44AD allowed","Turnover ₹1–10 crore: Tax audit if profit < 6%","F&O losses can be carried forward 8 years"]
+},
+
+presumptiveTax: {
+    name:"Presumptive Tax Calculator (44AD/44ADA)", desc:"Presumptive income tax for small businesses & professionals without full books",
+    icon:"fa-file-invoice", cat:"finance", badge:"New",
+    inputs:[
+        {id:"pt_type",label:"Taxpayer Type",type:"select",options:["Business (44AD)","Professional (44ADA)"]},
+        {id:"pt_turnover",label:"Annual Turnover / Gross Receipts",default:1800000,prefix:"₹"},
+        {id:"pt_cashPct",label:"Cash Receipts %",default:30,suffix:"%"},
+        {id:"pt_age",label:"Age Group",type:"select",options:["Below 60","60-80 years","Above 80"]}
+    ],
+    calc: null,
+    tips:["44AD: 8% of cash turnover, 6% of digital turnover","44ADA professionals: 50% of gross receipts","If you opt out, cannot opt back in for 5 years"]
+},
+
+homeloanTaxBenefit: {
+    name:"Home Loan Tax Benefit Calculator", desc:"Income tax savings on home loan interest (24b) & principal (80C)",
+    icon:"fa-house-circle-check", cat:"finance", badge:"New",
+    inputs:[
+        {id:"hltb_interest",label:"Annual Interest Paid",default:240000,prefix:"₹"},
+        {id:"hltb_principal",label:"Annual Principal Repaid",default:120000,prefix:"₹"},
+        {id:"hltb_income",label:"Annual Income",default:1500000,prefix:"₹"},
+        {id:"hltb_other80c",label:"Other 80C Investments",default:30000,prefix:"₹"},
+        {id:"hltb_property",label:"Property Type",type:"select",options:["Self-Occupied","Let Out (Rented)"]}
+    ],
+    calc: null,
+    tips:["Section 24b: max ₹2L deduction for self-occupied property","80C principal deduction within ₹1.5L total 80C limit","Only available under Old Tax Regime"]
+},
+
+indexedCost: {
+    name:"Indexed Cost of Acquisition Calculator", desc:"Calculate indexed cost using CII for long-term capital gains tax",
+    icon:"fa-calculator", cat:"finance", badge:"New",
+    inputs:[
+        {id:"ic_purchasePrice",label:"Original Purchase Price",default:3000000,prefix:"₹"},
+        {id:"ic_salePrice",label:"Sale Price",default:12000000,prefix:"₹"},
+        {id:"ic_purchaseYear",label:"Purchase Year (FY)",type:"select",options:["2001-02","2002-03","2003-04","2004-05","2005-06","2006-07","2007-08","2008-09","2009-10","2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25","2025-26"]},
+        {id:"ic_saleYear",label:"Sale Year (FY)",type:"select",options:["2020-21","2021-22","2022-23","2023-24","2024-25","2025-26"]},
+        {id:"ic_assetType",label:"Asset Type",type:"select",options:["Property","Gold","Debt Mutual Fund","Others"]}
+    ],
+    calc: null,
+    tips:["Budget 2024 removed indexation for assets bought after 23 Jul 2024","For pre-July 2024 property: choose 12.5% without or 20% with indexation","CII base year is 2001-02 (index 100)"]
+},
+
+goldComparison: {
+    name:"Digital Gold vs SGB vs Gold ETF", desc:"Compare returns, taxes & charges across gold investment options",
+    icon:"fa-scale-balanced", cat:"finance", badge:"New",
+    inputs:[
+        {id:"gc_amount",label:"Investment Amount",default:100000,prefix:"₹"},
+        {id:"gc_years",label:"Investment Period",default:5,suffix:"years"},
+        {id:"gc_goldReturn",label:"Expected Gold Price Growth",default:8,suffix:"% p.a."},
+        {id:"gc_taxSlab",label:"Income Tax Slab",type:"select",options:["30%","25%","20%","15%","10%","5%","0%"]}
+    ],
+    calc: null,
+    tips:["SGB gives 2.5% extra interest + tax-free capital gains at 8 years","Digital Gold has ~3% buy+sell spread","Gold ETF expense ratio is ~0.5-1% per year"]
+},
+
+rentYield: {
+    name:"Rental Yield Calculator", desc:"Gross & net rental yield on investment property",
+    icon:"fa-building", cat:"finance", badge:"New",
+    inputs:[
+        {id:"ry_propertyValue",label:"Property Value",default:8000000,prefix:"₹"},
+        {id:"ry_monthlyRent",label:"Monthly Rent",default:22000,prefix:"₹"},
+        {id:"ry_maintenance",label:"Annual Maintenance",default:24000,prefix:"₹"},
+        {id:"ry_propertyTax",label:"Annual Property Tax",default:12000,prefix:"₹"},
+        {id:"ry_vacancy",label:"Vacancy Period",default:1,suffix:"months/year"}
+    ],
+    calc: null,
+    tips:["Indian metros: 1.5-4.5% gross yield typically","FD gives 7-7.5% — property makes sense only with appreciation","Net yield = (rent − costs) / property value"]
+},
+
+intermittentFasting: {
+    name:"Intermittent Fasting Window Calculator", desc:"Calculate eating & fasting windows for 16:8, 18:6, 20:4, OMAD protocols",
+    icon:"fa-clock", cat:"health", badge:"New",
+    inputs:[
+        {id:"if_protocol",label:"IF Protocol",type:"select",options:["16:8","18:6","20:4","OMAD (23:1)"]},
+        {id:"if_wakeTime",label:"Wake-up Time",type:"time",default:"07:00"},
+        {id:"if_eatStart",label:"Eating Window Start",type:"time",default:"12:00"}
+    ],
+    calc: null,
+    tips:["16:8 is the most popular — eat 12pm-8pm, fast 8pm-12pm","OMAD = One Meal A Day, 23-hour fast","Stay hydrated — water, black coffee, green tea allowed during fasting"]
+},
+
+waistHeightRatio: {
+    name:"Waist-to-Height Ratio Calculator", desc:"Better predictor of cardiovascular risk than BMI — keep waist below half your height",
+    icon:"fa-ruler-vertical", cat:"health", badge:"New",
+    inputs:[
+        {id:"whr_waist",label:"Waist Circumference",default:85,suffix:"cm"},
+        {id:"whr_height",label:"Height",default:170,suffix:"cm"}
+    ],
+    calc: null,
+    tips:["Universal guideline: Keep waist less than half your height","WHtR > 0.5 = increased metabolic & cardiovascular risk","WHtR is more predictive than BMI for heart disease risk"]
+},
+
+cgpaToPercentage: {
+    name:"CGPA to Percentage Converter", desc:"Convert CGPA to percentage for any university scale — 10-point, 4-point, VTU, Mumbai, Anna",
+    icon:"fa-graduation-cap", cat:"education", badge:"New",
+    inputs:[
+        {id:"ctp_cgpa",label:"Your CGPA",default:8.4},
+        {id:"ctp_scale",label:"University / Scale",type:"select",options:["CBSE (×9.5)","VTU (×10 − 7.5)","Mumbai University ((CGPA−0.5)×10)","Anna University ((CGPA−0.5)×10)","JNTU (×10)","Generic 10-point (×10)","US GPA 4-point"]}
+    ],
+    calc: null,
+    tips:["CBSE formula: Percentage = CGPA × 9.5","VTU changed formula in 2023: Percentage = CGPA × 10 − 7.5","US GPA: 4.0 = A+, 3.7 = A, 3.3 = A−"]
+},
+
+retirementDate: {
+    name:"Retirement Date Calculator", desc:"Exact retirement date, days/months/years remaining based on DOB & retirement age",
+    icon:"fa-calendar-check", cat:"datetime", badge:"New",
+    inputs:[
+        {id:"rd_dob",label:"Date of Birth",type:"date"},
+        {id:"rd_retireAge",label:"Retirement Age",default:60,suffix:"years",type:"select",options:["58 years","60 years","62 years","65 years"]}
+    ],
+    calc: null,
+    tips:["Government employees: 60 years","Most private sector: 58-62 years","Start retirement planning at least 20 years before"]
+},
+
+ageUnits: {
+    name:"Age in Days, Hours & Minutes", desc:"Your exact age in years, months, days, hours, minutes & weeks",
+    icon:"fa-hourglass-half", cat:"datetime", badge:"New",
+    inputs:[
+        {id:"au_dob",label:"Date of Birth",type:"date"},
+        {id:"au_time",label:"Time of Birth (optional)",type:"time",default:"00:00"}
+    ],
+    calc: null,
+    tips:["Average human lives ~27,375 days (75 years)","Fun fact: you've lived ~630,720 hours by age 72","Next birthday countdown included"]
+},
+
+dataUsage: {
+    name:"Mobile Data Usage Calculator", desc:"Calculate daily & monthly mobile data consumption by app — find the right Jio/Airtel plan",
+    icon:"fa-wifi", cat:"everyday", badge:"New",
+    inputs:[
+        {id:"du_youtube",label:"YouTube (hours/day)",default:1,suffix:"hrs"},
+        {id:"du_ytQuality",label:"YouTube Quality",type:"select",options:["SD (360p)","HD (720p)","HD (1080p)","4K"]},
+        {id:"du_instagram",label:"Instagram / Reels (min/day)",default:30,suffix:"min"},
+        {id:"du_videoCalls",label:"Video Calls (min/day)",default:15,suffix:"min"},
+        {id:"du_music",label:"Music Streaming (hrs/day)",default:1,suffix:"hrs"},
+        {id:"du_browsing",label:"Web Browsing (hrs/day)",default:1,suffix:"hrs"}
+    ],
+    calc: null,
+    tips:["YouTube HD (1080p) uses ~3 GB/hour","Instagram scrolling: ~100-150 MB/hour","Home WiFi: use WiFi to save mobile data"]
+},
+
 };
 
 

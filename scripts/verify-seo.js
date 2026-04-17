@@ -99,7 +99,7 @@ check('General pages have informational note', fs.readFileSync(otherFile, 'utf8'
 // ── 6. JSON-LD Validity ────────────────────────────────────────────
 console.log('\n📊 JSON-LD Schema Validity');
 var jsonOk = true;
-['emi','gratuity','bmi','sleep','ppf','pregnancy','creditcard','grade'].forEach(function(id) {
+['emi','gratuity','bmi','sleep','ppf','pregnancy','credit-card','grade'].forEach(function(id) {
   var file = path.join(__dirname, '..', id + '-calculator.html');
   var html = fs.readFileSync(file, 'utf8');
   var re = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;

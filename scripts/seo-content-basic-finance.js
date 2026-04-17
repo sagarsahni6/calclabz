@@ -753,5 +753,110 @@ module.exports = {
       { q: 'Why does a higher CTC sometimes give less in-hand?', a: 'Companies with higher basic pay (60% of CTC) deduct more PF (12% of basic), reducing take-home. A ₹15L CTC with 60% basic gives less in-hand than ₹14L CTC with 40% basic in many cases.' },
       { q: 'What factors beyond salary should I compare?', a: 'Consider ESOPs (potential upside), gratuity vesting (5 years), health insurance coverage (₹5L vs ₹10L), work-from-home policy (saves commute costs), and location (metro cost of living varies 20–40%).' }
     ]
+  },
+  sgb: {
+    desc: 'Calculate Sovereign Gold Bond (SGB) maturity value, semi-annual interest income, and returns compared to physical gold. Plan your gold investment.',
+    what: 'This SGB calculator estimates the maturity value of your Sovereign Gold Bond investment including 2.5% annual interest (paid semi-annually) and capital appreciation based on expected gold prices. Compares SGB returns with physical gold to show the interest advantage.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your SGB investment results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for SGB computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'What is the interest rate on Sovereign Gold Bonds?', a: 'SGB pays 2.5% annual interest on the issue price, paid semi-annually. This is over and above any capital appreciation in gold price. At ₹6,000 issue price, you receive ₹150 per gram per year as interest.' },
+      { q: 'Are SGB capital gains tax-free?', a: 'Yes — capital gains on SGB held till maturity (8 years) are completely tax-exempt. Premature redemption after 5 years is taxable as long-term capital gains at 20% with indexation benefit. The 2.5% interest is taxable at slab rate.' }
+    ]
+  },
+  foTurnover: {
+    desc: 'Calculate Futures & Options (F&O) turnover for income tax purposes. Compute turnover from profit, loss, and premium for ITR filing.',
+    what: 'This F&O turnover calculator computes your total turnover from futures and options trades as per ICAI guidelines for income tax audit purposes under Section 44AB. Correctly handles absolute profit/loss on futures and premium received on options.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your F&O turnover results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for F&O turnover computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'How is F&O turnover calculated for tax purposes?', a: 'Futures turnover = absolute sum of profit and loss on each trade. Options turnover = absolute profit/loss + premium received on sell trades. If total turnover exceeds ₹10 crore (₹2 crore for non-audit), tax audit under 44AB is required.' },
+      { q: 'Is tax audit mandatory for F&O traders?', a: 'Tax audit is mandatory if turnover exceeds ₹10 crore (with digital transactions). If turnover is below ₹2 crore and you opt for presumptive taxation under 44AD (declaring 6% profit), no audit is needed. Losses require ITR-3 filing.' }
+    ]
+  },
+  presumptiveTax: {
+    desc: 'Calculate presumptive tax under Section 44AD and 44ADA. Estimate tax liability for businesses and professionals with simplified ITR filing.',
+    what: 'This presumptive taxation calculator estimates your tax liability under Section 44AD (businesses with turnover up to ₹3 crore) and 44ADA (professionals up to ₹75 lakh). Shows deemed profit at 6%/8% for business and 50% for professionals, with applicable tax slab computation.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your presumptive tax results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for presumptive tax computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'What is the difference between 44AD and 44ADA?', a: '44AD is for businesses (retail, trading, manufacturing) with turnover up to ₹3 crore — deemed profit is 6% for digital receipts and 8% for cash. 44ADA is for professionals (doctors, lawyers, CAs, architects) with receipts up to ₹75 lakh — deemed profit is 50%.' },
+      { q: 'Can I declare higher profit than the deemed percentage?', a: 'Yes, you can declare profit higher than 6%/8% (44AD) or 50% (44ADA). You cannot declare lower unless you maintain books of accounts and get a tax audit done. Once opted, you must continue for 5 years.' }
+    ]
+  },
+  homeloanTaxBenefit: {
+    desc: 'Calculate home loan tax benefits under Section 24(b) and 80C. See total tax savings on principal repayment and interest payment.',
+    what: 'This home loan tax benefit calculator computes your total annual tax savings from home loan repayment. Covers interest deduction under Section 24(b) (up to ₹2 lakh for self-occupied), principal repayment under Section 80C (up to ₹1.5 lakh), and stamp duty deduction in the year of purchase.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your home loan tax benefit results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for home loan tax benefit computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'What is the maximum tax deduction on home loan interest?', a: 'Self-occupied property: ₹2 lakh per year under Section 24(b). Let-out property: no upper limit on interest deduction — entire interest is deductible against rental income. Under construction: interest during construction is deductible in 5 equal installments after possession.' },
+      { q: 'Can both co-borrowers claim tax benefits?', a: 'Yes — if both are co-owners and co-borrowers, each can claim up to ₹2 lakh interest (24b) and ₹1.5 lakh principal (80C) separately. Total family benefit can be up to ₹7 lakh per year, making co-ownership highly tax-efficient.' }
+    ]
+  },
+  indexedCost: {
+    desc: 'Calculate indexed cost of acquisition using CII (Cost Inflation Index) for long-term capital gains tax. Reduce your LTCG tax liability legally.',
+    what: 'This indexed cost calculator computes the inflation-adjusted purchase price of your asset using the government-notified Cost Inflation Index (CII). Shows indexed cost, taxable long-term capital gain, and tax payable at 20% with cess for property, gold, and debt mutual funds sold before April 2023.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your indexed cost results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for indexed cost computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'How is indexed cost of acquisition calculated?', a: 'Indexed Cost = Purchase Price × (CII of sale year / CII of purchase year). Example: Property bought in 2014-15 (CII 240) for ₹50L, sold in 2024-25 (CII 363): Indexed cost = 50L × (363/240) = ₹75.63L. This reduces taxable LTCG significantly.' },
+      { q: 'Is indexation still available after the 2024 Budget changes?', a: 'From July 2024, property sales are taxed at 12.5% without indexation (new regime) or 20% with indexation (old regime for pre-July 2024 purchases). For assets acquired before April 2001, FMV as on 1-April-2001 can be used as cost.' }
+    ]
+  },
+  goldComparison: {
+    desc: 'Compare Digital Gold vs Sovereign Gold Bond (SGB) vs Gold ETF. See which gold investment gives the best returns after taxes and charges.',
+    what: 'This gold investment comparison calculator evaluates three popular gold investment options side by side: Digital Gold (apps like PhonePe, Paytm), Sovereign Gold Bonds (RBI), and Gold ETFs. Compares returns after accounting for buy/sell spreads, expense ratios, interest income, and tax treatment.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your gold comparison results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for gold comparison computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'Which gold investment is best for long-term?', a: 'SGB is the clear winner for 5–8 year holding: 2.5% annual interest + tax-free capital gains at maturity + no storage cost. Digital Gold has 3–6% buy+sell spread eating into returns. Gold ETF has 0.5–1% annual expense ratio but offers liquidity.' },
+      { q: 'Is Digital Gold safe to buy?', a: 'Digital Gold bought through regulated platforms is backed by physical gold stored in vaults. However, it is not regulated by SEBI or RBI — there is counterparty risk. Maximum holding period is typically 5–7 years. SGB is sovereign-guaranteed by RBI.' }
+    ]
+  },
+  rentYield: {
+    desc: 'Calculate rental yield on your property investment. Compare gross and net rental yields to evaluate if your property is a good income asset.',
+    what: 'This rental yield calculator computes both gross rental yield (annual rent / property value) and net rental yield (after maintenance, property tax, insurance, vacancies). Helps property investors evaluate whether rental income justifies the property price compared to alternative investments.',
+    howToSteps: [
+      'Enter the required financial values in the input fields (amounts, rates, tenure as applicable)',
+      'Adjust optional parameters like tax rate, inflation, or compounding frequency if available',
+      'Click Calculate or view results updating in real time as you type',
+      'Review the detailed breakdown showing your rental yield results with charts and tables'
+    ],
+    methodology: 'This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for rental yield computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.',
+    faqs: [
+      { q: 'What is a good rental yield in India?', a: 'Average rental yield in Indian metros is 2–3.5% (very low globally). Bangalore: 3–4%, Mumbai: 2–2.5%, Delhi NCR: 2.5–3.5%. A yield above 4% is considered good. Compare with FD returns (7%) or REITs (6–8%) to evaluate opportunity cost.' },
+      { q: 'How is net rental yield different from gross?', a: 'Gross yield = (Annual Rent / Property Value) × 100. Net yield deducts maintenance (₹2–5/sqft), property tax (5–20% of rent), vacancy months (1–2/year), repairs (5–10% of rent), and society charges. Net is typically 30–40% lower than gross.' }
+    ]
   }
 };

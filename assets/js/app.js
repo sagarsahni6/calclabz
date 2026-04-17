@@ -134,7 +134,21 @@ var _slugRedirects = {
     'solar-panel-calculator': 'solarpanel',
     'construction-cost-calculator': 'constructioncost',
     'home-renovation-calculator': 'homerenovation',
-    'stamp-duty-calculator': 'stampdutycalc'
+    'stamp-duty-calculator': 'stampdutycalc',
+    // New calculator slug mappings (2026 expansion)
+    'sgb-calculator': 'sgb',
+    'fo-turnover-calculator': 'foTurnover',
+    'presumptive-tax-calculator': 'presumptiveTax',
+    'homeloan-taxbenefit-calculator': 'homeloanTaxBenefit',
+    'indexed-cost-calculator': 'indexedCost',
+    'gold-comparison-calculator': 'goldComparison',
+    'rent-yield-calculator': 'rentYield',
+    'intermittent-fasting-calculator': 'intermittentFasting',
+    'waist-height-ratio-calculator': 'waistHeightRatio',
+    'cgpa-to-percentage-calculator': 'cgpaToPercentage',
+    'retirement-date-calculator': 'retirementDate',
+    'age-units-calculator': 'ageUnits',
+    'data-usage-calculator': 'dataUsage'
 };
 (function () {
     Object.keys(DB).forEach(function (id) {

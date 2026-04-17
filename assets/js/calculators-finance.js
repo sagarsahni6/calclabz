@@ -1835,6 +1835,236 @@
     };
   };
 
+  // ══════════════════════════════════════════════════════
+  // NEW FINANCE CALCULATORS — April 2026 Batch
+  // ══════════════════════════════════════════════════════
+
+  if(DB['sgb'] && DB['sgb'].calc===null) DB['sgb'].calc=function(v){
+    var amount=v.sgb_amount, issuePrice=v.sgb_issuePrice, expectedPrice=v.sgb_expectedPrice;
+    var holdingText=typeof v.sgb_holding==='string'?v.sgb_holding:'8 years (maturity)';
+    var years=holdingText.includes('5')?5:8;
+    var grams=amount/issuePrice;
+    var interestRate=0.025; // 2.5% p.a. on issue price
+    var annualInterest=amount*interestRate;
+    var totalInterest=annualInterest*years;
+    var maturityValue=grams*expectedPrice;
+    var capitalGain=maturityValue-amount;
+    var totalReturn=maturityValue+totalInterest;
+    var totalProfit=totalReturn-amount;
+    var cagr=(Math.pow(totalReturn/amount,1/years)-1)*100;
+    var taxFree=years===8;
+    return {
+      main:{label:"Total Return (incl. interest)",value:"₹"+Math.round(totalReturn).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Gold Grams Purchased",value:grams.toFixed(3)+" g"},
+        {label:"Gold Value at Maturity",value:"₹"+Math.round(maturityValue).toLocaleString('en-IN')},
+        {label:"Capital Gain",value:"₹"+Math.round(capitalGain).toLocaleString('en-IN'),pos:capitalGain>0},
+        {label:"Interest Earned (2.5% p.a.)",value:"₹"+Math.round(totalInterest).toLocaleString('en-IN')},
+        {label:"Annual Interest",value:"₹"+Math.round(annualInterest).toLocaleString('en-IN')},
+        {label:"Total Profit",value:"₹"+Math.round(totalProfit).toLocaleString('en-IN'),pos:totalProfit>0},
+        {label:"Effective CAGR",value:cagr.toFixed(2)+"%"},
+        {label:"Capital Gains Tax",value:taxFree?"Tax-free (8-year maturity) ✅":"Taxable at slab rate (premature) ⚠"},
+        {label:"Holding Period",value:years+" years"}
+      ],
+      chart:{a:Math.round(amount),b:Math.round(totalProfit),lA:"Invested",lB:"Returns"}
+    };
+  };
+
+  if(DB['foTurnover'] && DB['foTurnover'].calc===null) DB['foTurnover'].calc=function(v){
+    // ICAI guidelines: Futures turnover = absolute(profit) + absolute(loss)
+    var futuresTurnover=Math.abs(v.fo_futuresProfit)+Math.abs(v.fo_futuresLoss);
+    // Options turnover = premium received + absolute(P&L difference)
+    var optionsTurnover=Math.abs(v.fo_optionsPremium)+Math.abs(v.fo_optionsPL);
+    var totalTurnover=futuresTurnover+optionsTurnover;
+    var netPL=(v.fo_futuresProfit-v.fo_futuresLoss)+(v.fo_optionsPL);
+    var profitPct=totalTurnover>0?(Math.abs(netPL)/totalTurnover*100):0;
+    var auditRequired=totalTurnover>10000000||(totalTurnover>20000000&&profitPct<6);
+    var presumptiveEligible=totalTurnover<=20000000;
+    return {
+      main:{label:"Total F&O Turnover",value:"₹"+Math.round(totalTurnover).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Futures Turnover",value:"₹"+Math.round(futuresTurnover).toLocaleString('en-IN')},
+        {label:"Options Turnover",value:"₹"+Math.round(optionsTurnover).toLocaleString('en-IN')},
+        {label:"Net Profit/Loss",value:"₹"+Math.round(netPL).toLocaleString('en-IN'),pos:netPL>0,neg:netPL<0},
+        {label:"Profit % of Turnover",value:profitPct.toFixed(2)+"%"},
+        {label:"Tax Audit Required?",value:auditRequired?"Yes — 44AB audit required ⚠":"No ✅"},
+        {label:"44AD Presumptive?",value:presumptiveEligible?"Eligible (turnover ≤ ₹2 Cr) ✅":"Not eligible ❌"},
+        {label:"ITR Form",value:"ITR-3 (Business Income)"},
+        {label:"Due Date",value:auditRequired?"31 Oct (audit)":"31 Jul"}
+      ]
+    };
+  };
+
+  if(DB['presumptiveTax'] && DB['presumptiveTax'].calc===null) DB['presumptiveTax'].calc=function(v){
+    var type=v.pt_type||"Business (44AD)";
+    var turnover=v.pt_turnover, cashPct=v.pt_cashPct;
+    var cashTurnover=turnover*cashPct/100;
+    var digitalTurnover=turnover-cashTurnover;
+    var presumptiveIncome;
+    if(type.includes("44AD")){
+      // Business: 8% of cash, 6% of digital
+      presumptiveIncome=cashTurnover*0.08+digitalTurnover*0.06;
+    } else {
+      // Professional 44ADA: 50% of gross receipts
+      presumptiveIncome=turnover*0.50;
+    }
+    // Income tax calculation (New Regime)
+    var taxable=Math.max(0,presumptiveIncome-75000);
+    var tax=0;
+    var slabs=[[400000,0],[400000,0.05],[400000,0.10],[400000,0.15],[400000,0.20],[400000,0.25],[Infinity,0.30]];
+    var rem=taxable;
+    for(var i=0;i<slabs.length;i++){
+      if(rem<=0) break;
+      var chunk=Math.min(rem,slabs[i][0]);
+      tax+=chunk*slabs[i][1]; rem-=chunk;
+    }
+    if(taxable<=1200000) tax=0;
+    var cess=Math.round(tax*0.04);
+    var total=Math.round(tax)+cess;
+    var effectiveRate=turnover>0?(total/turnover*100):0;
+    return {
+      main:{label:"Tax Payable (New Regime)",value:"₹"+total.toLocaleString('en-IN')},
+      secondary:[
+        {label:"Section",value:type.includes("44AD")?"44AD (Business)":"44ADA (Professional)"},
+        {label:"Presumptive Income",value:"₹"+Math.round(presumptiveIncome).toLocaleString('en-IN')},
+        {label:"Income as % of Turnover",value:(presumptiveIncome/turnover*100).toFixed(1)+"%"},
+        {label:"Cash Turnover (8%)",value:"₹"+Math.round(cashTurnover).toLocaleString('en-IN')},
+        {label:"Digital Turnover (6%)",value:"₹"+Math.round(digitalTurnover).toLocaleString('en-IN')},
+        {label:"Base Tax",value:"₹"+Math.round(tax).toLocaleString('en-IN')},
+        {label:"Health & Edu Cess (4%)",value:"₹"+cess.toLocaleString('en-IN')},
+        {label:"Effective Tax Rate",value:effectiveRate.toFixed(2)+"% of turnover"},
+        {label:"ITR Form",value:"ITR-4 (Sugam)"},
+        {label:"Turnover Limit",value:type.includes("44AD")?"₹3 Cr (digital) / ₹2 Cr (cash)":"₹75 Lakh"}
+      ]
+    };
+  };
+
+  if(DB['homeloanTaxBenefit'] && DB['homeloanTaxBenefit'].calc===null) DB['homeloanTaxBenefit'].calc=function(v){
+    var interest=v.hltb_interest, principal=v.hltb_principal, income=v.hltb_income;
+    var other80c=v.hltb_other80c;
+    var isSelfOccupied=v.hltb_property.includes("Self");
+    // Section 24b: Interest deduction
+    var maxInterest=isSelfOccupied?200000:Infinity;
+    var interestDeduction=Math.min(interest,maxInterest);
+    // Section 80C: Principal deduction (within 1.5L total 80C limit)
+    var available80c=Math.max(0,150000-other80c);
+    var principalDeduction=Math.min(principal,available80c);
+    var totalDeduction=interestDeduction+principalDeduction;
+    // Tax saving at marginal rate (assume 30% bracket for high income, else estimate)
+    var marginalRate=income>1500000?0.312:income>1200000?0.208:income>900000?0.156:0.052;
+    var taxSaving=Math.round(totalDeduction*marginalRate);
+    var monthlyTaxSaving=Math.round(taxSaving/12);
+    return {
+      main:{label:"Annual Tax Saving",value:"₹"+taxSaving.toLocaleString('en-IN')},
+      secondary:[
+        {label:"Section 24b (Interest)",value:"₹"+Math.round(interestDeduction).toLocaleString('en-IN')+(isSelfOccupied?" (max ₹2L)":"")},
+        {label:"Section 80C (Principal)",value:"₹"+Math.round(principalDeduction).toLocaleString('en-IN')+" of ₹1.5L limit"},
+        {label:"Other 80C Used",value:"₹"+other80c.toLocaleString('en-IN')},
+        {label:"Total Deduction",value:"₹"+Math.round(totalDeduction).toLocaleString('en-IN')},
+        {label:"Monthly Tax Saving",value:"₹"+monthlyTaxSaving.toLocaleString('en-IN')},
+        {label:"Marginal Rate Used",value:(marginalRate*100).toFixed(1)+"%"},
+        {label:"Property Type",value:v.hltb_property},
+        {label:"Regime",value:"Old Regime Only ⚠"}
+      ],
+      chart:{a:Math.round(interestDeduction),b:Math.round(principalDeduction),lA:"24b Interest",lB:"80C Principal"}
+    };
+  };
+
+  if(DB['indexedCost'] && DB['indexedCost'].calc===null) DB['indexedCost'].calc=function(v){
+    // Cost Inflation Index (CII) values — base year 2001-02 = 100
+    var cii={"2001-02":100,"2002-03":105,"2003-04":109,"2004-05":113,"2005-06":117,"2006-07":122,"2007-08":129,"2008-09":137,"2009-10":148,"2010-11":167,"2011-12":184,"2012-13":200,"2013-14":220,"2014-15":240,"2015-16":254,"2016-17":264,"2017-18":272,"2018-19":280,"2019-20":289,"2020-21":301,"2021-22":317,"2022-23":331,"2023-24":348,"2024-25":363,"2025-26":377};
+    var purchaseCII=cii[v.ic_purchaseYear]||100;
+    var saleCII=cii[v.ic_saleYear]||377;
+    var indexedCost=v.ic_purchasePrice*(saleCII/purchaseCII);
+    var ltcgWithIndex=v.ic_salePrice-indexedCost;
+    var ltcgWithout=v.ic_salePrice-v.ic_purchasePrice;
+    var taxWithIndex=Math.max(0,ltcgWithIndex)*0.20;
+    var taxWithout=Math.max(0,ltcgWithout)*0.125;
+    var betterOption=taxWithIndex<taxWithout?"20% with Indexation":"12.5% without Indexation";
+    return {
+      main:{label:"Indexed Cost of Acquisition",value:"₹"+Math.round(indexedCost).toLocaleString('en-IN')},
+      secondary:[
+        {label:"Purchase CII ("+v.ic_purchaseYear+")",value:purchaseCII},
+        {label:"Sale CII ("+v.ic_saleYear+")",value:saleCII},
+        {label:"LTCG (with indexation)",value:"₹"+Math.round(ltcgWithIndex).toLocaleString('en-IN')},
+        {label:"Tax @20% (with indexation)",value:"₹"+Math.round(taxWithIndex).toLocaleString('en-IN')},
+        {label:"LTCG (without indexation)",value:"₹"+Math.round(ltcgWithout).toLocaleString('en-IN')},
+        {label:"Tax @12.5% (without)",value:"₹"+Math.round(taxWithout).toLocaleString('en-IN')},
+        {label:"Better Option",value:betterOption+" ✅"},
+        {label:"Tax Saved",value:"₹"+Math.round(Math.abs(taxWithIndex-taxWithout)).toLocaleString('en-IN'),pos:true}
+      ],
+      chart:{a:Math.round(Math.min(taxWithIndex,taxWithout)),b:Math.round(Math.max(taxWithIndex,taxWithout)),lA:"Lower Tax",lB:"Higher Tax"}
+    };
+  };
+
+  if(DB['goldComparison'] && DB['goldComparison'].calc===null) DB['goldComparison'].calc=function(v){
+    var amount=v.gc_amount, years=v.gc_years, goldReturn=v.gc_goldReturn/100;
+    var taxSlab=parseFloat(v.gc_taxSlab)/100;
+    var goldValue=amount*Math.pow(1+goldReturn,years);
+    var gain=goldValue-amount;
+    // Digital Gold: ~3% buy+sell spread, taxed at slab rate
+    var dgBuySpread=0.015, dgSellSpread=0.015;
+    var dgEffective=amount*(1-dgBuySpread);
+    var dgMaturity=dgEffective*Math.pow(1+goldReturn,years)*(1-dgSellSpread);
+    var dgGain=dgMaturity-amount;
+    var dgTax=Math.max(0,dgGain)*taxSlab;
+    var dgNet=dgMaturity-dgTax;
+    // SGB: 2.5% interest + tax-free capital gains at 8 years
+    var sgbInterest=amount*0.025*years;
+    var sgbInterestTax=sgbInterest*taxSlab;
+    var sgbCapitalGain=gain;
+    var sgbCapitalTax=years>=8?0:sgbCapitalGain*taxSlab;
+    var sgbNet=goldValue+sgbInterest-sgbInterestTax-sgbCapitalTax;
+    // Gold ETF: ~0.5% expense ratio, taxed
+    var etfExpense=0.005;
+    var etfReturn=goldReturn-etfExpense;
+    var etfValue=amount*Math.pow(1+etfReturn,years);
+    var etfGain=etfValue-amount;
+    var etfTax=Math.max(0,etfGain)*(years>=1?0.125:taxSlab);
+    var etfNet=etfValue-etfTax;
+    var best=sgbNet>=dgNet&&sgbNet>=etfNet?"SGB":etfNet>=dgNet?"Gold ETF":"Digital Gold";
+    return {
+      main:{label:"Best Option",value:best+" ✅"},
+      secondary:[
+        {label:"SGB Net Return",value:"₹"+Math.round(sgbNet).toLocaleString('en-IN'),pos:true},
+        {label:"SGB Interest (2.5%)",value:"₹"+Math.round(sgbInterest).toLocaleString('en-IN')},
+        {label:"SGB Capital Gains Tax",value:years>=8?"Tax-free ✅":"₹"+Math.round(sgbCapitalTax).toLocaleString('en-IN')},
+        {label:"Gold ETF Net Return",value:"₹"+Math.round(etfNet).toLocaleString('en-IN')},
+        {label:"ETF Tax (12.5% LTCG)",value:"₹"+Math.round(etfTax).toLocaleString('en-IN')},
+        {label:"Digital Gold Net Return",value:"₹"+Math.round(dgNet).toLocaleString('en-IN')},
+        {label:"Digital Gold Spread Cost",value:(dgBuySpread+dgSellSpread)*100+"% buy+sell"},
+        {label:"Gold Value ("+years+"yr)",value:"₹"+Math.round(goldValue).toLocaleString('en-IN')}
+      ],
+      chart:{labels:["SGB","Gold ETF","Digital Gold"],data:[Math.round(sgbNet),Math.round(etfNet),Math.round(dgNet)]}
+    };
+  };
+
+  if(DB['rentYield'] && DB['rentYield'].calc===null) DB['rentYield'].calc=function(v){
+    var annualRent=v.ry_monthlyRent*12;
+    var effectiveRent=v.ry_monthlyRent*(12-v.ry_vacancy);
+    var annualCosts=v.ry_maintenance+v.ry_propertyTax;
+    var grossYield=(annualRent/v.ry_propertyValue)*100;
+    var netIncome=effectiveRent-annualCosts;
+    var netYield=(netIncome/v.ry_propertyValue)*100;
+    var monthlyNet=Math.round(netIncome/12);
+    var fdComparison=v.ry_propertyValue*0.07; // 7% FD return
+    var fdVsRent=fdComparison-netIncome;
+    return {
+      main:{label:"Gross Rental Yield",value:grossYield.toFixed(2)+"%"},
+      secondary:[
+        {label:"Net Rental Yield",value:netYield.toFixed(2)+"%"},
+        {label:"Annual Gross Rent",value:"₹"+Math.round(annualRent).toLocaleString('en-IN')},
+        {label:"Effective Rent (after vacancy)",value:"₹"+Math.round(effectiveRent).toLocaleString('en-IN')},
+        {label:"Annual Costs",value:"₹"+annualCosts.toLocaleString('en-IN')},
+        {label:"Net Annual Income",value:"₹"+Math.round(netIncome).toLocaleString('en-IN')},
+        {label:"Net Monthly Income",value:"₹"+monthlyNet.toLocaleString('en-IN')},
+        {label:"If FD instead (7%)",value:"₹"+Math.round(fdComparison).toLocaleString('en-IN')+"/yr"},
+        {label:"FD vs Rent Gap",value:"₹"+Math.round(Math.abs(fdVsRent)).toLocaleString('en-IN')+(fdVsRent>0?" more from FD ⚠":" more from rent ✅")}
+      ],
+      chart:{a:Math.round(netIncome),b:Math.round(annualCosts),lA:"Net Rental Income",lB:"Annual Costs"}
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('finance');
 })();

@@ -318,6 +318,44 @@
     };
   };
 
+  // ══════════════════════════════════════════════════════
+  // NEW EDUCATION CALCULATORS — April 2026 Batch
+  // ══════════════════════════════════════════════════════
+
+  if(DB['cgpaToPercentage'] && DB['cgpaToPercentage'].calc===null) DB['cgpaToPercentage'].calc=function(v){
+    var cgpa=v.ctp_cgpa, scale=v.ctp_scale||"CBSE (×9.5)";
+    var pct=0, formula="";
+    if(scale.includes("CBSE")){pct=cgpa*9.5;formula="CGPA × 9.5";}
+    else if(scale.includes("VTU")){pct=cgpa*10-7.5;formula="CGPA × 10 − 7.5";}
+    else if(scale.includes("Mumbai")){pct=(cgpa-0.5)*10;formula="(CGPA − 0.5) × 10";}
+    else if(scale.includes("Anna")){pct=(cgpa-0.5)*10;formula="(CGPA − 0.5) × 10";}
+    else if(scale.includes("JNTU")){pct=cgpa*10;formula="CGPA × 10";}
+    else if(scale.includes("Generic")){pct=cgpa*10;formula="CGPA × 10";}
+    else if(scale.includes("US")){
+      // US 4-point scale
+      pct=cgpa*25;formula="GPA × 25";
+    }
+    pct=Math.min(100,Math.max(0,pct));
+    var grade=pct>=90?"O (Outstanding)":pct>=80?"A+ (Excellent)":pct>=70?"A (Very Good)":pct>=60?"B+ (Good)":pct>=50?"B (Average)":pct>=40?"C (Below Average)":"F (Fail)";
+    var division=pct>=60?"First Division":pct>=50?"Second Division":pct>=33?"Third Division":"Fail";
+    // US GPA equivalent
+    var usGpa=scale.includes("US")?cgpa:Math.min(4.0,pct/25);
+    var letterGrade=usGpa>=3.7?"A":usGpa>=3.3?"A-":usGpa>=3.0?"B+":usGpa>=2.7?"B":usGpa>=2.3?"B-":usGpa>=2.0?"C+":usGpa>=1.7?"C":"Below C";
+    return {
+      main:{label:"Percentage",value:pct.toFixed(2)+"%"},
+      secondary:[
+        {label:"Grade",value:grade},
+        {label:"Division",value:division},
+        {label:"Formula Used",value:formula},
+        {label:"US GPA Equivalent",value:usGpa.toFixed(2)+" / 4.0"},
+        {label:"US Letter Grade",value:letterGrade},
+        {label:"CGPA Entered",value:cgpa},
+        {label:"Scale",value:scale.split("(")[0].trim()},
+        {label:"Note",value:"Verify with your university's official formula"}
+      ]
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('education');
 })();

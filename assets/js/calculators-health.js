@@ -674,6 +674,72 @@
     };
   };
 
+  // ══════════════════════════════════════════════════════
+  // NEW HEALTH CALCULATORS — April 2026 Batch
+  // ══════════════════════════════════════════════════════
+
+  if(DB['intermittentFasting'] && DB['intermittentFasting'].calc===null) DB['intermittentFasting'].calc=function(v){
+    var protocolMap={"16:8":{fast:16,eat:8},"18:6":{fast:18,eat:6},"20:4":{fast:20,eat:4},"OMAD (23:1)":{fast:23,eat:1}};
+    var protocol=protocolMap[v.if_protocol]||{fast:16,eat:8};
+    var eatStart=v.if_eatStart||"12:00";
+    var parts=eatStart.split(':');
+    var eatStartH=parseInt(parts[0]), eatStartM=parseInt(parts[1]||0);
+    var eatStartMin=eatStartH*60+eatStartM;
+    var eatEndMin=eatStartMin+protocol.eat*60;
+    var fastEndMin=eatStartMin; // fasting ends when eating starts
+    var fastStartMin=eatEndMin; // fasting starts when eating ends
+    function formatTime(mins){
+      var m=(mins+1440)%1440;
+      var h=Math.floor(m/60), mm=m%60;
+      var ampm=h>=12?"PM":"AM";
+      var h12=h%12||12;
+      return h12+":"+String(mm).padStart(2,'0')+" "+ampm;
+    }
+    var wakeTime=v.if_wakeTime||"07:00";
+    var wakeParts=wakeTime.split(':');
+    var wakeMin=parseInt(wakeParts[0])*60+parseInt(wakeParts[1]||0);
+    var hoursToFirstMeal=((eatStartMin-wakeMin)+1440)%1440/60;
+    return {
+      main:{label:"Eating Window",value:formatTime(eatStartMin)+" → "+formatTime(eatEndMin)},
+      secondary:[
+        {label:"Fasting Window",value:formatTime(fastStartMin)+" → "+formatTime(fastEndMin)},
+        {label:"Protocol",value:v.if_protocol+" ("+protocol.fast+"h fast, "+protocol.eat+"h eat)"},
+        {label:"Fasting Hours",value:protocol.fast+" hours"},
+        {label:"Eating Hours",value:protocol.eat+" hours"},
+        {label:"First Meal After Waking",value:hoursToFirstMeal.toFixed(1)+" hours"},
+        {label:"Last Meal",value:formatTime(eatEndMin)},
+        {label:"Allowed During Fast",value:"Water, black coffee, green tea"},
+        {label:"Tip",value:protocol.fast>=20?"Very advanced — consult a doctor":"Stay hydrated during fasting window"}
+      ]
+    };
+  };
+
+  if(DB['waistHeightRatio'] && DB['waistHeightRatio'].calc===null) DB['waistHeightRatio'].calc=function(v){
+    var ratio=v.whr_waist/v.whr_height;
+    var category, risk, action;
+    if(ratio<0.4){category="Very Lean";risk="Low";action="Maintain current lifestyle";}
+    else if(ratio<0.5){category="Healthy";risk="Low";action="✅ Excellent — keep it up";}
+    else if(ratio<0.54){category="Slightly Overweight";risk="Moderate";action="Increase physical activity";}
+    else if(ratio<0.58){category="Overweight";risk="Increased";action="Diet + exercise recommended";}
+    else if(ratio<0.63){category="Very Overweight";risk="High";action="Significant lifestyle changes needed";}
+    else{category="Obese";risk="Very High";action="Consult a doctor immediately";}
+    var idealWaist=Math.round(v.whr_height*0.49);
+    var waistToLose=Math.max(0,v.whr_waist-idealWaist);
+    return {
+      main:{label:"Waist-to-Height Ratio",value:ratio.toFixed(3)},
+      secondary:[
+        {label:"Category",value:category},
+        {label:"Health Risk",value:risk},
+        {label:"Action",value:action},
+        {label:"Your Waist",value:v.whr_waist+" cm"},
+        {label:"Your Height",value:v.whr_height+" cm"},
+        {label:"Ideal Waist (WHtR < 0.5)",value:idealWaist+" cm"},
+        {label:"Waist to Reduce",value:waistToLose>0?waistToLose+" cm":"Already at healthy level ✅"},
+        {label:"Universal Boundary",value:"Keep waist < half your height"}
+      ]
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('health');
 })();

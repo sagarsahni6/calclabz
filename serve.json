@@ -28,16 +28,16 @@
       "destination": "/editorial-policy.html"
     },
     {
-      "source": "/stampdutycalc-calculator",
-      "destination": "/stampdutycalc-calculator.html"
+      "source": "/stamp-duty-calculator",
+      "destination": "/stamp-duty-calculator.html"
     },
     {
-      "source": "/constructioncost-calculator",
-      "destination": "/constructioncost-calculator.html"
+      "source": "/construction-cost-calculator",
+      "destination": "/construction-cost-calculator.html"
     },
     {
-      "source": "/homerenovation-calculator",
-      "destination": "/homerenovation-calculator.html"
+      "source": "/home-renovation-calculator",
+      "destination": "/home-renovation-calculator.html"
     },
     {
       "source": "/concrete-calculator",
@@ -68,8 +68,8 @@
       "destination": "/landarea-calculator.html"
     },
     {
-      "source": "/solarpanel-calculator",
-      "destination": "/solarpanel-calculator.html"
+      "source": "/solar-panel-calculator",
+      "destination": "/solar-panel-calculator.html"
     },
     {
       "source": "/concretemix-calculator",
@@ -256,8 +256,8 @@
       "destination": "/pcbtrace-calculator.html"
     },
     {
-      "source": "/loanaffordability-calculator",
-      "destination": "/loanaffordability-calculator.html"
+      "source": "/loan-affordability-calculator",
+      "destination": "/loan-affordability-calculator.html"
     },
     {
       "source": "/salary-calculator",
@@ -388,16 +388,16 @@
       "destination": "/gst-calculator.html"
     },
     {
-      "source": "/taxregime-calculator",
-      "destination": "/taxregime-calculator.html"
+      "source": "/tax-regime-calculator",
+      "destination": "/tax-regime-calculator.html"
     },
     {
-      "source": "/compoundinterest-calculator",
-      "destination": "/compoundinterest-calculator.html"
+      "source": "/compound-interest-calculator",
+      "destination": "/compound-interest-calculator.html"
     },
     {
-      "source": "/incometax-calculator",
-      "destination": "/incometax-calculator.html"
+      "source": "/income-tax-calculator",
+      "destination": "/income-tax-calculator.html"
     },
     {
       "source": "/ppf-calculator",
@@ -416,16 +416,16 @@
       "destination": "/salaryhike-calculator.html"
     },
     {
-      "source": "/inhandsalary-calculator",
-      "destination": "/inhandsalary-calculator.html"
+      "source": "/in-hand-salary-calculator",
+      "destination": "/in-hand-salary-calculator.html"
     },
     {
       "source": "/pregst-calculator",
       "destination": "/pregst-calculator.html"
     },
     {
-      "source": "/simpleinterest-calculator",
-      "destination": "/simpleinterest-calculator.html"
+      "source": "/simple-interest-calculator",
+      "destination": "/simple-interest-calculator.html"
     },
     {
       "source": "/roi-calculator",
@@ -436,8 +436,8 @@
       "destination": "/rd-calculator.html"
     },
     {
-      "source": "/carloan-calculator",
-      "destination": "/carloan-calculator.html"
+      "source": "/car-loan-calculator",
+      "destination": "/car-loan-calculator.html"
     },
     {
       "source": "/inflation-calculator",
@@ -468,24 +468,24 @@
       "destination": "/hra-calculator.html"
     },
     {
-      "source": "/creditcard-calculator",
-      "destination": "/creditcard-calculator.html"
+      "source": "/credit-card-calculator",
+      "destination": "/credit-card-calculator.html"
     },
     {
       "source": "/prepayment-calculator",
       "destination": "/prepayment-calculator.html"
     },
     {
-      "source": "/stepupsip-calculator",
-      "destination": "/stepupsip-calculator.html"
+      "source": "/step-up-sip-calculator",
+      "destination": "/step-up-sip-calculator.html"
     },
     {
-      "source": "/savingsgoal-calculator",
-      "destination": "/savingsgoal-calculator.html"
+      "source": "/savings-goal-calculator",
+      "destination": "/savings-goal-calculator.html"
     },
     {
-      "source": "/capitalgains-calculator",
-      "destination": "/capitalgains-calculator.html"
+      "source": "/capital-gains-calculator",
+      "destination": "/capital-gains-calculator.html"
     },
     {
       "source": "/tds-calculator",
@@ -496,32 +496,32 @@
       "destination": "/epf-calculator.html"
     },
     {
-      "source": "/loaneligibility-calculator",
-      "destination": "/loaneligibility-calculator.html"
+      "source": "/loan-eligibility-calculator",
+      "destination": "/loan-eligibility-calculator.html"
     },
     {
       "source": "/ssy-calculator",
       "destination": "/ssy-calculator.html"
     },
     {
-      "source": "/retirementcorpus-calculator",
-      "destination": "/retirementcorpus-calculator.html"
+      "source": "/retirement-corpus-calculator",
+      "destination": "/retirement-corpus-calculator.html"
     },
     {
       "source": "/goalsip-calculator",
       "destination": "/goalsip-calculator.html"
     },
     {
-      "source": "/taxsaving-calculator",
-      "destination": "/taxsaving-calculator.html"
+      "source": "/tax-saving-calculator",
+      "destination": "/tax-saving-calculator.html"
     },
     {
-      "source": "/advancetax-calculator",
-      "destination": "/advancetax-calculator.html"
+      "source": "/advance-tax-calculator",
+      "destination": "/advance-tax-calculator.html"
     },
     {
-      "source": "/ctcbreakup-calculator",
-      "destination": "/ctcbreakup-calculator.html"
+      "source": "/ctc-breakup-calculator",
+      "destination": "/ctc-breakup-calculator.html"
     },
     {
       "source": "/fire-calculator",
@@ -636,20 +636,20 @@
       "destination": "/networth-calculator.html"
     },
     {
-      "source": "/dividendyield-calculator",
-      "destination": "/dividendyield-calculator.html"
+      "source": "/dividend-yield-calculator",
+      "destination": "/dividend-yield-calculator.html"
     },
     {
-      "source": "/goldinvestment-calculator",
-      "destination": "/goldinvestment-calculator.html"
+      "source": "/gold-investment-calculator",
+      "destination": "/gold-investment-calculator.html"
     },
     {
       "source": "/profitloss-calculator",
       "destination": "/profitloss-calculator.html"
     },
     {
-      "source": "/stockreturn-calculator",
-      "destination": "/stockreturn-calculator.html"
+      "source": "/stock-return-calculator",
+      "destination": "/stock-return-calculator.html"
     },
     {
       "source": "/mutualfundreturns-calculator",
@@ -660,8 +660,8 @@
       "destination": "/xirr-calculator.html"
     },
     {
-      "source": "/balancetransfer-calculator",
-      "destination": "/balancetransfer-calculator.html"
+      "source": "/balance-transfer-calculator",
+      "destination": "/balance-transfer-calculator.html"
     },
     {
       "source": "/scss-calculator",
@@ -728,8 +728,8 @@
       "destination": "/pregnancy-calculator.html"
     },
     {
-      "source": "/bodyfat-calculator",
-      "destination": "/bodyfat-calculator.html"
+      "source": "/body-fat-calculator",
+      "destination": "/body-fat-calculator.html"
     },
     {
       "source": "/idealweight-calculator",
@@ -740,12 +740,12 @@
       "destination": "/ovulation-calculator.html"
     },
     {
-      "source": "/bloodpressure-calculator",
-      "destination": "/bloodpressure-calculator.html"
+      "source": "/blood-pressure-calculator",
+      "destination": "/blood-pressure-calculator.html"
     },
     {
-      "source": "/proteinintake-calculator",
-      "destination": "/proteinintake-calculator.html"
+      "source": "/protein-intake-calculator",
+      "destination": "/protein-intake-calculator.html"
     },
     {
       "source": "/ibw-calculator",
@@ -764,16 +764,16 @@
       "destination": "/vitamins-calculator.html"
     },
     {
-      "source": "/smokingcost-calculator",
-      "destination": "/smokingcost-calculator.html"
+      "source": "/smoking-cost-calculator",
+      "destination": "/smoking-cost-calculator.html"
     },
     {
-      "source": "/childheight-calculator",
-      "destination": "/childheight-calculator.html"
+      "source": "/child-height-calculator",
+      "destination": "/child-height-calculator.html"
     },
     {
-      "source": "/diabetesrisk-calculator",
-      "destination": "/diabetesrisk-calculator.html"
+      "source": "/diabetes-risk-calculator",
+      "destination": "/diabetes-risk-calculator.html"
     },
     {
       "source": "/sleepdebt-calculator",
@@ -788,8 +788,8 @@
       "destination": "/cholesterolratio-calculator.html"
     },
     {
-      "source": "/caloriedeficit-calculator",
-      "destination": "/caloriedeficit-calculator.html"
+      "source": "/calorie-deficit-calculator",
+      "destination": "/calorie-deficit-calculator.html"
     },
     {
       "source": "/onerepmax-calculator",
@@ -1042,6 +1042,58 @@
     {
       "source": "/watertank-calculator",
       "destination": "/watertank-calculator.html"
+    },
+    {
+      "source": "/sgb-calculator",
+      "destination": "/sgb-calculator.html"
+    },
+    {
+      "source": "/fo-turnover-calculator",
+      "destination": "/fo-turnover-calculator.html"
+    },
+    {
+      "source": "/presumptive-tax-calculator",
+      "destination": "/presumptive-tax-calculator.html"
+    },
+    {
+      "source": "/homeloan-taxbenefit-calculator",
+      "destination": "/homeloan-taxbenefit-calculator.html"
+    },
+    {
+      "source": "/indexed-cost-calculator",
+      "destination": "/indexed-cost-calculator.html"
+    },
+    {
+      "source": "/gold-comparison-calculator",
+      "destination": "/gold-comparison-calculator.html"
+    },
+    {
+      "source": "/rent-yield-calculator",
+      "destination": "/rent-yield-calculator.html"
+    },
+    {
+      "source": "/intermittent-fasting-calculator",
+      "destination": "/intermittent-fasting-calculator.html"
+    },
+    {
+      "source": "/waist-height-ratio-calculator",
+      "destination": "/waist-height-ratio-calculator.html"
+    },
+    {
+      "source": "/cgpa-to-percentage-calculator",
+      "destination": "/cgpa-to-percentage-calculator.html"
+    },
+    {
+      "source": "/retirement-date-calculator",
+      "destination": "/retirement-date-calculator.html"
+    },
+    {
+      "source": "/age-units-calculator",
+      "destination": "/age-units-calculator.html"
+    },
+    {
+      "source": "/data-usage-calculator",
+      "destination": "/data-usage-calculator.html"
     },
     {
       "source": "/finance-calculators",

@@ -736,6 +736,46 @@
     };
   };
 
+  // ══════════════════════════════════════════════════════
+  // NEW EVERYDAY CALCULATORS — April 2026 Batch
+  // ══════════════════════════════════════════════════════
+
+  if(DB['dataUsage'] && DB['dataUsage'].calc===null) DB['dataUsage'].calc=function(v){
+    // Data consumption rates (MB per unit)
+    var ytRates={"SD (360p)":300,"HD (720p)":900,"HD (1080p)":1800,"4K":7000}; // MB/hour
+    var ytRate=ytRates[v.du_ytQuality]||900;
+    var ytDaily=v.du_youtube*ytRate; // MB
+    var instaDaily=v.du_instagram*2.5; // ~150 MB/hour = 2.5 MB/min
+    var videoCallDaily=v.du_videoCalls*5; // ~300MB/hour = 5 MB/min
+    var musicDaily=v.du_music*72; // ~72 MB/hour (Spotify normal quality)
+    var browsingDaily=v.du_browsing*60; // ~60 MB/hour
+    var totalDailyMB=ytDaily+instaDaily+videoCallDaily+musicDaily+browsingDaily;
+    var totalDailyGB=totalDailyMB/1024;
+    var totalMonthlyGB=totalDailyGB*30;
+    // Plan recommendation (Indian market)
+    var recommendedPlan;
+    if(totalDailyGB<=1.5) recommendedPlan="Jio ₹209 (1.5 GB/day, 28 days)";
+    else if(totalDailyGB<=2) recommendedPlan="Jio ₹249 (2 GB/day, 28 days)";
+    else if(totalDailyGB<=2.5) recommendedPlan="Airtel ₹299 (2.5 GB/day, 28 days)";
+    else if(totalDailyGB<=3) recommendedPlan="Jio ₹349 (3 GB/day, 28 days)";
+    else recommendedPlan="Airtel ₹449 unlimited or WiFi recommended";
+    return {
+      main:{label:"Daily Data Usage",value:totalDailyGB.toFixed(2)+" GB"},
+      secondary:[
+        {label:"Monthly Usage (30 days)",value:totalMonthlyGB.toFixed(1)+" GB"},
+        {label:"YouTube ("+v.du_ytQuality+")",value:(ytDaily/1024).toFixed(2)+" GB/day"},
+        {label:"Instagram/Reels",value:(instaDaily/1024).toFixed(2)+" GB/day"},
+        {label:"Video Calls",value:(videoCallDaily/1024).toFixed(2)+" GB/day"},
+        {label:"Music Streaming",value:(musicDaily/1024).toFixed(2)+" GB/day"},
+        {label:"Web Browsing",value:(browsingDaily/1024).toFixed(2)+" GB/day"},
+        {label:"Recommended Plan",value:recommendedPlan},
+        {label:"Tip",value:totalDailyGB>3?"Switch to WiFi for YouTube & downloads":"Your usage is manageable on a standard plan"}
+      ],
+      chart:{labels:["YouTube","Instagram","Video Calls","Music","Browsing"],
+        data:[Math.round(ytDaily),Math.round(instaDaily),Math.round(videoCallDaily),Math.round(musicDaily),Math.round(browsingDaily)]}
+    };
+  };
+
   // Signal that this category is ready
   if(typeof window!=='undefined'&&window._calcCatLoaded) window._calcCatLoaded('everyday');
 })();
