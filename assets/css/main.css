@@ -1895,6 +1895,9 @@ body.light .formula-vars {
 }
 
 .blog-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   background: var(--bg2);
   border: 1px solid var(--brd);
   border-radius: var(--rsm);
@@ -2164,6 +2167,36 @@ body.light .formula-vars {
   padding: 2px 6px;
   border-radius: 4px;
   color: var(--p2)
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  border: 1px solid var(--brd);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg2)
+}
+
+.article-body th,
+.article-body td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--brd);
+  text-align: left;
+  font-size: .82rem;
+  vertical-align: top
+}
+
+.article-body th {
+  color: var(--txt);
+  font-weight: 700;
+  background: var(--bg3)
+}
+
+.article-body tr:last-child td {
+  border-bottom: none
 }
 
 .article-cta {

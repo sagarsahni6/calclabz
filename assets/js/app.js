@@ -231,17 +231,27 @@ function closeSidebar() {
 }
 
 function navigateToPath(targetPath) {
+    var isLocalStaticPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
     var currentPath = window.location.pathname.length > 1
         ? window.location.pathname.replace(/\/+$/, '')
         : window.location.pathname;
     var normalizedTarget = targetPath.length > 1
         ? targetPath.replace(/\/+$/, '')
         : targetPath;
-    if (currentPath === normalizedTarget) {
+    var resolvedTarget = normalizedTarget;
+    if (isLocalStaticPreview && normalizedTarget !== '/' && !/\.html$/i.test(normalizedTarget)) {
+        if (normalizedTarget === '/blog' || normalizedTarget.indexOf('/blog/') === 0 ||
+            /^\/(?:about|privacy|terms|contact|disclaimer|editorial-policy)$/.test(normalizedTarget) ||
+            /^\/[^\/]+-calculators$/.test(normalizedTarget) ||
+            /^\/[^\/]+-calculator$/.test(normalizedTarget)) {
+            resolvedTarget = normalizedTarget + '.html';
+        }
+    }
+    if (currentPath === normalizedTarget || currentPath === resolvedTarget) {
         try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
         return;
     }
-    window.location.href = normalizedTarget;
+    window.location.href = resolvedTarget;
 }
 
 // ── HELPERS ────────────────────────────────────────
@@ -1711,7 +1721,8 @@ function handleRoute() {
 function pushBlogUrl(postId) {
     var bp = BLOG_POSTS.find(function (p) { return p.id === postId; });
     if (bp && bp.slug && window.history && window.history.pushState) {
-        var url = '/blog/' + bp.slug;
+        var isLocalStaticPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+        var url = '/blog/' + bp.slug + (isLocalStaticPreview ? '.html' : '');
         window.history.pushState({ type: 'blog', id: postId }, bp.title, url);
         // Update canonical link
         var canon = document.querySelector('link[rel="canonical"]');
@@ -1984,6 +1995,7 @@ function initDOMHandlers() {
     document.addEventListener('click', function (e) {
         var target = e.target.closest('[data-action]');
         if (!target) return;
+        if (target.tagName === 'A' && target.getAttribute('href')) e.preventDefault();
         var action = target.getAttribute('data-action');
         switch (action) {
             // Navigation

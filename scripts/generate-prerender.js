@@ -89,6 +89,7 @@ var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-calc-copy{min-width:0;flex:1}\n' +
 '.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}\n' +
 '.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}\n' +
+'.blog-card{display:block;color:inherit;text-decoration:none}\n' +
 '@media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}\n' +
 '.seo-article{margin-bottom:24px}\n' +
 '.seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}\n' +
@@ -106,7 +107,13 @@ var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-article td{color:var(--txt1)}\n' +
 '.seo-article h3{font-size:1rem;font-weight:600;margin:16px 0 6px;color:var(--txt)}\n' +
 '.seo-article a{color:var(--p);text-decoration:none}\n' +
-'.seo-article a:hover{text-decoration:underline}\n';
+'.seo-article a:hover{text-decoration:underline}\n' +
+'.article-toc a{color:inherit;text-decoration:none}\n' +
+'.article-toc a:hover{text-decoration:underline}\n' +
+'.article-body table{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border:1px solid var(--brd);border-radius:12px;overflow:hidden;background:var(--bg2)}\n' +
+'.article-body th,.article-body td{padding:12px 14px;border-bottom:1px solid var(--brd);text-align:left;font-size:.82rem;vertical-align:top}\n' +
+'.article-body th{color:var(--txt);font-weight:700;background:var(--bg3)}\n' +
+'.article-body tr:last-child td{border-bottom:none}\n';
 
 // ── CALCULATORS — loaded from centralized SEO content module ────────────────
 var CALCULATORS = require('./seo-content-top50');
@@ -362,6 +369,83 @@ function getCategoryRelatedPosts(catId) {
   return BLOG_POSTS.filter(function(post) {
     return blogCats.indexOf(post.cat) !== -1;
   }).slice(0, 4);
+}
+
+var BLOG_CAT_COLORS = {
+  Finance: '#6366f1',
+  Tax: '#f59e0b',
+  Health: '#10b981',
+  Math: '#8b5cf6',
+  Education: '#06b6d4',
+  Lifestyle: '#f0544f'
+};
+
+var BLOG_CAT_ICONS = {
+  Finance: 'fa-chart-line',
+  Tax: 'fa-landmark',
+  Health: 'fa-heart-pulse',
+  Math: 'fa-calculator',
+  Education: 'fa-graduation-cap',
+  Lifestyle: 'fa-sun'
+};
+
+function buildBlogCardHTML(post, options) {
+  options = options || {};
+  var catColor = BLOG_CAT_COLORS[post.cat] || 'var(--p)';
+  var catIcon = BLOG_CAT_ICONS[post.cat] || 'fa-file-alt';
+  var desc = post.desc || '';
+  if (options.clampDesc !== false && desc.length > 120) desc = desc.substring(0, 117) + '...';
+  var href = '/blog/' + post.slug;
+  var html = '        <a href="' + href + '" class="blog-card" data-action="showBlogPost" data-id="' + post.id + '">\n';
+  html += '          <div class="blog-card-hdr" style="background:linear-gradient(135deg,' + catColor + ',' + catColor + '88)"></div>\n';
+  if (options.showMeta) {
+    html += '          <div class="blog-meta-row"><span class="blog-read-badge"><i class="fas fa-clock"></i>' + (post.readTime || '5 min') + '</span><span><i class="fas fa-calendar"></i>' + (post.date || '2026') + '</span></div>\n';
+  }
+  html += '          <div class="blog-cat"><i class="fas ' + catIcon + '"></i> ' + escHtml(post.cat) + '</div>\n';
+  html += '          <div class="blog-title">' + escHtml(post.title) + '</div>\n';
+  if (options.showDesc !== false) {
+    html += '          <div class="blog-desc">' + escHtml(desc) + '</div>\n';
+  }
+  html += '          <div class="blog-link"><i class="fas fa-arrow-right"></i> ' + (options.linkText || 'Read guide') + '</div>\n';
+  html += '        </a>\n';
+  return html;
+}
+
+function buildBlogFilterPillsHTML(posts) {
+  var cats = ['All'];
+  posts.forEach(function(post) {
+    if (cats.indexOf(post.cat) === -1) cats.push(post.cat);
+  });
+  return cats.map(function(cat) {
+    var filterVal = cat === 'All' ? '' : cat;
+    var active = cat === 'All' ? ' active' : '';
+    return '<button class="blog-filter-pill' + active + '" data-action="showBlogSection" data-filter="' + filterVal + '">' + cat + '</button>';
+  }).join('');
+}
+
+function buildBlogToc(bodyHTML) {
+  var headings = bodyHTML.match(/<h2>(.*?)<\/h2>/g) || [];
+  var tocHTML = '';
+  if (headings.length > 2) {
+    var tocItems = headings.map(function(h, i) {
+      var text = escHtml(h.replace(/<\/?h2>/g, ''));
+      return '<li><a href="#toc-' + i + '">' + text + '</a></li>';
+    }).join('');
+    tocHTML = '<div class="article-toc"><div class="article-toc-title"><i class="fas fa-list"></i> Table of Contents</div><ol>' + tocItems + '</ol></div>';
+    var idx = 0;
+    bodyHTML = bodyHTML.replace(/<h2>/g, function() {
+      return '<h2 id="toc-' + (idx++) + '">';
+    });
+  }
+  return { bodyHTML: bodyHTML, tocHTML: tocHTML };
+}
+
+function countBlogCategories(posts) {
+  var cats = {};
+  posts.forEach(function(post) {
+    if (post.cat) cats[post.cat] = true;
+  });
+  return Object.keys(cats).length;
 }
 
 // ── BODY HTML BUILDERS ──────────────────────────────────────────────────────
@@ -1181,23 +1265,27 @@ function generateBlogPages() {
     // Inject SEO CSS
     html = html.replace('    </style>', SEO_CSS + '    </style>');
 
-    // Build blog article body
+    // Build blog article body using the app's richer article styles
+    var tocData = buildBlogToc(content.body);
+    var articleBody = tocData.bodyHTML;
+    var tocHTML = tocData.tocHTML;
+    var catColor = BLOG_CAT_COLORS[post.cat] || 'var(--p)';
+    var catIcon = BLOG_CAT_ICONS[post.cat] || 'fa-file-alt';
     var body = '\n    <!-- SEO Pre-rendered Blog Article -->\n';
     body += '    <div id="seo-content">\n';
-    body += '      <nav class="seo-breadcrumb" aria-label="Breadcrumb">\n';
-    body += '        <a href="/">Home</a> &rsaquo; ';
-    body += '<a href="/blog">Guides &amp; Blog</a> &rsaquo; ';
-    body += '<span>' + post.title + '</span>\n';
-    body += '      </nav>\n\n';
-    body += '      <article class="seo-article">\n';
-    body += '        <h1>' + post.title + '</h1>\n';
-    body += '        <div class="seo-article-meta">\n';
-    body += '          <span>' + (content.meta.date || post.date) + '</span>';
+    body += '      <div class="article-wrap">\n';
+    body += '        <div class="crumb"><a href="/" data-action="showHome" role="button" tabindex="0">Home</a> <span>&rsaquo;</span> <a href="/blog" data-action="showBlogSection" role="button" tabindex="0">Guides &amp; Blog</a> <span>&rsaquo;</span> ' + escHtml(post.title) + '</div>\n';
+    body += '        <h1>' + escHtml(post.title) + '</h1>\n';
+    body += '        <div class="article-meta"><span><i class="fas fa-calendar"></i>' + escHtml(content.meta.date || post.date) + '</span><span><i class="fas fa-clock"></i>' + escHtml(content.meta.readTime || post.readTime) + ' read</span><span><i class="fas fa-user"></i>' + escHtml(content.meta.author || 'Calc Labz Team') + '</span><span class="article-cat-badge" style="background:' + catColor + '20;color:' + catColor + '"><i class="fas ' + catIcon + '"></i>' + escHtml(post.cat) + '</span></div>\n';
+    if (tocHTML) body += '        ' + tocHTML + '\n';
+    body += '        <div class="article-body">' + articleBody + '</div>\n';
+    /*
     body += ' · <span>' + (content.meta.readTime || post.readTime) + ' read</span>';
     body += ' · <span>By ' + (content.meta.author || 'Calc Labz Team') + '</span>\n';
     body += '        </div>\n\n';
     body += '        ' + content.body + '\n\n';
 
+    */
     // CTA
     if (content.cta) {
       // Map old calc IDs to canonical hyphenated slugs
@@ -1215,41 +1303,37 @@ function generateBlogPages() {
         'stampdutycalc':'stamp-duty'
       };
       var ctaSlug = CTA_SLUG_MAP[content.cta.calc] || content.cta.calc;
-      body += '        <div class="seo-article-cta">\n';
-      body += '          <a href="/' + ctaSlug + '-calculator">' + content.cta.text + ' &rarr;</a>\n';
-      body += '        </div>\n';
+      body += '        <div class="article-cta"><span style="flex:1"><strong>Ready to calculate?</strong> ' + escHtml(content.cta.text) + '</span><a href="/' + ctaSlug + '-calculator" class="btn btn-p" data-action="openCalc" data-cat="' + escHtml(content.cta.cat) + '" data-id="' + escHtml(content.cta.calc) + '"><i class="fas fa-calculator"></i> Open Calculator</a></div>\n';
     }
 
-    body += '      </article>\n\n';
+    body += '        <div class="share-bar"><span class="share-lbl">Share this article:</span><button class="share-btn wa" data-action="doShare" data-channel="wa" data-name="' + escHtml(post.title) + '"><i class="fab fa-whatsapp"></i>WhatsApp</button><button class="share-btn tw" data-action="doShare" data-channel="tw" data-name="' + escHtml(post.title) + '"><i class="fab fa-twitter"></i>Twitter</button><button class="share-btn" data-action="doShare" data-channel="copy" data-name="' + escHtml(post.title) + '"><i class="fas fa-link"></i>Copy Link</button></div>\n\n';
 
     // Related articles section
     var relatedPosts = BLOG_POSTS.filter(function(p) {
       return p.cat === post.cat && p.id !== post.id && BLOG_CONTENT[p.id];
-    }).slice(0, 4);
+    }).slice(0, 3);
     if (relatedPosts.length) {
-      body += '      <section class="seo-section">\n';
-      body += '        <h2>Related Articles</h2>\n';
-      body += '        <div class="seo-related-grid">\n';
+      body += '        <div class="related-blogs"><h3><i class="fas fa-book-open"></i>You May Also Like</h3><div class="blog-grid related-blog-grid">\n';
       relatedPosts.forEach(function(rp) {
-        body += '          <a href="/blog/' + rp.slug + '">' + rp.title + '</a>\n';
+        body += buildBlogCardHTML(rp, { showMeta: false, showDesc: false, clampDesc: false }).replace(/^        /gm, '          ');
       });
-      body += '        </div>\n';
-      body += '      </section>\n\n';
+      body += '        </div></div>\n';
     }
 
     // Trust section
-    body += '      <div class="seo-trust">\n';
+    body += '        <div class="seo-trust">\n';
     if (post.cat === 'Finance' || post.cat === 'Tax') {
-      body += '        <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or tax advice. Tax laws and rates may change. Consult a qualified chartered accountant or financial advisor for decisions specific to your situation.</p>\n';
+      body += '          <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or tax advice. Tax laws and rates may change. Consult a qualified chartered accountant or financial advisor for decisions specific to your situation.</p>\n';
     } else if (post.cat === 'Health') {
-      body += '        <p><strong>Medical disclaimer:</strong> This article provides general health information and is not a substitute for professional medical advice. Consult a healthcare professional for personalized guidance.</p>\n';
+      body += '          <p><strong>Medical disclaimer:</strong> This article provides general health information and is not a substitute for professional medical advice. Consult a healthcare professional for personalized guidance.</p>\n';
     } else {
-      body += '        <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>\n';
+      body += '          <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>\n';
     }
-      body += '        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> if you spot an outdated rule, unclear explanation, or factual error.</p>\n';
-      body += '        <p><strong>Last updated:</strong> ' + (content.meta.date || 'April 2026') + '</p>\n';
-      body += '      </div>\n';
+    body += '          <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> if you spot an outdated rule, unclear explanation, or factual error.</p>\n';
+    body += '          <p><strong>Last updated:</strong> ' + escHtml(content.meta.date || 'April 2026') + '</p>\n';
+    body += '        </div>\n';
 
+    body += '      </div>\n';
     body += '    </div>\n';
 
     // Replace body placeholder
@@ -1265,6 +1349,9 @@ function generateBlogPages() {
 
     var outFile = path.join(blogDir, post.slug + '.html');
     fs.writeFileSync(outFile, html, 'utf8');
+    var articleDir = path.join(blogDir, post.slug);
+    if (!fs.existsSync(articleDir)) fs.mkdirSync(articleDir, { recursive: true });
+    fs.writeFileSync(path.join(articleDir, 'index.html'), html, 'utf8');
     console.log('  ✓  blog/' + post.slug + '.html');
   });
 
@@ -1305,6 +1392,8 @@ function generateBlogListingPage() {
   var pageTitle = 'Guides & Articles — Finance, Health & Calculator Tips | Calc Labz';
   var pageDesc = 'Free guides and articles on personal finance, health metrics, tax planning, and how to use online calculators. Expert tips to make smarter decisions with data.';
   var html = template;
+  var blogDir = path.join(ROOT, 'blog');
+  if (!fs.existsSync(blogDir)) fs.mkdirSync(blogDir, { recursive: true });
 
   // Head metadata
   html = html.replace(/<title>.*?<\/title>/, '<title>' + pageTitle + '</title>');
@@ -1338,12 +1427,14 @@ function generateBlogListingPage() {
   // Build blog listing body
   var body = '\n    <!-- SEO Pre-rendered Blog Listing -->\n';
   body += '    <div id="seo-content">\n';
-  body += '      <nav class="seo-breadcrumb" aria-label="Breadcrumb">\n';
-  body += '        <a href="/">Home</a> &rsaquo; <span>Guides &amp; Blog</span>\n';
-  body += '      </nav>\n\n';
-  body += '      <h1>Guides &amp; Articles</h1>\n';
-  body += '      <p class="seo-intro">Expert guides on personal finance, tax planning, health metrics, and more. Learn how to make the most of our calculators with practical tips, worked examples, and in-depth explanations.</p>\n\n';
-  body += '      <section class="seo-section">\n';
+  body += '      <div class="card">\n';
+  body += '        <nav class="seo-breadcrumb" aria-label="Breadcrumb">\n';
+  body += '          <a href="/">Home</a> &rsaquo; <span>Guides &amp; Blog</span>\n';
+  body += '        </nav>\n\n';
+  body += '        <div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,var(--p),var(--p2))"><i class="fas fa-newspaper"></i></div><div class="cat-meta"><h1>Guides &amp; Articles</h1><p>' + BLOG_POSTS.length + ' in-depth articles on finance, health, math &amp; more</p></div></div>\n';
+  body += '        <div class="blog-stats-bar"><div class="blog-stat"><div class="blog-stat-n">' + BLOG_POSTS.length + '</div><div class="blog-stat-l">Articles</div></div><div class="blog-stat"><div class="blog-stat-n">' + countBlogCategories(BLOG_POSTS) + '</div><div class="blog-stat-l">Categories</div></div><div class="blog-stat"><div class="blog-stat-n">Free</div><div class="blog-stat-l">Always</div></div><div class="blog-stat"><div class="blog-stat-n">SEO</div><div class="blog-stat-l">Ready</div></div></div>\n';
+  body += '        <div class="blog-filters">' + buildBlogFilterPillsHTML(BLOG_POSTS) + '</div>\n';
+  body += '        <section class="seo-section">\n';
   body += '        <h2>What you will find here</h2>\n';
   body += '        <p>Calc Labz guides are written to add context around the calculator output: what the formula means, where the assumptions break, how Indian rules or pricing conventions affect the result, and what to verify before acting on it.</p>\n';
   body += '        <ul>\n';
@@ -1351,22 +1442,18 @@ function generateBlogListingPage() {
   body += '          <li>Health and education guides that translate common formulas into practical interpretation.</li>\n';
   body += '          <li>Everyday decision guides for bills, travel, budgeting, shopping, and planning.</li>\n';
   body += '        </ul>\n';
-  body += '      </section>\n\n';
+  body += '        </section>\n\n';
 
   // Blog cards grid
-  body += '      <div class="seo-calc-grid">\n';
+  body += '        <div class="blog-grid">\n';
   BLOG_POSTS.forEach(function(post) {
-    var desc = post.desc || '';
-    if (desc.length > 120) desc = desc.substring(0, 117) + '...';
-    body += '        <a href="/blog/' + post.slug + '" class="seo-calc-card">\n';
-    body += '          <strong>' + post.title + '</strong>\n';
-    body += '          <span>' + desc + '</span>\n';
-    body += '        </a>\n';
+    body += buildBlogCardHTML(post, { showMeta: true, showDesc: true });
   });
-  body += '      </div>\n';
-  body += '      <div class="seo-trust">\n';
-  body += '        <p><strong>Editorial note:</strong> Our guides are meant to support, not replace, official documentation or professional advice. See the <a href="/editorial-policy">Editorial Policy</a> for our review approach.</p>\n';
-  body += '        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> and include the article title plus the issue you found.</p>\n';
+  body += '        </div>\n';
+  body += '        <div class="seo-trust">\n';
+  body += '          <p><strong>Editorial note:</strong> Our guides are meant to support, not replace, official documentation or professional advice. See the <a href="/editorial-policy">Editorial Policy</a> for our review approach.</p>\n';
+  body += '          <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> and include the article title plus the issue you found.</p>\n';
+  body += '        </div>\n';
   body += '      </div>\n';
   body += '    </div>\n';
 
@@ -1383,6 +1470,7 @@ function generateBlogListingPage() {
 
   var outFile = path.join(ROOT, 'blog.html');
   fs.writeFileSync(outFile, html, 'utf8');
+  fs.writeFileSync(path.join(blogDir, 'index.html'), html, 'utf8');
   console.log('  ✓  blog.html (listing page with ' + BLOG_POSTS.length + ' posts)\n');
 }
 
