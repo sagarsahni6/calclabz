@@ -330,6 +330,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-person">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sagar Sahni",
+  "url": "https://calclabz.com/about",
+  "jobTitle": "Founder & Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Calc Labz",
+    "url": "https://calclabz.com"
+  },
+  "sameAs": [
+    "https://calclabz.com/about"
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -395,16 +412,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter your numerical values or mathematical parameters in the input fields</li>
-          <li>Select the operation type or formula variant if multiple options are available</li>
-          <li>View the step-by-step solution and final result</li>
-          <li>Verify the answer against your manual calculation for learning purposes</li>
+          <li>Enter your First Number, Second Number, Third Number (optional, 0 to skip) in the input fields provided</li>
+          <li>Results are computed instantly as you enter or modify values — no need to click a button</li>
+          <li>Review the computed output showing your lcm & gcd results with a detailed breakdown</li>
+          <li>Cross-check the output with your manual working to reinforce the underlying concept</li>
         </ol>
       </section>
 
       <section class="seo-section">
         <h2>How LCM & GCD Calculator is Calculated</h2>
-        <p>This calculator implements standard mathematical formulas for lcm & gcd operations. Computations follow established mathematical principles from standard textbooks. Results are precise to the level of JavaScript floating-point arithmetic.</p>
+        <p>This calculator uses the formula: GCD = Euclidean algorithm | LCM = |a×b| / GCD(a,b). Where GCD = Greatest Common Divisor (HCF) ; LCM = Least Common Multiple. GCD is largest number dividing both. LCM is smallest number divisible by both. LCM × GCD = a × b. All calculations run entirely in your browser — no data is transmitted to any server.</p>
       </section>
 
       <section class="seo-faq">
@@ -428,6 +445,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
           <a href="/squareroot-calculator">Square Root Calculator</a>
           <a href="/logarithm-calculator">Logarithm Calculator</a>
           <a href="/factorial-calculator">Factorial Calculator</a>
+        </div>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Guides</h2>
+        <div class="seo-related-grid">
+          <a href="/blog/percentage-calculator-tricks-formulas-examples">Percentage Calculator: Tricks, Formulas &amp; Examples</a>
         </div>
       </section>
 

@@ -330,6 +330,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-person">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sagar Sahni",
+  "url": "https://calclabz.com/about",
+  "jobTitle": "Founder & Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Calc Labz",
+    "url": "https://calclabz.com"
+  },
+  "sameAs": [
+    "https://calclabz.com/about"
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -395,16 +412,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter the required engineering parameters (values, dimensions, electrical ratings, etc.)</li>
-          <li>Select the appropriate units or configuration if specified</li>
-          <li>View the calculated result with the formula and working shown</li>
-          <li>Use the output for preliminary design verification or academic reference</li>
+          <li>Enter your Decibel Value, Reference Type in the input fields provided</li>
+          <li>Results are computed instantly as you enter or modify values — no need to click a button</li>
+          <li>Review the computed output showing your decibel results with a detailed breakdown</li>
+          <li>Use the output for preliminary design checks — critical applications require verification by a licensed professional</li>
         </ol>
       </section>
 
       <section class="seo-section">
         <h2>How Decibel Calculator is Calculated</h2>
-        <p>This calculator applies standard engineering formulas from established reference texts and codes (IS/IEEE/ASME). The decibel computation uses accepted engineering principles. Results are preliminary estimates and must be verified by a licensed professional for any real-world application.</p>
+        <p>This calculator uses the formula: dB (power) = 10 × log₁₀(P₂/P₁) | dB (voltage) = 20 × log₁₀(V₂/V₁). Where +3dB ≈ 2× power ; +6dB ≈ 2× voltage ; 0 dBm = 1 milliwatt. Decibels are logarithmic ratios. Used for sound, signal power, and gain measurement. All calculations run entirely in your browser — no data is transmitted to any server.</p>
       </section>
 
       <section class="seo-faq">

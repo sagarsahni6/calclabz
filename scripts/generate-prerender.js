@@ -358,6 +358,50 @@ function buildSoftwareSchema(calc) {
   };
 }
 
+function buildPersonSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Sagar Sahni',
+    url: BASE_URL + '/about',
+    jobTitle: 'Founder & Developer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Calc Labz',
+      url: BASE_URL
+    },
+    sameAs: [
+      BASE_URL + '/about'
+    ]
+  };
+}
+
+function getRelatedBlogPosts(calcId, catId) {
+  var CALC_BLOG_MAP = {
+    finance: ['Finance', 'Tax'],
+    health: ['Health'],
+    math: ['Math'],
+    everyday: ['Everyday', 'Lifestyle'],
+    education: ['Education'],
+    engineering: ['Science'],
+    construction: ['Everyday'],
+    unit: ['Math', 'Science'],
+    datetime: ['Lifestyle', 'Everyday'],
+    science: ['Science', 'Health']
+  };
+  var blogCats = CALC_BLOG_MAP[catId] || [];
+  // First try to match by calculator ID in slug
+  var idMatched = BLOG_POSTS.filter(function(post) {
+    return post.slug && post.slug.indexOf(calcId) !== -1;
+  });
+  // Then match by category
+  var catMatched = BLOG_POSTS.filter(function(post) {
+    return blogCats.indexOf(post.cat) !== -1 && idMatched.indexOf(post) === -1;
+  });
+  // Combine: ID matches first, then category matches, max 3
+  return idMatched.concat(catMatched).slice(0, 3);
+}
+
 function jsonLdTag(id, schema) {
   return '<script type="application/ld+json" id="' + id + '">\n' +
     JSON.stringify(schema, null, 2) +
@@ -582,6 +626,19 @@ function buildBodyHTML(calc) {
     html += '      </section>\n\n';
   }
 
+  // Related blog guides
+  var relatedPosts = getRelatedBlogPosts(calc.id, calc.cat.toLowerCase());
+  if (relatedPosts.length) {
+    html += '      <section class="seo-section">\n';
+    html += '        <h2>Related Guides</h2>\n';
+    html += '        <div class="seo-related-grid">\n';
+    relatedPosts.forEach(function(post) {
+      html += '          <a href="/blog/' + post.slug + '">' + escHtml(post.title) + '</a>\n';
+    });
+    html += '        </div>\n';
+    html += '      </section>\n\n';
+  }
+
   // Trust section
   html += '      ' + buildTrustSection(calc).replace(/\n/g, '\n      ').trim() + '\n';
 
@@ -739,7 +796,8 @@ function generate() {
       jsonLdTag('jsonld-howto',       buildHowToSchema(calc)),
       jsonLdTag('jsonld-faq',         buildFAQSchema(calc)),
       jsonLdTag('jsonld-breadcrumb',  buildBreadcrumbSchema(calc)),
-      jsonLdTag('jsonld-calc',        buildSoftwareSchema(calc))
+      jsonLdTag('jsonld-calc',        buildSoftwareSchema(calc)),
+      jsonLdTag('jsonld-person',      buildPersonSchema())
     ].join('\n');
 
     // Remove existing jsonld-main and jsonld-website blocks in template
@@ -1052,7 +1110,8 @@ function generateAllRegistryCalcs() {
 
     html = html.replace('</head>',
       jsonLdTag('jsonld-breadcrumb', bc) + '\n' +
-      jsonLdTag('jsonld-faq', faqSchema) + '\n</head>'
+      jsonLdTag('jsonld-faq', faqSchema) + '\n' +
+      jsonLdTag('jsonld-person', buildPersonSchema()) + '\n</head>'
     );
 
     // Inject SEO CSS
@@ -1138,6 +1197,19 @@ function generateAllRegistryCalcs() {
       body += '        <div class="seo-related-grid">\n';
       relatedCalcs.forEach(function(r) {
         body += '          <a href="/' + r.slug + '">' + (r.name || formatSlugToName(r.slug)) + '</a>\n';
+      });
+      body += '        </div>\n';
+      body += '      </section>\n\n';
+    }
+
+    // Related blog guides (cross-linking)
+    var relatedPosts = getRelatedBlogPosts(entry.id, entry.cat);
+    if (relatedPosts.length) {
+      body += '      <section class="seo-section">\n';
+      body += '        <h2>Related Guides</h2>\n';
+      body += '        <div class="seo-related-grid">\n';
+      relatedPosts.forEach(function(post) {
+        body += '          <a href="/blog/' + post.slug + '">' + escHtml(post.title) + '</a>\n';
       });
       body += '        </div>\n';
       body += '      </section>\n\n';

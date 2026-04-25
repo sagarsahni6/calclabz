@@ -330,6 +330,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-person">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sagar Sahni",
+  "url": "https://calclabz.com/about",
+  "jobTitle": "Founder & Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Calc Labz",
+    "url": "https://calclabz.com"
+  },
+  "sameAs": [
+    "https://calclabz.com/about"
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -395,16 +412,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter your academic data such as grades, marks, credits, or study parameters</li>
-          <li>Select your grading scale or institution type if prompted</li>
-          <li>Results are computed automatically — review your calculated study hours output</li>
-          <li>Use the results for academic planning, exam preparation, or performance tracking</li>
+          <li>Enter your Number of Subjects, Days Until Exam, Available Study Hours/Day, and other required values in the input fields</li>
+          <li>Results are computed instantly as you enter or modify values — no need to click a button</li>
+          <li>Review the computed output showing your study hours results with a detailed breakdown</li>
+          <li>Use the result for academic planning — verify institution-specific grading policies before relying on the output</li>
         </ol>
       </section>
 
       <section class="seo-section">
         <h2>How Study Hours Calculator is Calculated</h2>
-        <p>This calculator implements standard academic formulas used by universities and examination boards. The study hours calculation follows grading policies from UGC, CBSE, and international standards. Results should be verified against your specific institution's policies.</p>
+        <p>This calculator uses the formula: Per Subject = Total Hours / (1 + Revisions × 0.3) / Subjects. Where Total = Days × Hours/Day ; Revisions take ~30% of initial study time each. Budget time for revisions — each revision pass takes about 30% of the initial study time. All calculations run entirely in your browser — no data is transmitted to any server.</p>
       </section>
 
       <section class="seo-faq">
@@ -428,6 +445,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
           <a href="/scholarship-calculator">Scholarship Calculator</a>
           <a href="/pomodoro-calculator">Pomodoro Timer</a>
           <a href="/gpaconverter-calculator">GPA Converter</a>
+        </div>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Guides</h2>
+        <div class="seo-related-grid">
+          <a href="/blog/cgpa-to-percentage-converter-formula-2026">CGPA to Percentage Converter + Formula 2026</a>
+          <a href="/blog/attendance-calculator-percentage-requirements">Attendance Calculator: Track &amp; Meet Your 75% Requirement</a>
+          <a href="/blog/gpa-calculator-cgpa-conversion-formula">GPA Calculator: CGPA to Percentage &amp; 4.0 Scale Conversion</a>
         </div>
       </section>
 

@@ -6,12 +6,12 @@ module.exports = {
     desc: 'Convert between meters, feet, inches, cm, km, miles, yards, and nautical miles. Instant bidirectional length conversion with formula.',
     what: 'This length converter instantly translates between metric and imperial length units: millimeters, centimeters, meters, kilometers, inches, feet, yards, miles, and nautical miles. Enter a value in any unit to see all equivalent values simultaneously.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your length results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: Convert to meters, then to target unit. Where 1 km = 1000 m ; 1 mile = 1609.34 m ; 1 inch = 0.0254 m ; 1 foot = 0.3048 m. Convert through a base unit (meters) for accuracy between any two units. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'How do I convert feet to meters?', a: '1 foot = 0.3048 meters. Multiply feet by 0.3048. 5\'10" (5.833 ft) = 1.778 m. Quick approximation: divide feet by 3.3. For cm to feet: divide cm by 30.48.' },
       { q: 'What is the difference between a mile and a nautical mile?', a: 'A statute mile = 1.609 km (5,280 feet). A nautical mile = 1.852 km — based on one minute of latitude. Nautical miles are used in aviation and maritime navigation because they relate directly to Earth\'s coordinates.' }
@@ -21,12 +21,12 @@ module.exports = {
     desc: 'Convert between kg, pounds, ounces, grams, stones, and tonnes. Instant weight and mass unit conversion with common reference comparisons.',
     what: 'This weight converter translates between kilograms, grams, milligrams, pounds, ounces, stones, metric tonnes, and US/UK tons. Provides both exact and approximate conversions with everyday object references for intuitive understanding.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your weight results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: Convert to kilograms, then to target unit. Where 1 kg = 1000 g = 2.205 lb ; 1 lb = 453.6 g ; 1 oz = 28.35 g ; 1 tonne = 1000 kg. Mass (kg) is constant everywhere; weight varies with gravity. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'How do I convert kg to pounds?', a: '1 kg = 2.20462 pounds. Multiply kg by 2.205. Quick trick: double the kg and add 10%. 70 kg = 140 + 14 = 154 lbs (exact: 154.32 lbs).' },
       { q: 'What is the difference between mass and weight?', a: 'Mass (kg) is the amount of matter — constant everywhere. Weight (Newtons) is the gravitational force on mass — varies by location. In everyday language, we use "weight" for both, but scientifically, a scale measures weight and calculates mass.' }
@@ -36,12 +36,12 @@ module.exports = {
     desc: 'Convert between Celsius, Fahrenheit, Kelvin, and Rankine. Includes body temperature, cooking, and weather reference points.',
     what: 'This temperature converter translates between Celsius (°C), Fahrenheit (°F), Kelvin (K), and Rankine (°R). Includes a reference chart for common temperatures — body temperature, boiling/freezing water, oven settings, and weather benchmarks.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Temperature, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your temperature results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: °F = °C × 9/5 + 32 | K = °C + 273.15. Where °C = Celsius ; °F = Fahrenheit ; K = Kelvin ; 0°C = 32°F = 273.15K. Kelvin is the SI unit. Absolute zero = 0K = −273.15°C. No negative Kelvin values exist. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'How do I convert Celsius to Fahrenheit?', a: '°F = (°C × 9/5) + 32. Quick method: double Celsius, subtract 10%, add 32. 37°C body temp: 37 × 2 = 74, − 7 = 67, + 32 = 99°F (exact: 98.6°F). For rough estimates: 0°C=32°F, 10°C=50°F, 20°C=68°F, 30°C=86°F, 40°C=104°F.' },
       { q: 'What is absolute zero?', a: '0 Kelvin = −273.15°C = −459.67°F. It is the theoretical lowest possible temperature where all molecular motion stops. It has never been reached in a lab, though scientists have gotten within billionths of a degree.' }
@@ -51,12 +51,12 @@ module.exports = {
     desc: 'Convert between world currencies with live exchange rates. Supports INR, USD, EUR, GBP, AED, and 100+ global currencies.',
     what: 'This currency converter uses real-time exchange rates to convert between Indian Rupee (INR) and 100+ world currencies. Shows the mid-market rate, historical trend, and the amount in words for financial documentation.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Amount, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your currency results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This converter uses precise, internationally standardised conversion factors for currency maintained by the International Bureau of Weights and Measures (BIPM). Results are accurate to multiple decimal places and suitable for most practical applications.',
     faqs: [
       { q: 'Where do exchange rates come from?', a: 'Exchange rates are determined by forex markets based on supply/demand, interest rate differentials, inflation, and geopolitical factors. Banks add a 1.5–3% markup to the mid-market rate. Wire transfer services like Wise offer closer-to-market rates.' },
       { q: 'What is the RBI reference rate?', a: 'RBI publishes daily reference rates for USD, EUR, GBP, and JPY against INR. It is a benchmark, not a mandatory rate. Actual forex rates fluctuate throughout the day based on market trading. Check FBIL (Financial Benchmarks India) for official rates.' }
@@ -66,12 +66,12 @@ module.exports = {
     desc: 'Convert between square meters, square feet, acres, hectares, bigha, and gunta. Essential for Indian real estate and land measurement.',
     what: 'This area converter translates between international and Indian land measurement units: square meters, square feet, acres, hectares, cents, bigha, gunta, kanal, and marla. Essential for property transactions where different regions use different units.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your area results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This converter uses precise, internationally standardised conversion factors for area maintained by the International Bureau of Weights and Measures (BIPM). Results are accurate to multiple decimal places and suitable for most practical applications.',
     faqs: [
       { q: 'How do I convert square feet to square meters?', a: '1 sq ft = 0.0929 sq m. Divide sq ft by 10.764. A 1,000 sq ft apartment = 92.9 sq m. Reverse: multiply sq m by 10.764.' },
       { q: 'What is 1 acre in square feet?', a: '1 acre = 43,560 sq ft = 4,047 sq m = 0.4047 hectares. 1 hectare = 2.471 acres. In Indian units, 1 acre ≈ 1.62 bigha (UP) but varies by state. Always confirm regional bigha conversion.' }
@@ -81,12 +81,12 @@ module.exports = {
     desc: 'Convert between km/h, mph, m/s, knots, and Mach number. Includes wind speed scales and speed reference comparisons.',
     what: 'This speed converter translates between kilometers per hour, miles per hour, meters per second, feet per second, knots, and Mach number. Includes the Beaufort wind scale and speed references from walking pace to the speed of light.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your speed results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This converter uses precise, internationally standardised conversion factors for speed maintained by the International Bureau of Weights and Measures (BIPM). Results are accurate to multiple decimal places and suitable for most practical applications.',
     faqs: [
       { q: 'How do I convert km/h to mph?', a: 'Divide km/h by 1.609 (or multiply by 0.621). 100 km/h = 62.1 mph. 120 km/h highway speed = 74.6 mph. Quick trick: divide by 1.6 — close enough for estimation.' },
       { q: 'What is Mach number?', a: 'Mach 1 = speed of sound = 343 m/s = 1,235 km/h at sea level. Mach 2 = twice the speed of sound. Commercial jets fly at Mach 0.8–0.85 (900–940 km/h). Concorde flew at Mach 2.04.' }
@@ -96,12 +96,12 @@ module.exports = {
     desc: 'Convert between liters, gallons, cubic meters, cups, and milliliters. Covers US, UK, and metric volume systems.',
     what: 'This volume converter translates between liters, milliliters, US gallons, UK gallons, US fluid ounces, cubic meters, cubic centimeters, cups, tablespoons, and teaspoons. Distinguishes between US and Imperial measurements which differ significantly.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your volume results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This converter uses precise, internationally standardised conversion factors for volume maintained by the International Bureau of Weights and Measures (BIPM). Results are accurate to multiple decimal places and suitable for most practical applications.',
     faqs: [
       { q: 'What is the difference between US and UK gallons?', a: 'US gallon = 3.785 liters. UK (Imperial) gallon = 4.546 liters — 20% larger. This matters for fuel economy: 30 mpg (US) = 36 mpg (UK). Always specify which gallon system you are using.' },
       { q: 'How many liters in common containers?', a: 'Water bottle: 0.5–1L. Kitchen bucket: 10–15L. Car fuel tank: 35–60L. Bathtub: 150–300L. 1 cubic meter: 1,000L. Overhead water tank: 500–2,000L.' }
@@ -111,12 +111,12 @@ module.exports = {
     desc: 'Convert between bytes, KB, MB, GB, TB, and PB. Understand binary (KiB, MiB) vs decimal (KB, MB) data measurement.',
     what: 'This data size converter translates between bits, bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes. Clarifies the important difference between binary (1 KB = 1,024 bytes) and decimal (1 kB = 1,000 bytes) conventions.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your data storage results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This converter uses precise, internationally standardised conversion factors for data storage maintained by the International Bureau of Weights and Measures (BIPM). Results are accurate to multiple decimal places and suitable for most practical applications.',
     faqs: [
       { q: 'Why does my 256 GB drive show only 238 GB?', a: 'Manufacturers use decimal (1 GB = 1,000,000,000 bytes) but your OS uses binary (1 GiB = 1,073,741,824 bytes). 256,000,000,000 ÷ 1,073,741,824 = 238.4 GiB. You are not missing any storage — it is just different counting.' },
       { q: 'How much data do common activities use?', a: 'WhatsApp text: 1–5 KB. Photo: 2–5 MB. Song (MP3): 3–10 MB. HD movie stream: 3–5 GB. 4K movie: 15–25 GB. One hour Zoom: 1–2.5 GB. 5G plan of 1.5 GB/day ≈ 45 GB/month.' }
@@ -126,12 +126,12 @@ module.exports = {
     desc: 'Convert between Pascal, bar, PSI, atm, mmHg, and torr. Covers tire pressure, blood pressure, and industrial applications.',
     what: 'This pressure converter translates between Pascal (Pa), kiloPascal (kPa), bar, millibar, PSI, atmosphere (atm), mmHg (torr), and inches of water column. Includes reference pressures for common applications like tire inflation and weather.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your pressure results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: Convert to Pascals, then to target unit. Where 1 atm = 101325 Pa ; 1 bar = 100000 Pa ; 1 PSI = 6894.76 Pa. Pascal is the SI unit of pressure. 1 atm = standard atmospheric pressure at sea level. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'What units is tire pressure measured in?', a: 'India and most countries: PSI (pounds per square inch) or bar. Car tires: 30–35 PSI (2.0–2.4 bar). Bike tires: 40–65 PSI. Check your car door sticker for the recommended pressure.' },
       { q: 'What is 1 atmosphere?', a: '1 atm = 101,325 Pa = 1.01325 bar = 14.696 PSI = 760 mmHg. It is the average air pressure at sea level. Weather reports use hectoPascals (hPa) or millibars (same value). Standard atmosphere is used as a reference in science.' }
@@ -141,12 +141,12 @@ module.exports = {
     desc: 'Convert between joules, calories, kWh, BTU, and electron volts. Covers food energy, electricity, and physics energy units.',
     what: 'This energy converter translates between joules, kilojoules, calories, kilocalories (food Calories), kilowatt-hours (electricity), BTU, and electron volts. Bridges the gap between physics, nutrition, and everyday electricity measurements.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your energy results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: Convert to Joules, then to target unit. Where 1 kWh = 3,600,000 J ; 1 cal = 4.184 J ; 1 BTU = 1055.06 J. Joule is the SI unit of energy. 1 kWh is what your electricity meter measures. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'What is the difference between a calorie and a Calorie?', a: 'Lowercase calorie (cal): energy to heat 1g water by 1°C. Uppercase Calorie (Cal or kcal): 1,000 cal — this is what food labels use. A "300 Calorie" meal is actually 300,000 calories (300 kcal).' },
       { q: 'How do I relate kWh to everyday use?', a: '1 kWh = running a 1,000W appliance for 1 hour. Examples: 1 kWh ≈ 4 hours of ceiling fan, 1 hour of iron, 30 minutes of AC, 10 hours of LED bulb. At ₹7/kWh, each unit costs ₹7.' }
@@ -156,12 +156,12 @@ module.exports = {
     desc: 'Convert between degrees, radians, gradians, and turns. Essential for trigonometry, navigation, and engineering calculations.',
     what: 'This angle converter translates between degrees, radians, gradians (gon), turns (revolutions), minutes of arc, and seconds of arc. Shows the relationship between these systems and common angle values used in geometry and trigonometry.',
     howToSteps: [
-      'Enter the value you want to convert in the source unit field',
-      'Select the source and target units from the available options',
-      'View the converted value instantly with the conversion factor shown',
-      'Copy the result or try different unit combinations as needed'
+      'Enter your Value, From in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your angle results with a detailed breakdown',
+      'Copy the converted value or try additional unit combinations — the conversion factor is shown for reference'
     ],
-    methodology: 'This converter uses precise, internationally standardized conversion factors maintained by the International Bureau of Weights and Measures (BIPM). Conversions between metric, imperial, and other systems use exact ratios where defined. Results are accurate to multiple decimal places.',
+    methodology: 'This calculator uses the formula: Radians = Degrees × π/180 | Gradians = Degrees × 10/9. Where Full circle = 360° = 2π rad = 400 grad = 1 turn. Radians are natural for calculus and physics. One radian ≈ 57.3°. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'How do I convert degrees to radians?', a: 'Radians = Degrees × π/180. 90° = π/2 rad. 180° = π rad. 360° = 2π rad. 45° = π/4 rad. Quick reference: 1 radian ≈ 57.3°. Calculus and physics typically use radians.' },
       { q: 'What are gradians used for?', a: 'Gradians divide a right angle into 100 grads (vs 90 degrees). A full circle = 400 grad. Used in some European surveying instruments. 1 grad = 0.9 degrees. Most scientific and engineering work uses degrees or radians.' }
@@ -173,10 +173,10 @@ module.exports = {
     desc: 'Should you invest your down payment or use it to buy a home? Compare wealth accumulation of renting plus investing vs buying property.',
     what: 'This invest vs rent calculator compares two paths: (1) using a lump sum as a home down payment and paying EMI, or (2) renting and investing the same lump sum plus the EMI-vs-rent difference in mutual funds. Shows which builds more wealth over 10–30 years.',
     howToSteps: [
-      'Enter the required values for your invest vs rent calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your invest vs rent calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your invest vs rent results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for invest vs rent computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -188,10 +188,10 @@ module.exports = {
     desc: 'Calculate triangle area using base-height, three sides (Heron\'s), or two sides with angle. Includes perimeter and all angle calculations.',
     what: 'This triangle area calculator supports multiple methods: base × height / 2, Heron\'s formula (from three sides), two sides with included angle, and coordinate geometry method. Also calculates perimeter, all angles, and classifies the triangle type.',
     howToSteps: [
-      'Enter the required values for your triangle area calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your triangle area calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your triangle area results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for triangle area computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -203,12 +203,12 @@ module.exports = {
     desc: 'Calculate your waist-to-hip ratio (WHR) and assess abdominal obesity risk. A key indicator for cardiovascular and metabolic disease risk.',
     what: 'This waist-to-hip ratio calculator divides your waist circumference by hip circumference to assess body fat distribution. WHR is a stronger predictor of cardiovascular disease than BMI alone because it specifically measures dangerous visceral (abdominal) fat.',
     howToSteps: [
-      'Enter the required values for your waist-to-hip ratio calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter your Waist Circumference, Hip Circumference, Gender in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your waist-to-hip ratio results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
-    methodology: 'This calculator uses standard formulas for waist-to-hip ratio computation. All calculations run locally in your browser for instant results.',
+    methodology: 'This calculator uses the formula: WHR = Waist Circumference / Hip Circumference. Where Low risk: ≤0.90 (male), ≤0.80 (female) ; High risk: >0.95 (male), >0.85 (female). Waist-to-hip ratio is a better predictor of cardiovascular risk than BMI alone. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'What is a healthy waist-to-hip ratio?', a: 'WHO guidelines — Men: below 0.90 (low risk), 0.90–1.0 (moderate), above 1.0 (high risk). Women: below 0.80 (low), 0.80–0.85 (moderate), above 0.85 (high risk). Indian thresholds are even stricter due to higher visceral fat tendency.' },
       { q: 'How do I measure waist and hip correctly?', a: 'Waist: measure at the narrowest point (usually just above the navel, at the level of the belly button) while standing, breathing normally. Hips: measure at the widest point of the buttocks. Use a flexible tape measure, keep it level and snug but not tight.' }
@@ -233,12 +233,12 @@ module.exports = {
     desc: 'Estimate your lung capacity based on age, height, gender, and smoking status. Compare against normal predicted values for your demographics.',
     what: 'This lung capacity calculator estimates your predicted vital capacity, total lung capacity, and FEV1 (forced expiratory volume) based on demographic factors. Compares your actual spirometry results against predicted normals to assess respiratory health.',
     howToSteps: [
-      'Enter the required values for your lung capacity calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter your Height, Age, Gender in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your lung capacity results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
-    methodology: 'This calculator uses standard formulas for lung capacity computation. All calculations run locally in your browser for instant results.',
+    methodology: 'This calculator uses the formula: FVC (Male) = 0.057×H − 0.022×A − 4.241 | FVC (Female) = 0.041×H − 0.018×A − 2.690. Where H = Height (cm) ; A = Age (years) ; FEV1/FVC > 70% is normal. Forced Vital Capacity prediction. Actual spirometry test is needed for diagnosis. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'What is normal lung capacity?', a: 'Average adult total lung capacity: 4–6 liters (men), 3.5–5 liters (women). Vital capacity (max exhale after max inhale): 3–5 L. FEV1 (air exhaled in 1 second): 3–4 L. Athletes may have 20–30% above average.' },
       { q: 'Does smoking reduce lung capacity?', a: 'Yes. Smoking accelerates the natural decline of FEV1 from 25–30 mL/year to 60–90 mL/year. A 20-year smoker may lose 30–40% of lung capacity. Quitting slows decline back to near-normal rates but does not fully restore lost capacity.' }
@@ -248,10 +248,10 @@ module.exports = {
     desc: 'Calculate unit price to compare product value. Find the price per kg, liter, piece, or unit between different package sizes.',
     what: 'This unit price calculator helps you compare the value of products sold in different sizes or quantities. Enter the price and quantity for two or more options to instantly see which offers the best deal on a per-unit basis.',
     howToSteps: [
-      'Enter the required values for your unit price calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your unit price calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your unit price results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for unit price computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -263,10 +263,10 @@ module.exports = {
     desc: 'Compare petrol and diesel prices across Indian states. Calculate per-km fuel cost for your vehicle and find the cheapest fuel option.',
     what: 'This petrol price parity calculator compares fuel costs across Indian states/cities and calculates your per-kilometer fuel expenditure based on your vehicle\'s mileage. Helps decide between petrol, diesel, CNG, and electric options.',
     howToSteps: [
-      'Enter the required values for your petrol price parity calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your petrol price parity calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your petrol price parity results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for petrol price parity computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -278,12 +278,12 @@ module.exports = {
     desc: 'Calculate your exact age in years, months, and days. See the countdown to your next birthday with day of the week.',
     what: 'This age calculator shows your precise age in years, months, and days from your date of birth. Includes a countdown showing days, hours, and minutes until your next birthday, what day of the week it falls on, and your birth day trivia.',
     howToSteps: [
-      'Enter the required values for your next birthday calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter your Date of Birth in the input fields provided',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your next birthday results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
-    methodology: 'This calculator uses standard formulas for next birthday computation. All calculations run locally in your browser for instant results.',
+    methodology: 'This calculator uses the formula: Days Until = Next Birthday Date − Today. Where Next Birthday = This year or next year (whichever is in the future). Calculates exact days remaining and the day of the week your birthday falls on. All calculations run entirely in your browser — no data is transmitted to any server.',
     faqs: [
       { q: 'How is exact age calculated?', a: 'Subtract the birth date from today, accounting for varying month lengths and leap years. Born March 15, 1995 on April 14, 2026: 31 years, 0 months, 30 days — not simply 2026−1995 = 31 years.' },
       { q: 'What day was I born on?', a: 'Enter your birthdate and the calculator tells you the day of the week. Fun fact: more babies are born on Tuesdays and Wednesdays (planned C-sections and inductions), fewer on weekends.' }
@@ -308,10 +308,10 @@ module.exports = {
     desc: 'Estimate construction costs per square foot for residential buildings in India. Factor in floors, finish level, location, and material quality.',
     what: 'This construction cost estimator calculates the approximate cost per square foot for building a house in India based on the type of construction, finish level (basic, standard, premium, luxury), number of floors, and city tier.',
     howToSteps: [
-      'Enter the required values for your construction estimator calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your construction calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your construction results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for construction estimator computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -323,10 +323,10 @@ module.exports = {
     desc: 'Convert between Roman numerals and Arabic numbers. Supports values from 1 to 3,999 (I to MMMCMXCIX) with validation.',
     what: 'This Roman numeral converter translates between standard Arabic numbers (1–3,999) and Roman numerals. Validates input format, shows the breakdown of additive and subtractive notation, and provides the conversion steps.',
     howToSteps: [
-      'Enter the required values for your roman numeral conversion calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your roman numeral calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your roman numeral results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for roman numeral converter computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -338,10 +338,10 @@ module.exports = {
     desc: 'Calculate circle area, circumference, diameter, and radius from any one known value. Includes sector area and arc length formulas.',
     what: 'This circle calculator computes all properties from any single known value: enter radius, diameter, circumference, or area to instantly find the rest. Also calculates sector area and arc length for any central angle.',
     howToSteps: [
-      'Enter the required values for your circle calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your circle calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your circle results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for circle computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -383,10 +383,10 @@ module.exports = {
     desc: 'Calculate molar mass, moles, and mass for chemical compounds. Enter a chemical formula to get molecular weight and composition breakdown.',
     what: 'This molar mass calculator computes the molecular weight of any chemical compound from its formula. Enter formulas like H₂O, NaCl, C₆H₁₂O₆ to get molar mass (g/mol), element composition percentages, and conversions between mass, moles, and molecules.',
     howToSteps: [
-      'Enter the required values for your molar mass calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your molar mass calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your molar mass results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for molar mass computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -398,10 +398,10 @@ module.exports = {
     desc: 'Solve kinematics equations for projectile motion and linear motion. Find velocity, displacement, acceleration, and time of flight.',
     what: 'This kinematics calculator solves the four standard equations of motion for uniformly accelerated linear motion and projectile motion. Enter known values to find unknown quantities: displacement, initial velocity, final velocity, acceleration, and time.',
     howToSteps: [
-      'Enter the required values for your kinematics calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your kinematics calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your kinematics results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for kinematics computation. All calculations run locally in your browser for instant results.',
     faqs: [
@@ -413,10 +413,10 @@ module.exports = {
     desc: 'Calculate water tank capacity in liters from dimensions. Find the right tank size based on family size and daily water consumption.',
     what: 'This water tank calculator computes the volume of cylindrical, rectangular, and square tanks from physical dimensions. Also recommends the right tank size based on number of family members, daily water consumption, and water supply frequency.',
     howToSteps: [
-      'Enter the required values for your water tank size calculation',
-      'Adjust any optional settings or preferences as needed',
-      'View your results instantly — calculations update in real time',
-      'Use the output for budgeting, comparison, or planning decisions'
+      'Enter the specific values required for your water tank size calculation',
+      'Results are computed instantly as you enter or modify values — no need to click a button',
+      'Review the computed output showing your water tank size results with a detailed breakdown',
+      'Apply the result to your planning or decision-making, and revisit when your inputs change'
     ],
     methodology: 'This calculator uses standard formulas for water tank size computation. All calculations run locally in your browser for instant results.',
     faqs: [

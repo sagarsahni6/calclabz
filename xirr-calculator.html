@@ -330,6 +330,23 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   ]
 }
 </script>
+<script type="application/ld+json" id="jsonld-person">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sagar Sahni",
+  "url": "https://calclabz.com/about",
+  "jobTitle": "Founder & Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Calc Labz",
+    "url": "https://calclabz.com"
+  },
+  "sameAs": [
+    "https://calclabz.com/about"
+  ]
+}
+</script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -395,16 +412,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>How to Use This Calculator</h2>
         <ol>
-          <li>Enter the required financial values in the input fields (amounts, rates, tenure as applicable)</li>
-          <li>Adjust optional parameters like tax rate, inflation, or compounding frequency if available</li>
-          <li>Click Calculate or view results updating in real time as you type</li>
-          <li>Review the detailed breakdown showing your xirr results with charts and tables</li>
+          <li>Enter your Total Amount Invested, Current Portfolio Value, Investment Duration in the input fields provided</li>
+          <li>Results are computed instantly as you enter or modify values — no need to click a button</li>
+          <li>Review the computed output showing your xirr results with a detailed breakdown</li>
+          <li>Use the results to compare financial scenarios, plan budgets, or verify lender and investment calculations</li>
         </ol>
       </section>
 
       <section class="seo-section">
         <h2>How XIRR Calculator is Calculated</h2>
-        <p>This calculator uses standard financial formulas widely used in Indian banking and investment industries. Inputs are processed using established mathematical models for xirr computation. Results account for applicable rates, compounding, and time-value-of-money principles where relevant. All calculations run locally in your browser — no data is sent to any server.</p>
+        <p>This calculator uses the formula: XIRR = (Current Value / Invested)^(12/months) − 1. Where Invested = Total amount put in ; Current = Portfolio value today ; months = Duration. XIRR annualizes returns for irregular cash flows. Better than absolute return for comparison. All calculations run entirely in your browser — no data is transmitted to any server.</p>
       </section>
 
       <section class="seo-faq">
@@ -428,6 +445,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
           <a href="/tax-regime-calculator">Tax Regime Comparison Calculator</a>
           <a href="/compound-interest-calculator">Compound Interest Calculator</a>
           <a href="/income-tax-calculator">Income Tax Calculator</a>
+        </div>
+      </section>
+
+      <section class="seo-section">
+        <h2>Related Guides</h2>
+        <div class="seo-related-grid">
+          <a href="/blog/mutual-fund-returns-calculator-cagr-xirr">Mutual Fund Returns Calculator: CAGR vs XIRR vs Absolute Returns</a>
+          <a href="/blog/xirr-calculator-sip-irregular-investments">XIRR Calculator: True Returns on SIP &amp; Irregular Investments</a>
+          <a href="/blog/emi-calculator-guide-india-2026">How to Calculate EMI in India 2026</a>
         </div>
       </section>
 
