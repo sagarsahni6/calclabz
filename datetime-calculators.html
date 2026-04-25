@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,32 +352,53 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/dateiff-calculator" class="seo-calc-card">
-          <strong>Date Difference Calculator</strong>
-          <span>Find the exact difference between two dates in years, months, weeks, and days. Includes business days and countdown f...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Date Difference Calculator</strong>
+            <span>Find the exact difference between two dates in years, months, weeks, and days. Includes business days and countdown f...</span>
+          </span>
         </a>
         <a href="/retirement-date-calculator" class="seo-calc-card">
-          <strong>Retirement Date Calculator</strong>
-          <span>Calculate your retirement date, days remaining to retirement, and total working days left. Plan your career timeline ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Retirement Date Calculator</strong>
+            <span>Calculate your retirement date, days remaining to retirement, and total working days left. Plan your career timeline ...</span>
+          </span>
         </a>
         <a href="/workingdays-calculator" class="seo-calc-card">
-          <strong>Working Days Calculator</strong>
-          <span>Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Working Days Calculator</strong>
+            <span>Count working days between two dates excluding weekends. Add Indian public holidays to get accurate business day counts.</span>
+          </span>
         </a>
         <a href="/timeconv-calculator" class="seo-calc-card">
-          <strong>Time Converter</strong>
-          <span>Convert between hours, minutes, seconds, and decimal time formats. Perfect for timesheet calculations and payroll pro...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-clock" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Time Converter</strong>
+            <span>Convert between hours, minutes, seconds, and decimal time formats. Perfect for timesheet calculations and payroll pro...</span>
+          </span>
         </a>
         <a href="/countdown-calculator" class="seo-calc-card">
-          <strong>Countdown Timer</strong>
-          <span>Create countdown timers for any event or deadline. Shows days, hours, minutes until your target date with visual prog...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Countdown Timer</strong>
+            <span>Create countdown timers for any event or deadline. Shows days, hours, minutes until your target date with visual prog...</span>
+          </span>
         </a>
         <a href="/timezone-calculator" class="seo-calc-card">
-          <strong>Timezone Converter</strong>
-          <span>Convert time between world time zones. Schedule meetings across IST, EST, PST, GMT, and 30+ global time zones instantly.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-globe" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Timezone Converter</strong>
+            <span>Convert time between world time zones. Schedule meetings across IST, EST, PST, GMT, and 30+ global time zones instantly.</span>
+          </span>
         </a>
         <a href="/age-units-calculator" class="seo-calc-card">
-          <strong>Age in Days Hours Minutes Calculator</strong>
-          <span>Calculate your exact age in years, months, weeks, days, hours, minutes, and seconds. See your age in every possible t...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Age in Days Hours Minutes Calculator</strong>
+            <span>Calculate your exact age in years, months, weeks, days, hours, minutes, and seconds. See your age in every possible t...</span>
+          </span>
         </a>
       </div>
 

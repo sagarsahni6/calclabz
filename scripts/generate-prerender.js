@@ -45,6 +45,20 @@ try {
 }
 
 // ── SEO CSS ─────────────────────────────────────────────────────────────────
+var CORE_CALCS = {};
+var CORE_CATS = {};
+try {
+  var coreSandbox = {};
+  var coreSource = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'calculators-core.js'), 'utf8');
+  vm.runInNewContext(coreSource + '\nthis.__DB = DB; this.__CATS = CATS;', coreSandbox);
+  CORE_CALCS = coreSandbox.__DB || {};
+  CORE_CATS = coreSandbox.__CATS || {};
+} catch (e) {
+  CORE_CALCS = {};
+  CORE_CATS = {};
+  console.warn('  calculators-core metadata not found - category cards will use fallback icons.');
+}
+
 var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-breadcrumb{padding:8px 0;font-size:.82rem;color:var(--txt2)}\n' +
 '.seo-breadcrumb a{color:var(--p);text-decoration:none}\n' +
@@ -69,10 +83,12 @@ var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
 '.seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}\n' +
 '.seo-trust strong{color:var(--txt1)}\n' +
 '.seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}\n' +
-'.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}\n' +
+'.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}\n' +
 '.seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}\n' +
-'.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}\n' +
-'.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}\n' +
+'.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}\n' +
+'.seo-calc-copy{min-width:0;flex:1}\n' +
+'.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}\n' +
+'.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}\n' +
 '@media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}\n' +
 '.seo-article{margin-bottom:24px}\n' +
 '.seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}\n' +
@@ -515,10 +531,17 @@ function buildCategoryBodyHTML(cat, calcs) {
     // Look up unique description from basic content modules, then top-50 desc, then generic
     var unique = UNIQUE_BASIC_CONTENT[c.id] || null;
     var cDesc = (unique && unique.desc) ? unique.desc : (c.desc || 'Free online ' + name.toLowerCase() + '. Instant results, no signup.');
+    var coreCalc = CORE_CALCS[c.id] || {};
+    var coreCat = CORE_CATS[cat.id] || {};
+    var icon = coreCalc.icon || coreCat.icon || 'fa-calculator';
+    var iconBg = coreCat.color || 'linear-gradient(135deg,#6366f1,#818cf8)';
     if (cDesc.length > 120) cDesc = cDesc.substring(0, 117) + '...';
     html += '        <a href="/' + c.slug + '" class="seo-calc-card">\n';
-    html += '          <strong>' + name + '</strong>\n';
-    html += '          <span>' + cDesc + '</span>\n';
+    html += '          <span class="seo-calc-icon" style="background:' + iconBg + '"><i class="fas ' + icon + '" aria-hidden="true"></i></span>\n';
+    html += '          <span class="seo-calc-copy">\n';
+    html += '            <strong>' + name + '</strong>\n';
+    html += '            <span>' + cDesc + '</span>\n';
+    html += '          </span>\n';
     html += '        </a>\n';
   });
   html += '      </div>\n';

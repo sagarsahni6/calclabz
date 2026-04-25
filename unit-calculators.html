@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,48 +352,81 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/length-calculator" class="seo-calc-card">
-          <strong>Length Converter</strong>
-          <span>Convert between meters, feet, inches, cm, km, miles, yards, and nautical miles. Instant bidirectional length conversi...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-ruler" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Length Converter</strong>
+            <span>Convert between meters, feet, inches, cm, km, miles, yards, and nautical miles. Instant bidirectional length conversi...</span>
+          </span>
         </a>
         <a href="/weight-calculator" class="seo-calc-card">
-          <strong>Weight Converter</strong>
-          <span>Convert between kg, pounds, ounces, grams, stones, and tonnes. Instant weight and mass unit conversion with common re...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-weight-hanging" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Weight Converter</strong>
+            <span>Convert between kg, pounds, ounces, grams, stones, and tonnes. Instant weight and mass unit conversion with common re...</span>
+          </span>
         </a>
         <a href="/temperature-calculator" class="seo-calc-card">
-          <strong>Temperature Converter</strong>
-          <span>Convert between Celsius, Fahrenheit, Kelvin, and Rankine. Includes body temperature, cooking, and weather reference p...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-temperature-half" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Temperature Converter</strong>
+            <span>Convert between Celsius, Fahrenheit, Kelvin, and Rankine. Includes body temperature, cooking, and weather reference p...</span>
+          </span>
         </a>
         <a href="/currency-calculator" class="seo-calc-card">
-          <strong>Currency Converter</strong>
-          <span>Convert between world currencies with live exchange rates. Supports INR, USD, EUR, GBP, AED, and 100+ global currencies.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-indian-rupee-sign" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Currency Converter</strong>
+            <span>Convert between world currencies with live exchange rates. Supports INR, USD, EUR, GBP, AED, and 100+ global currencies.</span>
+          </span>
         </a>
         <a href="/area-calculator" class="seo-calc-card">
-          <strong>Area Converter</strong>
-          <span>Convert between square meters, square feet, acres, hectares, bigha, and gunta. Essential for Indian real estate and l...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-vector-square" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Area Converter</strong>
+            <span>Convert between square meters, square feet, acres, hectares, bigha, and gunta. Essential for Indian real estate and l...</span>
+          </span>
         </a>
         <a href="/speed-calculator" class="seo-calc-card">
-          <strong>Speed Converter</strong>
-          <span>Convert between km/h, mph, m/s, knots, and Mach number. Includes wind speed scales and speed reference comparisons.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Speed Converter</strong>
+            <span>Convert between km/h, mph, m/s, knots, and Mach number. Includes wind speed scales and speed reference comparisons.</span>
+          </span>
         </a>
         <a href="/volume-calculator" class="seo-calc-card">
-          <strong>Volume Converter</strong>
-          <span>Convert between liters, gallons, cubic meters, cups, and milliliters. Covers US, UK, and metric volume systems.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-flask" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Volume Converter</strong>
+            <span>Convert between liters, gallons, cubic meters, cups, and milliliters. Covers US, UK, and metric volume systems.</span>
+          </span>
         </a>
         <a href="/data-calculator" class="seo-calc-card">
-          <strong>Data Storage Converter</strong>
-          <span>Convert between bytes, KB, MB, GB, TB, and PB. Understand binary (KiB, MiB) vs decimal (KB, MB) data measurement.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-hard-drive" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Data Storage Converter</strong>
+            <span>Convert between bytes, KB, MB, GB, TB, and PB. Understand binary (KiB, MiB) vs decimal (KB, MB) data measurement.</span>
+          </span>
         </a>
         <a href="/pressure-calculator" class="seo-calc-card">
-          <strong>Pressure Converter</strong>
-          <span>Convert between Pascal, bar, PSI, atm, mmHg, and torr. Covers tire pressure, blood pressure, and industrial applicati...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-compress" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pressure Converter</strong>
+            <span>Convert between Pascal, bar, PSI, atm, mmHg, and torr. Covers tire pressure, blood pressure, and industrial applicati...</span>
+          </span>
         </a>
         <a href="/energy-calculator" class="seo-calc-card">
-          <strong>Energy Converter</strong>
-          <span>Convert between joules, calories, kWh, BTU, and electron volts. Covers food energy, electricity, and physics energy u...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Energy Converter</strong>
+            <span>Convert between joules, calories, kWh, BTU, and electron volts. Covers food energy, electricity, and physics energy u...</span>
+          </span>
         </a>
         <a href="/angle-calculator" class="seo-calc-card">
-          <strong>Angle Converter</strong>
-          <span>Convert between degrees, radians, gradians, and turns. Essential for trigonometry, navigation, and engineering calcul...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f5a623,#e09000)"><i class="fas fa-drafting-compass" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Angle Converter</strong>
+            <span>Convert between degrees, radians, gradians, and turns. Essential for trigonometry, navigation, and engineering calcul...</span>
+          </span>
         </a>
       </div>
 

@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,144 +352,249 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/bmi-calculator" class="seo-calc-card">
-          <strong>BMI Calculator</strong>
-          <span>Calculate your BMI (Body Mass Index) instantly. Know if you are underweight, normal, overweight, or obese. Includes A...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-weight-scale" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>BMI Calculator</strong>
+            <span>Calculate your BMI (Body Mass Index) instantly. Know if you are underweight, normal, overweight, or obese. Includes A...</span>
+          </span>
         </a>
         <a href="/bmr-calculator" class="seo-calc-card">
-          <strong>BMR Calculator</strong>
-          <span>Calculate your Basal Metabolic Rate (BMR) using Mifflin-St Jeor formula. Find the minimum calories your body needs at...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-fire" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>BMR Calculator</strong>
+            <span>Calculate your Basal Metabolic Rate (BMR) using Mifflin-St Jeor formula. Find the minimum calories your body needs at...</span>
+          </span>
         </a>
         <a href="/tdee-calculator" class="seo-calc-card">
-          <strong>TDEE Calculator</strong>
-          <span>Calculate your TDEE (Total Daily Energy Expenditure) based on activity level. Find exact daily calories needed to mai...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>TDEE Calculator</strong>
+            <span>Calculate your TDEE (Total Daily Energy Expenditure) based on activity level. Find exact daily calories needed to mai...</span>
+          </span>
         </a>
         <a href="/water-calculator" class="seo-calc-card">
-          <strong>Water Intake Calculator</strong>
-          <span>Free online water intake calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-droplet" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Water Intake Calculator</strong>
+            <span>Free online water intake calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/heartrate-calculator" class="seo-calc-card">
-          <strong>Heart Rate Zone Calculator</strong>
-          <span>Free online heart rate zone calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-heart-pulse" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Heart Rate Zone Calculator</strong>
+            <span>Free online heart rate zone calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/age-calculator" class="seo-calc-card">
-          <strong>Age Calculator</strong>
-          <span>Calculate your exact age in years, months, days, hours, and minutes from your date of birth. Find days until your nex...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-birthday-cake" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Age Calculator</strong>
+            <span>Calculate your exact age in years, months, days, hours, and minutes from your date of birth. Find days until your nex...</span>
+          </span>
         </a>
         <a href="/calories-calculator" class="seo-calc-card">
-          <strong>Calories Burned Calculator</strong>
-          <span>Free online calories burned calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-person-running" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Calories Burned Calculator</strong>
+            <span>Free online calories burned calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/sleep-calculator" class="seo-calc-card">
-          <strong>Sleep Cycle Calculator</strong>
-          <span>Free online sleep cycle calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-moon" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Sleep Cycle Calculator</strong>
+            <span>Free online sleep cycle calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/macros-calculator" class="seo-calc-card">
-          <strong>Macro Calculator</strong>
-          <span>Free online macro calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-chart-pie" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Macro Calculator</strong>
+            <span>Free online macro calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/pregnancy-calculator" class="seo-calc-card">
-          <strong>Pregnancy Due Date Calculator</strong>
-          <span>Free online pregnancy due date calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-baby" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pregnancy Due Date Calculator</strong>
+            <span>Free online pregnancy due date calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/body-fat-calculator" class="seo-calc-card">
-          <strong>Body Fat Calculator</strong>
-          <span>Free online body fat calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-person" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Body Fat Calculator</strong>
+            <span>Free online body fat calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/idealweight-calculator" class="seo-calc-card">
-          <strong>Ideal Weight Calculator</strong>
-          <span>Calculate your ideal body weight using Devine, Robinson, Miller, and Hamwi formulas. See the healthy weight range for...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-weight-hanging" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Ideal Weight Calculator</strong>
+            <span>Calculate your ideal body weight using Devine, Robinson, Miller, and Hamwi formulas. See the healthy weight range for...</span>
+          </span>
         </a>
         <a href="/ovulation-calculator" class="seo-calc-card">
-          <strong>Ovulation Calculator</strong>
-          <span>Calculate your ovulation date and fertile window based on your menstrual cycle. Track the best days for conception or...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-calendar-heart" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Ovulation Calculator</strong>
+            <span>Calculate your ovulation date and fertile window based on your menstrual cycle. Track the best days for conception or...</span>
+          </span>
         </a>
         <a href="/blood-pressure-calculator" class="seo-calc-card">
-          <strong>Blood Pressure Calculator</strong>
-          <span>Check your blood pressure category — normal, elevated, Stage 1, or Stage 2 hypertension. Understand systolic and dias...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-heart-pulse" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Blood Pressure Calculator</strong>
+            <span>Check your blood pressure category — normal, elevated, Stage 1, or Stage 2 hypertension. Understand systolic and dias...</span>
+          </span>
         </a>
         <a href="/protein-intake-calculator" class="seo-calc-card">
-          <strong>Protein Intake Calculator</strong>
-          <span>Calculate your daily protein requirement based on body weight, activity level, and fitness goals — muscle gain, weigh...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-dumbbell" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Protein Intake Calculator</strong>
+            <span>Calculate your daily protein requirement based on body weight, activity level, and fitness goals — muscle gain, weigh...</span>
+          </span>
         </a>
         <a href="/intermittent-fasting-calculator" class="seo-calc-card">
-          <strong>Intermittent Fasting Window Calculator</strong>
-          <span>Calculate your intermittent fasting eating and fasting windows. Plan 16:8, 18:6, 20:4, and OMAD schedules based on yo...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-clock" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Intermittent Fasting Window Calculator</strong>
+            <span>Calculate your intermittent fasting eating and fasting windows. Plan 16:8, 18:6, 20:4, and OMAD schedules based on yo...</span>
+          </span>
         </a>
         <a href="/waist-height-ratio-calculator" class="seo-calc-card">
-          <strong>Waist-to-Height Ratio Calculator</strong>
-          <span>Calculate your Waist-to-Height Ratio (WHtR) — a better predictor of cardiovascular risk than BMI. Check if your waist...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-ruler-vertical" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Waist-to-Height Ratio Calculator</strong>
+            <span>Calculate your Waist-to-Height Ratio (WHtR) — a better predictor of cardiovascular risk than BMI. Check if your waist...</span>
+          </span>
         </a>
         <a href="/ibw-calculator" class="seo-calc-card">
-          <strong>Ideal Body Weight Calculator</strong>
-          <span>Calculate Ideal Body Weight using the Devine formula — the clinical standard for medication dosing and medical assess...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-user-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Ideal Body Weight Calculator</strong>
+            <span>Calculate Ideal Body Weight using the Devine formula — the clinical standard for medication dosing and medical assess...</span>
+          </span>
         </a>
         <a href="/bsa-calculator" class="seo-calc-card">
-          <strong>Body Surface Area Calculator</strong>
-          <span>Calculate Body Surface Area using Mosteller, DuBois, and Haycock formulas. Used in chemotherapy dosing and clinical m...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-person-dots-from-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Body Surface Area Calculator</strong>
+            <span>Calculate Body Surface Area using Mosteller, DuBois, and Haycock formulas. Used in chemotherapy dosing and clinical m...</span>
+          </span>
         </a>
         <a href="/alcohol-calculator" class="seo-calc-card">
-          <strong>BAC Calculator</strong>
-          <span>Calculate your Blood Alcohol Concentration (BAC) based on drinks consumed, weight, gender, and time elapsed. Know whe...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-wine-glass" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>BAC Calculator</strong>
+            <span>Calculate your Blood Alcohol Concentration (BAC) based on drinks consumed, weight, gender, and time elapsed. Know whe...</span>
+          </span>
         </a>
         <a href="/vitamins-calculator" class="seo-calc-card">
-          <strong>Vitamin & Mineral Calculator</strong>
-          <span>Check your daily vitamin and mineral requirements by age and gender. See recommended dietary allowances (RDA) for ess...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-sun" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Vitamin & Mineral Calculator</strong>
+            <span>Check your daily vitamin and mineral requirements by age and gender. See recommended dietary allowances (RDA) for ess...</span>
+          </span>
         </a>
         <a href="/smoking-cost-calculator" class="seo-calc-card">
-          <strong>Smoking Cost Calculator</strong>
-          <span>Calculate how much money you spend on smoking per month, year, and decade. See the investment potential of quitting a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-ban-smoking" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Smoking Cost Calculator</strong>
+            <span>Calculate how much money you spend on smoking per month, year, and decade. See the investment potential of quitting a...</span>
+          </span>
         </a>
         <a href="/child-height-calculator" class="seo-calc-card">
-          <strong>Child Height Predictor</strong>
-          <span>Predict your child's adult height using the mid-parental height method. Uses parent heights and child's current growt...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-child-reaching" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Child Height Predictor</strong>
+            <span>Predict your child's adult height using the mid-parental height method. Uses parent heights and child's current growt...</span>
+          </span>
         </a>
         <a href="/diabetes-risk-calculator" class="seo-calc-card">
-          <strong>Diabetes Risk Calculator</strong>
-          <span>Assess your Type 2 diabetes risk based on age, BMI, family history, activity level, and waist circumference. Get a pe...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-droplet" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Diabetes Risk Calculator</strong>
+            <span>Assess your Type 2 diabetes risk based on age, BMI, family history, activity level, and waist circumference. Get a pe...</span>
+          </span>
         </a>
         <a href="/sleepdebt-calculator" class="seo-calc-card">
-          <strong>Sleep Debt Calculator</strong>
-          <span>Calculate your accumulated sleep debt and recovery timeline. Know how much sleep you need to catch up and optimal rec...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-moon" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Sleep Debt Calculator</strong>
+            <span>Calculate your accumulated sleep debt and recovery timeline. Know how much sleep you need to catch up and optimal rec...</span>
+          </span>
         </a>
         <a href="/anemia-calculator" class="seo-calc-card">
-          <strong>Anemia Risk Calculator</strong>
-          <span>Check if your hemoglobin level indicates anemia. Categorize severity — mild, moderate, or severe — based on WHO guide...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-syringe" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Anemia Risk Calculator</strong>
+            <span>Check if your hemoglobin level indicates anemia. Categorize severity — mild, moderate, or severe — based on WHO guide...</span>
+          </span>
         </a>
         <a href="/cholesterolratio-calculator" class="seo-calc-card">
-          <strong>Cholesterol Ratio Calculator</strong>
-          <span>Calculate your cholesterol ratios — Total/HDL, LDL/HDL, and Triglyceride/HDL. Understand your cardiovascular risk fro...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-heart-circle-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Cholesterol Ratio Calculator</strong>
+            <span>Calculate your cholesterol ratios — Total/HDL, LDL/HDL, and Triglyceride/HDL. Understand your cardiovascular risk fro...</span>
+          </span>
         </a>
         <a href="/calorie-deficit-calculator" class="seo-calc-card">
-          <strong>Calorie Deficit Calculator</strong>
-          <span>Calculate the daily calorie deficit needed for your weight loss goal. See a safe timeline based on 0.5–1 kg per week ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-weight-scale" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Calorie Deficit Calculator</strong>
+            <span>Calculate the daily calorie deficit needed for your weight loss goal. See a safe timeline based on 0.5–1 kg per week ...</span>
+          </span>
         </a>
         <a href="/onerepmax-calculator" class="seo-calc-card">
-          <strong>One Rep Max Calculator</strong>
-          <span>Calculate your one-rep max (1RM) for any exercise using Epley, Brzycki, and Lander formulas. Plan training percentage...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-dumbbell" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>One Rep Max Calculator</strong>
+            <span>Calculate your one-rep max (1RM) for any exercise using Epley, Brzycki, and Lander formulas. Plan training percentage...</span>
+          </span>
         </a>
         <a href="/runningpace-calculator" class="seo-calc-card">
-          <strong>Running Pace Calculator</strong>
-          <span>Calculate running pace per km or mile from your race time. Get splits, equivalent paces across distances, and trainin...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-person-running" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Running Pace Calculator</strong>
+            <span>Calculate running pace per km or mile from your race time. Get splits, equivalent paces across distances, and trainin...</span>
+          </span>
         </a>
         <a href="/bodyrecomp-calculator" class="seo-calc-card">
-          <strong>Body Recomposition Calculator</strong>
-          <span>Calculate macros for body recomposition — losing fat while building muscle simultaneously. Get calorie cycling recomm...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-person-arrow-up-from-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Body Recomposition Calculator</strong>
+            <span>Calculate macros for body recomposition — losing fat while building muscle simultaneously. Get calorie cycling recomm...</span>
+          </span>
         </a>
         <a href="/vo2max-calculator" class="seo-calc-card">
-          <strong>VO2 Max Calculator</strong>
-          <span>Estimate your VO2 Max from a walking test, running time, or resting heart rate. Assess your cardiovascular fitness le...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-lungs" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>VO2 Max Calculator</strong>
+            <span>Estimate your VO2 Max from a walking test, running time, or resting heart rate. Assess your cardiovascular fitness le...</span>
+          </span>
         </a>
         <a href="/leanbodymass-calculator" class="seo-calc-card">
-          <strong>Lean Body Mass Calculator</strong>
-          <span>Calculate your lean body mass (LBM) — total weight minus body fat. Uses Boer, James, and Hume formulas for estimation...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-weight-scale" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Lean Body Mass Calculator</strong>
+            <span>Calculate your lean body mass (LBM) — total weight minus body fat. Uses Boer, James, and Hume formulas for estimation...</span>
+          </span>
         </a>
         <a href="/caloriegoal-calculator" class="seo-calc-card">
-          <strong>Calorie Goal Calculator</strong>
-          <span>Calculate daily calorie targets for your specific goal — weight loss, muscle gain, maintenance, or lean bulk. Persona...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-utensils" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Calorie Goal Calculator</strong>
+            <span>Calculate daily calorie targets for your specific goal — weight loss, muscle gain, maintenance, or lean bulk. Persona...</span>
+          </span>
         </a>
         <a href="/electrolyte-calculator" class="seo-calc-card">
-          <strong>Electrolyte Calculator</strong>
-          <span>Calculate daily electrolyte needs — sodium, potassium, and magnesium — based on activity, diet, and climate for optim...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f0544f,#d43c37)"><i class="fas fa-glass-water-droplet" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Electrolyte Calculator</strong>
+            <span>Calculate daily electrolyte needs — sodium, potassium, and magnesium — based on activity, diet, and climate for optim...</span>
+          </span>
         </a>
       </div>
 

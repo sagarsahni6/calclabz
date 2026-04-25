@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,68 +352,116 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/stamp-duty-calculator" class="seo-calc-card">
-          <strong>Stamp Duty Calculator</strong>
-          <span>Calculate stamp duty and registration charges for property purchase across all Indian states. Know exact government f...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-stamp" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Stamp Duty Calculator</strong>
+            <span>Calculate stamp duty and registration charges for property purchase across all Indian states. Know exact government f...</span>
+          </span>
         </a>
         <a href="/construction-cost-calculator" class="seo-calc-card">
-          <strong>Construction Cost Calculator</strong>
-          <span>Estimate total house construction cost in India. Calculate material, labor, and finishing costs per square foot by ci...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-building" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Construction Cost Calculator</strong>
+            <span>Estimate total house construction cost in India. Calculate material, labor, and finishing costs per square foot by ci...</span>
+          </span>
         </a>
         <a href="/home-renovation-calculator" class="seo-calc-card">
-          <strong>Home Renovation Calculator</strong>
-          <span>Calculate home renovation costs room by room. Budget for kitchen, bathroom, flooring, painting, and modular furniture...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-paint-roller" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Home Renovation Calculator</strong>
+            <span>Calculate home renovation costs room by room. Budget for kitchen, bathroom, flooring, painting, and modular furniture...</span>
+          </span>
         </a>
         <a href="/concrete-calculator" class="seo-calc-card">
-          <strong>Concrete Calculator</strong>
-          <span>Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings wit...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-building" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Concrete Calculator</strong>
+            <span>Calculate concrete volume in cubic meters and bags of cement needed. Supports slabs, columns, beams, and footings wit...</span>
+          </span>
         </a>
         <a href="/bricks-calculator" class="seo-calc-card">
-          <strong>Bricks Calculator</strong>
-          <span>Calculate number of bricks needed for a wall. Factor in wall dimensions, thickness, mortar joints, and opening deduct...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-border-all" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Bricks Calculator</strong>
+            <span>Calculate number of bricks needed for a wall. Factor in wall dimensions, thickness, mortar joints, and opening deduct...</span>
+          </span>
         </a>
         <a href="/paint-calculator" class="seo-calc-card">
-          <strong>Paint Calculator</strong>
-          <span>Calculate paint quantity needed for walls and ceilings. Estimate gallons or liters based on room dimensions, coats, a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-paint-roller" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Paint Calculator</strong>
+            <span>Calculate paint quantity needed for walls and ceilings. Estimate gallons or liters based on room dimensions, coats, a...</span>
+          </span>
         </a>
         <a href="/flooring-calculator" class="seo-calc-card">
-          <strong>Flooring Calculator</strong>
-          <span>Calculate flooring materials needed — tiles, marble, wood, or vinyl. Estimate boxes/sqft required including cutting w...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-grip" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Flooring Calculator</strong>
+            <span>Calculate flooring materials needed — tiles, marble, wood, or vinyl. Estimate boxes/sqft required including cutting w...</span>
+          </span>
         </a>
         <a href="/steel-calculator" class="seo-calc-card">
-          <strong>Steel Calculator</strong>
-          <span>Calculate steel reinforcement quantity for RCC construction. Estimate rebar weight in kg from diameter, length, and n...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-bars-progress" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Steel Calculator</strong>
+            <span>Calculate steel reinforcement quantity for RCC construction. Estimate rebar weight in kg from diameter, length, and n...</span>
+          </span>
         </a>
         <a href="/roofing-calculator" class="seo-calc-card">
-          <strong>Roofing Calculator</strong>
-          <span>Calculate roofing material quantity — sheets, tiles, or shingles. Factor in roof pitch, overlap, and ridge cap requir...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-house-chimney" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Roofing Calculator</strong>
+            <span>Calculate roofing material quantity — sheets, tiles, or shingles. Factor in roof pitch, overlap, and ridge cap requir...</span>
+          </span>
         </a>
         <a href="/landarea-calculator" class="seo-calc-card">
-          <strong>Land Area Calculator</strong>
-          <span>Calculate land area in square feet, meters, acres, hectares, bigha, gunta, and other Indian land measurement units fr...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-map" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Land Area Calculator</strong>
+            <span>Calculate land area in square feet, meters, acres, hectares, bigha, gunta, and other Indian land measurement units fr...</span>
+          </span>
         </a>
         <a href="/solar-panel-calculator" class="seo-calc-card">
-          <strong>Solar Panel Calculator</strong>
-          <span>Calculate solar panel system size and cost for your home. Estimate savings, payback period, and government subsidy el...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-solar-panel" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Solar Panel Calculator</strong>
+            <span>Calculate solar panel system size and cost for your home. Estimate savings, payback period, and government subsidy el...</span>
+          </span>
         </a>
         <a href="/concretemix-calculator" class="seo-calc-card">
-          <strong>Concrete Mix Calculator</strong>
-          <span>Calculate cement, sand, and aggregate proportions for different concrete mix grades — M10, M15, M20, M25, M30 — by vo...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-cubes-stacked" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Concrete Mix Calculator</strong>
+            <span>Calculate cement, sand, and aggregate proportions for different concrete mix grades — M10, M15, M20, M25, M30 — by vo...</span>
+          </span>
         </a>
         <a href="/materialwaste-calculator" class="seo-calc-card">
-          <strong>Material Waste Calculator</strong>
-          <span>Calculate construction material waste percentages and order extra quantities. Reduce over-ordering costs and under-or...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-recycle" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Material Waste Calculator</strong>
+            <span>Calculate construction material waste percentages and order extra quantities. Reduce over-ordering costs and under-or...</span>
+          </span>
         </a>
         <a href="/rainwater-calculator" class="seo-calc-card">
-          <strong>Rainwater Harvesting Calculator</strong>
-          <span>Calculate rainwater harvesting potential for your roof. Estimate annual water collection in liters based on roof area...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-cloud-rain" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Rainwater Harvesting Calculator</strong>
+            <span>Calculate rainwater harvesting potential for your roof. Estimate annual water collection in liters based on roof area...</span>
+          </span>
         </a>
         <a href="/earthwork-calculator" class="seo-calc-card">
-          <strong>Earthwork Calculator</strong>
-          <span>Calculate earthwork excavation volume for foundations, trenches, and leveling. Estimate soil quantity in cubic meters...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-tractor" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Earthwork Calculator</strong>
+            <span>Calculate earthwork excavation volume for foundations, trenches, and leveling. Estimate soil quantity in cubic meters...</span>
+          </span>
         </a>
         <a href="/plasterwork-calculator" class="seo-calc-card">
-          <strong>Plasterwork Calculator</strong>
-          <span>Calculate plaster quantity (cement and sand) needed for walls and ceilings. Based on surface area, plaster thickness,...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f97316,#c2410c)"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Plasterwork Calculator</strong>
+            <span>Calculate plaster quantity (cement and sand) needed for walls and ceilings. Based on surface area, plaster thickness,...</span>
+          </span>
         </a>
       </div>
 

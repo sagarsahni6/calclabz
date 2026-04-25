@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,80 +352,137 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/percentage-calculator" class="seo-calc-card">
-          <strong>Percentage Calculator</strong>
-          <span>Calculate percentages easily: what is X% of Y, percentage increase/decrease, percentage difference, and reverse perce...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-percent" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Percentage Calculator</strong>
+            <span>Calculate percentages easily: what is X% of Y, percentage increase/decrease, percentage difference, and reverse perce...</span>
+          </span>
         </a>
         <a href="/average-calculator" class="seo-calc-card">
-          <strong>Average Calculator</strong>
-          <span>Calculate mean, median, mode, and weighted average of any set of numbers. Supports up to 100 values with step-by-step...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-chart-simple" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Average Calculator</strong>
+            <span>Calculate mean, median, mode, and weighted average of any set of numbers. Supports up to 100 values with step-by-step...</span>
+          </span>
         </a>
         <a href="/ratio-calculator" class="seo-calc-card">
-          <strong>Ratio Calculator</strong>
-          <span>Simplify ratios, find equivalent ratios, and solve proportion problems. Scale ratios up or down while maintaining the...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-equals" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Ratio Calculator</strong>
+            <span>Simplify ratios, find equivalent ratios, and solve proportion problems. Scale ratios up or down while maintaining the...</span>
+          </span>
         </a>
         <a href="/squareroot-calculator" class="seo-calc-card">
-          <strong>Square Root Calculator</strong>
-          <span>Calculate square root, cube root, and nth root of any number. Shows perfect square check and simplified radical form.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-square-root-variable" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Square Root Calculator</strong>
+            <span>Calculate square root, cube root, and nth root of any number. Shows perfect square check and simplified radical form.</span>
+          </span>
         </a>
         <a href="/logarithm-calculator" class="seo-calc-card">
-          <strong>Logarithm Calculator</strong>
-          <span>Calculate logarithms in any base — common (log₁₀), natural (ln), and custom bases. Includes antilog and change-of-bas...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-wave-square" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Logarithm Calculator</strong>
+            <span>Calculate logarithms in any base — common (log₁₀), natural (ln), and custom bases. Includes antilog and change-of-bas...</span>
+          </span>
         </a>
         <a href="/factorial-calculator" class="seo-calc-card">
-          <strong>Factorial Calculator</strong>
-          <span>Calculate factorial (n!), double factorial (n!!), and subfactorial (!n) for any positive integer. Includes permutatio...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-exclamation" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Factorial Calculator</strong>
+            <span>Calculate factorial (n!), double factorial (n!!), and subfactorial (!n) for any positive integer. Includes permutatio...</span>
+          </span>
         </a>
         <a href="/quadratic-calculator" class="seo-calc-card">
-          <strong>Quadratic Equation Solver</strong>
-          <span>Solve quadratic equations (ax² + bx + c = 0) using the quadratic formula. Shows discriminant, roots (real or complex)...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-superscript" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Quadratic Equation Solver</strong>
+            <span>Solve quadratic equations (ax² + bx + c = 0) using the quadratic formula. Shows discriminant, roots (real or complex)...</span>
+          </span>
         </a>
         <a href="/prime-calculator" class="seo-calc-card">
-          <strong>Prime Number Checker</strong>
-          <span>Check if a number is prime, find prime factorization, and list prime numbers in any range. Includes divisibility rule...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-hashtag" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Prime Number Checker</strong>
+            <span>Check if a number is prime, find prime factorization, and list prime numbers in any range. Includes divisibility rule...</span>
+          </span>
         </a>
         <a href="/numbersystem-calculator" class="seo-calc-card">
-          <strong>Number System Converter</strong>
-          <span>Convert numbers between binary, octal, decimal, and hexadecimal systems. Perform arithmetic in any base with step-by-...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-code" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Number System Converter</strong>
+            <span>Convert numbers between binary, octal, decimal, and hexadecimal systems. Perform arithmetic in any base with step-by-...</span>
+          </span>
         </a>
         <a href="/statistics-calculator" class="seo-calc-card">
-          <strong>Statistics Calculator</strong>
-          <span>Calculate comprehensive statistics — mean, variance, standard deviation, quartiles, IQR, skewness, and kurtosis for a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-chart-column" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Statistics Calculator</strong>
+            <span>Calculate comprehensive statistics — mean, variance, standard deviation, quartiles, IQR, skewness, and kurtosis for a...</span>
+          </span>
         </a>
         <a href="/lcmgcd-calculator" class="seo-calc-card">
-          <strong>LCM & GCD Calculator</strong>
-          <span>Calculate LCM and GCD (HCF) of two or more numbers. Shows prime factorization method and Euclidean algorithm with ste...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-divide" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>LCM & GCD Calculator</strong>
+            <span>Calculate LCM and GCD (HCF) of two or more numbers. Shows prime factorization method and Euclidean algorithm with ste...</span>
+          </span>
         </a>
         <a href="/fraction-calculator" class="seo-calc-card">
-          <strong>Fraction Calculator</strong>
-          <span>Add, subtract, multiply, and divide fractions. Simplify, convert to mixed numbers, and compare fractions with step-by...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-divide" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Fraction Calculator</strong>
+            <span>Add, subtract, multiply, and divide fractions. Simplify, convert to mixed numbers, and compare fractions with step-by...</span>
+          </span>
         </a>
         <a href="/scientific-calculator" class="seo-calc-card">
-          <strong>Scientific Calculator</strong>
-          <span>Full-featured scientific calculator with trigonometry, logarithms, exponentials, factorials, memory functions, and co...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-calculator" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Scientific Calculator</strong>
+            <span>Full-featured scientific calculator with trigonometry, logarithms, exponentials, factorials, memory functions, and co...</span>
+          </span>
         </a>
         <a href="/matrix2x2-calculator" class="seo-calc-card">
-          <strong>2×2 Matrix Calculator</strong>
-          <span>Perform 2x2 matrix operations — addition, multiplication, determinant, inverse, transpose, and eigenvalues with step-...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-table-cells" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>2×2 Matrix Calculator</strong>
+            <span>Perform 2x2 matrix operations — addition, multiplication, determinant, inverse, transpose, and eigenvalues with step-...</span>
+          </span>
         </a>
         <a href="/combinations-calculator" class="seo-calc-card">
-          <strong>Combinations & Permutations Calculator</strong>
-          <span>Calculate permutations (nPr) and combinations (nCr) with step-by-step factorial computation. Includes repetition vari...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-dice" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Combinations & Permutations Calculator</strong>
+            <span>Calculate permutations (nPr) and combinations (nCr) with step-by-step factorial computation. Includes repetition vari...</span>
+          </span>
         </a>
         <a href="/stddev-calculator" class="seo-calc-card">
-          <strong>Standard Deviation Calculator</strong>
-          <span>Calculate standard deviation, variance, and coefficient of variation for a data set. Supports both population and sam...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Standard Deviation Calculator</strong>
+            <span>Calculate standard deviation, variance, and coefficient of variation for a data set. Supports both population and sam...</span>
+          </span>
         </a>
         <a href="/lineareq-calculator" class="seo-calc-card">
-          <strong>Linear Equation Solver</strong>
-          <span>Solve systems of 2 or 3 linear equations using substitution, elimination, and matrix methods. Step-by-step solution w...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-equals" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Linear Equation Solver</strong>
+            <span>Solve systems of 2 or 3 linear equations using substitution, elimination, and matrix methods. Step-by-step solution w...</span>
+          </span>
         </a>
         <a href="/determinant-calculator" class="seo-calc-card">
-          <strong>Matrix Determinant Calculator</strong>
-          <span>Calculate the determinant of 2×2, 3×3, and 4×4 matrices. Includes cofactor expansion method with step-by-step solution.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-table-cells" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Matrix Determinant Calculator</strong>
+            <span>Calculate the determinant of 2×2, 3×3, and 4×4 matrices. Includes cofactor expansion method with step-by-step solution.</span>
+          </span>
         </a>
         <a href="/complexnum-calculator" class="seo-calc-card">
-          <strong>Complex Number Calculator</strong>
-          <span>Perform arithmetic on complex numbers — add, subtract, multiply, divide. Convert between rectangular (a+bi) and polar...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#5b5ef4,#7b7ef8)"><i class="fas fa-infinity" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Complex Number Calculator</strong>
+            <span>Perform arithmetic on complex numbers — add, subtract, multiply, divide. Convert between rectangular (a+bi) and polar...</span>
+          </span>
         </a>
       </div>
 

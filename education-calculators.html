@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,68 +352,116 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/cgpa-calculator" class="seo-calc-card">
-          <strong>CGPA Calculator</strong>
-          <span>Calculate CGPA from marks, convert CGPA to percentage for any university scale (10-point, 4-point). Free CGPA calcula...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>CGPA Calculator</strong>
+            <span>Calculate CGPA from marks, convert CGPA to percentage for any university scale (10-point, 4-point). Free CGPA calcula...</span>
+          </span>
         </a>
         <a href="/cgpa-to-percentage-calculator" class="seo-calc-card">
-          <strong>CGPA to Percentage Converter</strong>
-          <span>Convert CGPA to Percentage for CBSE, VTU, Mumbai University, Anna University, and 10+ Indian grading scales. Accurate...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>CGPA to Percentage Converter</strong>
+            <span>Convert CGPA to Percentage for CBSE, VTU, Mumbai University, Anna University, and 10+ Indian grading scales. Accurate...</span>
+          </span>
         </a>
         <a href="/eduloan-calculator" class="seo-calc-card">
-          <strong>Education Loan Calculator</strong>
-          <span>Calculate education loan EMI, total interest, and repayment schedule. Compare interest rates and moratorium period im...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Education Loan Calculator</strong>
+            <span>Calculate education loan EMI, total interest, and repayment schedule. Compare interest rates and moratorium period im...</span>
+          </span>
         </a>
         <a href="/examneeded-calculator" class="seo-calc-card">
-          <strong>Exam Score Calculator</strong>
-          <span>Calculate the marks needed in your final exam to reach a target grade. Enter current scores and find the minimum exam...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-file-pen" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Exam Score Calculator</strong>
+            <span>Calculate the marks needed in your final exam to reach a target grade. Enter current scores and find the minimum exam...</span>
+          </span>
         </a>
         <a href="/studyhours-calculator" class="seo-calc-card">
-          <strong>Study Hours Calculator</strong>
-          <span>Calculate optimal study hours per subject based on exam dates, difficulty, and weightage. Create a balanced study tim...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-clock" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Study Hours Calculator</strong>
+            <span>Calculate optimal study hours per subject based on exam dates, difficulty, and weightage. Create a balanced study tim...</span>
+          </span>
         </a>
         <a href="/scholarship-calculator" class="seo-calc-card">
-          <strong>Scholarship Calculator</strong>
-          <span>Calculate scholarship amounts, eligibility thresholds, and effective fee reduction. Compare multiple scholarship opti...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-medal" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Scholarship Calculator</strong>
+            <span>Calculate scholarship amounts, eligibility thresholds, and effective fee reduction. Compare multiple scholarship opti...</span>
+          </span>
         </a>
         <a href="/pomodoro-calculator" class="seo-calc-card">
-          <strong>Pomodoro Timer</strong>
-          <span>Configure and track Pomodoro study sessions. Customize work intervals, breaks, and daily goals. See total focused hou...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-stopwatch" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pomodoro Timer</strong>
+            <span>Configure and track Pomodoro study sessions. Customize work intervals, breaks, and daily goals. See total focused hou...</span>
+          </span>
         </a>
         <a href="/gpaconverter-calculator" class="seo-calc-card">
-          <strong>GPA Converter</strong>
-          <span>Convert between different GPA scales — 4.0, 7.0, 10.0, and percentage. Essential for international university applica...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-right-left" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>GPA Converter</strong>
+            <span>Convert between different GPA scales — 4.0, 7.0, 10.0, and percentage. Essential for international university applica...</span>
+          </span>
         </a>
         <a href="/readingtime-calculator" class="seo-calc-card">
-          <strong>Reading Time Calculator</strong>
-          <span>Calculate how long it takes to read a book, article, or study material. Adjust for reading speed, comprehension level...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-book-open-reader" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Reading Time Calculator</strong>
+            <span>Calculate how long it takes to read a book, article, or study material. Adjust for reading speed, comprehension level...</span>
+          </span>
         </a>
         <a href="/typingtest-calculator" class="seo-calc-card">
-          <strong>Typing Test</strong>
-          <span>Test your typing speed and accuracy. Measure words per minute (WPM), characters per minute (CPM), and error rate with...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-keyboard" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Typing Test</strong>
+            <span>Test your typing speed and accuracy. Measure words per minute (WPM), characters per minute (CPM), and error rate with...</span>
+          </span>
         </a>
         <a href="/spellingbee-calculator" class="seo-calc-card">
-          <strong>Spelling Bee Practice</strong>
-          <span>Practice spelling with difficulty-graded word lists. Test yourself on commonly misspelled words and track improvement...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-spell-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Spelling Bee Practice</strong>
+            <span>Practice spelling with difficulty-graded word lists. Test yourself on commonly misspelled words and track improvement...</span>
+          </span>
         </a>
         <a href="/attendance-calculator" class="seo-calc-card">
-          <strong>Attendance Calculator</strong>
-          <span>Calculate your attendance percentage and how many classes you can miss while maintaining the minimum required percent...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Attendance Calculator</strong>
+            <span>Calculate your attendance percentage and how many classes you can miss while maintaining the minimum required percent...</span>
+          </span>
         </a>
         <a href="/gpaplanner-calculator" class="seo-calc-card">
-          <strong>GPA Planner</strong>
-          <span>Plan what grades you need in remaining subjects to achieve your target CGPA. Reverse-calculate required marks for you...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-chart-simple" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>GPA Planner</strong>
+            <span>Plan what grades you need in remaining subjects to achieve your target CGPA. Reverse-calculate required marks for you...</span>
+          </span>
         </a>
         <a href="/percentile-calculator" class="seo-calc-card">
-          <strong>Percentile Calculator</strong>
-          <span>Calculate your percentile rank in an exam. Know what percentage of students scored below you and equivalent percentil...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-ranking-star" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Percentile Calculator</strong>
+            <span>Calculate your percentile rank in an exam. Know what percentage of students scored below you and equivalent percentil...</span>
+          </span>
         </a>
         <a href="/cutoffpredictor-calculator" class="seo-calc-card">
-          <strong>Cutoff Predictor</strong>
-          <span>Predict expected cutoffs for JEE, NEET, and other competitive exams based on difficulty level, seat count, and histor...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-crystal-ball" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Cutoff Predictor</strong>
+            <span>Predict expected cutoffs for JEE, NEET, and other competitive exams based on difficulty level, seat count, and histor...</span>
+          </span>
         </a>
         <a href="/revisionplanner-calculator" class="seo-calc-card">
-          <strong>Revision Planner</strong>
-          <span>Create a spaced repetition revision schedule for exams. Optimize review intervals for long-term retention using the f...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-calendar-days" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Revision Planner</strong>
+            <span>Create a spaced repetition revision schedule for exams. Optimize review intervals for long-term retention using the f...</span>
+          </span>
         </a>
       </div>
 

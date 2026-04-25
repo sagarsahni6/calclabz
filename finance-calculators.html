@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,344 +352,599 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/emi-calculator" class="seo-calc-card">
-          <strong>EMI Calculator</strong>
-          <span>Calculate home loan, car loan & personal loan EMI instantly. Get monthly EMI, total interest paid, and full amortizat...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-building-columns" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>EMI Calculator</strong>
+            <span>Calculate home loan, car loan & personal loan EMI instantly. Get monthly EMI, total interest paid, and full amortizat...</span>
+          </span>
         </a>
         <a href="/sip-calculator" class="seo-calc-card">
-          <strong>SIP Calculator</strong>
-          <span>Calculate SIP returns, wealth gained, and future value of your mutual fund investments. See the power of compounding ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-seedling" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>SIP Calculator</strong>
+            <span>Calculate SIP returns, wealth gained, and future value of your mutual fund investments. See the power of compounding ...</span>
+          </span>
         </a>
         <a href="/gst-calculator" class="seo-calc-card">
-          <strong>GST Calculator</strong>
-          <span>Calculate GST amount with CGST, SGST, and IGST breakdown for any rate (5%, 12%, 18%, 28%). Add or remove GST from any...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-file-invoice" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>GST Calculator</strong>
+            <span>Calculate GST amount with CGST, SGST, and IGST breakdown for any rate (5%, 12%, 18%, 28%). Add or remove GST from any...</span>
+          </span>
         </a>
         <a href="/tax-regime-calculator" class="seo-calc-card">
-          <strong>Tax Regime Comparison Calculator</strong>
-          <span>Compare Old vs New income tax regime for FY 2025-26. Find out which regime saves you more tax with deductions like 80...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-scale-balanced" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Tax Regime Comparison Calculator</strong>
+            <span>Compare Old vs New income tax regime for FY 2025-26. Find out which regime saves you more tax with deductions like 80...</span>
+          </span>
         </a>
         <a href="/compound-interest-calculator" class="seo-calc-card">
-          <strong>Compound Interest Calculator</strong>
-          <span>Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Compound Interest Calculator</strong>
+            <span>Calculate compound interest with daily, monthly, quarterly, or annual compounding. See how money grows over time with...</span>
+          </span>
         </a>
         <a href="/income-tax-calculator" class="seo-calc-card">
-          <strong>Income Tax Calculator</strong>
-          <span>Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free in...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-landmark" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Income Tax Calculator</strong>
+            <span>Calculate income tax for FY 2025-26 under old and new tax regime. Includes 80C, 80D, HRA, standard deduction. Free in...</span>
+          </span>
         </a>
         <a href="/ppf-calculator" class="seo-calc-card">
-          <strong>PPF Calculator</strong>
-          <span>Calculate PPF maturity amount, total interest earned, and year-wise balance for your Public Provident Fund account. F...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>PPF Calculator</strong>
+            <span>Calculate PPF maturity amount, total interest earned, and year-wise balance for your Public Provident Fund account. F...</span>
+          </span>
         </a>
         <a href="/fd-calculator" class="seo-calc-card">
-          <strong>Fixed Deposit Calculator</strong>
-          <span>Calculate Fixed Deposit maturity amount, total interest, and returns for any compounding frequency. Compare FD rates ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-vault" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Fixed Deposit Calculator</strong>
+            <span>Calculate Fixed Deposit maturity amount, total interest, and returns for any compounding frequency. Compare FD rates ...</span>
+          </span>
         </a>
         <a href="/mortgage-calculator" class="seo-calc-card">
-          <strong>Mortgage Calculator</strong>
-          <span>Calculate home loan mortgage EMI, total interest, and amortization schedule. Compare loan offers from different banks...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Mortgage Calculator</strong>
+            <span>Calculate home loan mortgage EMI, total interest, and amortization schedule. Compare loan offers from different banks...</span>
+          </span>
         </a>
         <a href="/salaryhike-calculator" class="seo-calc-card">
-          <strong>Salary Hike Calculator</strong>
-          <span>Calculate your salary hike percentage and new CTC after appraisal. Compare old vs new salary, see monthly take-home i...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Salary Hike Calculator</strong>
+            <span>Calculate your salary hike percentage and new CTC after appraisal. Compare old vs new salary, see monthly take-home i...</span>
+          </span>
         </a>
         <a href="/in-hand-salary-calculator" class="seo-calc-card">
-          <strong>In-Hand Salary Calculator</strong>
-          <span>Calculate your monthly in-hand (take-home) salary from CTC. Includes PF, professional tax, income tax TDS, and HRA de...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>In-Hand Salary Calculator</strong>
+            <span>Calculate your monthly in-hand (take-home) salary from CTC. Includes PF, professional tax, income tax TDS, and HRA de...</span>
+          </span>
         </a>
         <a href="/sgb-calculator" class="seo-calc-card">
-          <strong>Sovereign Gold Bond (SGB) Calculator</strong>
-          <span>Calculate Sovereign Gold Bond (SGB) maturity value, semi-annual interest income, and returns compared to physical gol...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-coins" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Sovereign Gold Bond (SGB) Calculator</strong>
+            <span>Calculate Sovereign Gold Bond (SGB) maturity value, semi-annual interest income, and returns compared to physical gol...</span>
+          </span>
         </a>
         <a href="/fo-turnover-calculator" class="seo-calc-card">
-          <strong>F&O Turnover Calculator</strong>
-          <span>Calculate Futures & Options (F&O) turnover for income tax purposes. Compute turnover from profit, loss, and premium f...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>F&O Turnover Calculator</strong>
+            <span>Calculate Futures & Options (F&O) turnover for income tax purposes. Compute turnover from profit, loss, and premium f...</span>
+          </span>
         </a>
         <a href="/presumptive-tax-calculator" class="seo-calc-card">
-          <strong>Presumptive Tax Calculator (44AD/44ADA)</strong>
-          <span>Calculate presumptive tax under Section 44AD and 44ADA. Estimate tax liability for businesses and professionals with ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-file-invoice" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Presumptive Tax Calculator (44AD/44ADA)</strong>
+            <span>Calculate presumptive tax under Section 44AD and 44ADA. Estimate tax liability for businesses and professionals with ...</span>
+          </span>
         </a>
         <a href="/pregst-calculator" class="seo-calc-card">
-          <strong>Pre-GST Price Calculator</strong>
-          <span>Reverse-calculate the pre-GST price from a GST-inclusive amount. Supports 5%, 12%, 18%, and 28% GST slabs with CGST/S...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pre-GST Price Calculator</strong>
+            <span>Reverse-calculate the pre-GST price from a GST-inclusive amount. Supports 5%, 12%, 18%, and 28% GST slabs with CGST/S...</span>
+          </span>
         </a>
         <a href="/simple-interest-calculator" class="seo-calc-card">
-          <strong>Simple Interest Calculator</strong>
-          <span>Calculate simple interest, total amount payable, and monthly interest for any loan or investment. Free simple interes...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-coins" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Simple Interest Calculator</strong>
+            <span>Calculate simple interest, total amount payable, and monthly interest for any loan or investment. Free simple interes...</span>
+          </span>
         </a>
         <a href="/roi-calculator" class="seo-calc-card">
-          <strong>ROI Calculator</strong>
-          <span>Calculate return on investment (ROI) for any investment. Enter cost and revenue to see percentage return, annualized ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>ROI Calculator</strong>
+            <span>Calculate return on investment (ROI) for any investment. Enter cost and revenue to see percentage return, annualized ...</span>
+          </span>
         </a>
         <a href="/rd-calculator" class="seo-calc-card">
-          <strong>Recurring Deposit Calculator</strong>
-          <span>Calculate Recurring Deposit maturity amount and total interest earned for monthly deposits. Free RD calculator for al...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Recurring Deposit Calculator</strong>
+            <span>Calculate Recurring Deposit maturity amount and total interest earned for monthly deposits. Free RD calculator for al...</span>
+          </span>
         </a>
         <a href="/car-loan-calculator" class="seo-calc-card">
-          <strong>Car Loan EMI Calculator</strong>
-          <span>Free online car loan emi calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-car" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Car Loan EMI Calculator</strong>
+            <span>Free online car loan emi calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/inflation-calculator" class="seo-calc-card">
-          <strong>Inflation Calculator</strong>
-          <span>Calculate the impact of inflation on purchasing power. Find future value of today\</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-fire-flame-curved" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Inflation Calculator</strong>
+            <span>Calculate the impact of inflation on purchasing power. Find future value of today\</span>
+          </span>
         </a>
         <a href="/cagr-calculator" class="seo-calc-card">
-          <strong>CAGR Calculator</strong>
-          <span>Calculate CAGR (Compound Annual Growth Rate) for investments, revenues, and portfolios. Compare investment performanc...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>CAGR Calculator</strong>
+            <span>Calculate CAGR (Compound Annual Growth Rate) for investments, revenues, and portfolios. Compare investment performanc...</span>
+          </span>
         </a>
         <a href="/swp-calculator" class="seo-calc-card">
-          <strong>SWP Calculator</strong>
-          <span>Free online swp calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-money-bill-transfer" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>SWP Calculator</strong>
+            <span>Free online swp calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/lumpsum-calculator" class="seo-calc-card">
-          <strong>Lumpsum Investment Calculator</strong>
-          <span>Free online lumpsum investment calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-sack-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Lumpsum Investment Calculator</strong>
+            <span>Free online lumpsum investment calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/nps-calculator" class="seo-calc-card">
-          <strong>NPS Calculator</strong>
-          <span>Free online nps calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>NPS Calculator</strong>
+            <span>Free online nps calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/gratuity-calculator" class="seo-calc-card">
-          <strong>Gratuity Calculator</strong>
-          <span>Free online gratuity calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Gratuity Calculator</strong>
+            <span>Free online gratuity calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/hra-calculator" class="seo-calc-card">
-          <strong>HRA Exemption Calculator</strong>
-          <span>Free online hra exemption calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house-chimney" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>HRA Exemption Calculator</strong>
+            <span>Free online hra exemption calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/credit-card-calculator" class="seo-calc-card">
-          <strong>Credit Card Payoff Calculator</strong>
-          <span>Free online credit card payoff calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-credit-card" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Credit Card Payoff Calculator</strong>
+            <span>Free online credit card payoff calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/prepayment-calculator" class="seo-calc-card">
-          <strong>Loan Prepayment Calculator</strong>
-          <span>Calculate how much interest you save by prepaying your loan. Compare loan tenure reduction vs EMI reduction with lump...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house-circle-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Loan Prepayment Calculator</strong>
+            <span>Calculate how much interest you save by prepaying your loan. Compare loan tenure reduction vs EMI reduction with lump...</span>
+          </span>
         </a>
         <a href="/step-up-sip-calculator" class="seo-calc-card">
-          <strong>Step-up SIP Calculator</strong>
-          <span>Free online step-up sip calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-stairs" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Step-up SIP Calculator</strong>
+            <span>Free online step-up sip calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/savings-goal-calculator" class="seo-calc-card">
-          <strong>Savings Goal Calculator</strong>
-          <span>Calculate the monthly savings needed to reach your financial goal. Factor in time horizon, expected returns, and exis...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Savings Goal Calculator</strong>
+            <span>Calculate the monthly savings needed to reach your financial goal. Factor in time horizon, expected returns, and exis...</span>
+          </span>
         </a>
         <a href="/capital-gains-calculator" class="seo-calc-card">
-          <strong>Capital Gains Tax Calculator</strong>
-          <span>Free online capital gains tax calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Capital Gains Tax Calculator</strong>
+            <span>Free online capital gains tax calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/tds-calculator" class="seo-calc-card">
-          <strong>TDS Calculator</strong>
-          <span>Free online tds calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-percent" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>TDS Calculator</strong>
+            <span>Free online tds calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/epf-calculator" class="seo-calc-card">
-          <strong>EPF Calculator</strong>
-          <span>Free online epf calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>EPF Calculator</strong>
+            <span>Free online epf calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/loan-eligibility-calculator" class="seo-calc-card">
-          <strong>Loan Eligibility Calculator</strong>
-          <span>Free online loan eligibility calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Loan Eligibility Calculator</strong>
+            <span>Free online loan eligibility calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/ssy-calculator" class="seo-calc-card">
-          <strong>Sukanya Samriddhi Calculator</strong>
-          <span>Free online sukanya samriddhi calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-child" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Sukanya Samriddhi Calculator</strong>
+            <span>Free online sukanya samriddhi calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/retirement-corpus-calculator" class="seo-calc-card">
-          <strong>Retirement Corpus Calculator</strong>
-          <span>Free online retirement corpus calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-person-cane" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Retirement Corpus Calculator</strong>
+            <span>Free online retirement corpus calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/goalsip-calculator" class="seo-calc-card">
-          <strong>Goal-based SIP Calculator</strong>
-          <span>Calculate the SIP amount needed to reach a target corpus. Factors in step-up SIP, expected returns, and investment ti...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Goal-based SIP Calculator</strong>
+            <span>Calculate the SIP amount needed to reach a target corpus. Factors in step-up SIP, expected returns, and investment ti...</span>
+          </span>
         </a>
         <a href="/tax-saving-calculator" class="seo-calc-card">
-          <strong>Tax Saving Calculator</strong>
-          <span>Plan your tax-saving investments under Section 80C, 80D, 80CCD, and other deductions. See exact tax saved across old ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Tax Saving Calculator</strong>
+            <span>Plan your tax-saving investments under Section 80C, 80D, 80CCD, and other deductions. See exact tax saved across old ...</span>
+          </span>
         </a>
         <a href="/advance-tax-calculator" class="seo-calc-card">
-          <strong>Advance Tax Calculator</strong>
-          <span>Calculate advance tax liability and due dates for each quarter. Know if you need to pay advance tax based on your tot...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Advance Tax Calculator</strong>
+            <span>Calculate advance tax liability and due dates for each quarter. Know if you need to pay advance tax based on your tot...</span>
+          </span>
         </a>
         <a href="/ctc-breakup-calculator" class="seo-calc-card">
-          <strong>CTC Breakup Calculator</strong>
-          <span>Break down your CTC into take-home salary, basic pay, HRA, PF, gratuity, and other components. Understand your actual...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-receipt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>CTC Breakup Calculator</strong>
+            <span>Break down your CTC into take-home salary, basic pay, HRA, PF, gratuity, and other components. Understand your actual...</span>
+          </span>
         </a>
         <a href="/fire-calculator" class="seo-calc-card">
-          <strong>FIRE Calculator</strong>
-          <span>Calculate your FIRE (Financial Independence, Retire Early) number. Know how much corpus you need and years to reach f...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-fire" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>FIRE Calculator</strong>
+            <span>Calculate your FIRE (Financial Independence, Retire Early) number. Know how much corpus you need and years to reach f...</span>
+          </span>
         </a>
         <a href="/debtavalanche-calculator" class="seo-calc-card">
-          <strong>Debt Avalanche Calculator</strong>
-          <span>Create a debt payoff plan using the avalanche method. Pay off highest-interest debt first to minimize total interest ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-money-bill-wave" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Debt Avalanche Calculator</strong>
+            <span>Create a debt payoff plan using the avalanche method. Pay off highest-interest debt first to minimize total interest ...</span>
+          </span>
         </a>
         <a href="/emergencyfund-calculator" class="seo-calc-card">
-          <strong>Emergency Fund Calculator</strong>
-          <span>Calculate how large your emergency fund should be based on monthly expenses, dependents, and job stability. Get a sav...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Emergency Fund Calculator</strong>
+            <span>Calculate how large your emergency fund should be based on monthly expenses, dependents, and job stability. Get a sav...</span>
+          </span>
         </a>
         <a href="/rentvsbuy-calculator" class="seo-calc-card">
-          <strong>Rent vs Buy Calculator</strong>
-          <span>Compare renting vs buying a home with total cost analysis. Factors in EMI, maintenance, tax benefits, rent inflation,...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house-chimney" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Rent vs Buy Calculator</strong>
+            <span>Compare renting vs buying a home with total cost analysis. Factors in EMI, maintenance, tax benefits, rent inflation,...</span>
+          </span>
         </a>
         <a href="/carleasevsbuy-calculator" class="seo-calc-card">
-          <strong>Car Lease vs Buy Calculator</strong>
-          <span>Compare leasing vs buying a car in India. Analyze total cost including EMI, depreciation, maintenance, insurance, and...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-car-side" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Car Lease vs Buy Calculator</strong>
+            <span>Compare leasing vs buying a car in India. Analyze total cost including EMI, depreciation, maintenance, insurance, and...</span>
+          </span>
         </a>
         <a href="/homedownpayment-calculator" class="seo-calc-card">
-          <strong>Home Down Payment Calculator</strong>
-          <span>Calculate the ideal down payment for your home purchase. See how different down payment amounts affect EMI, interest ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Home Down Payment Calculator</strong>
+            <span>Calculate the ideal down payment for your home purchase. See how different down payment amounts affect EMI, interest ...</span>
+          </span>
         </a>
         <a href="/loancompare-calculator" class="seo-calc-card">
-          <strong>Loan Comparison Calculator</strong>
-          <span>Compare multiple loans side by side — EMI, total interest, and total cost. Find the best loan offer by comparing rate...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-code-compare" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Loan Comparison Calculator</strong>
+            <span>Compare multiple loans side by side — EMI, total interest, and total cost. Find the best loan offer by comparing rate...</span>
+          </span>
         </a>
         <a href="/refinance-calculator" class="seo-calc-card">
-          <strong>Loan Refinance Calculator</strong>
-          <span>Calculate potential savings from refinancing your loan. Compare current vs new rate with break-even analysis includin...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-rotate" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Loan Refinance Calculator</strong>
+            <span>Calculate potential savings from refinancing your loan. Compare current vs new rate with break-even analysis includin...</span>
+          </span>
         </a>
         <a href="/creditutil-calculator" class="seo-calc-card">
-          <strong>Credit Utilization Calculator</strong>
-          <span>Calculate your credit utilization ratio and understand its impact on CIBIL score. Know the ideal usage percentage for...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Credit Utilization Calculator</strong>
+            <span>Calculate your credit utilization ratio and understand its impact on CIBIL score. Know the ideal usage percentage for...</span>
+          </span>
         </a>
         <a href="/insuranceneed-calculator" class="seo-calc-card">
-          <strong>Insurance Need Calculator</strong>
-          <span>Calculate how much life insurance cover you actually need based on income, debts, dependents, and future goals like e...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-umbrella" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Insurance Need Calculator</strong>
+            <span>Calculate how much life insurance cover you actually need based on income, debts, dependents, and future goals like e...</span>
+          </span>
         </a>
         <a href="/npvirr-calculator" class="seo-calc-card">
-          <strong>NPV & IRR Calculator</strong>
-          <span>Calculate Net Present Value (NPV) and Internal Rate of Return (IRR) for business projects. Evaluate investment viabil...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-gantt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>NPV & IRR Calculator</strong>
+            <span>Calculate Net Present Value (NPV) and Internal Rate of Return (IRR) for business projects. Evaluate investment viabil...</span>
+          </span>
         </a>
         <a href="/bondyield-calculator" class="seo-calc-card">
-          <strong>Bond Yield Calculator</strong>
-          <span>Calculate bond yield to maturity (YTM), current yield, and price. Analyze government and corporate bonds for fixed-in...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Bond Yield Calculator</strong>
+            <span>Calculate bond yield to maturity (YTM), current yield, and price. Analyze government and corporate bonds for fixed-in...</span>
+          </span>
         </a>
         <a href="/optionprofit-calculator" class="seo-calc-card">
-          <strong>Options Profit Calculator</strong>
-          <span>Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagr...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-arrow-up-right-dots" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Options Profit Calculator</strong>
+            <span>Calculate options trading profit/loss for calls and puts. See breakeven price, max profit, max loss, and payoff diagr...</span>
+          </span>
         </a>
         <a href="/forexpip-calculator" class="seo-calc-card">
-          <strong>Forex Pip Calculator</strong>
-          <span>Calculate forex pip value in INR or any currency. Determine profit/loss per pip movement for different lot sizes and ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-money-bill-trend-up" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Forex Pip Calculator</strong>
+            <span>Calculate forex pip value in INR or any currency. Determine profit/loss per pip movement for different lot sizes and ...</span>
+          </span>
         </a>
         <a href="/portfoliorebalance-calculator" class="seo-calc-card">
-          <strong>Portfolio Rebalance Calculator</strong>
-          <span>Rebalance your investment portfolio to target allocation. See exactly how much to buy or sell in each asset class to ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-scale-balanced" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Portfolio Rebalance Calculator</strong>
+            <span>Rebalance your investment portfolio to target allocation. See exactly how much to buy or sell in each asset class to ...</span>
+          </span>
         </a>
         <a href="/assetallocation-calculator" class="seo-calc-card">
-          <strong>Asset Allocation Calculator</strong>
-          <span>Get a recommended asset allocation based on your age, risk tolerance, and investment goal. See suggested equity-debt-...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-pie" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Asset Allocation Calculator</strong>
+            <span>Get a recommended asset allocation based on your age, risk tolerance, and investment goal. See suggested equity-debt-...</span>
+          </span>
         </a>
         <a href="/montecarlo-calculator" class="seo-calc-card">
-          <strong>Monte Carlo Simulator</strong>
-          <span>Run Monte Carlo simulations on your investment portfolio. See the probability of reaching your goal under thousands o...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-dice-d20" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Monte Carlo Simulator</strong>
+            <span>Run Monte Carlo simulations on your investment portfolio. See the probability of reaching your goal under thousands o...</span>
+          </span>
         </a>
         <a href="/inflationgoal-calculator" class="seo-calc-card">
-          <strong>Inflation-Adjusted Goal Calculator</strong>
-          <span>Calculate inflation-adjusted future cost of any financial goal. See what today's expense will actually cost in 5, 10,...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Inflation-Adjusted Goal Calculator</strong>
+            <span>Calculate inflation-adjusted future cost of any financial goal. See what today's expense will actually cost in 5, 10,...</span>
+          </span>
         </a>
         <a href="/businessloan-calculator" class="seo-calc-card">
-          <strong>Business Loan Calculator</strong>
-          <span>Calculate business loan EMI, eligibility, and total cost. Compare MSME loan options across banks with processing fee ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Business Loan Calculator</strong>
+            <span>Calculate business loan EMI, eligibility, and total cost. Compare MSME loan options across banks with processing fee ...</span>
+          </span>
         </a>
         <a href="/gstinvoice-calculator" class="seo-calc-card">
-          <strong>GST Invoice Generator</strong>
-          <span>Generate GST-compliant invoices with CGST, SGST, and IGST breakup. Supports multiple line items, HSN codes, and diffe...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-file-invoice" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>GST Invoice Generator</strong>
+            <span>Generate GST-compliant invoices with CGST, SGST, and IGST breakup. Supports multiple line items, HSN codes, and diffe...</span>
+          </span>
         </a>
         <a href="/esoptax-calculator" class="seo-calc-card">
-          <strong>ESOP Tax Calculator</strong>
-          <span>Calculate tax on ESOPs at exercise and sale. Understand perquisite tax, capital gains tax, and optimal timing for exe...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>ESOP Tax Calculator</strong>
+            <span>Calculate tax on ESOPs at exercise and sale. Understand perquisite tax, capital gains tax, and optimal timing for exe...</span>
+          </span>
         </a>
         <a href="/freelancetax-calculator" class="seo-calc-card">
-          <strong>Freelancer Tax Calculator</strong>
-          <span>Calculate income tax for freelancers and self-employed professionals in India. Includes presumptive taxation (44ADA) ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-laptop-code" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Freelancer Tax Calculator</strong>
+            <span>Calculate income tax for freelancers and self-employed professionals in India. Includes presumptive taxation (44ADA) ...</span>
+          </span>
         </a>
         <a href="/tcsremittance-calculator" class="seo-calc-card">
-          <strong>TCS on Remittance Calculator</strong>
-          <span>Calculate TCS on foreign remittances under LRS. Know the tax collected at source for overseas education, travel, and ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-plane-departure" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>TCS on Remittance Calculator</strong>
+            <span>Calculate TCS on foreign remittances under LRS. Know the tax collected at source for overseas education, travel, and ...</span>
+          </span>
         </a>
         <a href="/sec80c-calculator" class="seo-calc-card">
-          <strong>Section 80C Calculator</strong>
-          <span>Plan your Section 80C investments to maximize ₹1.5 lakh deduction. Compare ELSS, PPF, NPS, and other eligible instrum...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Section 80C Calculator</strong>
+            <span>Plan your Section 80C investments to maximize ₹1.5 lakh deduction. Compare ELSS, PPF, NPS, and other eligible instrum...</span>
+          </span>
         </a>
         <a href="/hravshomeloan-calculator" class="seo-calc-card">
-          <strong>HRA vs Home Loan Calculator</strong>
-          <span>Compare tax benefits of HRA exemption vs home loan deductions. Find out if you can claim both simultaneously under In...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house-lock" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>HRA vs Home Loan Calculator</strong>
+            <span>Compare tax benefits of HRA exemption vs home loan deductions. Find out if you can claim both simultaneously under In...</span>
+          </span>
         </a>
         <a href="/leaveencash-calculator" class="seo-calc-card">
-          <strong>Leave Encashment Calculator</strong>
-          <span>Calculate leave encashment amount and tax exemption for government and private sector employees. Covers retirement an...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-calendar-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Leave Encashment Calculator</strong>
+            <span>Calculate leave encashment amount and tax exemption for government and private sector employees. Covers retirement an...</span>
+          </span>
         </a>
         <a href="/homeloan-taxbenefit-calculator" class="seo-calc-card">
-          <strong>Home Loan Tax Benefit Calculator</strong>
-          <span>Calculate home loan tax benefits under Section 24(b) and 80C. See total tax savings on principal repayment and intere...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-house-circle-check" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Home Loan Tax Benefit Calculator</strong>
+            <span>Calculate home loan tax benefits under Section 24(b) and 80C. See total tax savings on principal repayment and intere...</span>
+          </span>
         </a>
         <a href="/indexed-cost-calculator" class="seo-calc-card">
-          <strong>Indexed Cost of Acquisition Calculator</strong>
-          <span>Calculate indexed cost of acquisition using CII (Cost Inflation Index) for long-term capital gains tax. Reduce your L...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-calculator" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Indexed Cost of Acquisition Calculator</strong>
+            <span>Calculate indexed cost of acquisition using CII (Cost Inflation Index) for long-term capital gains tax. Reduce your L...</span>
+          </span>
         </a>
         <a href="/gold-comparison-calculator" class="seo-calc-card">
-          <strong>Digital Gold vs SGB vs Gold ETF Calculator</strong>
-          <span>Compare Digital Gold vs Sovereign Gold Bond (SGB) vs Gold ETF. See which gold investment gives the best returns after...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-scale-balanced" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Digital Gold vs SGB vs Gold ETF Calculator</strong>
+            <span>Compare Digital Gold vs Sovereign Gold Bond (SGB) vs Gold ETF. See which gold investment gives the best returns after...</span>
+          </span>
         </a>
         <a href="/rent-yield-calculator" class="seo-calc-card">
-          <strong>Rental Yield Calculator</strong>
-          <span>Calculate rental yield on your property investment. Compare gross and net rental yields to evaluate if your property ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-building" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Rental Yield Calculator</strong>
+            <span>Calculate rental yield on your property investment. Compare gross and net rental yields to evaluate if your property ...</span>
+          </span>
         </a>
         <a href="/breakeven-calculator" class="seo-calc-card">
-          <strong>Break-even Calculator</strong>
-          <span>Calculate break-even point in units and revenue. Know how many sales you need to cover fixed and variable costs for y...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-scale-balanced" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Break-even Calculator</strong>
+            <span>Calculate break-even point in units and revenue. Know how many sales you need to cover fixed and variable costs for y...</span>
+          </span>
         </a>
         <a href="/networth-calculator" class="seo-calc-card">
-          <strong>Net Worth Calculator</strong>
-          <span>Calculate your personal net worth by listing all assets and liabilities. Track your financial health over time with a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-wallet" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Net Worth Calculator</strong>
+            <span>Calculate your personal net worth by listing all assets and liabilities. Track your financial health over time with a...</span>
+          </span>
         </a>
         <a href="/dividend-yield-calculator" class="seo-calc-card">
-          <strong>Dividend Yield Calculator</strong>
-          <span>Calculate dividend yield and annual income from stocks. Compare stocks by dividend payout and see effective post-tax ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-coins" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Dividend Yield Calculator</strong>
+            <span>Calculate dividend yield and annual income from stocks. Compare stocks by dividend payout and see effective post-tax ...</span>
+          </span>
         </a>
         <a href="/gold-investment-calculator" class="seo-calc-card">
-          <strong>Gold Investment Calculator</strong>
-          <span>Compare gold investment options in India — physical gold, Gold ETF, Sovereign Gold Bonds, and digital gold. Calculate...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-trophy" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Gold Investment Calculator</strong>
+            <span>Compare gold investment options in India — physical gold, Gold ETF, Sovereign Gold Bonds, and digital gold. Calculate...</span>
+          </span>
         </a>
         <a href="/profitloss-calculator" class="seo-calc-card">
-          <strong>Profit & Loss Calculator</strong>
-          <span>Calculate trading profit or loss on stocks with brokerage, STT, stamp duty, and all charges. See actual net profit af...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Profit & Loss Calculator</strong>
+            <span>Calculate trading profit or loss on stocks with brokerage, STT, stamp duty, and all charges. See actual net profit af...</span>
+          </span>
         </a>
         <a href="/stock-return-calculator" class="seo-calc-card">
-          <strong>Stock Return Calculator</strong>
-          <span>Calculate total stock return including dividends and price appreciation. See CAGR, absolute return, and dividend rein...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Stock Return Calculator</strong>
+            <span>Calculate total stock return including dividends and price appreciation. See CAGR, absolute return, and dividend rein...</span>
+          </span>
         </a>
         <a href="/mutualfundreturns-calculator" class="seo-calc-card">
-          <strong>Mutual Fund Returns Calculator</strong>
-          <span>Calculate mutual fund returns with CAGR, XIRR, and absolute return. Compare lump-sum vs SIP returns across different ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-arrow-up-right-dots" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Mutual Fund Returns Calculator</strong>
+            <span>Calculate mutual fund returns with CAGR, XIRR, and absolute return. Compare lump-sum vs SIP returns across different ...</span>
+          </span>
         </a>
         <a href="/xirr-calculator" class="seo-calc-card">
-          <strong>XIRR Calculator</strong>
-          <span>Calculate XIRR for SIP or irregular investments. Get the true annualized return when investment amounts and dates vary.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>XIRR Calculator</strong>
+            <span>Calculate XIRR for SIP or irregular investments. Get the true annualized return when investment amounts and dates vary.</span>
+          </span>
         </a>
         <a href="/balance-transfer-calculator" class="seo-calc-card">
-          <strong>Balance Transfer Calculator</strong>
-          <span>Calculate savings from home loan balance transfer to a lower interest rate. Includes processing fees and break-even a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-right-left" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Balance Transfer Calculator</strong>
+            <span>Calculate savings from home loan balance transfer to a lower interest rate. Includes processing fees and break-even a...</span>
+          </span>
         </a>
         <a href="/scss-calculator" class="seo-calc-card">
-          <strong>Senior Citizen Savings Calculator</strong>
-          <span>Calculate SCSS maturity amount and quarterly interest income. Senior Citizen Savings Scheme interest rates, limits, a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Senior Citizen Savings Calculator</strong>
+            <span>Calculate SCSS maturity amount and quarterly interest income. Senior Citizen Savings Scheme interest rates, limits, a...</span>
+          </span>
         </a>
         <a href="/elssreturns-calculator" class="seo-calc-card">
-          <strong>ELSS Returns Calculator</strong>
-          <span>Calculate ELSS mutual fund returns with tax savings factored in. Compare ELSS effective returns vs PPF, FD, and other...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-leaf" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>ELSS Returns Calculator</strong>
+            <span>Calculate ELSS mutual fund returns with tax savings factored in. Compare ELSS effective returns vs PPF, FD, and other...</span>
+          </span>
         </a>
         <a href="/nsc-calculator" class="seo-calc-card">
-          <strong>NSC Calculator</strong>
-          <span>Calculate NSC maturity value and yearly interest accrual. National Savings Certificate returns, tax benefits, and com...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-stamp" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>NSC Calculator</strong>
+            <span>Calculate NSC maturity value and yearly interest accrual. National Savings Certificate returns, tax benefits, and com...</span>
+          </span>
         </a>
         <a href="/apy-calculator" class="seo-calc-card">
-          <strong>APY Calculator</strong>
-          <span>Calculate Atal Pension Yojana monthly contribution and pension amount. Compare pension tiers from ₹1,000 to ₹5,000 pe...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-umbrella" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>APY Calculator</strong>
+            <span>Calculate Atal Pension Yojana monthly contribution and pension amount. Compare pension tiers from ₹1,000 to ₹5,000 pe...</span>
+          </span>
         </a>
         <a href="/brokerage-calculator" class="seo-calc-card">
-          <strong>Brokerage Calculator</strong>
-          <span>Calculate stock brokerage charges, STT, and all regulatory fees for NSE/BSE trades. Compare costs across discount and...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-chart-candlestick" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Brokerage Calculator</strong>
+            <span>Calculate stock brokerage charges, STT, and all regulatory fees for NSE/BSE trades. Compare costs across discount and...</span>
+          </span>
         </a>
         <a href="/salarycomparison-calculator" class="seo-calc-card">
-          <strong>Salary Comparison Calculator</strong>
-          <span>Compare two salary offers after tax, PF, HRA, and all deductions. See which CTC gives a higher actual in-hand salary.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#00c9a7,#00a08a)"><i class="fas fa-code-compare" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Salary Comparison Calculator</strong>
+            <span>Compare two salary offers after tax, PF, HRA, and all deductions. See which CTC gives a higher actual in-hand salary.</span>
+          </span>
         </a>
       </div>
 

@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,88 +352,151 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/pythagorean-calculator" class="seo-calc-card">
-          <strong>Pythagorean Theorem Calculator</strong>
-          <span>Calculate the missing side of a right triangle using the Pythagorean theorem. Find hypotenuse, base, or height with s...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pythagorean Theorem Calculator</strong>
+            <span>Calculate the missing side of a right triangle using the Pythagorean theorem. Find hypotenuse, base, or height with s...</span>
+          </span>
         </a>
         <a href="/ohmslaw-calculator" class="seo-calc-card">
-          <strong>Ohm's Law Calculator</strong>
-          <span>Calculate voltage, current, resistance, or power using Ohm's Law. Enter any two electrical values to find the other t...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-bolt-lightning" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Ohm's Law Calculator</strong>
+            <span>Calculate voltage, current, resistance, or power using Ohm's Law. Enter any two electrical values to find the other t...</span>
+          </span>
         </a>
         <a href="/resistor-calculator" class="seo-calc-card">
-          <strong>Resistor Calculator</strong>
-          <span>Decode resistor color bands to find resistance value. Supports 4-band, 5-band, and 6-band resistors with tolerance an...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-microchip" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Resistor Calculator</strong>
+            <span>Decode resistor color bands to find resistance value. Supports 4-band, 5-band, and 6-band resistors with tolerance an...</span>
+          </span>
         </a>
         <a href="/power-calculator" class="seo-calc-card">
-          <strong>Power Calculator</strong>
-          <span>Calculate electrical power consumption in watts and kilowatt-hours. Find monthly electricity cost for appliances and ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-plug-circle-bolt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Power Calculator</strong>
+            <span>Calculate electrical power consumption in watts and kilowatt-hours. Find monthly electricity cost for appliances and ...</span>
+          </span>
         </a>
         <a href="/inverterbattery-calculator" class="seo-calc-card">
-          <strong>Inverter Battery Calculator</strong>
-          <span>Calculate the right inverter VA rating and battery capacity for your home. Size your backup system based on load and ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-car-battery" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Inverter Battery Calculator</strong>
+            <span>Calculate the right inverter VA rating and battery capacity for your home. Size your backup system based on load and ...</span>
+          </span>
         </a>
         <a href="/acbtu-calculator" class="seo-calc-card">
-          <strong>AC BTU Calculator</strong>
-          <span>Calculate the right AC tonnage and BTU capacity for your room. Based on room size, sunlight exposure, floor level, an...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-snowflake" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>AC BTU Calculator</strong>
+            <span>Calculate the right AC tonnage and BTU capacity for your room. Based on room size, sunlight exposure, floor level, an...</span>
+          </span>
         </a>
         <a href="/beamload-calculator" class="seo-calc-card">
-          <strong>Beam Load Calculator</strong>
-          <span>Calculate maximum load capacity, bending moment, and shear force for simply supported and cantilever beams. Essential...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-ruler-combined" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Beam Load Calculator</strong>
+            <span>Calculate maximum load capacity, bending moment, and shear force for simply supported and cantilever beams. Essential...</span>
+          </span>
         </a>
         <a href="/pipeflow-calculator" class="seo-calc-card">
-          <strong>Pipe Flow Calculator</strong>
-          <span>Calculate water flow rate, velocity, and pressure drop through pipes. Uses the Hazen-Williams and Darcy-Weisbach equa...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-faucet-drip" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pipe Flow Calculator</strong>
+            <span>Calculate water flow rate, velocity, and pressure drop through pipes. Uses the Hazen-Williams and Darcy-Weisbach equa...</span>
+          </span>
         </a>
         <a href="/threephase-calculator" class="seo-calc-card">
-          <strong>Three Phase Power Calculator</strong>
-          <span>Calculate three-phase power, current, and voltage for star (Y) and delta (Δ) configurations. Essential for industrial...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Three Phase Power Calculator</strong>
+            <span>Calculate three-phase power, current, and voltage for star (Y) and delta (Δ) configurations. Essential for industrial...</span>
+          </span>
         </a>
         <a href="/transformercalc-calculator" class="seo-calc-card">
-          <strong>Transformer Calculator</strong>
-          <span>Calculate transformer turns ratio, voltage, current, and KVA rating. Design step-up and step-down transformers for po...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-right-left" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Transformer Calculator</strong>
+            <span>Calculate transformer turns ratio, voltage, current, and KVA rating. Design step-up and step-down transformers for po...</span>
+          </span>
         </a>
         <a href="/heatexchanger-calculator" class="seo-calc-card">
-          <strong>Heat Exchanger Calculator</strong>
-          <span>Calculate heat transfer rate, LMTD, and required surface area for shell-and-tube and plate heat exchangers. Size exch...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-temperature-half" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Heat Exchanger Calculator</strong>
+            <span>Calculate heat transfer rate, LMTD, and required surface area for shell-and-tube and plate heat exchangers. Size exch...</span>
+          </span>
         </a>
         <a href="/fluidflow-calculator" class="seo-calc-card">
-          <strong>Fluid Flow Calculator</strong>
-          <span>Calculate Reynolds number, flow regime, and Bernoulli's equation parameters. Determine if flow is laminar or turbulen...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-water" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Fluid Flow Calculator</strong>
+            <span>Calculate Reynolds number, flow regime, and Bernoulli's equation parameters. Determine if flow is laminar or turbulen...</span>
+          </span>
         </a>
         <a href="/springforce-calculator" class="seo-calc-card">
-          <strong>Spring Force Calculator</strong>
-          <span>Calculate spring force, spring constant, and deflection using Hooke's Law. Design compression, tension, and torsion s...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-compress" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Spring Force Calculator</strong>
+            <span>Calculate spring force, spring constant, and deflection using Hooke's Law. Design compression, tension, and torsion s...</span>
+          </span>
         </a>
         <a href="/gearratio-calculator" class="seo-calc-card">
-          <strong>Gear Ratio Calculator</strong>
-          <span>Calculate gear ratio, output speed, and torque for spur, helical, and planetary gear trains. Design gear systems for ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-gears" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Gear Ratio Calculator</strong>
+            <span>Calculate gear ratio, output speed, and torque for spur, helical, and planetary gear trains. Design gear systems for ...</span>
+          </span>
         </a>
         <a href="/torque-calculator" class="seo-calc-card">
-          <strong>Torque Calculator</strong>
-          <span>Calculate torque from force and distance, or convert between Nm, lb-ft, and kgf-cm. Essential for bolt tightening and...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-rotate" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Torque Calculator</strong>
+            <span>Calculate torque from force and distance, or convert between Nm, lb-ft, and kgf-cm. Essential for bolt tightening and...</span>
+          </span>
         </a>
         <a href="/decibel-calculator" class="seo-calc-card">
-          <strong>Decibel Calculator</strong>
-          <span>Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition an...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-volume-high" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Decibel Calculator</strong>
+            <span>Calculate sound level in decibels, compare noise sources, and determine combined dB levels. Understand dB addition an...</span>
+          </span>
         </a>
         <a href="/antennalen-calculator" class="seo-calc-card">
-          <strong>Antenna Length Calculator</strong>
-          <span>Calculate antenna length for a target frequency. Find half-wave, quarter-wave, and full-wave antenna dimensions in me...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-tower-broadcast" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Antenna Length Calculator</strong>
+            <span>Calculate antenna length for a target frequency. Find half-wave, quarter-wave, and full-wave antenna dimensions in me...</span>
+          </span>
         </a>
         <a href="/ledresistor-calculator" class="seo-calc-card">
-          <strong>LED Resistor Calculator</strong>
-          <span>Calculate the correct resistor value and wattage for an LED circuit. Supports single LED, series, and parallel LED co...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>LED Resistor Calculator</strong>
+            <span>Calculate the correct resistor value and wattage for an LED circuit. Supports single LED, series, and parallel LED co...</span>
+          </span>
         </a>
         <a href="/voltdivider-calculator" class="seo-calc-card">
-          <strong>Voltage Divider Calculator</strong>
-          <span>Calculate output voltage and resistor values for a voltage divider circuit. Design resistive dividers for sensor inte...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-bolt-lightning" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Voltage Divider Calculator</strong>
+            <span>Calculate output voltage and resistor values for a voltage divider circuit. Design resistive dividers for sensor inte...</span>
+          </span>
         </a>
         <a href="/batterylife-calculator" class="seo-calc-card">
-          <strong>Battery Life Calculator</strong>
-          <span>Calculate battery runtime from capacity (mAh) and device current draw. Estimate how long your battery will last in re...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-battery-half" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Battery Life Calculator</strong>
+            <span>Calculate battery runtime from capacity (mAh) and device current draw. Estimate how long your battery will last in re...</span>
+          </span>
         </a>
         <a href="/pcbtrace-calculator" class="seo-calc-card">
-          <strong>PCB Trace Width Calculator</strong>
-          <span>Calculate PCB trace width for required current capacity using IPC-2221 standards. Ensure safe copper trace temperatur...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-microchip" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>PCB Trace Width Calculator</strong>
+            <span>Calculate PCB trace width for required current capacity using IPC-2221 standards. Ensure safe copper trace temperatur...</span>
+          </span>
         </a>
       </div>
 

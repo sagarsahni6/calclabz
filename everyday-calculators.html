@@ -229,10 +229,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-trust p{font-size:.82rem;color:var(--txt2);line-height:1.6;margin:4px 0}
 .seo-trust strong{color:var(--txt1)}
 .seo-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
-.seo-calc-card{display:block;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
+.seo-calc-card{display:flex;gap:12px;align-items:flex-start;padding:16px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd);text-decoration:none;transition:var(--transition)}
 .seo-calc-card:hover{border-color:var(--p);background:var(--bg2)}
-.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px}
-.seo-calc-card span{font-size:.82rem;color:var(--txt2);display:block}
+.seo-calc-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.seo-calc-copy{min-width:0;flex:1}
+.seo-calc-card strong{display:block;color:var(--txt);font-size:.95rem;line-height:1.35;margin-bottom:4px}
+.seo-calc-copy span{font-size:.82rem;color:var(--txt2);display:block;line-height:1.6}
 @media(max-width:600px){.seo-related-grid{grid-template-columns:1fr}}
 .seo-article{margin-bottom:24px}
 .seo-article-meta{display:flex;gap:8px;font-size:.82rem;color:var(--txt2);margin-bottom:20px;flex-wrap:wrap}
@@ -350,128 +352,221 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-calc-grid">
         <a href="/loan-affordability-calculator" class="seo-calc-card">
-          <strong>Loan Affordability Calculator</strong>
-          <span>Free online loan affordability calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-house-flag" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Loan Affordability Calculator</strong>
+            <span>Free online loan affordability calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/salary-calculator" class="seo-calc-card">
-          <strong>Salary Calculator</strong>
-          <span>Free online salary calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-money-bill-wave" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Salary Calculator</strong>
+            <span>Free online salary calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/tip-calculator" class="seo-calc-card">
-          <strong>Tip Calculator</strong>
-          <span>Free online tip calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Tip Calculator</strong>
+            <span>Free online tip calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/discount-calculator" class="seo-calc-card">
-          <strong>Discount Calculator</strong>
-          <span>Free online discount calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-tag" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Discount Calculator</strong>
+            <span>Free online discount calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/fuel-calculator" class="seo-calc-card">
-          <strong>Fuel Cost Calculator</strong>
-          <span>Free online fuel cost calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-gas-pump" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Fuel Cost Calculator</strong>
+            <span>Free online fuel cost calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/mileage-calculator" class="seo-calc-card">
-          <strong>Mileage Calculator</strong>
-          <span>Free online mileage calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Mileage Calculator</strong>
+            <span>Free online mileage calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/electricbill-calculator" class="seo-calc-card">
-          <strong>Electricity Bill Calculator</strong>
-          <span>Free online electricity bill calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Electricity Bill Calculator</strong>
+            <span>Free online electricity bill calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/grade-calculator" class="seo-calc-card">
-          <strong>Grade Calculator</strong>
-          <span>Free online grade calculator. Instant results, no signup.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Grade Calculator</strong>
+            <span>Free online grade calculator. Instant results, no signup.</span>
+          </span>
         </a>
         <a href="/freelancerate-calculator" class="seo-calc-card">
-          <strong>Freelance Rate Calculator</strong>
-          <span>Calculate your ideal freelance hourly rate based on target income, working hours, taxes, and business expenses. Stop ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-laptop-code" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Freelance Rate Calculator</strong>
+            <span>Calculate your ideal freelance hourly rate based on target income, working hours, taxes, and business expenses. Stop ...</span>
+          </span>
         </a>
         <a href="/tipsplit-calculator" class="seo-calc-card">
-          <strong>Tip Split Calculator</strong>
-          <span>Split a restaurant bill with tip among any number of people. Calculate per-person share with customizable tip percent...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-receipt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Tip Split Calculator</strong>
+            <span>Split a restaurant bill with tip among any number of people. Calculate per-person share with customizable tip percent...</span>
+          </span>
         </a>
         <a href="/evpetrolsavings-calculator" class="seo-calc-card">
-          <strong>EV vs Petrol Savings Calculator</strong>
-          <span>Calculate how much you save by switching from a petrol/diesel car to an electric vehicle. Compare annual fuel vs char...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-charging-station" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>EV vs Petrol Savings Calculator</strong>
+            <span>Calculate how much you save by switching from a petrol/diesel car to an electric vehicle. Compare annual fuel vs char...</span>
+          </span>
         </a>
         <a href="/weddingbudget-calculator" class="seo-calc-card">
-          <strong>Wedding Budget Calculator</strong>
-          <span>Plan your Indian wedding budget across all categories — venue, catering, decoration, photography, clothing, and misce...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-ring" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Wedding Budget Calculator</strong>
+            <span>Plan your Indian wedding budget across all categories — venue, catering, decoration, photography, clothing, and misce...</span>
+          </span>
         </a>
         <a href="/rentafford-calculator" class="seo-calc-card">
-          <strong>Rent Affordability Calculator</strong>
-          <span>Calculate how much rent you can afford based on your monthly income. Apply the 30% rule and factor in utilities and o...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-house-user" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Rent Affordability Calculator</strong>
+            <span>Calculate how much rent you can afford based on your monthly income. Apply the 30% rule and factor in utilities and o...</span>
+          </span>
         </a>
         <a href="/travelbudget-calculator" class="seo-calc-card">
-          <strong>Travel Budget Calculator</strong>
-          <span>Plan your trip budget with cost estimates for flights, hotels, food, local transport, activities, and shopping. Get a...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-plane-departure" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Travel Budget Calculator</strong>
+            <span>Plan your trip budget with cost estimates for flights, hotels, food, local transport, activities, and shopping. Get a...</span>
+          </span>
         </a>
         <a href="/carbonfootprint-calculator" class="seo-calc-card">
-          <strong>Carbon Footprint Calculator</strong>
-          <span>Calculate your annual carbon footprint from transport, electricity, diet, and shopping. See how your emissions compar...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-leaf" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Carbon Footprint Calculator</strong>
+            <span>Calculate your annual carbon footprint from transport, electricity, diet, and shopping. See how your emissions compar...</span>
+          </span>
         </a>
         <a href="/ecomprofit-calculator" class="seo-calc-card">
-          <strong>E-commerce Profit Calculator</strong>
-          <span>Calculate e-commerce product profit margins after marketplace fees, shipping, packaging, GST, and returns. Supports A...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-cart-shopping" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>E-commerce Profit Calculator</strong>
+            <span>Calculate e-commerce product profit margins after marketplace fees, shipping, packaging, GST, and returns. Supports A...</span>
+          </span>
         </a>
         <a href="/restaurantcost-calculator" class="seo-calc-card">
-          <strong>Restaurant Cost Calculator</strong>
-          <span>Calculate food cost percentage and menu pricing for restaurant dishes. Determine the ideal selling price based on ing...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-utensils" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Restaurant Cost Calculator</strong>
+            <span>Calculate food cost percentage and menu pricing for restaurant dishes. Determine the ideal selling price based on ing...</span>
+          </span>
         </a>
         <a href="/subscriptionpricing-calculator" class="seo-calc-card">
-          <strong>Subscription Pricing Calculator</strong>
-          <span>Calculate SaaS subscription pricing tiers. Model monthly vs annual pricing, churn impact, and customer lifetime value...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-repeat" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Subscription Pricing Calculator</strong>
+            <span>Calculate SaaS subscription pricing tiers. Model monthly vs annual pricing, churn impact, and customer lifetime value...</span>
+          </span>
         </a>
         <a href="/uniteconomics-calculator" class="seo-calc-card">
-          <strong>Unit Economics Calculator</strong>
-          <span>Calculate unit economics — customer acquisition cost (CAC), lifetime value (LTV), and LTV:CAC ratio for your business...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Unit Economics Calculator</strong>
+            <span>Calculate unit economics — customer acquisition cost (CAC), lifetime value (LTV), and LTV:CAC ratio for your business...</span>
+          </span>
         </a>
         <a href="/eventbudget-calculator" class="seo-calc-card">
-          <strong>Event Budget Calculator</strong>
-          <span>Plan your event budget with vendor cost breakdown — venue, food, entertainment, A/V, decoration, staffing, and contin...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-calendar-day" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Event Budget Calculator</strong>
+            <span>Plan your event budget with vendor cost breakdown — venue, food, entertainment, A/V, decoration, staffing, and contin...</span>
+          </span>
         </a>
         <a href="/householdbudget-calculator" class="seo-calc-card">
-          <strong>Household Budget Calculator</strong>
-          <span>Create a monthly household budget using the 50/30/20 rule. Allocate income across needs, wants, and savings for finan...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-house-user" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Household Budget Calculator</strong>
+            <span>Create a monthly household budget using the 50/30/20 rule. Allocate income across needs, wants, and savings for finan...</span>
+          </span>
         </a>
         <a href="/data-usage-calculator" class="seo-calc-card">
-          <strong>Mobile Data Usage Calculator</strong>
-          <span>Calculate your monthly mobile data usage based on streaming, social media, browsing, and app activity. Find the right...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-wifi" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Mobile Data Usage Calculator</strong>
+            <span>Calculate your monthly mobile data usage based on streaming, social media, browsing, and app activity. Find the right...</span>
+          </span>
         </a>
         <a href="/laundry-calculator" class="seo-calc-card">
-          <strong>Laundry Calculator</strong>
-          <span>Calculate laundry load size, detergent amount, and water usage. Estimate washing machine running cost per load.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-shirt" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Laundry Calculator</strong>
+            <span>Calculate laundry load size, detergent amount, and water usage. Estimate washing machine running cost per load.</span>
+          </span>
         </a>
         <a href="/cooking-calculator" class="seo-calc-card">
-          <strong>Cooking Measurement Converter</strong>
-          <span>Scale recipe ingredients up or down by servings. Convert cooking measurements between cups, tablespoons, grams, and m...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-kitchen-set" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Cooking Measurement Converter</strong>
+            <span>Scale recipe ingredients up or down by servings. Convert cooking measurements between cups, tablespoons, grams, and m...</span>
+          </span>
         </a>
         <a href="/shoesize-calculator" class="seo-calc-card">
-          <strong>Shoe Size Converter</strong>
-          <span>Convert shoe sizes between Indian, US, UK, and EU systems. Find your size across brands with a foot length measuremen...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-shoe-prints" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Shoe Size Converter</strong>
+            <span>Convert shoe sizes between Indian, US, UK, and EU systems. Find your size across brands with a foot length measuremen...</span>
+          </span>
         </a>
         <a href="/petage-calculator" class="seo-calc-card">
-          <strong>Pet Age Calculator</strong>
-          <span>Convert your pet's age to human years. Updated formula for dogs (by breed size), cats, and other common pets.</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-paw" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pet Age Calculator</strong>
+            <span>Convert your pet's age to human years. Updated formula for dogs (by breed size), cats, and other common pets.</span>
+          </span>
         </a>
         <a href="/stopwatch-calculator" class="seo-calc-card">
-          <strong>Stopwatch</strong>
-          <span>Online stopwatch with lap timing, split times, and countdown timer. Millisecond precision for sports training and tim...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-stopwatch" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Stopwatch</strong>
+            <span>Online stopwatch with lap timing, split times, and countdown timer. Millisecond precision for sports training and tim...</span>
+          </span>
         </a>
         <a href="/randomnum-calculator" class="seo-calc-card">
-          <strong>Random Number Generator</strong>
-          <span>Generate random numbers within a custom range. Supports integers, decimals, no-repeat mode, and bulk generation for l...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-dice" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Random Number Generator</strong>
+            <span>Generate random numbers within a custom range. Supports integers, decimals, no-repeat mode, and bulk generation for l...</span>
+          </span>
         </a>
         <a href="/cartco-calculator" class="seo-calc-card">
-          <strong>Shopping Cart Calculator</strong>
-          <span>Calculate Cartesian coordinates distance, midpoint, and slope between two points. Convert between Cartesian and polar...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-car" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Shopping Cart Calculator</strong>
+            <span>Calculate Cartesian coordinates distance, midpoint, and slope between two points. Convert between Cartesian and polar...</span>
+          </span>
         </a>
         <a href="/wiresize-calculator" class="seo-calc-card">
-          <strong>Wire Size Calculator</strong>
-          <span>Calculate the correct wire gauge (AWG/SWG) for your electrical load. Prevent overheating with proper wire sizing base...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-plug" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Wire Size Calculator</strong>
+            <span>Calculate the correct wire gauge (AWG/SWG) for your electrical load. Prevent overheating with proper wire sizing base...</span>
+          </span>
         </a>
         <a href="/pixelresolution-calculator" class="seo-calc-card">
-          <strong>Pixel Resolution Calculator</strong>
-          <span>Calculate pixel density (PPI), total megapixels, and display aspect ratio. Compare screen resolutions across devices ...</span>
+          <span class="seo-calc-icon" style="background:linear-gradient(135deg,#84cc16,#65a30d)"><i class="fas fa-image" aria-hidden="true"></i></span>
+          <span class="seo-calc-copy">
+            <strong>Pixel Resolution Calculator</strong>
+            <span>Calculate pixel density (PPI), total megapixels, and display aspect ratio. Compare screen resolutions across devices ...</span>
+          </span>
         </a>
       </div>
 
