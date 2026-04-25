@@ -150,6 +150,60 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-cat-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--rsm);color:var(--txt1);font-size:.85rem;text-decoration:none;transition:var(--transition)}
 .seo-cat-nav a:hover{background:var(--bg2);color:var(--p)}
 .seo-cat-nav a i{width:18px;text-align:center;font-size:.85rem;color:var(--txt2)}
+/* Home pre-rendered content */
+.home-shell{display:grid;gap:20px;animation:fadeUp .35s ease both}
+.home-hero{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(99,102,241,.16),rgba(24,24,27,.92));padding:28px 24px}
+[data-theme="light"] .home-hero,body.light .home-hero{background:linear-gradient(145deg,rgba(99,102,241,.08),rgba(255,255,255,.98))}
+.home-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(99,102,241,.14);color:var(--p2);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.home-hero h1{font-size:1.9rem;line-height:1.15;margin-bottom:12px;color:var(--txt)}
+.home-lead{max-width:760px;font-size:.96rem;line-height:1.75;color:var(--txt1);margin-bottom:18px}
+.home-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.home-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;font-size:.92rem;font-weight:700;text-decoration:none;border:1px solid transparent;transition:var(--transition)}
+.home-btn-primary{background:var(--p);color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.2)}
+.home-btn-primary:hover{background:var(--p3)}
+.home-btn-secondary{background:var(--bg1);border-color:var(--brd);color:var(--txt)}
+.home-btn-secondary:hover{border-color:var(--p);color:var(--p)}
+.home-highlight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.home-highlight{padding:14px 12px;border-radius:14px;background:rgba(9,9,11,.22);border:1px solid rgba(255,255,255,.08)}
+[data-theme="light"] .home-highlight,body.light .home-highlight{background:rgba(255,255,255,.86);border-color:rgba(0,0,0,.06)}
+.home-highlight strong{display:block;font-size:1.15rem;color:var(--txt)}
+.home-highlight span{display:block;font-size:.8rem;color:var(--txt2);margin-top:2px}
+.home-section{display:grid;gap:12px}
+.home-section-head h2{font-size:1.2rem;color:var(--txt);margin-bottom:6px}
+.home-section-head p{font-size:.92rem;line-height:1.7;color:var(--txt1)}
+.home-link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.home-link-card{display:block;padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px;text-decoration:none;transition:var(--transition)}
+.home-link-card:hover{transform:translateY(-2px);border-color:rgba(99,102,241,.35);box-shadow:var(--shadow-sm)}
+.home-link-card strong{display:block;font-size:.98rem;color:var(--txt);margin-bottom:6px}
+.home-link-card p{font-size:.86rem;line-height:1.65;color:var(--txt1)}
+.home-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.home-category-card{display:block;padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px;text-decoration:none;transition:var(--transition)}
+.home-category-card:hover{border-color:rgba(99,102,241,.35);background:var(--bg2)}
+.home-category-card h3{display:flex;align-items:center;gap:10px;font-size:.98rem;color:var(--txt);margin-bottom:8px}
+.home-category-card h3 i{width:18px;text-align:center;color:var(--p2)}
+.home-category-card p{font-size:.86rem;line-height:1.65;color:var(--txt1)}
+.home-panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.home-panel{padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px}
+.home-panel h3{font-size:.96rem;color:var(--txt);margin-bottom:8px}
+.home-panel p,.home-panel li{font-size:.86rem;line-height:1.68;color:var(--txt1)}
+.home-panel ul{padding-left:18px}
+.home-panel li+li{margin-top:6px}
+.home-trust-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:12px}
+.home-note{padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px}
+.home-note p{font-size:.9rem;line-height:1.72;color:var(--txt1)}
+.home-note p+p{margin-top:10px}
+.home-note a{font-weight:600}
+.home-quick-links{display:grid;gap:10px}
+.home-quick-links a{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--bg1);border:1px solid var(--brd);color:var(--txt);text-decoration:none;transition:var(--transition)}
+.home-quick-links a:hover{border-color:rgba(99,102,241,.35);color:var(--p)}
+@media(max-width:1023px){
+  .home-link-grid,.home-panel-grid,.home-trust-grid{grid-template-columns:1fr}
+}
+@media(max-width:767px){
+  .home-hero{padding:24px 18px}
+  .home-hero h1{font-size:1.55rem}
+  .home-highlight-grid,.home-category-grid,.home-link-grid{grid-template-columns:1fr}
+}
 
 /* SEO Pre-rendered Content */
 .seo-breadcrumb{padding:8px 0;font-size:.82rem;color:var(--txt2)}
@@ -199,7 +253,25 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-article a:hover{text-decoration:underline}
     </style>
 
-        <script type="application/ld+json" id="jsonld-article">
+            <script type="application/ld+json" id="jsonld-organization">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Calc Labz",
+      "url": "https://calclabz.com/",
+      "logo": "https://calclabz.com/calclabz-logo.png",
+      "email": "mailto:sagarsahni69@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Sagar Sahni"
+      },
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "India"
+      }
+    }
+    </script>
+<script type="application/ld+json" id="jsonld-article">
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -215,7 +287,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     "url": "https://calclabz.com"
   },
   "datePublished": "2026-04-01",
-  "dateModified": "2026-04-17",
+  "dateModified": "2026-04-25",
   "mainEntityOfPage": "https://calclabz.com/blog/step-up-sip-calculator-annual-increase"
 }
 </script>
@@ -324,6 +396,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
       <div class="seo-trust">
         <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or tax advice. Tax laws and rates may change. Consult a qualified chartered accountant or financial advisor for decisions specific to your situation.</p>
+        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> if you spot an outdated rule, unclear explanation, or factual error.</p>
         <p><strong>Last updated:</strong> Apr 2026</p>
       </div>
     </div>

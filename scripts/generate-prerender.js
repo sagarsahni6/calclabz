@@ -18,12 +18,14 @@
 
 var fs   = require('fs');
 var path = require('path');
+var vm   = require('vm');
 
 // ── CONFIG ──────────────────────────────────────────────────────────────────
 var BASE_URL = 'https://calclabz.com';
 var ROOT     = path.resolve(__dirname, '..');
 var TEMPLATE = path.join(ROOT, 'index.html');
 var TODAY    = new Date().toISOString().split('T')[0];
+var CONTENT_SLOT_RE = /<!-- CONTENT_SLOT_START -->[\s\S]*?<!-- CONTENT_SLOT_END -->/;
 
 // Import updated footer template with trust page links
 var UPDATED_FOOTER;
@@ -159,6 +161,123 @@ var CATEGORIES = [
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 
+var CATEGORY_CONTEXT = {
+  finance: {
+    summary: 'Finance tools should help you compare scenarios before you commit to a lender, tax choice, or investment product. Use these calculators to test assumptions, then verify the final numbers with the institution that will actually process the decision.',
+    tips: [
+      'Compare more than one rate, tenure, or return assumption before trusting a single output.',
+      'Check whether the calculator result is pre-tax or post-tax before using it in a plan.',
+      'Treat product rules, slab rates, and lender policies as changeable; confirm important outcomes with the latest official source.'
+    ],
+    review: 'Finance calculators are reviewed against published formulas and official rule sets where relevant, including bank product documentation, RBI guidance, and Indian tax references. They are planning tools, not personal financial advice.'
+  },
+  health: {
+    summary: 'Health and fitness calculators are most useful when they give you a starting range, not a diagnosis. Use them to understand patterns, compare scenarios, and prepare better questions for a qualified professional.',
+    tips: [
+      'Read the limitations section before using any BMI, calorie, or body-composition result in isolation.',
+      'Use consistent units and realistic activity levels to avoid false precision.',
+      'For pregnancy, blood pressure, diabetes risk, or other medical topics, treat the output as informational and verify with a clinician.'
+    ],
+    review: 'Health calculators are built around established public formulas and research-backed methods, then checked with worked examples and plain-language explanation. They are educational tools and do not replace medical care.'
+  },
+  math: {
+    summary: 'Math calculators should save time without hiding the logic. This category focuses on common school, exam, and work calculations that benefit from a quick answer plus a formula reference.',
+    tips: [
+      'Use the worked example to confirm that you selected the right operation.',
+      'Double-check negative signs, order of operations, and percentage bases when a result looks off.',
+      'For study use, compare the calculator output with your manual method so the shortcut still teaches the concept.'
+    ],
+    review: 'Math tools are checked against standard textbook formulas and sample problems. Where possible, pages include examples and common error patterns so readers can validate the result quickly.'
+  },
+  everyday: {
+    summary: 'Everyday calculators are designed for budgeting, planning, shopping, travel, and household decisions where a quick estimate is useful but context still matters.',
+    tips: [
+      'Adjust the default assumptions to reflect your actual bill, travel pattern, or budget rather than a generic average.',
+      'Use the result as a planning benchmark, then refine it with local prices or provider-specific charges.',
+      'When comparing two options, keep the time period and units identical so the comparison stays fair.'
+    ],
+    review: 'Everyday tools are reviewed for formula accuracy, sensible defaults, and clear wording. Where rates or local practices vary, the page notes that results are estimates rather than guaranteed outcomes.'
+  },
+  education: {
+    summary: 'Education calculators help students estimate grades, percentages, attendance, and planning targets without getting lost in manual arithmetic during a busy term.',
+    tips: [
+      'Check your board, university, or instructor rules before relying on a conversion or grading scale.',
+      'Use weights and credit values exactly as they appear in your syllabus or marksheet.',
+      'For planning tools, revisit the inputs after every exam or assignment so the projection stays realistic.'
+    ],
+    review: 'Education tools are checked against standard grading and percentage formulas, then reviewed for clarity so students can see what the output means and where institution-specific differences might apply.'
+  },
+  engineering: {
+    summary: 'Engineering calculators are intended for early checks, coursework, and estimation. They can speed up repetitive math, but they should not replace code requirements, design review, or field judgment.',
+    tips: [
+      'Confirm that the selected unit system matches your source data before calculating.',
+      'Use these outputs for preliminary verification, not as a substitute for licensed design sign-off.',
+      'If a design is safety-critical, validate the answer against the applicable code, standard, or manufacturer data sheet.'
+    ],
+    review: 'Engineering tools are reviewed against established formulas and common reference conventions. They prioritize transparent inputs and readable outputs so users can sense-check the result before using it further.'
+  },
+  construction: {
+    summary: 'Construction calculators are useful for scoping and budgeting, especially in the early planning stage when you need quick material or cost estimates before requesting quotes.',
+    tips: [
+      'Measure the site carefully and add a waste margin where the page recommends one.',
+      'Treat unit costs as placeholders until you confirm local material and labour prices.',
+      'Use these estimates to prepare for vendor conversations, not as a replacement for contractor measurement.'
+    ],
+    review: 'Construction tools are reviewed for formula accuracy and practical assumptions such as coverage rates, ratios, and wastage ranges. Real-world requirements can still vary by site conditions and contractor method.'
+  },
+  unit: {
+    summary: 'Conversion tools are most valuable when they are fast, precise, and clear about the units being translated. This category covers the references people reach for most often while studying, building, traveling, or comparing specs.',
+    tips: [
+      'Confirm whether the unit system is metric, imperial, US customary, or another regional convention.',
+      'Use the source value exactly as given before rounding for presentation.',
+      'When precision matters in scientific or industrial work, verify the converted value in the governing specification.'
+    ],
+    review: 'Unit converters use standardized conversion factors and are reviewed for common edge cases, naming clarity, and decimal accuracy. They are designed as quick references rather than authoritative regulatory documents.'
+  },
+  datetime: {
+    summary: 'Date and time tools help with deadlines, schedules, age calculations, and calendar math that becomes error-prone when done manually.',
+    tips: [
+      'Check whether the calculation is inclusive or exclusive of the start and end date.',
+      'Use the correct timezone or local date when the task involves travel, deadlines, or remote teams.',
+      'For legal, payroll, or compliance deadlines, confirm the final date against the relevant policy or official calendar.'
+    ],
+    review: 'Date and time calculators are reviewed for leap years, month-length handling, and common scheduling edge cases. They are intended to reduce arithmetic mistakes, not override official deadline rules.'
+  },
+  science: {
+    summary: 'Science calculators support homework, lab prep, and reference checks by turning common formulas into faster, cleaner workflows for students and practitioners.',
+    tips: [
+      'Check the required units before entering values; many science errors begin with a unit mismatch.',
+      'Use the formula note to confirm the model matches your textbook or assignment.',
+      'For research or industrial use, verify constants, measurement uncertainty, and rounding requirements in the relevant standard.'
+    ],
+    review: 'Science tools are reviewed against standard formulas and educational references with emphasis on SI units, sensible defaults, and readable explanations. They are best used as aids for checking work, not replacing formal lab procedure.'
+  }
+};
+
+var CATEGORY_BLOG_MAP = {
+  finance: ['Finance', 'Tax'],
+  health: ['Health'],
+  math: ['Math'],
+  everyday: ['Everyday', 'Lifestyle'],
+  education: ['Education'],
+  engineering: ['Science'],
+  construction: ['Everyday'],
+  unit: ['Math', 'Science', 'Everyday'],
+  datetime: ['Lifestyle', 'Everyday'],
+  science: ['Science', 'Health']
+};
+
+var BLOG_POSTS = [];
+try {
+  var blogMetaSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'blog-posts.js'), 'utf8');
+  var blogSandbox = {};
+  vm.createContext(blogSandbox);
+  vm.runInContext(blogMetaSrc, blogSandbox);
+  BLOG_POSTS = blogSandbox.BLOG_POSTS || [];
+} catch (e) {
+  BLOG_POSTS = [];
+}
+
 function escHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -222,6 +341,13 @@ function jsonLdTag(id, schema) {
     '\n</script>';
 }
 
+function getCategoryRelatedPosts(catId) {
+  var blogCats = CATEGORY_BLOG_MAP[catId] || [];
+  return BLOG_POSTS.filter(function(post) {
+    return blogCats.indexOf(post.cat) !== -1;
+  }).slice(0, 4);
+}
+
 // ── BODY HTML BUILDERS ──────────────────────────────────────────────────────
 
 function getRelatedCalcs(calc) {
@@ -245,7 +371,8 @@ function buildTrustSection(calc) {
   } else {
     html += '  <p><strong>Note:</strong> This calculator provides estimates for informational purposes only. For professional advice, consult a qualified expert in the relevant field.</p>\n';
   }
-  html += '  <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>\n';
+  html += '  <p><strong>Maintained by:</strong> Sagar Sahni, Calc Labz &nbsp;|&nbsp; <strong>Review:</strong> formula checks, worked examples, and periodic updates</p>\n';
+  html += '  <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> with the calculator name, your inputs, and the issue you found.</p>\n';
   html += '  <p><strong>Last updated:</strong> April 2026</p>\n';
   html += '</div>\n';
   return html;
@@ -364,6 +491,8 @@ function buildBodyHTML(calc) {
 }
 
 function buildCategoryBodyHTML(cat, calcs) {
+  var context = CATEGORY_CONTEXT[cat.id];
+  var relatedPosts = getCategoryRelatedPosts(cat.id);
   var html = '\n    <!-- SEO Pre-rendered Content — visible to crawlers; JS app hydrates over this -->\n';
   html += '    <div id="seo-content">\n';
 
@@ -392,6 +521,39 @@ function buildCategoryBodyHTML(cat, calcs) {
     html += '          <span>' + cDesc + '</span>\n';
     html += '        </a>\n';
   });
+  html += '      </div>\n';
+
+  if (context) {
+    html += '\n      <section class="seo-section">\n';
+    html += '        <h2>How to use these calculators well</h2>\n';
+    html += '        <p>' + context.summary + '</p>\n';
+    html += '        <ul>\n';
+    context.tips.forEach(function(tip) {
+      html += '          <li>' + tip + '</li>\n';
+    });
+    html += '        </ul>\n';
+    html += '      </section>\n';
+
+    html += '\n      <section class="seo-section">\n';
+    html += '        <h2>How we review this category</h2>\n';
+    html += '        <p>' + context.review + '</p>\n';
+    html += '      </section>\n';
+  }
+
+  if (relatedPosts.length) {
+    html += '\n      <section class="seo-section">\n';
+    html += '        <h2>Related guides</h2>\n';
+    html += '        <div class="seo-related-grid">\n';
+    relatedPosts.forEach(function(post) {
+      html += '          <a href="/blog/' + post.slug + '">' + post.title + '</a>\n';
+    });
+    html += '        </div>\n';
+    html += '      </section>\n';
+  }
+
+  html += '\n      <div class="seo-trust">\n';
+  html += '        <p><strong>Editorial note:</strong> Read our <a href="/editorial-policy">Editorial Policy</a> to see how Calc Labz validates formulas, examples, and updates.</p>\n';
+  html += '        <p><strong>Need a correction?</strong> <a href="/contact">Tell us here</a> and include the calculator name, your inputs, and the issue you found.</p>\n';
   html += '      </div>\n';
 
   html += '    </div>\n';
@@ -495,10 +657,7 @@ function generate() {
 
     // 13. Replace body placeholder with real SEO content
     var bodyHtml = buildBodyHTML(calc);
-    html = html.replace(
-      /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-      bodyHtml
-    );
+    html = html.replace(CONTENT_SLOT_RE, bodyHtml);
 
     // 14. Update footer with trust page links
     if (UPDATED_FOOTER) {
@@ -581,10 +740,7 @@ function generateCategories() {
 
     // Replace body content
     var bodyHtml = buildCategoryBodyHTML(cat, calcs);
-    html = html.replace(
-      /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-      bodyHtml
-    );
+    html = html.replace(CONTENT_SLOT_RE, bodyHtml);
 
     // Update footer with trust page links
     if (UPDATED_FOOTER) {
@@ -883,17 +1039,15 @@ function generateAllRegistryCalcs() {
     // Trust section with author and disclaimer
     body += '      <div class="seo-trust">\n';
     body += '        ' + catContent.disclaimer + '\n';
-    body += '        <p><strong>Author:</strong> Calc Labz Editorial Team &nbsp;|&nbsp; <strong>Reviewed for accuracy</strong></p>\n';
+    body += '        <p><strong>Maintained by:</strong> Sagar Sahni, Calc Labz &nbsp;|&nbsp; <strong>Review:</strong> formula checks, worked examples, and periodic updates</p>\n';
+    body += '        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> with the calculator name, your inputs, and the issue you found.</p>\n';
     body += '        <p><strong>Last updated:</strong> April 2026</p>\n';
     body += '      </div>\n';
 
     body += '    </div>\n';
 
     // Replace body placeholder
-    html = html.replace(
-      /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-      body
-    );
+    html = html.replace(CONTENT_SLOT_RE, body);
 
     // Update footer with trust page links
     html = html.replace(
@@ -1069,16 +1223,14 @@ function generateBlogPages() {
     } else {
       body += '        <p><strong>Note:</strong> This article is for informational purposes only. For professional advice, consult a qualified expert.</p>\n';
     }
-    body += '        <p><strong>Last updated:</strong> ' + (content.meta.date || 'April 2026') + '</p>\n';
-    body += '      </div>\n';
+      body += '        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> if you spot an outdated rule, unclear explanation, or factual error.</p>\n';
+      body += '        <p><strong>Last updated:</strong> ' + (content.meta.date || 'April 2026') + '</p>\n';
+      body += '      </div>\n';
 
     body += '    </div>\n';
 
     // Replace body placeholder
-    html = html.replace(
-      /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-      body
-    );
+    html = html.replace(CONTENT_SLOT_RE, body);
 
     // Update footer with trust page links
     if (UPDATED_FOOTER) {
@@ -1168,6 +1320,15 @@ function generateBlogListingPage() {
   body += '      </nav>\n\n';
   body += '      <h1>Guides &amp; Articles</h1>\n';
   body += '      <p class="seo-intro">Expert guides on personal finance, tax planning, health metrics, and more. Learn how to make the most of our calculators with practical tips, worked examples, and in-depth explanations.</p>\n\n';
+  body += '      <section class="seo-section">\n';
+  body += '        <h2>What you will find here</h2>\n';
+  body += '        <p>Calc Labz guides are written to add context around the calculator output: what the formula means, where the assumptions break, how Indian rules or pricing conventions affect the result, and what to verify before acting on it.</p>\n';
+  body += '        <ul>\n';
+  body += '          <li>India-focused finance and tax explainers for loans, salary, deductions, and investing.</li>\n';
+  body += '          <li>Health and education guides that translate common formulas into practical interpretation.</li>\n';
+  body += '          <li>Everyday decision guides for bills, travel, budgeting, shopping, and planning.</li>\n';
+  body += '        </ul>\n';
+  body += '      </section>\n\n';
 
   // Blog cards grid
   body += '      <div class="seo-calc-grid">\n';
@@ -1180,13 +1341,14 @@ function generateBlogListingPage() {
     body += '        </a>\n';
   });
   body += '      </div>\n';
+  body += '      <div class="seo-trust">\n';
+  body += '        <p><strong>Editorial note:</strong> Our guides are meant to support, not replace, official documentation or professional advice. See the <a href="/editorial-policy">Editorial Policy</a> for our review approach.</p>\n';
+  body += '        <p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> and include the article title plus the issue you found.</p>\n';
+  body += '      </div>\n';
   body += '    </div>\n';
 
   // Replace body placeholder
-  html = html.replace(
-    /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-    body
-  );
+  html = html.replace(CONTENT_SLOT_RE, body);
 
   // Update footer
   if (UPDATED_FOOTER) {
@@ -1228,4 +1390,3 @@ console.log('📝 Pre-rendering blog listing page...\n');
 generateBlogListingPage();
 
 console.log('✅ Pre-render complete.\n');
-

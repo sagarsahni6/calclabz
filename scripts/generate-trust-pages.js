@@ -25,6 +25,7 @@ var ROOT     = path.resolve(__dirname, '..');
 var TEMPLATE = path.join(ROOT, 'index.html');
 var BASE_URL = 'https://calclabz.com';
 var TODAY    = new Date().toISOString().split('T')[0];
+var CONTENT_SLOT_RE = /<!-- CONTENT_SLOT_START -->[\s\S]*?<!-- CONTENT_SLOT_END -->/;
 
 // SEO CSS (same as generate-prerender.js)
 var SEO_CSS = '\n/* SEO Pre-rendered Content */\n' +
@@ -662,10 +663,7 @@ function buildPage(page) {
 
   // 9. Replace body placeholder with real content
   var bodyHtml = page.body();
-  html = html.replace(
-    /<!-- Content injected by JS -->[\s\S]*?<p>Loading Calc Labz\.\.\.<\/p>\s*<\/div>/,
-    bodyHtml
-  );
+  html = html.replace(CONTENT_SLOT_RE, bodyHtml);
 
   // 10. Update footer with new links
   html = html.replace(

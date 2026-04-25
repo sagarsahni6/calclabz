@@ -153,6 +153,60 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .seo-cat-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--rsm);color:var(--txt1);font-size:.85rem;text-decoration:none;transition:var(--transition)}
 .seo-cat-nav a:hover{background:var(--bg2);color:var(--p)}
 .seo-cat-nav a i{width:18px;text-align:center;font-size:.85rem;color:var(--txt2)}
+/* Home pre-rendered content */
+.home-shell{display:grid;gap:20px;animation:fadeUp .35s ease both}
+.home-hero{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(99,102,241,.16),rgba(24,24,27,.92));padding:28px 24px}
+[data-theme="light"] .home-hero,body.light .home-hero{background:linear-gradient(145deg,rgba(99,102,241,.08),rgba(255,255,255,.98))}
+.home-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(99,102,241,.14);color:var(--p2);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.home-hero h1{font-size:1.9rem;line-height:1.15;margin-bottom:12px;color:var(--txt)}
+.home-lead{max-width:760px;font-size:.96rem;line-height:1.75;color:var(--txt1);margin-bottom:18px}
+.home-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.home-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;font-size:.92rem;font-weight:700;text-decoration:none;border:1px solid transparent;transition:var(--transition)}
+.home-btn-primary{background:var(--p);color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.2)}
+.home-btn-primary:hover{background:var(--p3)}
+.home-btn-secondary{background:var(--bg1);border-color:var(--brd);color:var(--txt)}
+.home-btn-secondary:hover{border-color:var(--p);color:var(--p)}
+.home-highlight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.home-highlight{padding:14px 12px;border-radius:14px;background:rgba(9,9,11,.22);border:1px solid rgba(255,255,255,.08)}
+[data-theme="light"] .home-highlight,body.light .home-highlight{background:rgba(255,255,255,.86);border-color:rgba(0,0,0,.06)}
+.home-highlight strong{display:block;font-size:1.15rem;color:var(--txt)}
+.home-highlight span{display:block;font-size:.8rem;color:var(--txt2);margin-top:2px}
+.home-section{display:grid;gap:12px}
+.home-section-head h2{font-size:1.2rem;color:var(--txt);margin-bottom:6px}
+.home-section-head p{font-size:.92rem;line-height:1.7;color:var(--txt1)}
+.home-link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.home-link-card{display:block;padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px;text-decoration:none;transition:var(--transition)}
+.home-link-card:hover{transform:translateY(-2px);border-color:rgba(99,102,241,.35);box-shadow:var(--shadow-sm)}
+.home-link-card strong{display:block;font-size:.98rem;color:var(--txt);margin-bottom:6px}
+.home-link-card p{font-size:.86rem;line-height:1.65;color:var(--txt1)}
+.home-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.home-category-card{display:block;padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px;text-decoration:none;transition:var(--transition)}
+.home-category-card:hover{border-color:rgba(99,102,241,.35);background:var(--bg2)}
+.home-category-card h3{display:flex;align-items:center;gap:10px;font-size:.98rem;color:var(--txt);margin-bottom:8px}
+.home-category-card h3 i{width:18px;text-align:center;color:var(--p2)}
+.home-category-card p{font-size:.86rem;line-height:1.65;color:var(--txt1)}
+.home-panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.home-panel{padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px}
+.home-panel h3{font-size:.96rem;color:var(--txt);margin-bottom:8px}
+.home-panel p,.home-panel li{font-size:.86rem;line-height:1.68;color:var(--txt1)}
+.home-panel ul{padding-left:18px}
+.home-panel li+li{margin-top:6px}
+.home-trust-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:12px}
+.home-note{padding:18px;background:var(--bg1);border:1px solid var(--brd);border-radius:16px}
+.home-note p{font-size:.9rem;line-height:1.72;color:var(--txt1)}
+.home-note p+p{margin-top:10px}
+.home-note a{font-weight:600}
+.home-quick-links{display:grid;gap:10px}
+.home-quick-links a{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--bg1);border:1px solid var(--brd);color:var(--txt);text-decoration:none;transition:var(--transition)}
+.home-quick-links a:hover{border-color:rgba(99,102,241,.35);color:var(--p)}
+@media(max-width:1023px){
+  .home-link-grid,.home-panel-grid,.home-trust-grid{grid-template-columns:1fr}
+}
+@media(max-width:767px){
+  .home-hero{padding:24px 18px}
+  .home-hero h1{font-size:1.55rem}
+  .home-highlight-grid,.home-category-grid,.home-link-grid{grid-template-columns:1fr}
+}
     </style>
 
     <!-- ═══ JSON-LD: SoftwareApplication ═══ -->
@@ -211,6 +265,24 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       }
     }
     </script>
+    <script type="application/ld+json" id="jsonld-organization">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Calc Labz",
+      "url": "https://calclabz.com/",
+      "logo": "https://calclabz.com/calclabz-logo.png",
+      "email": "mailto:sagarsahni69@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Sagar Sahni"
+      },
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "India"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -258,11 +330,143 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <!-- ═══ MAIN CONTENT ═══ -->
     <div class="app-body">
         <main id="mainContent" role="main" aria-live="polite" aria-atomic="false" aria-label="Main content">
-            <!-- Content injected by JS -->
-            <div style="text-align:center;padding:60px 20px;color:var(--txt2)">
-                <i class="fas fa-calculator" style="font-size:2rem;margin-bottom:12px;color:var(--p)" aria-hidden="true"></i>
-                <p>Loading Calc Labz...</p>
+            <!-- CONTENT_SLOT_START -->
+            <div class="home-shell" id="home-prerender">
+                <section class="home-hero card">
+                    <span class="home-eyebrow">Trusted tools for real decisions</span>
+                    <h1>Free calculators with formulas, context, and practical next steps</h1>
+                    <p class="home-lead">Calc Labz brings together interactive calculators, worked examples, FAQs, and plain-English guides for money, health, study, engineering, and day-to-day planning. The goal is simple: help you understand the number, not just generate it.</p>
+                    <div class="home-actions">
+                        <a class="home-btn home-btn-primary" href="/finance-calculators">Explore calculators</a>
+                        <a class="home-btn home-btn-secondary" href="/blog">Read guides</a>
+                    </div>
+                    <div class="home-highlight-grid">
+                        <div class="home-highlight"><strong>300+</strong><span>calculator pages</span></div>
+                        <div class="home-highlight"><strong>10</strong><span>core categories</span></div>
+                        <div class="home-highlight"><strong>100+</strong><span>supporting guides</span></div>
+                        <div class="home-highlight"><strong>0</strong><span>signups required</span></div>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <div class="home-section-head">
+                        <h2>Start with the calculators people use most</h2>
+                        <p>These are the tools readers usually open first for planning loans, taxes, investing, health tracking, and everyday calculations.</p>
+                    </div>
+                    <div class="home-link-grid">
+                        <a class="home-link-card" href="/emi-calculator">
+                            <strong>Loan EMI Calculator</strong>
+                            <p>Estimate monthly EMI, total interest, and repayment impact before speaking with a lender.</p>
+                        </a>
+                        <a class="home-link-card" href="/sip-calculator">
+                            <strong>SIP Calculator</strong>
+                            <p>Project long-term mutual fund growth with monthly investing and compounding.</p>
+                        </a>
+                        <a class="home-link-card" href="/income-tax-calculator">
+                            <strong>Income Tax Calculator</strong>
+                            <p>Compare tax regimes, deductions, and likely liability for FY 2025-26 planning.</p>
+                        </a>
+                        <a class="home-link-card" href="/gst-calculator">
+                            <strong>GST Calculator</strong>
+                            <p>Quickly split base price, GST amount, and inclusive totals for invoices and quotes.</p>
+                        </a>
+                        <a class="home-link-card" href="/bmi-calculator">
+                            <strong>BMI Calculator</strong>
+                            <p>Check BMI ranges with WHO and Asian cutoffs and read the key limitations before using the result.</p>
+                        </a>
+                        <a class="home-link-card" href="/percentage-calculator">
+                            <strong>Percentage Calculator</strong>
+                            <p>Work through increases, decreases, differences, and reverse percentage questions.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <div class="home-section-head">
+                        <h2>Browse by category</h2>
+                        <p>Each category groups calculators with related guides so you can move from a quick estimate to a clearer decision.</p>
+                    </div>
+                    <div class="home-category-grid">
+                        <a class="home-category-card" href="/finance-calculators"><h3><i class="fas fa-coins" aria-hidden="true"></i>Finance</h3><p>Loans, investing, savings, salary, tax planning, retirement, and wealth tracking tools.</p></a>
+                        <a class="home-category-card" href="/health-calculators"><h3><i class="fas fa-heartbeat" aria-hidden="true"></i>Health and Fitness</h3><p>BMI, calories, macros, ideal weight, blood pressure, hydration, and wellness planning.</p></a>
+                        <a class="home-category-card" href="/math-calculators"><h3><i class="fas fa-calculator" aria-hidden="true"></i>Math</h3><p>Percentage, averages, algebra, statistics, geometry, and quick math helpers for school and work.</p></a>
+                        <a class="home-category-card" href="/everyday-calculators"><h3><i class="fas fa-home" aria-hidden="true"></i>Everyday</h3><p>Budgeting, bills, fuel, discounts, travel, timing, and other day-to-day calculation tasks.</p></a>
+                        <a class="home-category-card" href="/education-calculators"><h3><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</h3><p>GPA, CGPA, grade, attendance, percentile, and study-planning tools for students.</p></a>
+                        <a class="home-category-card" href="/engineering-calculators"><h3><i class="fas fa-cog" aria-hidden="true"></i>Engineering</h3><p>Electrical, mechanical, and technical calculations for estimation, coursework, and checks.</p></a>
+                        <a class="home-category-card" href="/construction-calculators"><h3><i class="fas fa-hard-hat" aria-hidden="true"></i>Construction</h3><p>Material estimates for concrete, bricks, paint, flooring, roofing, and project budgeting.</p></a>
+                        <a class="home-category-card" href="/unit-calculators"><h3><i class="fas fa-exchange-alt" aria-hidden="true"></i>Unit Conversion</h3><p>Length, weight, area, temperature, energy, pressure, and other conversion references.</p></a>
+                        <a class="home-category-card" href="/datetime-calculators"><h3><i class="fas fa-clock" aria-hidden="true"></i>Date and Time</h3><p>Age, countdown, working days, time zones, and calendar math for deadlines and schedules.</p></a>
+                        <a class="home-category-card" href="/science-calculators"><h3><i class="fas fa-flask" aria-hidden="true"></i>Science</h3><p>Physics, chemistry, and measurement tools for homework, lab prep, and quick verification.</p></a>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <div class="home-section-head">
+                        <h2>How Calc Labz stays useful</h2>
+                        <p>Ad-supported calculator sites often stop at a form and a result. Calc Labz is built to be more accountable than that.</p>
+                    </div>
+                    <div class="home-panel-grid">
+                        <div class="home-panel">
+                            <h3>Documented methodology</h3>
+                            <p>Calculator pages include the formula, a worked example, common mistakes, FAQs, and clear caution notes for finance and health topics.</p>
+                        </div>
+                        <div class="home-panel">
+                            <h3>Guides that add context</h3>
+                            <p>The blog expands on calculators with India-focused explainers, comparison frameworks, and plain-language background for readers who want more than a raw output.</p>
+                        </div>
+                        <div class="home-panel">
+                            <h3>Review and correction flow</h3>
+                            <p>Calc Labz is maintained by Sagar Sahni in India with an editorial workflow focused on formula checks, example validation, and periodic updates. Readers can report issues through the contact page.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <div class="home-section-head">
+                        <h2>Popular guides</h2>
+                        <p>Use the calculators first, then read the guide when you need the assumptions, rules, or tradeoffs behind the result.</p>
+                    </div>
+                    <div class="home-link-grid">
+                        <a class="home-link-card" href="/blog/home-loan-emi-calculator-eligibility-tax-benefits-2026">
+                            <strong>Home Loan EMI Guide</strong>
+                            <p>EMI math, eligibility rules, and tax benefits in one practical overview for Indian borrowers.</p>
+                        </a>
+                        <a class="home-link-card" href="/blog/old-vs-new-tax-regime-comparison-fy-2025-26">
+                            <strong>Old vs New Tax Regime</strong>
+                            <p>A comparison framework for deciding which regime is likely to save more this year.</p>
+                        </a>
+                        <a class="home-link-card" href="/blog/bmi-calculator-india-asian-cutoffs">
+                            <strong>BMI for Indians</strong>
+                            <p>Why Asian cutoffs matter and when BMI should not be used on its own.</p>
+                        </a>
+                        <a class="home-link-card" href="/blog/percentage-calculator-tricks-formulas-examples">
+                            <strong>Percentage Tricks and Formulas</strong>
+                            <p>Reverse percentages, increase and decrease math, and quick sanity checks for exam and work use.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="home-section">
+                    <div class="home-section-head">
+                        <h2>Trust, transparency, and contact</h2>
+                        <p>Readers should be able to see who runs the site, how calculators are reviewed, and where to send a correction.</p>
+                    </div>
+                    <div class="home-trust-grid">
+                        <div class="home-note">
+                            <p>Calc Labz is a free calculator library designed to be useful before it is monetized. Calculations run in your browser, no account is required, and trust pages are available on every page of the site.</p>
+                            <p>For finance, health, legal, tax, and other important decisions, use calculator results as planning estimates and verify final numbers with an appropriate professional. That review standard is outlined in the <a href="/editorial-policy">Editorial Policy</a> and the full <a href="/disclaimer">Disclaimer</a>.</p>
+                            <p>If you spot a broken formula, outdated rule, or unclear explanation, use the <a href="/contact">contact page</a> so it can be reviewed and corrected.</p>
+                        </div>
+                        <div class="home-quick-links">
+                            <a href="/about"><span>About Calc Labz</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="/editorial-policy"><span>Editorial Policy</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="/contact"><span>Contact and corrections</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="/privacy"><span>Privacy Policy</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </section>
             </div>
+            <!-- CONTENT_SLOT_END -->
         </main>
     </div>
 

@@ -230,6 +230,20 @@ function closeSidebar() {
     document.getElementById('sOverlay').classList.remove('open');
 }
 
+function navigateToPath(targetPath) {
+    var currentPath = window.location.pathname.length > 1
+        ? window.location.pathname.replace(/\/+$/, '')
+        : window.location.pathname;
+    var normalizedTarget = targetPath.length > 1
+        ? targetPath.replace(/\/+$/, '')
+        : targetPath;
+    if (currentPath === normalizedTarget) {
+        try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+        return;
+    }
+    window.location.href = normalizedTarget;
+}
+
 // ── HELPERS ────────────────────────────────────────
 function escHtml(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -382,6 +396,12 @@ function renderStat(value, label) {
 
 // ── HOME ───────────────────────────────────────────
 function showHome() {
+    setQBtn('qHome');
+    setMobileNav('mnavHome');
+    closeSidebar();
+    updateSidebarActive('qHome');
+    navigateToPath('/');
+    return;
 
     setQBtn('qHome'); setMobileNav('mnavHome'); closeSidebar(); updateSidebarActive('qHome');
     resetMeta();
@@ -457,6 +477,8 @@ function resetMeta() {
 // ── CATEGORY VIEW ──────────────────────────────────
 function showCategory(catKey) {
     var cat = CATS[catKey]; if (!cat) return;
+    navigateToPath('/' + catKey + '-calculators');
+    return;
     setQBtn(''); closeSidebar();
     document.title = cat.name + ' Calculators | Calc Labz';
     var cards = CAT_LIST[catKey].map(function (id) { return featCard(catKey, id, DB[id]); }).join('');
@@ -603,6 +625,14 @@ function _openCalcRender(catKey, calcId) {
         + '<button class="share-btn" data-action="doShare" data-channel="copy" data-name="' + escHtml(calc.name) + '"><i class="fas fa-link"></i>Copy Link</button>'
         + (navigator.share ? '<button class="share-native-btn" data-action="doNativeShare" data-name="' + escHtml(calc.name) + '"><i class="fas fa-share-nodes"></i>Share</button>' : '')
         + '</div>';
+    var reviewNote = 'Use this as an educational calculator and verify important decisions with the latest official or professional source.';
+    if (calc.cat === 'health') reviewNote = 'Health outputs are informational estimates only and do not replace medical advice, diagnosis, or treatment.';
+    else if (_taxCalcIds.indexOf(calcId) !== -1 || calc.cat === 'finance') reviewNote = 'Finance and tax outputs are planning estimates only and should be checked against current rules, lender terms, or professional advice.';
+    var editorialHTML = '<div class="seo-trust">'
+        + '<p><strong>Maintained by:</strong> Sagar Sahni, Calc Labz &nbsp;|&nbsp; <strong>Review:</strong> formula checks, worked examples, and periodic updates</p>'
+        + '<p><strong>Use with care:</strong> ' + reviewNote + '</p>'
+        + '<p><strong>Need a correction?</strong> <a href="/contact">Contact us</a> with the calculator name and the issue you found. See our <a href="/editorial-policy">editorial policy</a>.</p>'
+        + '</div>';
 
     var noteVal = getNote(calcId);
     var noteHTML = '<div class="note-wrap"><label style="font-size:.78rem;font-weight:600;color:var(--txt2)"><i class="fas fa-sticky-note" style="margin-right:4px"></i>Notes</label>'
@@ -632,6 +662,7 @@ function _openCalcRender(catKey, calcId) {
         + '<div id="amortArea-' + calcId + '"></div>'
         + formulaHTML
         + buildCalcFAQ(calcId, calc)
+        + editorialHTML
         + shareHTML
         + '<div class="feedback-bar"><span class="feedback-lbl">Was this helpful?</span>'
         + '<button class="fb-btn up" data-action="giveFeedback" data-calcid="' + calcId + '" data-value="1"><i class="fas fa-thumbs-up"></i></button>'
@@ -1246,6 +1277,13 @@ function showDashboard() {
 
 function showBlogSection(filterCat) {
     if (typeof filterCat !== 'string') filterCat = undefined;
+    if (!filterCat) {
+        setQBtn('qBlog');
+        closeSidebar();
+        updateSidebarActive('qBlog');
+        navigateToPath('/blog');
+        return;
+    }
     setQBtn('qBlog'); closeSidebar(); updateSidebarActive('qBlog');
     var blogTitle = (filterCat || 'Calculator') + ' Guides & Articles | Calc Labz';
     var blogDesc = 'Free in-depth guides on ' + (filterCat || 'finance, health, math and more') + '. Expert articles with calculator tools by Calc Labz.';
@@ -1619,29 +1657,22 @@ function handleRoute() {
     // Normalize path: strip trailing slash for consistent matching (except root '/')
     var rawPath = window.location.pathname;
     var path = rawPath.length > 1 ? rawPath.replace(/\/+$/, '') : rawPath;
+    if (path === '/index.html') path = '/';
+    else if (/\.html$/i.test(path)) path = path.replace(/\.html$/i, '');
     var params = new URLSearchParams(window.location.search);
     var calcId = params.get('calc');
 
 
-    // Pre-rendered static pages — preserve existing HTML content (check first to avoid overwrite)
-    if (path === '/contact' || path === '/disclaimer' || path === '/editorial-policy') { return; }
+    // Pre-rendered static pages — preserve existing HTML content
+    if (path === '/' || path === '/about' || path === '/privacy' || path === '/terms' ||
+        path === '/contact' || path === '/disclaimer' || path === '/editorial-policy' ||
+        path === '/blog') { return; }
 
     // Blog index: /blog
-    if (path === '/blog') {
-        showBlogSection();
-        return;
-    }
+    if (path === '/blog') { return; }
     // SEO-friendly blog URL: /blog/slug-name
     if (path.indexOf('/blog/') === 0) {
-        var slug = path.replace('/blog/', '').replace(/\/$/, '');
-        // Validate slug is safe before using it
-        if (/^[a-z0-9-]{1,80}$/.test(slug)) {
-            var blogPost = BLOG_POSTS.find(function (p) { return p.slug === slug || p.id === slug; });
-            if (blogPost) {
-                showBlogPost(blogPost.id);
-                return;
-            }
-        }
+        return;
     }
     // Legacy blog ID support: ?blog=emi-guide
     var blogId = params.get('blog');
@@ -1653,15 +1684,10 @@ function handleRoute() {
     var catMatch = path.match(/^\/([a-z]+)-calculators$/);
     if (catMatch) {
         var catKey = catMatch[1];
-        if (CATS[catKey]) {
-            showCategory(catKey);
-            return;
-        }
+        if (CATS[catKey]) { return; }
     }
     // Static pages — clean URL paths (primary) + legacy ?page= (fallback)
-    if (path === '/about') { showAboutPage(); return; }
-    if (path === '/privacy') { showPrivacyPage(); return; }
-    if (path === '/terms') { showTermsPage(); return; }
+    if (path === '/about' || path === '/privacy' || path === '/terms') { return; }
     var pageId = params.get('page');
     if (pageId === 'about') { showAboutPage(); return; }
     if (pageId === 'privacy') { showPrivacyPage(); return; }
@@ -1696,6 +1722,8 @@ function pushBlogUrl(postId) {
 
 // ── ABOUT PAGE ─────────────────────────────────────
 function showAboutPage() {
+    navigateToPath('/about');
+    return;
     setQBtn(''); closeSidebar();
     document.title = 'About Calc Labz — Free Online Calculator Suite';
     setMeta('description', 'Learn about Calc Labz — 300+ free online calculators for finance, health, math and more. Built in India, works offline, zero signup required.');
@@ -1748,6 +1776,8 @@ function showAboutPage() {
 
 // ── PRIVACY POLICY PAGE ────────────────────────────
 function showPrivacyPage() {
+    navigateToPath('/privacy');
+    return;
     setQBtn(''); closeSidebar();
     document.title = 'Privacy Policy | Calc Labz';
     setMeta('description', 'Calc Labz Privacy Policy — we do not collect personal data. We use Google Analytics for anonymous usage insights and Google AdSense for ads. Your calculations stay on your device.');
@@ -1806,6 +1836,8 @@ function showPrivacyPage() {
 
 // ── TERMS OF USE PAGE ──────────────────────────────
 function showTermsPage() {
+    navigateToPath('/terms');
+    return;
     setQBtn(''); closeSidebar();
     document.title = 'Terms of Use | Calc Labz';
     setMeta('description', 'Calc Labz Terms of Use — free to use for personal and commercial purposes. Calculator results are for informational purposes only.');
@@ -2130,4 +2162,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 window.addEventListener('popstate', handleRoute);
-

@@ -61,8 +61,8 @@ console.log('   Has message: ' + (contact.indexOf('cf-message') !== -1 ? 'PASS' 
 console.log('   Has submit: ' + (contact.indexOf('cf-submit') !== -1 ? 'PASS' : 'FAIL'));
 console.log('   Form CSS: ' + (contact.indexOf('.contact-form') !== -1 ? 'PASS' : 'FAIL'));
 
-// 6. taxregime H1
-var taxregime = fs.readFileSync('taxregime-calculator.html', 'utf8');
+// 6. tax-regime H1
+var taxregime = fs.readFileSync('tax-regime-calculator.html', 'utf8');
 var h1Match = taxregime.match(/<h1>(.*?)<\/h1>/);
 var h1Text = h1Match ? h1Match[1] : 'NOT FOUND';
 console.log('');
