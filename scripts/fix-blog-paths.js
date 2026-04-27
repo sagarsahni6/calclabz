@@ -1,8 +1,14 @@
 /**
- * Fix blog pages asset paths — including subdirectory index.html files.
- * Blog HTML files are in /blog/ or /blog/<slug>/ subdirectories but reference assets with
- * relative paths like "assets/css/main.css" which doesn't resolve correctly.
- * This script changes them to absolute paths "/assets/css/..." and "/assets/js/..."
+ * Fix blog pages asset paths — ALL blog HTML files.
+ *
+ * Affected files:
+ *   1. blog/index.html           (blog listing page)
+ *   2. blog/<slug>/index.html    (individual blog posts)
+ *
+ * All reference assets with relative paths like "assets/css/main.css"
+ * and "manifest.json" which don't resolve correctly from subdirectories.
+ * This script changes them to absolute paths "/assets/css/...", "/assets/js/...",
+ * and "/manifest.json".
  */
 
 const fs = require('fs');
@@ -24,6 +30,9 @@ function fixFile(filePath) {
   content = content.replace(/<noscript><link rel="stylesheet" href="assets\/css\/main\.css"><\/noscript>/g,
     '<noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>');
 
+  // Fix manifest.json path: href="manifest.json" -> href="/manifest.json"
+  content = content.replace(/href="manifest\.json"/g, 'href="/manifest.json"');
+
   if (content !== original) {
     fs.writeFileSync(filePath, content, 'utf8');
     return true;
@@ -34,20 +43,31 @@ function fixFile(filePath) {
 let fixedCount = 0;
 let totalCount = 0;
 
-// Get all subdirectories in blog/
+// Get all entries in blog/
 const entries = fs.readdirSync(blogDir, { withFileTypes: true });
+
+// 1. Fix blog/index.html itself
+const blogIndexPath = path.join(blogDir, 'index.html');
+if (fs.existsSync(blogIndexPath)) {
+  totalCount++;
+  if (fixFile(blogIndexPath)) {
+    fixedCount++;
+    console.log('Fixed: blog/index.html');
+  }
+}
 
 for (const entry of entries) {
   if (entry.isDirectory()) {
+    // 2. Fix blog/<slug>/index.html
     const indexPath = path.join(blogDir, entry.name, 'index.html');
     if (fs.existsSync(indexPath)) {
       totalCount++;
       if (fixFile(indexPath)) {
         fixedCount++;
-        console.log(`Fixed: ${entry.name}/index.html`);
+        console.log(`Fixed: blog/${entry.name}/index.html`);
       }
     }
   }
 }
 
-console.log(`\nDone. Fixed ${fixedCount}/${totalCount} subdirectory index.html files.`);
+console.log(`\nDone. Fixed ${fixedCount}/${totalCount} blog HTML files.`);

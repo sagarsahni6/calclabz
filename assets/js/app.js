@@ -32,16 +32,16 @@ var _undoStack = {};
 // Maps category → script file; loaded once on first use
 var _loadedCategories = {};
 var _categoryScriptMap = {
-    math: 'assets/js/calculators-math.js',
-    finance: 'assets/js/calculators-finance.js',
-    health: 'assets/js/calculators-health.js',
-    unit: 'assets/js/calculators-unit.js',
-    datetime: 'assets/js/calculators-datetime.js',
-    engineering: 'assets/js/calculators-engineering.js',
-    science: 'assets/js/calculators-science.js',
-    construction: 'assets/js/calculators-construction.js',
-    everyday: 'assets/js/calculators-everyday.js',
-    education: 'assets/js/calculators-education.js'
+    math: '/assets/js/calculators-math.js',
+    finance: '/assets/js/calculators-finance.js',
+    health: '/assets/js/calculators-health.js',
+    unit: '/assets/js/calculators-unit.js',
+    datetime: '/assets/js/calculators-datetime.js',
+    engineering: '/assets/js/calculators-engineering.js',
+    science: '/assets/js/calculators-science.js',
+    construction: '/assets/js/calculators-construction.js',
+    everyday: '/assets/js/calculators-everyday.js',
+    education: '/assets/js/calculators-education.js'
 };
 
 // Callback registry — queued actions waiting for a category to load
@@ -1734,176 +1734,18 @@ function pushBlogUrl(postId) {
 // ── ABOUT PAGE ─────────────────────────────────────
 function showAboutPage() {
     navigateToPath('/about');
-    return;
-    setQBtn(''); closeSidebar();
-    document.title = 'About Calc Labz — Free Online Calculator Suite';
-    setMeta('description', 'Learn about Calc Labz — 300+ free online calculators for finance, health, math and more. Built in India, works offline, zero signup required.');
-    setCanon(window.location.origin + '/about');
-    try { window.history.pushState({ type: 'static', id: 'about' }, 'About | Calc Labz', '/about'); } catch (e) { }
-    document.getElementById('mainContent').innerHTML =
-        '<div class="card about-page">'
-        + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"><i class="fas fa-calculator"></i></div>'
-        + '<div class="cat-meta"><h1>About Calc Labz</h1><p>Free calculators for everyone</p></div></div>'
-
-        + '<div class="about-hero">'
-        + '<p class="about-lead">Calc Labz is a <strong>free, no-signup</strong> calculator suite built for students, professionals, and everyday users across India and the world. With <strong>300+ tools</strong> spanning Finance, Health, Math, Education, Engineering and more — everything you need is one click away. We display ads to keep the service 100% free.</p>'
-        + '</div>'
-
-        + '<div class="about-grid">'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#6366f1,#818cf8)"><i class="fas fa-bolt"></i></div><h3>Instant Results</h3><p>All calculations happen in your browser — no server round-trips. Results appear as you type.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#10b981,#34d399)"><i class="fas fa-lock"></i></div><h3>No Personal Data</h3><p>We never collect personal data, no user accounts, and no login. Your calculation inputs stay on your device. We use anonymous analytics &amp; ads to keep Calc Labz free.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><i class="fas fa-wifi"></i></div><h3>Works Offline (PWA)</h3><p>Install Calc Labz as a Progressive Web App and use it anywhere — even without an internet connection.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#f0544f,#fb7185)"><i class="fas fa-heart"></i></div><h3>Made in India</h3><p>Built with ❤️ in India. Designed around Indian financial tools — GST, PPF, Income Tax, SIP and more.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)"><i class="fas fa-trophy"></i></div><h3>Documented Formulas</h3><p>Every calculator uses industry-standard formulas. Formula sources and methodology are documented where available for full transparency.</p></div>'
-        + '<div class="about-card"><div class="about-icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"><i class="fas fa-universal-access"></i></div><h3>Accessible & Fast</h3><p>Built with accessibility in mind — keyboard navigable, screen-reader friendly, and mobile-first. We are actively working toward full WCAG 2.1 AA conformance.</p></div>'
-        + '</div>'
-
-        + '<div class="about-section">'
-        + '<h2><i class="fas fa-th" style="color:var(--p);margin-right:8px"></i>Calculator Categories</h2>'
-        + '<div class="about-cats">'
-        + Object.entries(CATS).map(function (e) {
-            var key = e[0], cat = e[1];
-            return '<div class="about-cat-pill" data-action="showCategory" data-key="' + key + '"><span style="background:' + cat.color + '" class="about-cat-dot"><i class="fas ' + cat.icon + '"></i></span>' + cat.name + ' <em>(' + CAT_LIST[key].length + ')</em></div>';
-        }).join('')
-        + '</div></div>'
-
-        + '<div class="about-section">'
-        + '<h2><i class="fas fa-star" style="color:var(--gold);margin-right:8px"></i>Why Users Love Calc Labz</h2>'
-        + '<div class="about-testimonials">'
-        + '<div class="testimonial-card"><p>"Finally a calculator app that just works — no ads, no popups, no nonsense."</p><span>— Priya M., Mumbai</span></div>'
-        + '<div class="testimonial-card"><p>"The EMI calculator with amortization schedule saved me so much time during home loan planning."</p><span>— Rahul K., Bangalore</span></div>'
-        + '<div class="testimonial-card"><p>"I installed it as a PWA and use it every day offline. Incredible app, completely free!"</p><span>— Sunita T., Delhi</span></div>'
-        + '</div></div>'
-
-        + '<div class="about-section about-cta">'
-        + '<h2>Get Started</h2>'
-        + '<p>Explore all 300+ calculators or Install Calc Labz on your device for instant offline access.</p>'
-        + '<div class="btn-row" style="justify-content:center;margin-top:16px">'
-        + '<button class="btn btn-p" data-action="showHome"><i class="fas fa-calculator"></i> Browse Calculators</button>'
-        + '<button class="btn btn-s" data-action="installPWA"><i class="fas fa-download"></i> Install App (PWA)</button>'
-        + '</div></div>'
-        + '</div>';
 }
 
 // ── PRIVACY POLICY PAGE ────────────────────────────
 function showPrivacyPage() {
     navigateToPath('/privacy');
-    return;
-    setQBtn(''); closeSidebar();
-    document.title = 'Privacy Policy | Calc Labz';
-    setMeta('description', 'Calc Labz Privacy Policy — we do not collect personal data. We use Google Analytics for anonymous usage insights and Google AdSense for ads. Your calculations stay on your device.');
-    setCanon(window.location.origin + '/privacy');
-    try { window.history.pushState({ type: 'static', id: 'privacy' }, 'Privacy Policy | Calc Labz', '/privacy'); } catch (e) { }
-    document.getElementById('mainContent').innerHTML =
-        '<div class="card legal-page">'
-        + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#10b981,#34d399)"><i class="fas fa-user-shield"></i></div>'
-        + '<div class="cat-meta"><h1>Privacy Policy</h1><p>Last updated: April 2026</p></div></div>'
-
-        + '<div class="legal-notice"><i class="fas fa-shield-halved"></i><strong>Short version:</strong> Calc Labz does <em>not</em> collect personal data. No user accounts, no login. We use Google Analytics (anonymous usage data) and Google AdSense (ads) to keep the service free. Your calculations stay on your device.</div>'
-
-        + '<div class="legal-body">'
-
-        + '<h2>1. Information We Collect</h2>'
-        + '<p>Calc Labz does <strong>not</strong> collect, store, transmit, or process any personally identifiable information (PII). There are no user accounts and no registration required.</p>'
-        + '<p>Calculation inputs and results exist <strong>only in your browser\'s memory</strong> (or localStorage for optional features like favorites and history). This data never leaves your device.</p>'
-        + '<p>We do collect <strong>anonymous, aggregated usage data</strong> via Google Analytics — this includes pages visited, device type, browser, and general location (country/city level). This data helps us improve the product and cannot be used to identify you personally.</p>'
-
-        + '<h2>2. Cookies</h2>'
-        + '<p>Calc Labz itself does not set any first-party cookies. However, our third-party partners <strong>Google Analytics</strong> and <strong>Google AdSense</strong> may set cookies on your device to measure usage and serve relevant ads. You can opt out via your browser settings or <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.</p>'
-
-        + '<h2>3. Analytics, Advertising & Third-Party Services</h2>'
-        + '<p>We use the following third-party services to operate and improve Calc Labz:</p>'
-        + '<ul>'
-        + '<li><strong>Google Analytics (G-KBNL7BG63K)</strong> — We use Google Analytics to understand how users interact with our calculators (pages visited, session duration, device type). Data is anonymous and aggregated. Google\'s Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. You may opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</li>'
-        + '<li><strong>Google AdSense (ca-pub-3010631666598300)</strong> — We display Google ads to help fund the free service. AdSense may use cookies to serve ads based on your prior visits to this and other websites. You can control ad personalization via <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.</li>'
-        + '<li><strong>Google Fonts</strong> (Inter typeface) — loaded from fonts.googleapis.com. Google\'s Privacy Policy governs that request.</li>'
-        + '<li><strong>Font Awesome</strong> (icons) — loaded from cdnjs.cloudflare.com. Cloudflare\'s Privacy Policy governs that request.</li>'
-        + '<li><strong>Chart.js</strong> (charts) — loaded on-demand from cdn.jsdelivr.net. jsDelivr\'s Privacy Policy governs that request.</li>'
-        + '</ul>'
-
-        + '<h2>4. Local Storage</h2>'
-        + '<p>With your knowledge, Calc Labz may save the following data <em>locally on your device</em> via <code>localStorage</code>:</p>'
-        + '<ul><li>Your preferred theme (light/dark)</li><li>Favorite calculators you have starred</li><li>Recently used calculators</li><li>Calculation history (last 50 calculations)</li><li>Input memory (last used values for each calculator)</li><li>Custom notes you type into calculator note fields</li></ul>'
-        + '<p>You can clear all locally stored data at any time via <strong>Dashboard → Clear All Data</strong>.</p>'
-
-        + '<h2>5. Service Worker & Offline Caching</h2>'
-        + '<p>Calc Labz\'s service worker caches app assets (HTML, CSS, JS) on your device to enable offline use. No personal data is cached. You can clear this cache by uninstalling the PWA or clearing your browser cache.</p>'
-
-        + '<h2>6. Your Rights & Opt-Out</h2>'
-        + '<p>You can opt out of Google Analytics tracking via the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">GA Opt-out Add-on</a>. You can control ad personalization via <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a> or your browser\'s cookie settings. Since Calc Labz does not collect personal data directly, there is nothing to request deletion of on our side.</p>'
-        + '<h2>7. Children\'s Privacy</h2>'
-        + '<p>Calc Labz is not directed at children under 13. We do not knowingly collect personal data from children. Our use of Google Analytics and AdSense is subject to Google\'s child-safety policies and COPPA compliance.</p>'
-
-        + '<h2>8. Changes to This Policy</h2>'
-        + '<p>We may update this policy if we add new features or services. Any changes will be reflected on this page with an updated date.</p>'
-
-        + '<h2>9. Contact</h2>'
-        + '<p>Questions about privacy? We\'re committed to transparency. Contact us through the Calc Labz website for any privacy-related queries.</p>'
-
-        + '</div>'
-        + '<div class="legal-back"><button class="btn btn-s" data-action="showHome"><i class="fas fa-arrow-left"></i> Back to Home</button></div>'
-        + '</div>';
 }
 
 // ── TERMS OF USE PAGE ──────────────────────────────
 function showTermsPage() {
     navigateToPath('/terms');
-    return;
-    setQBtn(''); closeSidebar();
-    document.title = 'Terms of Use | Calc Labz';
-    setMeta('description', 'Calc Labz Terms of Use — free to use for personal and commercial purposes. Calculator results are for informational purposes only.');
-    setCanon(window.location.origin + '/terms');
-    try { window.history.pushState({ type: 'static', id: 'terms' }, 'Terms of Use | Calc Labz', '/terms'); } catch (e) { }
-    document.getElementById('mainContent').innerHTML =
-        '<div class="card legal-page">'
-        + '<div class="cat-hdr"><div class="cat-ico-lg" style="background:linear-gradient(135deg,#6366f1,#a78bfa)"><i class="fas fa-file-contract"></i></div>'
-        + '<div class="cat-meta"><h1>Terms of Use</h1><p>Last updated: April 2026</p></div></div>'
-
-        + '<div class="legal-notice" style="border-color:var(--p)"><i class="fas fa-circle-info" style="color:var(--p)"></i><strong>Summary:</strong> Calc Labz is free for personal and professional use. Results are estimates — always verify with a qualified professional for important financial or medical decisions.</div>'
-
-        + '<div class="legal-body">'
-
-        + '<h2>1. Acceptance of Terms</h2>'
-        + '<p>By accessing or using Calc Labz ("the Service"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Service.</p>'
-
-        + '<h2>2. Free Use License</h2>'
-        + '<p>Calc Labz grants you a <strong>free, non-exclusive, non-transferable, revocable license</strong> to use the Service for personal and professional purposes. You may:</p>'
-        + '<ul><li>Use all calculators freely without any payment</li><li>Share links to Calc Labz pages</li><li>Install the PWA on your personal devices</li><li>Use results for personal or professional reference</li></ul>'
-
-        + '<h2>3. Disclaimer of Accuracy</h2>'
-        + '<p>Calculator results provided by Calc Labz are <strong>for informational and illustrative purposes only</strong>. They are estimates based on formulas and the inputs you provide.</p>'
-        + '<p><strong>Calc Labz does not guarantee accuracy and is not liable for any decisions made based on results.</strong> Always consult:</p>'
-        + '<ul><li>A <strong>Chartered Accountant or tax advisor</strong> for financial and tax matters</li><li>A <strong>licensed doctor or dietitian</strong> for health and medical matters</li><li>A <strong>certified financial planner</strong> for investment decisions</li><li>Your <strong>bank or lender</strong> for loan and EMI decisions</li></ul>'
-
-        + '<h2>4. Prohibited Uses</h2>'
-        + '<p>You agree not to:</p>'
-        + '<ul><li>Reverse-engineer, copy, or redistribute the Calc Labz codebase commercially without permission</li><li>Use Calc Labz APIs (if any) in an abusive or high-volume automated manner</li><li>Attempt to circumvent any security measures</li><li>Use the Service for any unlawful purpose</li></ul>'
-
-        + '<h2>5. Intellectual Property</h2>'
-        + '<p>All content, code, design, and branding of Calc Labz are the intellectual property of the Calc Labz Team unless otherwise noted. Third-party libraries (Chart.js, Font Awesome, etc.) are used under their respective open-source licenses.</p>'
-
-        + '<h2>6. No Warranty</h2>'
-        + '<p>The Service is provided <strong>"as is"</strong> without warranty of any kind, express or implied. Calc Labz is not responsible for service interruptions, calculation errors, or any consequential damages arising from use of the Service.</p>'
-
-        + '<h2>7. Limitation of Liability</h2>'
-        + '<p>To the fullest extent permitted by law, Calc Labz shall not be liable for any indirect, incidental, special, or consequential damages — including financial loss — resulting from use or inability to use the Service.</p>'
-
-        + '<h2>8. Governing Law</h2>'
-        + '<p>These Terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts located in India.</p>'
-
-        + '<h2>9. Changes to Terms</h2>'
-        + '<p>We may update these Terms at any time. Continued use of Calc Labz constitutes acceptance of the updated Terms. The "Last updated" date at the top reflects the most recent revision.</p>'
-
-        + '<h2>10. Contact</h2>'
-        + '<p>For questions regarding these Terms, please reach out through the Calc Labz website.</p>'
-
-        + '</div>'
-        + '<div class="legal-back">'
-        + '<button class="btn btn-s" data-action="showHome"><i class="fas fa-arrow-left"></i> Back to Home</button>'
-        + '<button class="btn btn-s" data-action="showPrivacyPage"><i class="fas fa-user-shield"></i> Privacy Policy</button>'
-        + '</div>'
-        + '</div>';
 }
+
 
 // ── INIT ───────────────────────────────────────────
 // ── DOM EVENT WIRING (replaces all inline handlers) ──
@@ -2149,7 +1991,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleRoute();
     // Register service worker + P6: detect updates
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(function (reg) {
+        navigator.serviceWorker.register('/sw.js').then(function (reg) {
             // P6: When a new SW takes over, show a refresh toast
             reg.addEventListener('updatefound', function () {
                 var newWorker = reg.installing;
