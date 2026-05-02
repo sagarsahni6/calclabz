@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Meet Sagar Sahni, Founder and Lead Developer of Calc Labz. Learn about our mission, methodology, and commitment to providing 300+ free, accurate online calculators.">
+    <meta name="author" content="Sagar Sahni">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Calc Labz">
+    <meta property="og:url" content="https://calclabz.com/author">
+    <meta property="og:title" content="Sagar Sahni — Founder & Lead Developer | Calc Labz">
+    <meta property="og:description" content="Meet the creator behind 300+ free online calculators. Learn about our methodology, editorial standards, and mission.">
+    <meta property="og:image" content="https://calclabz.com/og-image.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sagar Sahni — Founder & Lead Developer | Calc Labz">
+    <meta name="twitter:description" content="Meet the creator behind 300+ free online calculators.">
+    <link rel="canonical" href="https://calclabz.com/author">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='system-ui' fill='white'>%2B</text></svg>">
+    <title>Sagar Sahni — Founder & Lead Developer | Calc Labz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" media="print" id="css-fonts">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" id="css-fa">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="assets/css/main.css" media="print" id="css-main">
+    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    <style>
+:root{--p:#6366f1;--p2:#818cf8;--p3:#4f46e5;--bg0:#09090b;--bg1:#111113;--bg2:#18181b;--bg3:#27272a;--bg4:#3f3f46;--txt:#f4f4f5;--txt1:#a1a1aa;--txt2:#71717a;--brd:rgba(255,255,255,.08);--glass:rgba(24,24,27,.7);--glass-border:rgba(255,255,255,.06);--rsm:12px;--rmd:16px;--rlg:20px;--transition:all .35s cubic-bezier(.4,0,.2,1);--safe-bottom:env(safe-area-inset-bottom,0px)}
+[data-theme="light"],body.light{--bg0:#fafafa;--bg1:#ffffff;--bg2:#f4f4f5;--bg3:#e4e4e7;--bg4:#d4d4d8;--txt:#18181b;--txt1:#52525b;--txt2:#71717a;--brd:rgba(0,0,0,.08);--glass:rgba(255,255,255,.7);--glass-border:rgba(0,0,0,.06)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;line-height:1.6;background:var(--bg0);color:var(--txt);overflow-x:hidden}
+a{color:var(--p);text-decoration:none}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+.app-wrapper{display:flex;flex-direction:column;min-height:100vh}
+.app-body{display:flex;flex:1;padding-top:56px;padding-bottom:calc(60px + var(--safe-bottom))}
+#mainContent{flex:1;padding:16px;max-width:900px;width:100%;margin:0 auto}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;gap:12px;padding:0 16px;background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(49,46,129,.35));backdrop-filter:blur(20px) saturate(200%);border-bottom:1px solid rgba(99,102,241,.18)}
+.hdr-logo{display:flex;align-items:center}
+.hdr-logo a{display:flex;align-items:center;text-decoration:none}
+.hdr-logo img{height:32px;width:auto}
+.hdr-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
+.hdr-actions button{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--txt1)}
+.hamburger{display:flex}
+.sidebar{position:fixed;top:56px;left:0;bottom:0;width:280px;background:var(--bg1);border-right:1px solid var(--brd);transform:translateX(-100%);transition:transform .35s;z-index:90;overflow-y:auto;padding:12px 0}
+.sidebar.open{transform:translateX(0)}
+.s-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:85;opacity:0;pointer-events:none;transition:opacity .3s}
+.s-overlay.open{opacity:1;pointer-events:all}
+.mnav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--glass);backdrop-filter:blur(16px);border-top:1px solid var(--glass-border);display:flex;padding:6px 0 var(--safe-bottom)}
+.mnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0;font-size:.62rem;color:var(--txt2);min-height:48px;justify-content:center}
+.mnav-btn.active{color:var(--p)}
+.seo-cat-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px}
+.seo-cat-nav a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--rsm);color:var(--txt1);font-size:.85rem}
+@media(min-width:1024px){.hamburger{display:none}.sidebar{transform:translateX(0)}.s-overlay{display:none!important}.app-body{padding-left:280px;padding-bottom:0}#mainContent{padding:24px 32px;max-width:1100px}.mnav{display:none}}
+
+.author-hero{padding:32px 24px;background:linear-gradient(145deg,rgba(99,102,241,.12),var(--bg0));border-radius:var(--rlg);margin-bottom:24px;text-align:center}
+.author-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--p2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:2.2rem;font-weight:800;margin:0 auto 16px}
+.author-hero h1{font-size:1.6rem;font-weight:800;color:var(--txt);margin-bottom:4px}
+.author-hero p{font-size:.95rem;color:var(--txt1);line-height:1.7}
+.author-section{margin-bottom:24px;padding:20px;background:var(--bg1);border:1px solid var(--brd);border-radius:var(--rmd)}
+.author-section h2{font-size:1.15rem;font-weight:700;color:var(--txt);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.author-section h2 i{color:var(--p)}
+.author-section p,.author-section li{font-size:.92rem;color:var(--txt1);line-height:1.75}
+.author-section ul{padding-left:20px;margin:8px 0}
+.author-section li{margin:6px 0}
+.author-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
+.author-stat{text-align:center;padding:16px 10px;background:var(--bg2);border-radius:12px;border:1px solid var(--brd)}
+.author-stat strong{display:block;font-size:1.3rem;color:var(--p);font-weight:800}
+.author-stat span{font-size:.78rem;color:var(--txt2);margin-top:4px;display:block}
+.author-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.author-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--bg2);border:1px solid var(--brd);border-radius:8px;font-size:.85rem;color:var(--txt1);transition:var(--transition)}
+.author-links a:hover{border-color:var(--p);color:var(--p)}
+.footer{padding:40px 20px 20px;border-top:1px solid var(--brd);background:var(--bg1)}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.footer-bottom{text-align:center;padding-top:20px;margin-top:20px;border-top:1px solid var(--brd);font-size:.78rem;color:var(--txt2)}
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Sagar Sahni",
+        "url": "https://calclabz.com/author",
+        "jobTitle": "Founder & Lead Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Calc Labz",
+          "url": "https://calclabz.com"
+        },
+        "knowsAbout": ["Financial Calculators", "Health Calculators", "Web Development", "Mathematics", "Engineering Calculations"],
+        "sameAs": ["https://calclabz.com/about"]
+      }
+    }
+    </script>
+</head>
+<body>
+    <header class="hdr">
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu"><i class="fas fa-bars"></i></button>
+        <div class="hdr-logo"><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="160" height="32" fetchpriority="high"></a></div>
+        <div class="hdr-actions">
+            <button id="theme-toggle-btn" aria-label="Toggle theme"><i id="themeIco" class="fas fa-moon"></i></button>
+        </div>
+    </header>
+
+    <div class="s-overlay" id="sOverlay"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Navigation">
+        <div class="qbtns">
+            <a href="/" class="qbtn" id="qHome"><i class="fas fa-house"></i>Home</a>
+        </div>
+        <div id="catList">
+            <nav class="seo-cat-nav" aria-label="Calculator categories">
+                <a href="/finance-calculators"><i class="fas fa-coins"></i> Finance</a>
+                <a href="/health-calculators"><i class="fas fa-heartbeat"></i> Health &amp; Fitness</a>
+                <a href="/math-calculators"><i class="fas fa-calculator"></i> Math</a>
+                <a href="/everyday-calculators"><i class="fas fa-home"></i> Everyday</a>
+                <a href="/education-calculators"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="/engineering-calculators"><i class="fas fa-cog"></i> Engineering</a>
+                <a href="/construction-calculators"><i class="fas fa-hard-hat"></i> Construction</a>
+                <a href="/unit-calculators"><i class="fas fa-exchange-alt"></i> Unit Conversion</a>
+                <a href="/science-calculators"><i class="fas fa-flask"></i> Science</a>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="app-body">
+        <main id="mainContent" role="main">
+            <nav style="padding:8px 0;font-size:.82rem;color:var(--txt2)">
+                <a href="/">Home</a> &rsaquo; <a href="/about">About</a> &rsaquo; <span>Author</span>
+            </nav>
+
+            <div class="author-hero">
+                <div class="author-avatar">SS</div>
+                <h1>Sagar Sahni</h1>
+                <p>Founder &amp; Lead Developer, Calc Labz</p>
+                <div class="author-links" style="justify-content:center;margin-top:14px">
+                    <a href="/about"><i class="fas fa-info-circle"></i>About Calc Labz</a>
+                    <a href="/contact"><i class="fas fa-envelope"></i>Contact</a>
+                    <a href="/editorial-policy"><i class="fas fa-clipboard-check"></i>Editorial Policy</a>
+                </div>
+            </div>
+
+            <div class="author-stats">
+                <div class="author-stat"><strong>300+</strong><span>Calculators Built</span></div>
+                <div class="author-stat"><strong>10+</strong><span>Categories Covered</span></div>
+                <div class="author-stat"><strong>120+</strong><span>In-Depth Guides</span></div>
+                <div class="author-stat"><strong>2026</strong><span>All Content Updated</span></div>
+            </div>
+
+            <section class="author-section">
+                <h2><i class="fas fa-user"></i> About Sagar</h2>
+                <p>Sagar Sahni is a developer and financial technology enthusiast based in India. He founded Calc Labz with a simple mission: make accurate, free calculation tools accessible to everyone — without signups, ads interrupting your work, or data collection.</p>
+                <p style="margin-top:10px">With a strong background in web development and a passion for making complex calculations simple, Sagar has personally designed, built, and validated over 300 calculators spanning finance, health, math, engineering, construction, science, and everyday utilities. Each calculator uses industry-standard formulas and is regularly verified against official sources.</p>
+                <p style="margin-top:10px">Sagar believes that financial literacy and access to accurate tools should not be gatekept behind paywalls or registration walls. Every tool on Calc Labz is free forever, works offline via PWA technology, and keeps all user data strictly on the user's device.</p>
+            </section>
+
+            <section class="author-section">
+                <h2><i class="fas fa-shield-check"></i> Our Quality Methodology</h2>
+                <p>Every calculator and guide on Calc Labz follows a rigorous quality process:</p>
+                <ul>
+                    <li><strong>Formula Verification:</strong> All formulas are sourced from official government publications (Income Tax Department, RBI circulars), textbooks, and peer-reviewed standards (WHO guidelines, IPC-2221 for engineering).</li>
+                    <li><strong>Worked Examples:</strong> Each calculator includes at least one worked example with realistic values, verified against manual calculations and official tools (SBI EMI calculator, government tax portals).</li>
+                    <li><strong>Periodic Updates:</strong> Tax calculators are updated every financial year. Health calculators reflect the latest clinical guidelines. Construction cost data uses current market rates.</li>
+                    <li><strong>Error Reporting:</strong> Users can report incorrect results via our <a href="/contact">contact page</a>. Every report is investigated and corrected within 48 hours.</li>
+                    <li><strong>Transparency:</strong> Every calculator shows the exact formula used via the "How is this calculated?" section. No black-box calculations.</li>
+                </ul>
+            </section>
+
+            <section class="author-section">
+                <h2><i class="fas fa-book-open"></i> Content Guidelines</h2>
+                <p>All written content — guides, FAQs, and calculator descriptions — follows these principles:</p>
+                <ul>
+                    <li><strong>Original Content:</strong> All text is written specifically for Calc Labz. We do not scrape, copy, or spin content from other sources.</li>
+                    <li><strong>Indian Context:</strong> Where applicable, content is tailored for Indian users with INR examples, Indian tax laws, and India-specific health guidelines (like Asian BMI cutoffs).</li>
+                    <li><strong>Medical & Financial Disclaimers:</strong> Health and finance calculators always include appropriate disclaimers advising users to consult professionals for important decisions.</li>
+                    <li><strong>No Misleading Claims:</strong> We never claim our tools replace professional advice. Calculator results are clearly labeled as estimates.</li>
+                    <li><strong>Accessibility:</strong> Content is written in clear, simple English accessible to non-expert users while remaining technically accurate.</li>
+                </ul>
+                <p style="margin-top:10px">For full details, see our <a href="/editorial-policy">Editorial Policy</a> and <a href="/disclaimer">Disclaimer</a>.</p>
+            </section>
+
+            <section class="author-section">
+                <h2><i class="fas fa-lock"></i> Privacy Commitment</h2>
+                <p>Calc Labz is built with privacy as a core principle:</p>
+                <ul>
+                    <li>All calculations run <strong>100% on your device</strong> — no data is sent to any server.</li>
+                    <li>We use <strong>no tracking cookies</strong> by default. Google Analytics and AdSense load only after explicit user consent.</li>
+                    <li>Your calculation inputs, results, favorites, and notes are stored in your browser's localStorage and <strong>never transmitted</strong>.</li>
+                    <li>The site works fully offline as a PWA — proof that no server communication is needed.</li>
+                </ul>
+                <p style="margin-top:10px">Read our complete <a href="/privacy">Privacy Policy</a>.</p>
+            </section>
+
+            <section class="author-section">
+                <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+                <p>Found an error in a calculator? Have a suggestion for a new tool? Want to collaborate?</p>
+                <p style="margin-top:8px"><a href="/contact" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:10px;font-weight:600;font-size:.9rem">Contact Sagar Sahni →</a></p>
+            </section>
+        </main>
+    </div>
+
+    <nav class="mnav" aria-label="Mobile navigation">
+        <button class="mnav-btn" id="mnavHome" aria-label="Home"><i class="fas fa-house"></i>Home</button>
+        <button class="mnav-btn" id="mnavFav" aria-label="Favorites"><i class="fas fa-star"></i>Favs</button>
+        <button class="mnav-btn" id="mnav-search-btn" aria-label="Search"><i class="fas fa-search"></i>Search</button>
+        <button class="mnav-btn" id="mnavDash" aria-label="Dashboard"><i class="fas fa-chart-line"></i>Dashboard</button>
+        <button class="mnav-btn" id="mnav-theme-btn" aria-label="Theme"><i class="fas fa-moon"></i>Theme</button>
+    </nav>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div><a href="/" aria-label="Calc Labz Home"><img src="/calclabz-logo.png" alt="Calc Labz" width="140" height="30"></a><p style="font-size:.85rem;color:var(--txt1);margin-top:8px">300+ free online calculators. Instant results, zero signup.</p></div>
+            <div><h4 style="font-size:.9rem;color:var(--txt);margin-bottom:8px">Quick Links</h4><div style="display:flex;flex-direction:column;gap:6px"><a href="/" style="font-size:.85rem;color:var(--txt1)">Home</a><a href="/about" style="font-size:.85rem;color:var(--txt1)">About</a><a href="/privacy" style="font-size:.85rem;color:var(--txt1)">Privacy Policy</a><a href="/editorial-policy" style="font-size:.85rem;color:var(--txt1)">Editorial Policy</a><a href="/disclaimer" style="font-size:.85rem;color:var(--txt1)">Disclaimer</a></div></div>
+        </div>
+        <div class="footer-bottom"><span>&copy; 2026 Calc Labz. Free forever.</span></div>
+    </footer>
+
+    <script defer src="assets/js/css-swap.js"></script>
+    <script defer src="assets/js/calculators-core.js"></script>
+    <script defer src="assets/js/consent.js"></script>
+    <script defer src="assets/js/app.js"></script>
+</body>
+</html>

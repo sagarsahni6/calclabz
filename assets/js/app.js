@@ -1616,7 +1616,7 @@ function handleRoute() {
     // Pre-rendered static pages — preserve existing HTML content
     if (path === '/' || path === '/about' || path === '/privacy' || path === '/terms' ||
         path === '/contact' || path === '/disclaimer' || path === '/editorial-policy' ||
-        path === '/blog') { return; }
+        path === '/author' || path === '/blog') { return; }
 
     // Blog index: /blog
     if (path === '/blog') { return; }
