@@ -2,12 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [],
-  "rewrites": [
-    {
-      "source": "/((?!assets|blog|manifest\\.json|robots\\.txt|sitemap\\.xml|sw\\.js|og-image\\.png|icon-192\\.png|icon-512\\.png|calclabz-logo\\.png).*)",
-      "destination": "/404.html"
-    }
-  ],
+  "rewrites": [],
   "headers": [
     {
       "source": "/assets/js/(.*)",
