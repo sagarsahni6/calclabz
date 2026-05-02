@@ -135,6 +135,8 @@ var _slugRedirects = {
     'construction-cost-calculator': 'constructioncost',
     'home-renovation-calculator': 'homerenovation',
     'stamp-duty-calculator': 'stampdutycalc',
+    'construction-calculator': 'constructioncost',
+    'professionaltax-calculator': 'proftax',
     // New calculator slug mappings (2026 expansion)
     'sgb-calculator': 'sgb',
     'fo-turnover-calculator': 'foTurnover',
