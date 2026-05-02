@@ -413,59 +413,6 @@ function showHome() {
     closeSidebar();
     updateSidebarActive('qHome');
     navigateToPath('/');
-    return;
-
-    setQBtn('qHome'); setMobileNav('mnavHome'); closeSidebar(); updateSidebarActive('qHome');
-    resetMeta();
-    var popular = Object.entries(DB).filter(function (e) { return e[1].badge === 'Popular'; }).slice(0, 8);
-    var popHTML = popular.map(function (e) { return featCard(e[1].cat, e[0], e[1]); }).join('');
-
-    var recentHTML = '';
-    if (recentList.length) {
-        var recCards = recentList.slice(0, 4).map(function (entry) {
-            var parts = entry.split(':');
-            var c = DB[parts[1]];
-            return c ? featCard(parts[0], parts[1], c) : '';
-        }).join('');
-        recentHTML = '<div class="featured-section"><div class="sec-hdr"><div class="sec-ttl"><i class="fas fa-clock"></i> Recently Used</div></div><div class="feat-grid stagger-children">' + recCards + '</div></div>';
-    }
-
-    var catCards = Object.entries(CATS).map(function (e) {
-        var key = e[0], cat = e[1];
-        return '<div class="feat-card" data-action="showCategory" data-key="' + key + '">'
-            + '<div class="fc-ico" style="background:' + cat.color + '"><i class="fas ' + cat.icon + '"></i></div>'
-            + '<div class="fc-name">' + cat.name + '</div>'
-            + '<div class="fc-desc">' + CAT_LIST[key].length + ' calculators</div></div>';
-    }).join('');
-
-    var _BCColors = { 'Finance': '#6366f1', 'Tax': '#f59e0b', 'Health': '#10b981', 'Math': '#8b5cf6', 'Education': '#06b6d4', 'Lifestyle': '#f0544f' };
-    var _BCIcons = { 'Finance': 'fa-chart-line', 'Tax': 'fa-landmark', 'Health': 'fa-heart-pulse', 'Math': 'fa-calculator', 'Education': 'fa-graduation-cap', 'Lifestyle': 'fa-sun' };
-    var blogCards = BLOG_POSTS.slice(0, 4).map(function (p) {
-        var catColor = _BCColors[p.cat] || 'var(--p)';
-        var catIcon = _BCIcons[p.cat] || 'fa-file-alt';
-        return '<div class="blog-card" data-action="showBlogPost" data-id="' + p.id + '">'
-            + '<div class="blog-card-hdr" style="background:linear-gradient(135deg,' + catColor + ',' + catColor + '88)"></div>'
-            + '<div class="blog-meta-row"><span class="blog-read-badge"><i class="fas fa-clock"></i>' + (p.readTime || '5 min') + '</span><span><i class="fas fa-calendar"></i>' + (p.date || '2025') + '</span></div>'
-            + '<div class="blog-cat"><i class="fas ' + catIcon + '"></i> ' + escHtml(p.cat) + '</div>'
-            + '<div class="blog-title">' + escHtml(p.title) + '</div>'
-            + '<div class="blog-desc">' + escHtml(p.desc) + '</div>'
-            + '<div class="blog-link"><i class="fas fa-arrow-right"></i> Read guide</div></div>';
-    }).join('');
-
-    document.getElementById('mainContent').innerHTML =
-        '<div class="hero"><div class="hero-bg-orb o1"></div><div class="hero-bg-orb o2"></div>'
-        + '<h1>300+ Free Calculators</h1>'
-        + '<p>Finance, health, math, engineering &amp; more — instant results, zero signup</p>'
-        + '<div class="hero-search"><i class="fas fa-search"></i><input type="text" placeholder="Search calculators…" data-action-input="handleHeroSearch" aria-label="Search calculators"></div></div>'
-        + '<div class="stats-row"><div class="stat"><div class="stat-n">' + Object.keys(DB).length + '</div><div class="stat-l">Calculators</div></div>'
-        + '<div class="stat"><div class="stat-n">' + Object.keys(CATS).length + '</div><div class="stat-l">Categories</div></div>'
-        + '<div class="stat"><div class="stat-n">0</div><div class="stat-l">Signup Required</div></div>'
-        + '<div class="stat"><div class="stat-n">✓</div><div class="stat-l">Works Offline</div></div></div>'
-        + '<div class="featured-section"><div class="sec-hdr"><div class="sec-ttl"><i class="fas fa-fire"></i> Popular Calculators</div></div><div class="feat-grid stagger-children">' + popHTML + '</div></div>'
-        + recentHTML
-        + '<div class="featured-section"><div class="sec-hdr"><div class="sec-ttl"><i class="fas fa-th-large"></i> Categories</div></div><div class="feat-grid stagger-children">' + catCards + '</div></div>'
-        + '<div class="blog-strip"><div class="blog-strip-hdr"><h2><i class="fas fa-newspaper"></i> Calculator Guides</h2><button class="view-all" data-action="showBlogSection">View All <i class="fas fa-arrow-right"></i></button></div><div class="blog-grid">' + blogCards + '</div></div>';
-    resetMeta();
 }
 
 function resetMeta() {
@@ -490,15 +437,6 @@ function resetMeta() {
 function showCategory(catKey) {
     var cat = CATS[catKey]; if (!cat) return;
     navigateToPath('/' + catKey + '-calculators');
-    return;
-    setQBtn(''); closeSidebar();
-    document.title = cat.name + ' Calculators | Calc Labz';
-    var cards = CAT_LIST[catKey].map(function (id) { return featCard(catKey, id, DB[id]); }).join('');
-    document.getElementById('mainContent').innerHTML =
-        '<div class="card"><div class="cat-hdr">'
-        + '<div class="cat-ico-lg" style="background:' + cat.color + '"><i class="fas ' + cat.icon + '"></i></div>'
-        + '<div class="cat-meta"><h1>' + cat.name + ' Calculators</h1><p>' + CAT_LIST[catKey].length + ' tools</p></div></div>'
-        + '<div class="feat-grid stagger-children">' + cards + '</div></div>';
 }
 
 // ── FAVORITES VIEW ─────────────────────────────────
@@ -801,7 +739,7 @@ function calculate(calcId) {
     renderDisclaimer(calcId, calc);
     saveHistory(calcId, calc.name, results.main ? String(results.main.value) : '', vals);
     saveInputMemory(calcId);
-    try { navigator.vibrate(40); } catch (e) { }
+    if (navigator.vibrate) navigator.vibrate(40);
 }
 
 // ── CATEGORY DISCLAIMERS (Phase 6) ──────────────────
@@ -939,14 +877,14 @@ function giveFeedback(btn, calcId, val) {
     var thanks = document.getElementById('fbt-' + calcId); if (thanks) thanks.style.display = 'inline';
     var fb = JSON.parse(localStorage.getItem('cp_feedback') || '{}');
     fb[calcId] = (fb[calcId] || 0) + val;
-    localStorage.setItem('cp_feedback', JSON.stringify(fb));
+    safeStore('cp_feedback', JSON.stringify(fb));
 }
 
 // ── SHARE ──────────────────────────────────────────
 function doShare(type, calcName) {
     var url = window.location.href;
-    if (type === 'wa') window.open('https://wa.me/?text=' + encodeURIComponent(calcName + ' — Calc Labz: ' + url));
-    else if (type === 'tw') window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(calcName + ' — Calc Labz') + '&url=' + encodeURIComponent(url));
+    if (type === 'wa') window.open('https://wa.me/?text=' + encodeURIComponent(calcName + ' — Calc Labz: ' + url), '_blank', 'noopener,noreferrer');
+    else if (type === 'tw') window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(calcName + ' — Calc Labz') + '&url=' + encodeURIComponent(url), '_blank', 'noopener,noreferrer');
     else if (type === 'copy') { navigator.clipboard.writeText(url).then(function () { showToast('Link copied!'); }).catch(function () { showToast('Copy failed', 'warning'); }); }
 }
 function doNativeShare(calcName) {
@@ -1364,7 +1302,7 @@ function showBlogPost(postId) {
 
     // Article JSON-LD Schema for SEO
     var existArticle = document.getElementById('jsonld-article'); if (existArticle) existArticle.remove();
-    var articleSchema = { '@context': 'https://schema.org', '@type': 'Article', headline: bc.title, description: bp ? bp.desc : '', datePublished: '2026-01-15', dateModified: '2026-04-01', author: { '@type': 'Organization', name: 'Calc Labz Team' }, publisher: { '@type': 'Organization', name: 'Calc Labz' }, mainEntityOfPage: { '@type': 'WebPage', '@id': window.location.href } };
+    var articleSchema = { '@context': 'https://schema.org', '@type': 'Article', headline: bc.title, description: bp ? bp.desc : '', datePublished: bp && bp.date ? bp.date : '2026-01-15', dateModified: bc.meta && bc.meta.date ? bc.meta.date : (bp && bp.date ? bp.date : '2026-04-01'), author: { '@type': 'Organization', name: 'Calc Labz Team' }, publisher: { '@type': 'Organization', name: 'Calc Labz' }, mainEntityOfPage: { '@type': 'WebPage', '@id': window.location.href } };
     var aSchEl = document.createElement('script'); aSchEl.type = 'application/ld+json'; aSchEl.id = 'jsonld-article'; aSchEl.textContent = JSON.stringify(articleSchema); document.head.appendChild(aSchEl);
 
     // Build Table of Contents from h2 tags
@@ -1659,7 +1597,7 @@ function installPWA() {
 // ── ROUTE HANDLER ──────────────────────────────────
 // Safe allowlist check — only accept IDs that are own-properties of DB / BLOG_CONTENT
 function isSafeCalcId(id) {
-    return typeof id === 'string' && /^[a-z0-9_-]{1,50}$/.test(id) && Object.prototype.hasOwnProperty.call(DB, id);
+    return typeof id === 'string' && /^[a-zA-Z0-9_-]{1,50}$/.test(id) && Object.prototype.hasOwnProperty.call(DB, id);
 }
 function isSafeBlogId(id) {
     return typeof id === 'string' && /^[a-z0-9_-]{1,80}$/.test(id) && Object.prototype.hasOwnProperty.call(BLOG_CONTENT, id);

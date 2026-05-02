@@ -4,36 +4,37 @@
    - Never cache error/non-ok responses
    - Offline fallback to cached index.html for navigation requests
 */
-const CACHE = 'calclabz-v25';
+const CACHE = 'calclabz-v26';
+const CACHE_VER = '26'; // Bump this on every deploy
 const ASSETS = [
     './',
     'index.html',
     'calclabz-logo.png',
     'manifest.json',
-    'assets/css/main.css',
+    'assets/css/main.css?v=' + CACHE_VER,
     // Core stubs
-    'assets/js/css-swap.js',
-    'assets/js/calculators-core.js',
-    'assets/js/blog-posts.js',
-    'assets/js/blog-content-finance.js',
-    'assets/js/blog-content-health.js',
-    'assets/js/blog-content-education.js',
-    'assets/js/blog-content-lifestyle.js',
-    'assets/js/faq-data.js',
-    'assets/js/formulas.js',
-    'assets/js/consent.js',
-    'assets/js/app.js',
+    'assets/js/css-swap.js?v=' + CACHE_VER,
+    'assets/js/calculators-core.js?v=' + CACHE_VER,
+    'assets/js/blog-posts.js?v=' + CACHE_VER,
+    'assets/js/blog-content-finance.js?v=' + CACHE_VER,
+    'assets/js/blog-content-health.js?v=' + CACHE_VER,
+    'assets/js/blog-content-education.js?v=' + CACHE_VER,
+    'assets/js/blog-content-lifestyle.js?v=' + CACHE_VER,
+    'assets/js/faq-data.js?v=' + CACHE_VER,
+    'assets/js/formulas.js?v=' + CACHE_VER,
+    'assets/js/consent.js?v=' + CACHE_VER,
+    'assets/js/app.js?v=' + CACHE_VER,
     // Lazy-loaded category files (pre-cached for offline-first)
-    'assets/js/calculators-finance.js',
-    'assets/js/calculators-health.js',
-    'assets/js/calculators-math.js',
-    'assets/js/calculators-unit.js',
-    'assets/js/calculators-everyday.js',
-    'assets/js/calculators-datetime.js',
-    'assets/js/calculators-engineering.js',
-    'assets/js/calculators-science.js',
-    'assets/js/calculators-construction.js',
-    'assets/js/calculators-education.js'
+    'assets/js/calculators-finance.js?v=' + CACHE_VER,
+    'assets/js/calculators-health.js?v=' + CACHE_VER,
+    'assets/js/calculators-math.js?v=' + CACHE_VER,
+    'assets/js/calculators-unit.js?v=' + CACHE_VER,
+    'assets/js/calculators-everyday.js?v=' + CACHE_VER,
+    'assets/js/calculators-datetime.js?v=' + CACHE_VER,
+    'assets/js/calculators-engineering.js?v=' + CACHE_VER,
+    'assets/js/calculators-science.js?v=' + CACHE_VER,
+    'assets/js/calculators-construction.js?v=' + CACHE_VER,
+    'assets/js/calculators-education.js?v=' + CACHE_VER
 ];
 
 self.addEventListener('install', e => {

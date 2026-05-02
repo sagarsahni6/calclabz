@@ -49,6 +49,56 @@
         s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
         s.crossOrigin = 'anonymous';
         document.head.appendChild(s);
+        // Inject ad placement slots after the library loads
+        s.onload = function () { injectAdSlots(); };
+    }
+
+    /** Dynamically inject AdSense ad units into calculator and content pages */
+    function injectAdSlots() {
+        if (typeof adsbygoogle === 'undefined') return;
+        var main = document.getElementById('mainContent');
+        if (!main) return;
+
+        // Helper: create a responsive ad unit element
+        function createAdUnit(format) {
+            var wrap = document.createElement('div');
+            wrap.className = 'ad-slot';
+            wrap.style.cssText = 'margin:20px 0;text-align:center;min-height:100px;overflow:hidden;';
+            var ins = document.createElement('ins');
+            ins.className = 'adsbygoogle';
+            ins.style.display = 'block';
+            ins.setAttribute('data-ad-client', ADSENSE_ID);
+            ins.setAttribute('data-ad-slot', ''); // Slot ID assigned by AdSense dashboard
+            ins.setAttribute('data-ad-format', format || 'auto');
+            ins.setAttribute('data-full-width-responsive', 'true');
+            wrap.appendChild(ins);
+            return wrap;
+        }
+
+        // Only inject if no ad slots already present
+        if (main.querySelector('.ad-slot')) return;
+
+        // Strategy: inject ads at natural content breaks
+        // 1. After FAQ section (if present)
+        var faq = main.querySelector('.calc-faq-wrap');
+        if (faq && faq.parentNode) {
+            faq.parentNode.insertBefore(createAdUnit('auto'), faq.nextSibling);
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { }
+        }
+
+        // 2. After the result card (if present)
+        var resultCard = main.querySelector('[id^="res-"]');
+        if (resultCard && resultCard.parentNode) {
+            var afterResult = resultCard.nextElementSibling;
+            resultCard.parentNode.insertBefore(createAdUnit('auto'), afterResult);
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { }
+        }
+
+        // 3. Bottom of main content (always — works for homepage, blog, category pages)
+        if (!faq && !resultCard) {
+            main.appendChild(createAdUnit('auto'));
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { }
+        }
     }
 
     /** Show the consent banner */
