@@ -135,7 +135,6 @@ var _slugRedirects = {
     'construction-cost-calculator': 'constructioncost',
     'home-renovation-calculator': 'homerenovation',
     'stamp-duty-calculator': 'stampdutycalc',
-    'construction-calculator': 'constructioncost',
     'professionaltax-calculator': 'proftax',
     // New calculator slug mappings (2026 expansion)
     'sgb-calculator': 'sgb',
@@ -491,7 +490,7 @@ function openCalc(catKey, calcId) {
         var cat = CATS[catKey] || {};
         setQBtn(''); closeSidebar(); addToRecent(catKey, calcId); updateSidebarActive('');
         updateMeta(calc.name, calc.desc, catKey, calcId);
-        try { window.history.pushState({ type: 'calc', id: calcId }, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g, '-') + '-calculator'); } catch (e) { }
+        if (!window._noUrlPush) { try { window.history.pushState({ type: 'calc', id: calcId }, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g, '-') + '-calculator'); } catch (e) { } }
         document.getElementById('mainContent').innerHTML =
             '<div class="card" style="text-align:center;padding:48px 24px">'
             + '<div style="width:48px;height:48px;border:3px solid var(--bg4);border-top-color:var(--p);'
@@ -627,8 +626,8 @@ function _openCalcRender(catKey, calcId) {
 
     // Auto-restore input memory and calculate
     if (loadInputMemory(calcId)) { setTimeout(function () { calculate(calcId); }, 50); }
-    // URL routing
-    try { window.history.pushState({ type: 'calc', id: calcId }, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g, '-') + '-calculator'); } catch (e) { }
+    // URL routing — skip pushState if we loaded from a pre-rendered HTML page (prevents soft redirect)
+    if (!window._noUrlPush) { try { window.history.pushState({ type: 'calc', id: calcId }, calc.name + ' | Calc Labz', '/' + calcId.toLowerCase().replace(/_/g, '-') + '-calculator'); } catch (e) { } }
     // Focus management: move focus to calculator heading for accessibility
     setTimeout(function () {
         var h1 = document.querySelector('#mainContent h1');
@@ -1643,10 +1642,14 @@ function handleRoute() {
     if (pageId === 'privacy') { showPrivacyPage(); return; }
     if (pageId === 'terms') { showTermsPage(); return; }
     // Clean URL routing: /emi-calculator, /bmi-calculator, etc.
+    // Set _noUrlPush flag so openCalc() doesn't pushState to a different URL
+    // (prevents Google seeing a soft redirect from the canonical URL to an auto-generated slug)
     var cleanSlug = path.replace(/^\//, '');
     if (cleanSlug && _calcSlugMap[cleanSlug]) {
         var cleanId = _calcSlugMap[cleanSlug];
+        window._noUrlPush = true;
         openCalc(DB[cleanId].cat, cleanId);
+        window._noUrlPush = false;
         return;
     }
     // Legacy query-param routing: ?calc=emi (kept for backwards-compat)

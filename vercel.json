@@ -1,7 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [],
+  "redirects": [
+    { "source": "/construction-calculator", "destination": "/construction-cost-calculator", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/compoundinterest-calculator", "destination": "/compound-interest-calculator" },
     { "source": "/simpleinterest-calculator", "destination": "/simple-interest-calculator" },

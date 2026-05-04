@@ -1734,126 +1734,126 @@
   {
     "id": "investvsrent",
     "slug": "investvsrent-calculator",
-    "cat": "unknown",
+    "cat": "finance",
     "priority": "0.7",
     "name": "Invest vs Rent Calculator"
   },
   {
     "id": "professionaltax",
     "slug": "professionaltax-calculator",
-    "cat": "unknown",
+    "cat": "finance",
     "priority": "0.7",
     "name": "Professional Tax Calculator"
   },
   {
     "id": "trianglearea",
     "slug": "trianglearea-calculator",
-    "cat": "unknown",
+    "cat": "math",
     "priority": "0.6",
     "name": "Triangle Area Calculator"
   },
   {
     "id": "waisthip",
     "slug": "waisthip-calculator",
-    "cat": "unknown",
+    "cat": "health",
     "priority": "0.6",
     "name": "Waist-to-Hip Ratio Calculator"
   },
   {
     "id": "calories-food",
     "slug": "calories-food-calculator",
-    "cat": "unknown",
+    "cat": "health",
     "priority": "0.6",
     "name": "Food Calorie Calculator"
   },
   {
     "id": "lungcapacity",
     "slug": "lungcapacity-calculator",
-    "cat": "unknown",
+    "cat": "health",
     "priority": "0.6",
     "name": "Lung Capacity Calculator"
   },
   {
     "id": "unitprice",
     "slug": "unitprice-calculator",
-    "cat": "unknown",
+    "cat": "everyday",
     "priority": "0.6",
     "name": "Unit Price Calculator"
   },
   {
     "id": "petrolparity",
     "slug": "petrolparity-calculator",
-    "cat": "unknown",
+    "cat": "everyday",
     "priority": "0.6",
     "name": "Petrol Price Parity Calculator"
   },
   {
     "id": "agenextbday",
     "slug": "agenextbday-calculator",
-    "cat": "unknown",
+    "cat": "datetime",
     "priority": "0.6",
     "name": "Next Birthday Calculator"
   },
   {
     "id": "speed-dist",
     "slug": "speed-dist-calculator",
-    "cat": "unknown",
+    "cat": "science",
     "priority": "0.6",
     "name": "Speed & Distance Calculator"
   },
   {
     "id": "construction",
     "slug": "construction-calculator",
-    "cat": "unknown",
+    "cat": "construction",
     "priority": "0.6",
     "name": "Construction Estimator"
   },
   {
     "id": "romannumeral",
     "slug": "romannumeral-calculator",
-    "cat": "unknown",
+    "cat": "math",
     "priority": "0.5",
     "name": "Roman Numeral Converter"
   },
   {
     "id": "circlecalc",
     "slug": "circlecalc-calculator",
-    "cat": "unknown",
+    "cat": "math",
     "priority": "0.5",
     "name": "Circle Calculator"
   },
   {
     "id": "typing-speed",
     "slug": "typing-speed-calculator",
-    "cat": "unknown",
+    "cat": "education",
     "priority": "0.5",
     "name": "Typing Speed Test"
   },
   {
     "id": "ohm-advanced",
     "slug": "ohm-advanced-calculator",
-    "cat": "unknown",
+    "cat": "engineering",
     "priority": "0.5",
     "name": "Advanced Ohm's Law Calculator"
   },
   {
     "id": "chemmolar",
     "slug": "chemmolar-calculator",
-    "cat": "unknown",
+    "cat": "science",
     "priority": "0.5",
     "name": "Molar Mass Calculator"
   },
   {
     "id": "kinematiccalc",
     "slug": "kinematiccalc-calculator",
-    "cat": "unknown",
+    "cat": "science",
     "priority": "0.5",
     "name": "Kinematics Calculator"
   },
   {
     "id": "watertank",
     "slug": "watertank-calculator",
-    "cat": "unknown",
+    "cat": "construction",
     "priority": "0.5",
     "name": "Water Tank Size Calculator"
   },
