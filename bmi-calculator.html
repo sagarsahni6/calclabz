@@ -330,6 +330,38 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         "@type": "Answer",
         "text": "For overweight: reduce caloric intake by ~500 cal/day and exercise 150 min/week. For underweight: increase intake with nutrient-dense foods and add strength training."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator a substitute for medical advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator provides estimates based on general formulas. Always consult a qualified healthcare professional for medical decisions and personalized health advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are health calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Health calculators use clinically validated formulas (like Mifflin-St Jeor for BMR). They provide reliable estimates but individual results may vary based on genetics, health conditions, and lifestyle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the health benchmarks applicable to Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where applicable, we use Asian-specific health benchmarks. For example, our BMI calculator uses both WHO and Asian classification cutoffs, which are more relevant for South Asians."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my health data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All health calculations run entirely in your browser. We do not store, transmit, or track any health information you enter."
+      }
     }
   ]
 }
@@ -455,6 +487,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>What is BMI Calculator?</h2>
         <p>The BMI (Body Mass Index) Calculator measures your body weight relative to your height to assess whether you are in a healthy weight range. It provides both WHO and Asian-specific BMI classifications.</p>
+      
+        <details>
+          <summary>Can I track my health metrics over time?</summary>
+          <p>You can bookmark your results or save them as screenshots. The calculator provides instant results each time you use it.</p>
+        </details>
+        <details>
+          <summary>Should I use this during pregnancy?</summary>
+          <p>Pregnancy-related calculators provide general estimates. Always follow your gynecologist's specific guidance, as individual pregnancy journeys vary significantly.</p>
+        </details>
       </section>
 
       <section class="seo-section">
@@ -512,12 +553,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Related Calculators</h2>
         <div class="seo-related-grid">
-          <a href="/bmr-calculator">BMR Calculator</a>
-          <a href="/tdee-calculator">TDEE Calculator</a>
-          <a href="/age-calculator">Age Calculator</a>
-          <a href="/body-fat-calculator">Body Fat Calculator</a>
-          <a href="/pregnancy-calculator">Pregnancy Due Date Calculator</a>
-          <a href="/water-calculator">Water Intake Calculator</a>
+          <a href="/waist-height-ratio-calculator">Waist-to-Height Ratio Calculator</a>
+          <a href="/electrolyte-calculator">Electrolyte Calculator</a>
+          <a href="/bodyrecomp-calculator">Body Recomposition Calculator</a>
+          <a href="/sleepdebt-calculator">Sleep Debt Calculator</a>
+          <a href="/petrolparity-calculator">Petrol Price Parity Calculator</a>
+          <a href="/chemmolar-calculator">Molar Mass Calculator</a>
         </div>
       </section>
 
@@ -531,21 +572,28 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       
+      
       <div class="seo-author-byline" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg1);border:1px solid var(--brd);border-radius:12px;margin:16px 0"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">SS</div><div><div style="font-size:.88rem;font-weight:600;color:var(--txt)">Reviewed by <a href="/author" style="color:var(--p)">Sagar Sahni</a></div><div style="font-size:.78rem;color:var(--txt2)">Founder &amp; Lead Developer, Calc Labz · Last verified May 2026</div></div></div>
       <section class="seo-section">
         <h2>Why You Need This Calculator</h2>
-        <p>Body Mass Index remains the most widely used screening tool for weight-related health risks worldwide. For Indians and South Asians, standard WHO BMI cutoffs can be misleading. Research published in The Lancet shows that South Asians develop type 2 diabetes and cardiovascular disease at significantly lower BMI levels compared to Caucasians. This is why the Asian BMI classification uses lower thresholds: overweight starts at 23 (not 25) and obesity at 25 (not 30). This calculator includes both WHO and Asian-specific classifications, making it particularly relevant for Indian users.</p>
+        <p>BMI remains the most widely used screening tool for weight-related health risks. For Indians and South Asians, standard WHO cutoffs can be misleading. Research shows South Asians develop type 2 diabetes and cardiovascular disease at lower BMI levels. Asian BMI classification uses lower thresholds: overweight at 23 (not 25) and obesity at 25 (not 30).</p>
       </section>
       <section class="seo-section">
         <h2>Calculator Features</h2>
         <ul>
-          <li>Instant BMI calculation with WHO and Asian classifications</li>
+          <li>Instant BMI with WHO and Asian classifications</li>
           <li>Color-coded health risk categories</li>
-          <li>Ideal weight range recommendation based on your height</li>
-          <li>Personalized health interpretation based on your result</li>
-          <li>Works completely offline — no data transmitted anywhere</li>
-          <li>Healthy weight range in both kg and pounds</li>
+          <li>Ideal weight range based on height</li>
+          <li>Personalized health interpretation</li>
+          <li>Works offline — no data transmitted</li>
+          <li>Healthy range in kg and pounds</li>
         </ul>
+      </section>
+      <section class="seo-section">
+        <h2>The Math Behind It</h2>
+        <p>BMI = Weight (kg) / [Height (m)]². Classification: <18.5 Underweight, 18.5-22.9 Normal (Asian), 23-24.9 Overweight (Asian), ≥25 Obese (Asian).</p>
+        <h3>Calculation Example</h3>
+        <p>Weight 75 kg, Height 170 cm (1.70 m): BMI = 75 / (1.70)² = 75 / 2.89 = 25.95. WHO: Overweight. Asian: Obese Class I. Ideal weight for 170 cm: 53.5-66.2 kg (Asian scale).</p>
       </section>
       <section class="seo-section">
         <h2>Quick Reference</h2>
@@ -555,17 +603,26 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Pro Tips & Expert Insights</h2>
         <ul>
-          <li>💡 BMI is a screening tool, not diagnostic — combine it with waist circumference for a complete picture.</li>
-          <li>💡 For Indians, use the Asian BMI scale as it accounts for higher metabolic risk at lower weights.</li>
-          <li>💡 A 5–10% weight reduction can significantly reduce cardiovascular risk if overweight.</li>
+          <li>💡 For Indians, use the Asian BMI scale — it accounts for higher metabolic risk at lower weights.</li>
+          <li>💡 Combine BMI with waist circumference for a complete picture.</li>
+          <li>💡 A 5–10% weight reduction significantly reduces cardiovascular risk if overweight.</li>
+          <li>💡 Athletes should use body fat percentage instead — muscle weighs more than fat.</li>
           <li>💡 Measure weight at the same time each day for consistency.</li>
-          <li>💡 Athletes should use body fat percentage instead of BMI as muscle weighs more than fat.</li>
         </ul>
       </section>
       <section class="seo-section">
         <h2>Who Benefits From This?</h2>
-        <p>Health-conscious individuals, doctors during initial assessments, fitness enthusiasts tracking progress, and insurance companies for risk evaluation.</p>
+        <p>Health-conscious individuals, doctors during assessments, fitness enthusiasts, and insurance companies for risk evaluation.</p>
       </section>
+      
+      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <i class="fas fa-book-open" style="color:var(--p);font-size:1.1rem"></i>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--txt);margin:0">📚 Complete Guide Available</h3>
+        </div>
+        <p style="font-size:.9rem;color:var(--txt1);line-height:1.7;margin-bottom:12px">Want to learn more? Read our comprehensive guide with detailed explanations, real-world examples, expert analysis, and actionable tips.</p>
+        <a href="/blog/bmi-calculator-chart-india-2026" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s">Read: BMI Chart India 2026: Are You in Healthy Range? <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+      </div>
       <div class="seo-trust">
         <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Methodology:</strong> Based on clinically validated formulas used in nutrition and medical research. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate content.</p>

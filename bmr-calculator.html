@@ -330,6 +330,46 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         "@type": "Answer",
         "text": "Mifflin-St Jeor formula: For men: BMR = (10 &times; weight kg) + (6.25 &times; height cm) – (5 &times; age) + 5. For women: BMR = (10 &times; weight kg) + (6.25 &times; height cm) – (5 &times; age) – 161."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator a substitute for medical advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator provides estimates based on general formulas. Always consult a qualified healthcare professional for medical decisions and personalized health advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are health calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Health calculators use clinically validated formulas (like Mifflin-St Jeor for BMR). They provide reliable estimates but individual results may vary based on genetics, health conditions, and lifestyle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the health benchmarks applicable to Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where applicable, we use Asian-specific health benchmarks. For example, our BMI calculator uses both WHO and Asian classification cutoffs, which are more relevant for South Asians."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my health data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All health calculations run entirely in your browser. We do not store, transmit, or track any health information you enter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track my health metrics over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can bookmark your results or save them as screenshots. The calculator provides instant results each time you use it."
+      }
     }
   ]
 }
@@ -455,6 +495,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>What is BMR Calculator?</h2>
         <p>The BMR (Basal Metabolic Rate) Calculator estimates the minimum number of calories your body needs at complete rest to maintain vital functions like breathing, circulation, and cell repair. BMR accounts for 60&ndash;75% of total daily energy expenditure.</p>
+      
+        <details>
+          <summary>Should I use this during pregnancy?</summary>
+          <p>Pregnancy-related calculators provide general estimates. Always follow your gynecologist's specific guidance, as individual pregnancy journeys vary significantly.</p>
+        </details>
       </section>
 
       <section class="seo-section">
@@ -510,12 +555,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Related Calculators</h2>
         <div class="seo-related-grid">
-          <a href="/bmi-calculator">BMI Calculator</a>
-          <a href="/tdee-calculator">TDEE Calculator</a>
+          <a href="/cholesterolratio-calculator">Cholesterol Ratio Calculator</a>
           <a href="/age-calculator">Age Calculator</a>
-          <a href="/body-fat-calculator">Body Fat Calculator</a>
+          <a href="/anemia-calculator">Anemia Risk Calculator</a>
           <a href="/pregnancy-calculator">Pregnancy Due Date Calculator</a>
-          <a href="/water-calculator">Water Intake Calculator</a>
+          <a href="/wiresize-calculator">Wire Size Calculator</a>
+          <a href="/thermodynamics-calculator">Thermodynamics Calculator</a>
         </div>
       </section>
 
@@ -529,36 +574,57 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       
+      
       <div class="seo-author-byline" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg1);border:1px solid var(--brd);border-radius:12px;margin:16px 0"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">SS</div><div><div style="font-size:.88rem;font-weight:600;color:var(--txt)">Reviewed by <a href="/author" style="color:var(--p)">Sagar Sahni</a></div><div style="font-size:.78rem;color:var(--txt2)">Founder &amp; Lead Developer, Calc Labz · Last verified May 2026</div></div></div>
       <section class="seo-section">
         <h2>Why This Calculator Matters</h2>
-        <p>This BMR Calculator goes beyond simple number crunching — it provides context, interpretation, and actionable insights for every result. Designed for both beginners who need guidance and professionals who need speed, it uses validated formulas and presents results in an easy-to-understand format. It works completely offline as a PWA, meaning you can access it anytime, anywhere. All calculations happen on your device, ensuring your data stays private and secure.</p>
+        <p>Basal Metabolic Rate is the minimum calories your body burns at rest — just to keep you alive (breathing, circulation, cell production). BMR accounts for 60-75% of daily calorie expenditure. Knowing your BMR is the foundation for any weight management plan. The Mifflin-St Jeor equation (1990) is considered the most accurate for Indians.</p>
       </section>
       <section class="seo-section">
         <h2>What You Get</h2>
         <ul>
-          <li>Instant BMR calculation with accurate formulas</li>
-          <li>Visual result breakdown with charts</li>
-          <li>Works offline as a Progressive Web App</li>
-          <li>Completely free — no signup or data collection</li>
-          <li>Mobile-friendly responsive design</li>
-          <li>Save and share results easily</li>
+          <li>BMR using Mifflin-St Jeor and Harris-Benedict equations</li>
+          <li>Activity-level adjusted TDEE</li>
+          <li>Macronutrient breakdown for goals</li>
+          <li>Compare equations side by side</li>
+          <li>Age and gender-specific calculations</li>
+          <li>Calorie targets for weight loss/gain</li>
         </ul>
+      </section>
+      <section class="seo-section">
+        <h2>How It's Calculated</h2>
+        <p>Mifflin-St Jeor: Men: BMR = 10×weight(kg) + 6.25×height(cm) – 5×age – 5. Women: BMR = 10×weight(kg) + 6.25×height(cm) – 5×age – 161.</p>
+        <h3>Real-World Example</h3>
+        <p>Male, 30 years, 75 kg, 175 cm: BMR = 10(75) + 6.25(175) – 5(30) – 5 = 750 + 1093.75 – 150 – 5 = 1,688.75 calories/day. With moderate activity (×1.55): TDEE = 2,618 cal/day.</p>
+      </section>
+      <section class="seo-section">
+        <h2>At a Glance</h2>
+        <p style="font-size:.85rem;color:var(--txt2);margin-bottom:8px"><em>BMR and TDEE examples by age and gender</em></p>
+        <table><thead><tr><th>Age</th><th>Gender</th><th>Weight</th><th>Height</th><th>BMR</th><th>TDEE (Moderate)</th></tr></thead><tbody><tr><td>25</td><td>Male</td><td>70 kg</td><td>175 cm</td><td>1,699</td><td>2,634</td></tr><tr><td>25</td><td>Female</td><td>58 kg</td><td>163 cm</td><td>1,367</td><td>2,119</td></tr><tr><td>35</td><td>Male</td><td>80 kg</td><td>178 cm</td><td>1,738</td><td>2,694</td></tr><tr><td>35</td><td>Female</td><td>65 kg</td><td>165 cm</td><td>1,396</td><td>2,164</td></tr></tbody></table>
       </section>
       <section class="seo-section">
         <h2>Practical Advice</h2>
         <ul>
-          <li>💡 Double-check your input units — using the wrong unit is the most common calculation mistake.</li>
-          <li>💡 Bookmark this calculator for quick access — it works offline as a PWA.</li>
-          <li>💡 Use the Compare feature to evaluate different scenarios side by side.</li>
-          <li>💡 Save your results as a PDF for record-keeping or sharing.</li>
-          <li>💡 Try the related calculators below for comprehensive analysis.</li>
+          <li>💡 BMR decreases about 2% per decade after age 20 — adjust your intake as you age.</li>
+          <li>💡 Muscle mass increases BMR — strength training helps maintain metabolism.</li>
+          <li>💡 Crash diets below BMR cause metabolic adaptation, making future weight loss harder.</li>
+          <li>💡 Never eat below BMR for extended periods — it damages metabolism.</li>
+          <li>💡 Protein has a higher thermic effect (20-30%) than carbs (5-10%) or fat (0-3%).</li>
         </ul>
       </section>
       <section class="seo-section">
         <h2>Who Should Use This?</h2>
-        <p>Students and educators, professionals needing quick verification, individuals making personal decisions, and advisors recommending solutions to clients.</p>
+        <p>Anyone starting a weight management plan, fitness coaches designing meal plans, nutritionists, and athletes optimizing performance.</p>
       </section>
+      
+      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <i class="fas fa-book-open" style="color:var(--p);font-size:1.1rem"></i>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--txt);margin:0">📚 Complete Guide Available</h3>
+        </div>
+        <p style="font-size:.9rem;color:var(--txt1);line-height:1.7;margin-bottom:12px">Want to learn more? Read our comprehensive guide with detailed explanations, real-world examples, expert analysis, and actionable tips.</p>
+        <a href="/blog/bmr-calculator-basal-metabolic-rate-2026" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s">Read: BMR Calculator: Understanding Your Resting Metabolism <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+      </div>
       <div class="seo-trust">
         <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Methodology:</strong> Based on clinically validated formulas used in nutrition and medical research. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate content.</p>

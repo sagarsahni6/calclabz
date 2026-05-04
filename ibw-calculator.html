@@ -326,6 +326,46 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         "@type": "Answer",
         "text": "IBW gives a single target primarily for clinical use (drug dosing). Healthy weight is a range based on BMI 18.5–24.9. IBW does not account for body frame size, muscle mass, or ethnicity."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator a substitute for medical advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator provides estimates based on general formulas. Always consult a qualified healthcare professional for medical decisions and personalized health advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are health calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Health calculators use clinically validated formulas (like Mifflin-St Jeor for BMR). They provide reliable estimates but individual results may vary based on genetics, health conditions, and lifestyle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the health benchmarks applicable to Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where applicable, we use Asian-specific health benchmarks. For example, our BMI calculator uses both WHO and Asian classification cutoffs, which are more relevant for South Asians."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my health data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All health calculations run entirely in your browser. We do not store, transmit, or track any health information you enter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track my health metrics over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can bookmark your results or save them as screenshots. The calculator provides instant results each time you use it."
+      }
     }
   ]
 }
@@ -345,6 +385,44 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   "sameAs": [
     "https://calclabz.com/about"
   ]
+}
+</script>
+
+<script type="application/ld+json" id="jsonld-webapp">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Ideal Body Weight Calculator",
+  "url": "https://calclabz.com/ibw-calculator",
+  "description": "Calculate Ideal Body Weight using the Devine formula — the clinical standard for medication dosing and medical assessments.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "softwareVersion": "2.0",
+  "inLanguage": "en-IN",
+  "isAccessibleForFree": true,
+  "keywords": "ideal body weight calculator, health calculator, fitness, wellness, India, free",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Sagar Sahni",
+    "url": "https://calclabz.com/author"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Calc Labz",
+    "url": "https://calclabz.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://calclabz.com/calclabz-logo.png"
+    }
+  },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-05-04"
 }
 </script>
 </head>
@@ -408,6 +486,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>What is Ideal Body Weight Calculator?</h2>
         <p>This IBW calculator uses the Devine formula, the clinical gold standard used by doctors and pharmacists for weight-based drug dosing, ventilator settings, and nutritional assessment. It calculates ideal weight based on height and gender.</p>
+      
+        <details>
+          <summary>Should I use this during pregnancy?</summary>
+          <p>Pregnancy-related calculators provide general estimates. Always follow your gynecologist's specific guidance, as individual pregnancy journeys vary significantly.</p>
+        </details>
       </section>
 
       <section class="seo-section">
@@ -440,12 +523,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Related Calculators</h2>
         <div class="seo-related-grid">
-          <a href="/bmi-calculator">BMI Calculator</a>
-          <a href="/bmr-calculator">BMR Calculator</a>
-          <a href="/tdee-calculator">TDEE Calculator</a>
-          <a href="/water-calculator">Water Intake Calculator</a>
-          <a href="/heartrate-calculator">Heart Rate Zone Calculator</a>
-          <a href="/age-calculator">Age Calculator</a>
+          <a href="/macros-calculator">Macro Calculator</a>
+          <a href="/anemia-calculator">Anemia Risk Calculator</a>
+          <a href="/lungcapacity-calculator">Lung Capacity Calculator</a>
+          <a href="/diabetes-risk-calculator">Diabetes Risk Calculator</a>
+          <a href="/eventbudget-calculator">Event Budget Calculator</a>
+          <a href="/speed-dist-calculator">Speed & Distance Calculator</a>
         </div>
       </section>
 
@@ -459,36 +542,46 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       
+      
       <div class="seo-author-byline" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg1);border:1px solid var(--brd);border-radius:12px;margin:16px 0"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">SS</div><div><div style="font-size:.88rem;font-weight:600;color:var(--txt)">Reviewed by <a href="/author" style="color:var(--p)">Sagar Sahni</a></div><div style="font-size:.78rem;color:var(--txt2)">Founder &amp; Lead Developer, Calc Labz · Last verified May 2026</div></div></div>
       <section class="seo-section">
         <h2>Why You Need This Calculator</h2>
-        <p>This Ideal Body Weight Calculator goes beyond simple number crunching — it provides context, interpretation, and actionable insights for every result. Designed for both beginners who need guidance and professionals who need speed, it uses validated formulas and presents results in an easy-to-understand format. It works completely offline as a PWA, meaning you can access it anytime, anywhere. All calculations happen on your device, ensuring your data stays private and secure.</p>
+        <p>Health metrics provide crucial insights into your wellbeing, and Ideal Body Weight Calculator gives you accurate, clinically-validated results instantly. For Indians and South Asians, standard health benchmarks often need adjustment — this calculator accounts for population-specific factors. With India's growing lifestyle disease burden (diabetes affects 101 million Indians), proactive health monitoring through tools like this is more important than ever. Your health data stays completely private — all calculations happen in your browser.</p>
       </section>
       <section class="seo-section">
         <h2>Calculator Features</h2>
         <ul>
-          <li>Instant Ideal Body Weight calculation with accurate formulas</li>
-          <li>Visual result breakdown with charts</li>
+          <li>Instant Ideal Body Weight Calculator calculation with validated formulas</li>
+          <li>Detailed step-by-step result breakdown</li>
           <li>Works offline as a Progressive Web App</li>
           <li>Completely free — no signup or data collection</li>
           <li>Mobile-friendly responsive design</li>
-          <li>Save and share results easily</li>
+          <li>Save and share your results easily</li>
         </ul>
       </section>
       <section class="seo-section">
         <h2>Pro Tips & Expert Insights</h2>
         <ul>
-          <li>💡 Double-check your input units — using the wrong unit is the most common calculation mistake.</li>
-          <li>💡 Bookmark this calculator for quick access — it works offline as a PWA.</li>
-          <li>💡 Use the Compare feature to evaluate different scenarios side by side.</li>
-          <li>💡 Save your results as a PDF for record-keeping or sharing.</li>
-          <li>💡 Try the related calculators below for comprehensive analysis.</li>
+          <li>💡 Consult a healthcare professional before making major lifestyle changes based on calculator results.</li>
+          <li>💡 Track your metrics over time — trends matter more than single measurements.</li>
+          <li>💡 For Indians, use Asian-specific health benchmarks when available.</li>
+          <li>💡 Combine multiple health metrics for a comprehensive picture — don't rely on one number.</li>
+          <li>💡 Regular health check-ups complement calculator-based monitoring.</li>
         </ul>
       </section>
       <section class="seo-section">
         <h2>Who Benefits From This?</h2>
-        <p>Anyone needing quick, accurate results — from students studying fundamentals to seasoned professionals verifying their work and everyday users making informed decisions.</p>
+        <p>Health-conscious individuals monitoring their wellness, fitness enthusiasts and gym-goers tracking progress, healthcare professionals during patient assessments, and anyone proactively managing their health.</p>
       </section>
+      
+      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <i class="fas fa-book-open" style="color:var(--p);font-size:1.1rem"></i>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--txt);margin:0">📚 Complete Guide Available</h3>
+        </div>
+        <p style="font-size:.9rem;color:var(--txt1);line-height:1.7;margin-bottom:12px">Want to learn more? Read our comprehensive guide with detailed explanations, real-world examples, expert analysis, and actionable tips.</p>
+        <a href="/blog/ibw-calculator-guide-india" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s">Read: IBW <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+      </div>
       <div class="seo-trust">
         <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Maintained by:</strong> <a href="/author">Sagar Sahni</a>, Calc Labz &nbsp;|&nbsp; <strong>Review:</strong> formula checks, worked examples, and periodic updates</p>

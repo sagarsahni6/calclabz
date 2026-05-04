@@ -322,6 +322,46 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
         "@type": "Answer",
         "text": "Sedentary: 0.8g/kg body weight. Active/weight loss: 1.2–1.6g/kg. Muscle building: 1.6–2.2g/kg. For a 70 kg person building muscle: 112–154g protein daily."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator a substitute for medical advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator provides estimates based on general formulas. Always consult a qualified healthcare professional for medical decisions and personalized health advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are health calculators?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Health calculators use clinically validated formulas (like Mifflin-St Jeor for BMR). They provide reliable estimates but individual results may vary based on genetics, health conditions, and lifestyle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the health benchmarks applicable to Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where applicable, we use Asian-specific health benchmarks. For example, our BMI calculator uses both WHO and Asian classification cutoffs, which are more relevant for South Asians."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my health data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All health calculations run entirely in your browser. We do not store, transmit, or track any health information you enter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track my health metrics over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can bookmark your results or save them as screenshots. The calculator provides instant results each time you use it."
+      }
     }
   ]
 }
@@ -447,6 +487,11 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>What is Macro Calculator?</h2>
         <p>The Macro Calculator determines your optimal daily intake of protein, carbohydrates, and fat based on your TDEE and fitness goals. It provides gram targets and calorie splits for each macronutrient.</p>
+      
+        <details>
+          <summary>Should I use this during pregnancy?</summary>
+          <p>Pregnancy-related calculators provide general estimates. Always follow your gynecologist's specific guidance, as individual pregnancy journeys vary significantly.</p>
+        </details>
       </section>
 
       <section class="seo-section">
@@ -500,12 +545,12 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       <section class="seo-section">
         <h2>Related Calculators</h2>
         <div class="seo-related-grid">
-          <a href="/bmi-calculator">BMI Calculator</a>
-          <a href="/bmr-calculator">BMR Calculator</a>
-          <a href="/tdee-calculator">TDEE Calculator</a>
-          <a href="/age-calculator">Age Calculator</a>
-          <a href="/body-fat-calculator">Body Fat Calculator</a>
-          <a href="/pregnancy-calculator">Pregnancy Due Date Calculator</a>
+          <a href="/ibw-calculator">Ideal Body Weight Calculator</a>
+          <a href="/waisthip-calculator">Waist-to-Hip Ratio Calculator</a>
+          <a href="/water-calculator">Water Intake Calculator</a>
+          <a href="/electrolyte-calculator">Electrolyte Calculator</a>
+          <a href="/evpetrolsavings-calculator">EV vs Petrol Savings Calculator</a>
+          <a href="/kinematiccalc-calculator">Kinematics Calculator</a>
         </div>
       </section>
 
@@ -519,36 +564,57 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
       </section>
 
       
+      
       <div class="seo-author-byline" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg1);border:1px solid var(--brd);border-radius:12px;margin:16px 0"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">SS</div><div><div style="font-size:.88rem;font-weight:600;color:var(--txt)">Reviewed by <a href="/author" style="color:var(--p)">Sagar Sahni</a></div><div style="font-size:.78rem;color:var(--txt2)">Founder &amp; Lead Developer, Calc Labz · Last verified May 2026</div></div></div>
       <section class="seo-section">
         <h2>Why This Calculator Matters</h2>
-        <p>This Macro Calculator goes beyond simple number crunching — it provides context, interpretation, and actionable insights for every result. Designed for both beginners who need guidance and professionals who need speed, it uses validated formulas and presents results in an easy-to-understand format. It works completely offline as a PWA, meaning you can access it anytime, anywhere. All calculations happen on your device, ensuring your data stays private and secure.</p>
+        <p>Macronutrient balance is as important as total calories. The typical Indian diet is 60-70% carbohydrates, but for weight loss or muscle building, adjusting the protein-carb-fat ratio is essential. Most Indians are severely protein-deficient, averaging just 0.6 g/kg against the recommended 0.8-1.2 g/kg (higher for active individuals).</p>
       </section>
       <section class="seo-section">
         <h2>What You Get</h2>
         <ul>
-          <li>Instant Macro calculation with accurate formulas</li>
-          <li>Visual result breakdown with charts</li>
-          <li>Works offline as a Progressive Web App</li>
-          <li>Completely free — no signup or data collection</li>
-          <li>Mobile-friendly responsive design</li>
-          <li>Save and share results easily</li>
+          <li>Custom macro split for any goal</li>
+          <li>Protein, carbs, and fat in grams</li>
+          <li>Goal-based presets (weight loss, muscle gain, maintenance)</li>
+          <li>Indian food database integration</li>
+          <li>Meal timing suggestions</li>
+          <li>Vegetarian protein recommendations</li>
         </ul>
+      </section>
+      <section class="seo-section">
+        <h2>How It's Calculated</h2>
+        <p>Protein calories = grams × 4. Carb calories = grams × 4. Fat calories = grams × 9. Total = Protein cal + Carb cal + Fat cal = TDEE target.</p>
+        <h3>Real-World Example</h3>
+        <p>TDEE 2,400 cal, Goal: muscle gain (40% carb, 30% protein, 30% fat). Carbs = 960 cal = 240g. Protein = 720 cal = 180g. Fat = 720 cal = 80g.</p>
+      </section>
+      <section class="seo-section">
+        <h2>At a Glance</h2>
+        <p style="font-size:.85rem;color:var(--txt2);margin-bottom:8px"><em>Macronutrient split by fitness goal</em></p>
+        <table><thead><tr><th>Goal</th><th>Protein</th><th>Carbs</th><th>Fat</th></tr></thead><tbody><tr><td>Weight Loss</td><td>35-40%</td><td>30-35%</td><td>25-30%</td></tr><tr><td>Maintenance</td><td>25-30%</td><td>45-55%</td><td>20-30%</td></tr><tr><td>Muscle Gain</td><td>30-35%</td><td>40-45%</td><td>20-25%</td></tr><tr><td>Keto</td><td>25-30%</td><td>5-10%</td><td>60-70%</td></tr></tbody></table>
       </section>
       <section class="seo-section">
         <h2>Practical Advice</h2>
         <ul>
-          <li>💡 Double-check your input units — using the wrong unit is the most common calculation mistake.</li>
-          <li>💡 Bookmark this calculator for quick access — it works offline as a PWA.</li>
-          <li>💡 Use the Compare feature to evaluate different scenarios side by side.</li>
-          <li>💡 Save your results as a PDF for record-keeping or sharing.</li>
-          <li>💡 Try the related calculators below for comprehensive analysis.</li>
+          <li>💡 For muscle gain: aim for 1.6-2.2 g protein per kg body weight.</li>
+          <li>💡 Indian vegetarians: combine dal + rice, paneer, soy, and whey to meet protein needs.</li>
+          <li>💡 Don't go below 0.3 g/kg fat — hormones need dietary fat to function.</li>
+          <li>💡 50-55% carbs is fine for most Indians — rice and roti are not the enemy, excess is.</li>
+          <li>💡 Distribute protein evenly across meals (25-30g per meal) for optimal absorption.</li>
         </ul>
       </section>
       <section class="seo-section">
         <h2>Who Should Use This?</h2>
-        <p>Students and educators, professionals needing quick verification, individuals making personal decisions, and advisors recommending solutions to clients.</p>
+        <p>Fitness enthusiasts, bodybuilders, weight loss seekers, nutritionists, and anyone wanting a balanced diet.</p>
       </section>
+      
+      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <i class="fas fa-book-open" style="color:var(--p);font-size:1.1rem"></i>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--txt);margin:0">📚 Complete Guide Available</h3>
+        </div>
+        <p style="font-size:.9rem;color:var(--txt1);line-height:1.7;margin-bottom:12px">Want to learn more? Read our comprehensive guide with detailed explanations, real-world examples, expert analysis, and actionable tips.</p>
+        <a href="/blog/macro-calculator-protein-carbs-fat-2026" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s">Read: Macro Calculator: Protein, Carbs &amp; Fat for Your Goals <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+      </div>
       <div class="seo-trust">
         <p><strong>Medical disclaimer:</strong> This calculator provides general estimates and is not a substitute for professional medical advice, diagnosis, or treatment. Results may vary based on individual factors. Consult a healthcare professional for personalized guidance. See our full <a href="/disclaimer">Disclaimer</a>.</p>
         <p><strong>Methodology:</strong> Based on clinically validated formulas used in nutrition and medical research. See our <a href="/editorial-policy">Editorial Policy</a> for how we validate content.</p>
