@@ -157,18 +157,24 @@ function buildTOC(content) {
 }
 
 // Get related blogs (existing ones from same category)
+const titleCache = new Map();
 function getRelatedBlogs(cat) {
   const catBlogs = [];
-  existingBlogs.forEach(dir => {
-    if (catBlogs.length >= 3) return;
-    const idxPath = path.join(BLOG, dir, 'index.html');
-    if (!fs.existsSync(idxPath)) return;
-    const h = fs.readFileSync(idxPath, 'utf8');
-    const tMatch = h.match(/<h1>([^<]+)<\/h1>/);
-    if (!tMatch) return;
-    catBlogs.push({ slug: dir, title: tMatch[1] });
-  });
-  return catBlogs.slice(0, 3);
+  for (const dir of existingBlogs) {
+    if (catBlogs.length >= 3) break;
+    let title = titleCache.get(dir);
+    if (!title) {
+      const idxPath = path.join(BLOG, dir, 'index.html');
+      if (!fs.existsSync(idxPath)) continue;
+      const h = fs.readFileSync(idxPath, 'utf8');
+      const tMatch = h.match(/<h1>([^<]+)<\/h1>/);
+      if (!tMatch) continue;
+      title = tMatch[1];
+      titleCache.set(dir, title);
+    }
+    catBlogs.push({ slug: dir, title });
+  }
+  return catBlogs;
 }
 
 // Build blog HTML from template
