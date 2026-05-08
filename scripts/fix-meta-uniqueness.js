@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY = JSON.parse(fs.readFileSync(path.join(__dirname, 'calculator-registry.json'), 'utf8'));
+const { hash } = require('./utils');
 
 const CAT_CONTEXT = {
   finance: 'financial planning in India',
@@ -29,8 +30,6 @@ const TEMPLATES = [
   (name, cat, desc) => `${name}: ${desc} Free online tool with step-by-step breakdown. No login required. Used by professionals across India.`,
   (name, cat, desc) => `Calculate ${name.replace(' Calculator', '').toLowerCase()} instantly with our free tool. ${desc} Accurate formulas, zero data collection.`,
 ];
-
-function hash(s) { let h = 0; for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h); }
 
 let fixed = 0;
 const seen = new Set();
