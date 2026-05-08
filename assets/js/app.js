@@ -266,6 +266,7 @@ function escHtml(str) {
  * so that even if blog data is ever compromised, no XSS executes.
  */
 function sanitizeHTML(html) {
+    if (typeof html !== 'string') return '';
     if (typeof DOMParser === 'undefined') return escHtml(html);
     var parser = new DOMParser();
     var doc = parser.parseFromString(html, 'text/html');
@@ -273,7 +274,10 @@ function sanitizeHTML(html) {
     var dangerous = doc.querySelectorAll('script,style,iframe,object,embed,base,form,input,button,link');
     dangerous.forEach(function (el) { el.remove(); });
     // Strip on* event attributes and javascript: hrefs from all remaining nodes
-    doc.body.querySelectorAll('*').forEach(function (el) {
+    // doc.body.querySelectorAll('*') only gets descendants of body.
+    // We also want to check the body tag itself.
+    var allElements = doc.querySelectorAll('*');
+    allElements.forEach(function (el) {
         Array.from(el.attributes).forEach(function (attr) {
             if (/^on/i.test(attr.name)) el.removeAttribute(attr.name);
             if ((attr.name === 'href' || attr.name === 'src' || attr.name === 'action') &&
