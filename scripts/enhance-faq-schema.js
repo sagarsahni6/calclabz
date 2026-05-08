@@ -5,10 +5,9 @@
  * Run: node scripts/enhance-faq-schema.js
  */
 'use strict';
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
-const REGISTRY = JSON.parse(fs.readFileSync(path.join(__dirname, 'calculator-registry.json'), 'utf8'));
 
 // Category-specific FAQ templates
 const CAT_FAQS = {
@@ -84,88 +83,104 @@ const CAT_FAQS = {
   ]
 };
 
-let enhanced = 0;
+async function enhanceFaqs() {
+  const registryPath = path.join(__dirname, 'calculator-registry.json');
+  const registryData = await fs.readFile(registryPath, 'utf8');
+  const REGISTRY = JSON.parse(registryData);
 
-REGISTRY.forEach(entry => {
-  const slug = entry.slug;
-  const fp = path.join(ROOT, slug + '.html');
-  if (!fs.existsSync(fp)) return;
+  let enhanced = 0;
 
-  let html = fs.readFileSync(fp, 'utf8');
-  const cat = entry.cat || 'everyday';
+  await Promise.all(REGISTRY.map(async (entry) => {
+    const slug = entry.slug;
+    const fp = path.join(ROOT, slug + '.html');
 
-  // Find existing FAQ schema
-  const faqSchemaStart = html.indexOf('"FAQPage"');
-  if (faqSchemaStart === -1) return; // Skip if no FAQ schema
-
-  // Find the script block containing FAQPage
-  const scriptStart = html.lastIndexOf('<script type="application/ld+json"', faqSchemaStart);
-  const scriptEnd = html.indexOf('</script>', faqSchemaStart);
-  if (scriptStart === -1 || scriptEnd === -1) return;
-
-  const existingBlock = html.substring(scriptStart, scriptEnd + 9);
-
-  // Parse existing FAQ
-  let existingFaq;
-  try {
-    const jsonStr = html.substring(
-      html.indexOf('{', scriptStart),
-      html.indexOf('</script>', faqSchemaStart)
-    );
-    existingFaq = JSON.parse(jsonStr);
-  } catch (e) { return; }
-
-  const existingQs = (existingFaq.mainEntity || []).map(q => q.name);
-
-  // Only enhance if fewer than 5 questions
-  if (existingQs.length >= 5) return;
-
-  // Add category FAQs that don't duplicate existing
-  const catFaqs = CAT_FAQS[cat] || CAT_FAQS.everyday;
-  const newEntities = [...(existingFaq.mainEntity || [])];
-
-  catFaqs.forEach(faq => {
-    if (newEntities.length >= 7) return;
-    if (existingQs.some(q => q.toLowerCase().includes(faq.q.substring(0, 20).toLowerCase()))) return;
-    newEntities.push({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    });
-  });
-
-  if (newEntities.length === existingQs.length) return; // Nothing added
-
-  // Build new FAQ schema
-  const newFaqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": newEntities
-  };
-
-  const newBlock = `<script type="application/ld+json" id="jsonld-faq">\n${JSON.stringify(newFaqSchema, null, 2)}\n</script>`;
-  html = html.replace(existingBlock, newBlock);
-
-  // Also add FAQ items to the visible FAQ section on the page
-  const faqSectionEnd = html.indexOf('</section>', html.indexOf('seo-faq'));
-  if (faqSectionEnd !== -1) {
-    let newFaqHtml = '';
-    catFaqs.forEach(faq => {
-      if (existingQs.some(q => q.toLowerCase().includes(faq.q.substring(0, 20).toLowerCase()))) return;
-      if (html.includes(faq.q)) return;
-      newFaqHtml += `\n        <details>\n          <summary>${faq.q}</summary>\n          <p>${faq.a}</p>\n        </details>`;
-    });
-    if (newFaqHtml) {
-      html = html.substring(0, faqSectionEnd) + newFaqHtml + '\n      ' + html.substring(faqSectionEnd);
+    let html;
+    try {
+      html = await fs.readFile(fp, 'utf8');
+    } catch (err) {
+      return; // Skip if file doesn't exist or can't be read
     }
-  }
 
-  fs.writeFileSync(fp, html, 'utf8');
-  enhanced++;
-  console.log(`  ✅ ${slug} [${existingQs.length} → ${newEntities.length} FAQs]`);
+    const cat = entry.cat || 'everyday';
+
+    // Find existing FAQ schema
+    const faqSchemaStart = html.indexOf('"FAQPage"');
+    if (faqSchemaStart === -1) return; // Skip if no FAQ schema
+
+    // Find the script block containing FAQPage
+    const scriptStart = html.lastIndexOf('<script type="application/ld+json"', faqSchemaStart);
+    const scriptEnd = html.indexOf('</script>', faqSchemaStart);
+    if (scriptStart === -1 || scriptEnd === -1) return;
+
+    const existingBlock = html.substring(scriptStart, scriptEnd + 9);
+
+    // Parse existing FAQ
+    let existingFaq;
+    try {
+      const jsonStr = html.substring(
+        html.indexOf('{', scriptStart),
+        html.indexOf('</script>', faqSchemaStart)
+      );
+      existingFaq = JSON.parse(jsonStr);
+    } catch (e) { return; }
+
+    const existingQs = (existingFaq.mainEntity || []).map(q => q.name);
+
+    // Only enhance if fewer than 5 questions
+    if (existingQs.length >= 5) return;
+
+    // Add category FAQs that don't duplicate existing
+    const catFaqs = CAT_FAQS[cat] || CAT_FAQS.everyday;
+    const newEntities = [...(existingFaq.mainEntity || [])];
+
+    catFaqs.forEach(faq => {
+      if (newEntities.length >= 7) return;
+      if (existingQs.some(q => q.toLowerCase().includes(faq.q.substring(0, 20).toLowerCase()))) return;
+      newEntities.push({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      });
+    });
+
+    if (newEntities.length === existingQs.length) return; // Nothing added
+
+    // Build new FAQ schema
+    const newFaqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": newEntities
+    };
+
+    const newBlock = `<script type="application/ld+json" id="jsonld-faq">\n${JSON.stringify(newFaqSchema, null, 2)}\n</script>`;
+    html = html.replace(existingBlock, newBlock);
+
+    // Also add FAQ items to the visible FAQ section on the page
+    const faqSectionEnd = html.indexOf('</section>', html.indexOf('seo-faq'));
+    if (faqSectionEnd !== -1) {
+      let newFaqHtml = '';
+      catFaqs.forEach(faq => {
+        if (existingQs.some(q => q.toLowerCase().includes(faq.q.substring(0, 20).toLowerCase()))) return;
+        if (html.includes(faq.q)) return;
+        newFaqHtml += `\n        <details>\n          <summary>${faq.q}</summary>\n          <p>${faq.a}</p>\n        </details>`;
+      });
+      if (newFaqHtml) {
+        html = html.substring(0, faqSectionEnd) + newFaqHtml + '\n      ' + html.substring(faqSectionEnd);
+      }
+    }
+
+    await fs.writeFile(fp, html, 'utf8');
+    enhanced++;
+    console.log(`  ✅ ${slug} [${existingQs.length} → ${newEntities.length} FAQs]`);
+  }));
+
+  console.log(`\n📊 FAQ Enhancement: ${enhanced} pages upgraded with additional FAQs`);
+}
+
+enhanceFaqs().catch(err => {
+  console.error(err);
+  process.exit(1);
 });
-
-console.log(`\n📊 FAQ Enhancement: ${enhanced} pages upgraded with additional FAQs`);
