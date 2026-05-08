@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY = JSON.parse(fs.readFileSync(path.join(__dirname, 'calculator-registry.json'), 'utf8'));
+const { hash, pick } = require('./utils');
 
 // ── LOAD ALL CONTENT DATA ──────────────────────────────────────
 const DATA_DIR = path.join(__dirname, 'seo-content-data');
@@ -131,8 +132,6 @@ const CAT_CONTENT = {
 };
 
 // ── HELPERS ─────────────────────────────────────────────────────
-function hash(s) { let h = 0; for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h); }
-function pick(arr, seed) { return arr[seed % arr.length]; }
 
 function makeByline() {
   return `\n      <div class="seo-author-byline" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg1);border:1px solid var(--brd);border-radius:12px;margin:16px 0"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">SS</div><div><div style="font-size:.88rem;font-weight:600;color:var(--txt)">Reviewed by <a href="/author" style="color:var(--p)">Sagar Sahni</a></div><div style="font-size:.78rem;color:var(--txt2)">Founder &amp; Lead Developer, Calc Labz · Last verified May 2026</div></div></div>`;

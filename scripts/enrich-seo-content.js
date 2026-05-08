@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
+const { hash, pick } = require('./utils');
 
 // ── RICH CONTENT FOR TOP CALCULATORS ───────────────────────────
 const RICH = {
@@ -80,9 +81,6 @@ const H_FEAT = ['Key Features','What You Get','Calculator Features','What This T
 const H_TIPS = ['Pro Tips & Expert Insights','Expert Tips','Tips for Better Results','Practical Advice'];
 const H_WHO = ['Who Should Use This?','Who Benefits From This?','Who Is This For?','Ideal Users'];
 const H_TBL = ['Quick Reference Data','Reference Table','At a Glance','Quick Reference'];
-
-function pick(arr, seed) { return arr[Math.abs(seed) % arr.length]; }
-function hash(s) { let h = 0; for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h); }
 
 function makeNoscript(name) {
   return `\n      <noscript><div style="padding:24px;margin:20px 0;background:#18181b;border:1px solid rgba(255,255,255,.08);border-radius:16px;text-align:center"><p style="font-size:1rem;color:#f4f4f5;margin-bottom:8px"><strong>\u2699\uFE0F JavaScript Required</strong></p><p style="font-size:.9rem;color:#a1a1aa;line-height:1.7">This interactive ${name} requires JavaScript to function. Please enable JavaScript in your browser. The formulas, reference tables, and educational content below are still available.</p></div></noscript>`;
