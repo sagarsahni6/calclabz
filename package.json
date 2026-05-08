@@ -3,7 +3,7 @@
   "scripts": {
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
-    "verify": "node scripts/verify-calculators.js && node scripts/verify-seo.js"
+    "verify": "node scripts/verify-calculators.js && node scripts/verify-seo.js && node scripts/verify-format-inr.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.50.0"
