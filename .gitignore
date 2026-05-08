@@ -15,3 +15,4 @@ npm-debug.log*
 
 # Local dev only (serve.json is for local serving, vercel.json is for prod)
 # Keep both tracked for reference
+node_modules/
