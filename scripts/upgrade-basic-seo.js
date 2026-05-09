@@ -261,90 +261,99 @@ var FILES = [
 
 var stats = { upgraded: 0, alreadyUnique: 0, noFormula: 0, errors: 0 };
 
-FILES.forEach(function(file) {
+Promise.all(FILES.map(function(file) {
   var filePath = path.join(__dirname, file);
-  if (!fs.existsSync(filePath)) {
-    console.warn('  ⚠  ' + file + ' not found, skipping.');
-    return;
-  }
+  return fs.promises.access(filePath, fs.constants.F_OK)
+    .then(function() {
+      return fs.promises.readFile(filePath, 'utf8');
+    })
+    .then(function(content) {
+      var mod = require('./' + file);
+      var ids = Object.keys(mod);
+      var modified = false;
 
-  var content = fs.readFileSync(filePath, 'utf8');
-  var mod = require('./' + file);
-  var ids = Object.keys(mod);
-  var modified = false;
+      ids.forEach(function(id) {
+        var entry = mod[id];
+        var regEntry = regMap[id];
+        var name = (regEntry && regEntry.name) || id;
+        var nameLC = name.toLowerCase();
+        var cat = (regEntry && regEntry.cat) || 'everyday';
+        var formula = FORMULAS[id] || null;
+        var coreEntry = CORE_DB[id] || null;
 
-  ids.forEach(function(id) {
-    var entry = mod[id];
-    var regEntry = regMap[id];
-    var name = (regEntry && regEntry.name) || id;
-    var nameLC = name.toLowerCase();
-    var cat = (regEntry && regEntry.cat) || 'everyday';
-    var formula = FORMULAS[id] || null;
-    var coreEntry = CORE_DB[id] || null;
+        var needsSteps = isGenericSteps(entry.howToSteps);
+        var needsMeth = isGenericMethodology(entry.methodology);
 
-    var needsSteps = isGenericSteps(entry.howToSteps);
-    var needsMeth = isGenericMethodology(entry.methodology);
+        if (!needsSteps && !needsMeth) {
+          stats.alreadyUnique++;
+          return;
+        }
 
-    if (!needsSteps && !needsMeth) {
-      stats.alreadyUnique++;
-      return;
-    }
+        if (!formula) stats.noFormula++;
 
-    if (!formula) stats.noFormula++;
+        // Build unique content
+        var newSteps = needsSteps ? buildUniqueSteps(id, name, nameLC, cat, coreEntry, formula) : null;
+        var newMeth = needsMeth ? buildUniqueMethodology(id, name, nameLC, cat, formula) : null;
 
-    // Build unique content
-    var newSteps = needsSteps ? buildUniqueSteps(id, name, nameLC, cat, coreEntry, formula) : null;
-    var newMeth = needsMeth ? buildUniqueMethodology(id, name, nameLC, cat, formula) : null;
+        // Replace howToSteps in file content
+        if (newSteps) {
+          // Find the howToSteps array for this entry and replace it
+          var stepsRegex = new RegExp(
+            "(  " + id + ": \\{[\\s\\S]*?)howToSteps: \\[[^\\]]*\\]",
+            ""
+          );
+          if (stepsRegex.test(content)) {
+            var stepsStr = "howToSteps: [\n";
+            newSteps.forEach(function(s, i) {
+              stepsStr += "      '" + s.replace(/'/g, "\\'") + "'";
+              if (i < newSteps.length - 1) stepsStr += ',';
+              stepsStr += '\n';
+            });
+            stepsStr += '    ]';
+            content = content.replace(stepsRegex, '$1' + stepsStr);
+            modified = true;
+          }
+        }
 
-    // Replace howToSteps in file content
-    if (newSteps) {
-      // Find the howToSteps array for this entry and replace it
-      var stepsRegex = new RegExp(
-        "(  " + id + ": \\{[\\s\\S]*?)howToSteps: \\[[^\\]]*\\]",
-        ""
-      );
-      if (stepsRegex.test(content)) {
-        var stepsStr = "howToSteps: [\n";
-        newSteps.forEach(function(s, i) {
-          stepsStr += "      '" + s.replace(/'/g, "\\'") + "'";
-          if (i < newSteps.length - 1) stepsStr += ',';
-          stepsStr += '\n';
+        // Replace methodology in file content
+        if (newMeth) {
+          var methRegex = new RegExp(
+            "(  " + id + ": \\{[\\s\\S]*?)methodology: '[^']*(?:\\\\'[^']*)*'",
+            ""
+          );
+          if (methRegex.test(content)) {
+            var methStr = "methodology: '" + newMeth.replace(/'/g, "\\'") + "'";
+            content = content.replace(methRegex, '$1' + methStr);
+            modified = true;
+          }
+        }
+
+        if (needsSteps || needsMeth) {
+          stats.upgraded++;
+        }
+      });
+
+      if (modified) {
+        return fs.promises.writeFile(filePath, content, 'utf8').then(function() {
+          console.log('  ✓  ' + file + ' — upgraded entries');
         });
-        stepsStr += '    ]';
-        content = content.replace(stepsRegex, '$1' + stepsStr);
-        modified = true;
+      } else {
+        console.log('  ·  ' + file + ' — no changes needed');
       }
-    }
-
-    // Replace methodology in file content
-    if (newMeth) {
-      var methRegex = new RegExp(
-        "(  " + id + ": \\{[\\s\\S]*?)methodology: '[^']*(?:\\\\'[^']*)*'",
-        ""
-      );
-      if (methRegex.test(content)) {
-        var methStr = "methodology: '" + newMeth.replace(/'/g, "\\'") + "'";
-        content = content.replace(methRegex, '$1' + methStr);
-        modified = true;
+    })
+    .catch(function(err) {
+      if (err.code === 'ENOENT') {
+        console.warn('  ⚠  ' + file + ' not found, skipping.');
+      } else {
+        console.error('  ✖  Error processing ' + file + ':', err);
+        stats.errors++;
       }
-    }
-
-    if (needsSteps || needsMeth) {
-      stats.upgraded++;
-    }
-  });
-
-  if (modified) {
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log('  ✓  ' + file + ' — upgraded entries');
-  } else {
-    console.log('  ·  ' + file + ' — no changes needed');
-  }
+    });
+})).then(function() {
+  console.log('\n═══ Upgrade Summary ═══');
+  console.log('  Upgraded:       ' + stats.upgraded);
+  console.log('  Already unique: ' + stats.alreadyUnique);
+  console.log('  No formula:     ' + stats.noFormula + ' (used category-specific fallback)');
+  if (stats.errors) console.log('  Errors:         ' + stats.errors);
+  console.log('\n✅ Done. Run "node scripts/generate-prerender.js" to regenerate HTML pages.\n');
 });
-
-console.log('\n═══ Upgrade Summary ═══');
-console.log('  Upgraded:       ' + stats.upgraded);
-console.log('  Already unique: ' + stats.alreadyUnique);
-console.log('  No formula:     ' + stats.noFormula + ' (used category-specific fallback)');
-if (stats.errors) console.log('  Errors:         ' + stats.errors);
-console.log('\n✅ Done. Run "node scripts/generate-prerender.js" to regenerate HTML pages.\n');
