@@ -292,7 +292,9 @@ function sanitizeHTML(html) {
  * rather than throwing an uncaught DOMException.
  */
 function safeStore(key, value) {
-    try { localStorage.setItem(key, value); } catch (e) { /* quota exceeded — ignore */ }
+    try { localStorage.setItem(key, value); } catch (e) {
+        console.warn('Storage error for', key, e);
+    }
 }
 var toastTimer;
 function showToast(msg, type) {

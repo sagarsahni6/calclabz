@@ -6,6 +6,6 @@
     "verify": "node scripts/verify-calculators.js && node scripts/verify-seo.js"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.0"
+    "@playwright/test": "^1.59.1"
   }
 }
