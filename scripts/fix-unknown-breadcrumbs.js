@@ -39,48 +39,59 @@ var registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));
 var fixedFiles = 0;
 var fixedRegistry = 0;
 
-// Fix HTML files
-registry.forEach(function(entry) {
-  if (entry.cat !== 'unknown') return;
-  
-  var fix = CATEGORY_FIX[entry.id];
-  if (!fix) {
-    console.log('⚠️  No mapping for unknown calc: ' + entry.id);
-    return;
-  }
-  
-  // Fix registry entry
-  entry.cat = fix.cat;
-  fixedRegistry++;
-  
-  // Fix the HTML file
-  var htmlFile = path.join(__dirname, '..', entry.slug + '.html');
-  if (!fs.existsSync(htmlFile)) {
-    console.log('⚠️  HTML file not found: ' + entry.slug + '.html');
-    return;
-  }
-  
-  var html = fs.readFileSync(htmlFile, 'utf8');
-  var modified = false;
-  
-  // Fix breadcrumb text: "Tools Calculators" -> correct category label
-  // In HTML breadcrumb
-  if (html.includes('/unknown-calculators')) {
-    html = html.replace(/\/unknown-calculators/g, fix.url);
-    html = html.replace(/Tools Calculators/g, fix.label);
-    modified = true;
-  }
-  
-  if (modified) {
-    fs.writeFileSync(htmlFile, html, 'utf8');
-    fixedFiles++;
-    console.log('✅ Fixed: ' + entry.slug + '.html → ' + fix.label);
-  }
+async function run() {
+  // Fix HTML files
+  const promises = registry.map(async function(entry) {
+    if (entry.cat !== 'unknown') return;
+
+    var fix = CATEGORY_FIX[entry.id];
+    if (!fix) {
+      console.log('⚠️  No mapping for unknown calc: ' + entry.id);
+      return;
+    }
+
+    // Fix registry entry
+    entry.cat = fix.cat;
+    fixedRegistry++;
+
+    // Fix the HTML file
+    var htmlFile = path.join(__dirname, '..', entry.slug + '.html');
+    try {
+      await fs.promises.access(htmlFile);
+    } catch (err) {
+      console.log('⚠️  HTML file not found: ' + entry.slug + '.html');
+      return;
+    }
+
+    var html = await fs.promises.readFile(htmlFile, 'utf8');
+    var modified = false;
+
+    // Fix breadcrumb text: "Tools Calculators" -> correct category label
+    // In HTML breadcrumb
+    if (html.includes('/unknown-calculators')) {
+      html = html.replace(/\/unknown-calculators/g, fix.url);
+      html = html.replace(/Tools Calculators/g, fix.label);
+      modified = true;
+    }
+
+    if (modified) {
+      await fs.promises.writeFile(htmlFile, html, 'utf8');
+      fixedFiles++;
+      console.log('✅ Fixed: ' + entry.slug + '.html → ' + fix.label);
+    }
+  });
+
+  await Promise.all(promises);
+
+  // Save registry
+  await fs.promises.writeFile(REGISTRY_PATH, JSON.stringify(registry, null, 2) + '\n', 'utf8');
+
+  console.log('\n📊 Summary:');
+  console.log('   Registry entries fixed: ' + fixedRegistry);
+  console.log('   HTML files fixed: ' + fixedFiles);
+}
+
+run().catch(err => {
+  console.error('Error running fix-unknown-breadcrumbs:', err);
+  process.exit(1);
 });
-
-// Save registry
-fs.writeFileSync(REGISTRY_PATH, JSON.stringify(registry, null, 2) + '\n', 'utf8');
-
-console.log('\n📊 Summary:');
-console.log('   Registry entries fixed: ' + fixedRegistry);
-console.log('   HTML files fixed: ' + fixedFiles);

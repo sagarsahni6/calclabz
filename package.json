@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
+    "test": "node tests/formatINR.test.js && npx playwright test",
+    "test:headed": "node tests/formatINR.test.js && npx playwright test --headed",
     "verify": "node scripts/verify-calculators.js && node scripts/verify-seo.js"
   },
   "devDependencies": {

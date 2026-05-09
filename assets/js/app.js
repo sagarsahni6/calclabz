@@ -599,9 +599,9 @@ function _openCalcRender(catKey, calcId) {
         + '<div class="crumb"><a data-action="showHome" role="button" tabindex="0">Home</a> <span>›</span> <a data-action="showCategory" data-key="' + catKey + '" role="button" tabindex="0">' + cat.name + '</a> <span>›</span> ' + calc.name + '</div>'
         + '<div class="calc-hdr"><div class="calc-title-row"><div><h1>' + calc.name + '</h1><p>' + calc.desc + '</p></div>'
         + '<div class="calc-actions">'
-        + '<button class="ibtn" id="fav-' + calcId + '" data-action="toggleFav" data-calcid="' + calcId + '" title="Favorite"><i class="' + (isFav ? 'fas' : 'far') + ' fa-star" style="color:' + (isFav ? 'var(--gold)' : '') + '"></i></button>'
-        + '<button class="ibtn" data-action="savePDF" data-calcid="' + calcId + '" title="Save PDF"><i class="fas fa-file-pdf"></i></button>'
-        + '<button class="ibtn" data-action="openCmpMode" data-cat="' + catKey + '" data-calcid="' + calcId + '" title="Compare"><i class="fas fa-columns"></i></button>'
+        + '<button class="ibtn" id="fav-' + calcId + '" data-action="toggleFav" data-calcid="' + calcId + '" title="Favorite" aria-label="Favorite"><i class="' + (isFav ? 'fas' : 'far') + ' fa-star" style="color:' + (isFav ? 'var(--gold)' : '') + '"></i></button>'
+        + '<button class="ibtn" data-action="savePDF" data-calcid="' + calcId + '" title="Save PDF" aria-label="Save PDF"><i class="fas fa-file-pdf"></i></button>'
+        + '<button class="ibtn" data-action="openCmpMode" data-cat="' + catKey + '" data-calcid="' + calcId + '" title="Compare" aria-label="Compare"><i class="fas fa-columns"></i></button>'
         + '</div></div></div>'
         + '<div class="calc-badges">' + (fData ? '<span class="badge-verified"><i class="fas fa-check-circle"></i>Verified Formula</span>' : '<span class="badge-standard"><i class="fas fa-calculator"></i>Standard Formula</span>') + '<span class="badge-updated"><i class="fas fa-clock"></i>Updated 2026</span></div>'
         + presetsHTML
@@ -620,8 +620,8 @@ function _openCalcRender(catKey, calcId) {
         + editorialHTML
         + shareHTML
         + '<div class="feedback-bar"><span class="feedback-lbl">Was this helpful?</span>'
-        + '<button class="fb-btn up" data-action="giveFeedback" data-calcid="' + calcId + '" data-value="1"><i class="fas fa-thumbs-up"></i></button>'
-        + '<button class="fb-btn dn" data-action="giveFeedback" data-calcid="' + calcId + '" data-value="-1"><i class="fas fa-thumbs-down"></i></button>'
+        + '<button class="fb-btn up" data-action="giveFeedback" data-calcid="' + calcId + '" data-value="1" aria-label="Helpful" title="Helpful"><i class="fas fa-thumbs-up"></i></button>'
+        + '<button class="fb-btn dn" data-action="giveFeedback" data-calcid="' + calcId + '" data-value="-1" aria-label="Not helpful" title="Not helpful"><i class="fas fa-thumbs-down"></i></button>'
         + '<span class="fb-thanks" id="fbt-' + calcId + '">Thanks!</span></div>'
         + '<div class="trust-bar"><span class="trust-item"><i class="fas fa-check-circle"></i>Free forever</span>'
         + '<span class="trust-item"><i class="fas fa-lock"></i>Data stays on your device</span>'

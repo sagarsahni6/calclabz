@@ -62,83 +62,106 @@ registry.forEach(function(entry) {
 fs.writeFileSync(regPath, JSON.stringify(registry, null, 2) + '\n', 'utf8');
 console.log('\n  Updated ' + updated + ' entries in calculator-registry.json\n');
 
-// === 2. Rename HTML files ===
-var renamed = 0, redirects = [];
+async function main() {
+  // === 2. Rename HTML files ===
+  var renamed = 0, redirects = [];
 
-Object.keys(SLUG_RENAMES).forEach(function(id) {
-  var oldSlug = id + '-calculator';
-  var newSlug = SLUG_RENAMES[id] + '-calculator';
-  var oldFile = path.join(ROOT, oldSlug + '.html');
-  var newFile = path.join(ROOT, newSlug + '.html');
+  const renameTasks = Object.keys(SLUG_RENAMES).map(async function(id) {
+    var oldSlug = id + '-calculator';
+    var newSlug = SLUG_RENAMES[id] + '-calculator';
+    var oldFile = path.join(ROOT, oldSlug + '.html');
+    var newFile = path.join(ROOT, newSlug + '.html');
 
-  if (fs.existsSync(oldFile)) {
-    // Read file, update canonical URL and any self-references
-    var html = fs.readFileSync(oldFile, 'utf8');
-    html = html.replace(new RegExp(oldSlug, 'g'), newSlug);
-    fs.writeFileSync(newFile, html, 'utf8');
-    fs.unlinkSync(oldFile);
-    console.log('  ✓ Renamed: ' + oldSlug + '.html  →  ' + newSlug + '.html');
-    renamed++;
-  } else {
-    console.log('  ⚠ Not found: ' + oldSlug + '.html (will be generated on rebuild)');
-  }
+    let exists = false;
+    try {
+      await fs.promises.access(oldFile);
+      exists = true;
+    } catch (e) {
+      exists = false;
+    }
 
-  // Collect redirect rules
-  redirects.push({
-    source: '/' + oldSlug,
-    destination: '/' + newSlug,
-    statusCode: 301
-  });
-});
-
-console.log('\n  Renamed ' + renamed + ' HTML files\n');
-
-// === 3. Update vercel.json redirects ===
-var vercelPath = path.join(ROOT, 'vercel.json');
-if (fs.existsSync(vercelPath)) {
-  var vercel = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
-  if (!vercel.redirects) vercel.redirects = [];
-
-  // Remove any existing redirects for these slugs
-  var newSlugs = new Set(redirects.map(r => r.source));
-  vercel.redirects = vercel.redirects.filter(r => !newSlugs.has(r.source));
-
-  // Add new redirects
-  vercel.redirects = vercel.redirects.concat(redirects);
-  fs.writeFileSync(vercelPath, JSON.stringify(vercel, null, 2) + '\n', 'utf8');
-  console.log('  ✓ Added ' + redirects.length + ' 301 redirects to vercel.json');
-}
-
-// === 4. Update serve.json redirects ===
-var servePath = path.join(ROOT, 'serve.json');
-if (fs.existsSync(servePath)) {
-  var serve = JSON.parse(fs.readFileSync(servePath, 'utf8'));
-  if (!serve.redirects) serve.redirects = [];
-
-  var existingSources = new Set(serve.redirects.map(r => r.source));
-  redirects.forEach(function(r) {
-    if (!existingSources.has(r.source)) {
-      serve.redirects.push(r);
+    if (exists) {
+      // Read file, update canonical URL and any self-references
+      var html = await fs.promises.readFile(oldFile, 'utf8');
+      html = html.replace(new RegExp(oldSlug, 'g'), newSlug);
+      await fs.promises.writeFile(newFile, html, 'utf8');
+      await fs.promises.unlink(oldFile);
+      console.log('  ✓ Renamed: ' + oldSlug + '.html  →  ' + newSlug + '.html');
+      return true;
+    } else {
+      console.log('  ⚠ Not found: ' + oldSlug + '.html (will be generated on rebuild)');
+      return false;
     }
   });
-  fs.writeFileSync(servePath, JSON.stringify(serve, null, 2) + '\n', 'utf8');
-  console.log('  ✓ Updated serve.json with redirects');
+
+  const results = await Promise.all(renameTasks);
+  renamed = results.filter(Boolean).length;
+
+  Object.keys(SLUG_RENAMES).forEach(function(id) {
+    var oldSlug = id + '-calculator';
+    var newSlug = SLUG_RENAMES[id] + '-calculator';
+    // Collect redirect rules
+    redirects.push({
+      source: '/' + oldSlug,
+      destination: '/' + newSlug,
+      statusCode: 301
+    });
+  });
+
+  console.log('\n  Renamed ' + renamed + ' HTML files\n');
+
+  // === 3. Update vercel.json redirects ===
+  var vercelPath = path.join(ROOT, 'vercel.json');
+  if (fs.existsSync(vercelPath)) {
+    var vercel = JSON.parse(await fs.promises.readFile(vercelPath, 'utf8'));
+    if (!vercel.redirects) vercel.redirects = [];
+
+    // Remove any existing redirects for these slugs
+    var newSlugs = new Set(redirects.map(r => r.source));
+    vercel.redirects = vercel.redirects.filter(r => !newSlugs.has(r.source));
+
+    // Add new redirects
+    vercel.redirects = vercel.redirects.concat(redirects);
+    await fs.promises.writeFile(vercelPath, JSON.stringify(vercel, null, 2) + '\n', 'utf8');
+    console.log('  ✓ Added ' + redirects.length + ' 301 redirects to vercel.json');
+  }
+
+  // === 4. Update serve.json redirects ===
+  var servePath = path.join(ROOT, 'serve.json');
+  if (fs.existsSync(servePath)) {
+    var serve = JSON.parse(await fs.promises.readFile(servePath, 'utf8'));
+    if (!serve.redirects) serve.redirects = [];
+
+    var existingSources = new Set(serve.redirects.map(r => r.source));
+    redirects.forEach(function(r) {
+      if (!existingSources.has(r.source)) {
+        serve.redirects.push(r);
+      }
+    });
+    await fs.promises.writeFile(servePath, JSON.stringify(serve, null, 2) + '\n', 'utf8');
+    console.log('  ✓ Updated serve.json with redirects');
+  }
+
+  // === 5. Output _slugRedirects for app.js ===
+  console.log('\n  === Add these to _slugRedirects in app.js ===\n');
+  Object.keys(SLUG_RENAMES).forEach(function(id) {
+    var oldSlug = id + '-calculator';
+    var newSlug = SLUG_RENAMES[id] + '-calculator';
+    console.log("    '" + oldSlug + "': '" + id + "',");
+  });
+
+  console.log('\n  === Add these as NEW slug mappings in app.js ===\n');
+  Object.keys(SLUG_RENAMES).forEach(function(id) {
+    var newSlug = SLUG_RENAMES[id] + '-calculator';
+    console.log("    '" + newSlug + "': '" + id + "',");
+  });
+
+  console.log('\n✅ Done! Next steps:');
+  console.log('  1. Update _slugRedirects in app.js (paste the mappings above)');
+  console.log('  2. Run: node scripts/generate-prerender.js (if needed to rebuild with new slugs)');
 }
 
-// === 5. Output _slugRedirects for app.js ===
-console.log('\n  === Add these to _slugRedirects in app.js ===\n');
-Object.keys(SLUG_RENAMES).forEach(function(id) {
-  var oldSlug = id + '-calculator';
-  var newSlug = SLUG_RENAMES[id] + '-calculator';
-  console.log("    '" + oldSlug + "': '" + id + "',");
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
 });
-
-console.log('\n  === Add these as NEW slug mappings in app.js ===\n');
-Object.keys(SLUG_RENAMES).forEach(function(id) {
-  var newSlug = SLUG_RENAMES[id] + '-calculator';
-  console.log("    '" + newSlug + "': '" + id + "',");
-});
-
-console.log('\n✅ Done! Next steps:');
-console.log('  1. Update _slugRedirects in app.js (paste the mappings above)');
-console.log('  2. Run: node scripts/generate-prerender.js (if needed to rebuild with new slugs)');

@@ -22,14 +22,21 @@ const CALC_TO_BLOG = {};
 const BLOG_TITLES = {};
 
 // Extract blog title from index.html
-blogDirs.forEach(dir => {
-  const indexPath = path.join(BLOG_DIR, dir, 'index.html');
-  if (!fs.existsSync(indexPath)) return;
-  const html = fs.readFileSync(indexPath, 'utf8');
-  const titleMatch = html.match(/<h1[^>]*>([^<]+)<\/h1>/);
-  const title = titleMatch ? titleMatch[1].trim() : dir.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  BLOG_TITLES[dir] = title;
-});
+const extractTitles = async () => {
+  const promises = blogDirs.map(async (dir) => {
+    const indexPath = path.join(BLOG_DIR, dir, 'index.html');
+    try {
+      const html = await fs.promises.readFile(indexPath, 'utf8');
+      const titleMatch = html.match(/<h1[^>]*>([^<]+)<\/h1>/);
+      const title = titleMatch ? titleMatch[1].trim() : dir.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      BLOG_TITLES[dir] = title;
+    } catch (e) {
+      // Ignore if file does not exist
+      if (e.code !== 'ENOENT') throw e;
+    }
+  });
+  await Promise.all(promises);
+};
 
 // Map known calculator slugs to blog slugs
 const SLUG_MAP = {
@@ -150,31 +157,44 @@ const SLUG_MAP = {
   'freelancerate': 'freelance-rate-calculator-hourly-pricing',
 };
 
-let linked = 0;
+// Main async function
+const main = async () => {
+  let linked = 0;
 
-// Process all calculator pages
-const calcFiles = fs.readdirSync(ROOT).filter(f => f.endsWith('-calculator.html'));
+  await extractTitles();
 
-calcFiles.forEach(fn => {
-  const slug = fn.replace('.html', '');
-  const key = slug.replace('-calculator', '');
-  const blogSlug = SLUG_MAP[key];
+  // Process all calculator pages
+  const calcFiles = fs.readdirSync(ROOT).filter(f => f.endsWith('-calculator.html'));
 
-  if (!blogSlug) return;
+  const processPromises = calcFiles.map(async (fn) => {
+    const slug = fn.replace('.html', '');
+    const key = slug.replace('-calculator', '');
+    const blogSlug = SLUG_MAP[key];
 
-  // Verify blog exists
-  const blogDir = path.join(BLOG_DIR, blogSlug);
-  if (!fs.existsSync(blogDir)) return;
+    if (!blogSlug) return;
 
-  const fp = path.join(ROOT, fn);
-  let html = fs.readFileSync(fp, 'utf8');
+    // Verify blog exists
+    const blogDir = path.join(BLOG_DIR, blogSlug);
+    try {
+      await fs.promises.access(blogDir);
+    } catch (e) {
+      return; // Blog doesn't exist
+    }
 
-  // Skip if already has blog link
-  if (html.includes('seo-blog-cta')) return;
+    const fp = path.join(ROOT, fn);
+    let html;
+    try {
+      html = await fs.promises.readFile(fp, 'utf8');
+    } catch (e) {
+      return; // Skip if read fails
+    }
 
-  const title = BLOG_TITLES[blogSlug] || blogSlug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    // Skip if already has blog link
+    if (html.includes('seo-blog-cta')) return;
 
-  const ctaHtml = `\n      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
+    const title = BLOG_TITLES[blogSlug] || blogSlug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+    const ctaHtml = `\n      <div class="seo-blog-cta" style="margin:20px 0;padding:20px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(129,140,248,.08));border:1px solid rgba(99,102,241,.2);border-radius:16px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
           <i class="fas fa-book-open" style="color:var(--p);font-size:1.1rem"></i>
           <h3 style="font-size:1rem;font-weight:700;color:var(--txt);margin:0">📚 Complete Guide Available</h3>
@@ -183,14 +203,22 @@ calcFiles.forEach(fn => {
         <a href="/blog/${blogSlug}" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--p);color:#fff;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s">Read: ${title.substring(0, 60)}${title.length > 60 ? '…' : ''} <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
       </div>`;
 
-  // Insert before the trust div
-  const trust = '<div class="seo-trust">';
-  if (html.includes(trust)) {
-    html = html.replace(trust, ctaHtml + '\n      ' + trust);
-    fs.writeFileSync(fp, html, 'utf8');
-    linked++;
-    console.log(`  ✅ ${fn} → /blog/${blogSlug}`);
-  }
-});
+    // Insert before the trust div
+    const trust = '<div class="seo-trust">';
+    if (html.includes(trust)) {
+      html = html.replace(trust, ctaHtml + '\n      ' + trust);
+      await fs.promises.writeFile(fp, html, 'utf8');
+      linked++;
+      console.log(`  ✅ ${fn} → /blog/${blogSlug}`);
+    }
+  });
 
-console.log(`\n📊 Blog Cross-Links: Added ${linked} calculator → blog links`);
+  await Promise.all(processPromises);
+
+  console.log(`\n📊 Blog Cross-Links: Added ${linked} calculator → blog links`);
+};
+
+main().catch(err => {
+  console.error("Error running script:", err);
+  process.exit(1);
+});
