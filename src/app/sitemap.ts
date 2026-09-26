@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/dashboard',
     '/blog',
     '/author/sagar-sahni',
+    '/store/hero-connect-pdi-automator.html',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: LAST_CONTENT_UPDATE,
